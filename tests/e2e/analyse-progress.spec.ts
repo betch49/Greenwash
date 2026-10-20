@@ -44,6 +44,10 @@ test("2.4 a robots-disallowed page is shown as skipped, not hidden (fictional te
   await expect(page.getByTestId("run-status")).toHaveAttribute("data-status", "done", { timeout: 30_000 });
   await expect(progress.getByText("skipped: robots.txt disallows https://www.northwind-outdoor.example/stories/archive/our-footprint-2019/")).toBeVisible();
   await expect(page.getByTestId("pages")).toContainText("Our Footprint - Northwind Outdoor");
+  // Brief Section 8 "say so" (ADR-016): the could-not-check line states what the Wayback Machine gave instead.
+  await expect(page.getByTestId("could-not-check")).toContainText(
+    "https://www.northwind-outdoor.example/stories/archive/our-footprint-2019/ (robots.txt does not allow us to fetch it; the Wayback Machine has no archived copy from 2019–2026, so nothing on it was checked).",
+  );
 });
 
 test("2.6 a reload does not start the pipeline twice", async ({ page, request }) => {

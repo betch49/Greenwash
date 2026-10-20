@@ -1,11 +1,11 @@
 import type { ProgressEntry, Run, RunsRepo } from "../db/runs-repo";
 import type { RunPagesRepo } from "../db/run-pages-repo";
-import type { RunTimelineRepo } from "../db/run-timeline-repo";
+import type { RunOutputsRepo } from "../db/run-outputs-repo";
 import type { FetchedPage } from "../discover/fetch-pages";
 import { DISCOVERY_CONFIG, type DiscoveryConfig } from "../discover/heuristics";
 import type { Fetcher } from "../fetch/fetcher";
 import { RobotsChecker, RobotsGuardedFetcher } from "../fetch/robots";
-import { steps } from "../copy/wording";
+import { couldNotCheck, steps } from "../copy/wording";
 import { withReceipts, type Signal } from "./signal";
 import type { ClaimStats } from "../claims/engine";
 import { claimsStep } from "./steps/claims";
@@ -22,8 +22,8 @@ export const DEFAULT_STEPS: Step[] = [discoverStep, fetchPagesStep, waybackStep,
 export interface PipelineDeps {
   runs: RunsRepo;
   pages: RunPagesRepo;
-  /** Stores the archived-claim timeline (Phase 4); optional so step-level tests can omit it. */
-  timeline?: RunTimelineRepo;
+  /** Stores the timeline and could-not-check lines (Phase 4); optional so step-level tests can omit it. */
+  outputs?: RunOutputsRepo;
   /**
    * The cached (+ rate-limited) fetcher, or the fixture fetcher offline. Wrapped in the robots guard
    * for brand pages; used as is only for the Wayback API endpoints (ADR-010).
@@ -51,6 +51,15 @@ export function guardedPageFetcher(fetcher: Fetcher): { pageFetcher: Fetcher; ro
   return { pageFetcher: new RobotsGuardedFetcher(fetcher, robots), robots };
 }
 
+/**
+ * One "What we could not check" line per robots-disallowed page, saying what the
+ * archive gave us instead (brief Section 8: "rely on Wayback for those and say so",
+ * ADR-016). Written after all steps, so the Wayback step's outcome is known.
+ */
+export function robotsLines(ctx: Pick<PipelineContext, "robotsDisallowed" | "archiveOutcomes">): string[] {
+  return ctx.robotsDisallowed.map((url) => couldNotCheck.robotsDisallowed(url, ctx.archiveOutcomes[url]));
+}
+
 const messageOf = (err: unknown) => (err instanceof Error ? err.message : String(err));
 
 /**
@@ -74,11 +83,18 @@ export async function runPipeline(run: Pick<Run, "id" | "brand" | "website">, de
     claimHits: [],
     timeline: [],
     diffCandidates: [],
+    archiveOutcomes: {},
   };
   const progress: ProgressEntry[] = [];
   const signals: Signal[] = [];
   const could_not_check: string[] = [];
   const save = () => deps.runs.setProgress(run.id, progress);
+  let robotsAdded = false;
+  const addRobotsLines = () => {
+    if (robotsAdded) return;
+    robotsAdded = true;
+    could_not_check.push(...robotsLines(ctx));
+  };
 
   try {
     for (const step of deps.steps ?? DEFAULT_STEPS) {
@@ -103,10 +119,12 @@ export async function runPipeline(run: Pick<Run, "id" | "brand" | "website">, de
       save();
     }
     deps.pages.replace(run.id, ctx.pages);
-    deps.timeline?.replace(run.id, ctx.timeline);
+    addRobotsLines();
+    deps.outputs?.replace(run.id, { timeline: ctx.timeline, could_not_check });
     deps.runs.setStatus(run.id, "done");
     return { status: "done", progress, signals, could_not_check, pages: ctx.pages, claim_stats: ctx.claimStats, timeline: ctx.timeline, diff_candidates: ctx.diffCandidates };
   } catch (err) {
+    addRobotsLines();
     progress.push({ step: steps.pipeline, status: "skipped", reason: messageOf(err) });
     try {
       save();

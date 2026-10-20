@@ -20,6 +20,17 @@ export interface Services {
 
 export const isOffline = () => process.env.GR_OFFLINE_FIXTURES === "1";
 
+/**
+ * The pipeline clock. GR_FIXED_NOW (an ISO date-time) pins it, but only in
+ * offline fixture mode (GR_OFFLINE_FIXTURES=1), so the fixture histories stay
+ * inside the Wayback year window whatever the real date is. A live run always
+ * uses the real clock; an unparsable value is ignored.
+ */
+export function pipelineClock(env: Record<string, string | undefined> = process.env): () => Date {
+  const fixed = env.GR_OFFLINE_FIXTURES === "1" && env.GR_FIXED_NOW ? Date.parse(env.GR_FIXED_NOW) : NaN;
+  return Number.isNaN(fixed) ? () => new Date() : () => new Date(fixed);
+}
+
 const HOUR_MS = 3_600_000;
 
 export function buildFetcher(db: Db, offline: boolean): Fetcher {

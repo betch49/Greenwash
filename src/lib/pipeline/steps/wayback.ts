@@ -43,6 +43,17 @@ export function makeWaybackStep(config: WaybackConfig = WAYBACK_CONFIG): Step {
     async run(ctx): Promise<StepResult> {
       const label = labelOf(ctx);
       const targets = waybackTargets(ctx, config);
+      // Robots-disallowed pages we do not look up are said so too (ADR-016).
+      const disallowed = new Set(ctx.robotsDisallowed);
+      for (const url of ctx.robotsDisallowed) {
+        if (!targets.includes(url)) ctx.archiveOutcomes[url] = { kind: "not_looked_up", maxPages: config.maxPages };
+      }
+      /** Records the outcome of a disallowed page; returns true when the page's could-not-check line carries it. */
+      const note = (url: string, outcome: PipelineContext["archiveOutcomes"][string]) => {
+        if (!disallowed.has(url)) return false;
+        ctx.archiveOutcomes[url] = outcome;
+        return true;
+      };
       if (targets.length === 0) {
         return { signals: [], could_not_check: [], skipped: { step: label, reason: reasons.noPagesForWayback } };
       }
@@ -67,7 +78,7 @@ export function makeWaybackStep(config: WaybackConfig = WAYBACK_CONFIG): Step {
             continue;
           }
           if (list.snapshots.length === 0) {
-            could_not_check.push(couldNotCheck.waybackNoSnapshots(pageUrl, from, to));
+            if (!note(pageUrl, { kind: "none", from, to })) could_not_check.push(couldNotCheck.waybackNoSnapshots(pageUrl, from, to));
             continue;
           }
           const snaps: Snapshot[] = [];
@@ -76,6 +87,8 @@ export function makeWaybackStep(config: WaybackConfig = WAYBACK_CONFIG): Step {
             if (res.ok) snaps.push(res.snapshot);
             else progress.push({ step: steps.fetchSnapshot(res.url), status: "skipped", reason: reasons.httpStatus(res.status, res.url) });
           }
+          if (snaps.length > 0) note(pageUrl, { kind: "read", count: snaps.length, from: snaps[0].year, to: snaps[snaps.length - 1].year });
+          else note(pageUrl, { kind: "none", from, to });
           if (snaps.length === 1) could_not_check.push(couldNotCheck.waybackOneSnapshot(pageUrl, snaps[0].year));
           const det = detectRetractions(snaps, { brand: ctx.run.brand, config });
           signals.push(...det.signals);
@@ -84,6 +97,7 @@ export function makeWaybackStep(config: WaybackConfig = WAYBACK_CONFIG): Step {
         }
       } catch (err) {
         if (!(err instanceof WaybackUnavailableError)) throw err;
+        for (const url of targets) if (disallowed.has(url) && !ctx.archiveOutcomes[url]) note(url, { kind: "unreachable", reason: err.message });
         could_not_check.push(couldNotCheck.waybackUnreachable(err.message));
         return done(err.message);
       }
@@ -91,10 +105,13 @@ export function makeWaybackStep(config: WaybackConfig = WAYBACK_CONFIG): Step {
       if (noAnswer.length === targets.length) {
         // No page got a CDX answer: the archive is not serving us, not "no history".
         const reason = reasons.waybackUnreachable(`HTTP ${noAnswer[0].status}`);
+        for (const n of noAnswer) note(n.url, { kind: "unreachable", reason });
         could_not_check.push(couldNotCheck.waybackUnreachable(reason));
         return done(reason);
       }
-      for (const n of noAnswer) could_not_check.push(couldNotCheck.waybackNoHistory(n.url, n.status));
+      for (const n of noAnswer) {
+        if (!note(n.url, { kind: "no_answer", status: n.status })) could_not_check.push(couldNotCheck.waybackNoHistory(n.url, n.status));
+      }
       return done();
     },
   };

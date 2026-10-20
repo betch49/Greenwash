@@ -14,8 +14,8 @@ async function analyseWebsite(page: Page, website: string) {
 test("4.7 the removed-claim fixture shows a timeline with the year the claim disappeared", async ({ page }) => {
   await analyseWebsite(page, "https://www.northwind-outdoor.example");
 
-  const year = new Date().getUTCFullYear();
-  await expect(page.getByTestId("progress").locator(`[data-step="Pulling ${year - 7}–${year} snapshots"]`)).toHaveAttribute("data-status", "done");
+  // The server clock is pinned to 2026-10-20 (GR_FIXED_NOW in playwright.config.ts); literal label on purpose.
+  await expect(page.getByTestId("progress").locator('[data-step="Pulling 2019–2026 snapshots"]')).toHaveAttribute("data-status", "done");
 
   const timeline = page.getByTestId("timeline");
   await expect(timeline.getByRole("heading", { name: "Timeline of archived claims" })).toBeVisible();
@@ -33,6 +33,7 @@ test("4.7 the removed-claim fixture shows a timeline with the year the claim dis
 
 test("4.5 the redesign fixture shows its archived copies and no removed claim", async ({ page }) => {
   await analyseWebsite(page, "https://www.quillmoor-foods.example");
+  await expect(page.getByTestId("progress").locator('[data-step="Pulling 2019–2026 snapshots"]')).toHaveAttribute("data-status", "done");
   const timeline = page.getByTestId("timeline");
   await expect(timeline.locator("li[data-year]")).toHaveCount(3);
   await expect(timeline.locator("li[data-removed]")).toHaveCount(0);
@@ -40,7 +41,6 @@ test("4.5 the redesign fixture shows its archived copies and no removed claim", 
 
 test("a real fixture brand without recorded history shows the Wayback step as skipped, not hidden", async ({ page }) => {
   await analyseWebsite(page, "https://www.oatly.com/");
-  const year = new Date().getUTCFullYear();
-  await expect(page.getByTestId("progress").locator(`[data-step="Pulling ${year - 7}–${year} snapshots"]`)).toContainText("skipped: Wayback unreachable");
+  await expect(page.getByTestId("progress").locator('[data-step="Pulling 2019–2026 snapshots"]')).toContainText("skipped: Wayback unreachable");
   await expect(page.getByTestId("timeline")).toContainText("No archived copies were compared.");
 });

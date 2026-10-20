@@ -13,7 +13,7 @@ describe("database bootstrap", () => {
   afterEach(() => env.cleanup());
 
   it("creates every Drizzle table with the same columns", () => {
-    for (const table of [schema.fetchCache, schema.runs, schema.runPages, schema.runTimeline, schema.reports, schema.signals]) {
+    for (const table of [schema.fetchCache, schema.runs, schema.runPages, schema.runOutputs, schema.reports, schema.signals]) {
       const name = getTableName(table);
       const cols = env.db.$client.prepare(`PRAGMA table_info(${name})`).all() as { name: string }[];
       const expected = Object.values(getTableColumns(table)).map((c) => c.name);

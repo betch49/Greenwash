@@ -42,10 +42,14 @@ export const runPages = sqliteTable(
   (t) => [primaryKey({ columns: [t.runId, t.url] })],
 );
 
-/** Archived-claim timeline of a run (Phase 4): TimelineEntry[] as JSON. Folded into ReportV1 in Phase 6. */
-export const runTimeline = sqliteTable("run_timeline", {
+/**
+ * Outputs of a finished run (Phase 4): archived-claim timeline (TimelineEntry[]) and the
+ * "What we could not check" lines, as JSON. Folded into ReportV1 in Phase 6.
+ */
+export const runOutputs = sqliteTable("run_outputs", {
   runId: text("run_id").primaryKey(),
-  data: text("data").notNull(),
+  timeline: text("timeline").notNull(),
+  couldNotCheck: text("could_not_check").notNull(),
 });
 
 /** Finished reports (ReportV1 JSON, Phase 6). */
@@ -113,9 +117,10 @@ CREATE TABLE IF NOT EXISTS run_pages (
   content_hash TEXT NOT NULL,
   PRIMARY KEY (run_id, url)
 );
-CREATE TABLE IF NOT EXISTS run_timeline (
+CREATE TABLE IF NOT EXISTS run_outputs (
   run_id TEXT PRIMARY KEY,
-  data TEXT NOT NULL
+  timeline TEXT NOT NULL,
+  could_not_check TEXT NOT NULL
 );
 CREATE TABLE IF NOT EXISTS reports (
   id TEXT PRIMARY KEY,

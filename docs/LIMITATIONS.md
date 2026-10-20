@@ -14,4 +14,5 @@ Started in Phase 4; completed in Phase 9 (PLAN Phase 9 deliverable 2). Each entr
 - A claim moved to a different page counts as removed from the page it left. Rewording at ≥ 0.8 similarity, moving within the page or putting it under a heading does not count.
 - The newest snapshot is not compared with the live page; a claim removed after the last archived copy is not reported.
 - The Wayback API endpoints are not checked against robots.txt (ADR-010); brand pages always are.
-- The year window follows the server clock; the fixture histories (2020–2025) stay inside it until 2027, and the 2021 → 2024 removal until 2028.
+- The year window follows the server clock. In offline fixture mode only, `GR_FIXED_NOW` pins it (the Playwright run sets 2026-10-20, so the fixture histories always fall in 2019–2026); live runs ignore it.
+- Robots-disallowed pages (ADR-016): their archived copies are diffed for the timeline and removed-claim signals, but never scored on the claims axis as current wording. Their "What we could not check" line says whether archived copies were read (count, years), none were found, the archive was unreachable, or the page was not looked up.

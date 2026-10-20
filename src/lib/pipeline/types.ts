@@ -6,6 +6,7 @@ import type { RobotsChecker } from "../fetch/robots";
 import type { ClaimHit, ClaimStats } from "../claims/engine";
 import type { EvidenceResult } from "../claims/evidence-rules";
 import type { Signal } from "./signal";
+import type { ArchiveNote } from "../copy/wording";
 import type { DiffCandidate, TimelineEntry } from "../wayback/retraction";
 
 /** What every pipeline step returns (PLAN conventions). */
@@ -44,7 +45,12 @@ export interface PipelineContext {
   timeline: TimelineEntry[];
   /** Removed-claim candidates for the Phase 7 diff classifier. */
   diffCandidates: DiffCandidate[];
+  /** What the Wayback step found for each robots-disallowed page (ADR-016), keyed by the page URL. */
+  archiveOutcomes: Record<string, ArchiveOutcome>;
 }
+
+/** The archive's answer for a page we could not fetch live (type lives with its wording). */
+export type ArchiveOutcome = ArchiveNote;
 
 export interface Step {
   id: string;

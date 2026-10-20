@@ -4,6 +4,14 @@
 // "skipped: <reason>". tests/unit/copy/forbidden.test.ts scans every string
 // literal under src/ against src/lib/copy/forbidden.ts.
 
+/** What the Wayback Machine gave us for a robots-disallowed page (mirrors ArchiveOutcome in src/lib/pipeline/types.ts). */
+export type ArchiveNote =
+  | { kind: "read"; count: number; from: number; to: number }
+  | { kind: "none"; from: number; to: number }
+  | { kind: "no_answer"; status: number }
+  | { kind: "unreachable"; reason: string }
+  | { kind: "not_looked_up"; maxPages: number };
+
 export const skippedReason = (reason: string) => `skipped: ${reason}`;
 
 export const ui = {
@@ -41,6 +49,7 @@ export const ui = {
   timelineClaimsPresent: (n: number) => `${n} claim sentence${n === 1 ? "" : "s"} present`,
   timelineRemoved: (from: number, to: number) => `claim removed between ${from} and ${to}`,
   timelineArchivedCopy: "archived copy",
+  couldNotCheckHeading: "What we could not check",
 };
 
 /** Pipeline step names shown in the progress list. */
@@ -76,7 +85,23 @@ export const reasons = {
 export const couldNotCheck = {
   noSustainabilityPage: (host: string) => `No sustainability, impact or responsibility page could be fetched from ${host}.`,
   robotsUnavailable: (origin: string) => `${origin} (its robots.txt could not be read, so we did not fetch from it).`,
-  robotsDisallowed: (url: string) => `${url} (robots.txt does not allow us to fetch it).`,
+  /** Brief Section 8: a page robots.txt keeps us from fetching is read from the Wayback Machine, and we say so. */
+  robotsDisallowed: (url: string, archive?: ArchiveNote) => {
+    const base = `${url} (robots.txt does not allow us to fetch it`;
+    if (!archive) return `${base}).`;
+    switch (archive.kind) {
+      case "read":
+        return `${base}; we read ${archive.count} archived ${archive.count === 1 ? "copy" : "copies"} from the Wayback Machine instead (${archive.from === archive.to ? archive.from : `${archive.from}–${archive.to}`}), used for the timeline only, not scored as current wording).`;
+      case "none":
+        return `${base}; the Wayback Machine has no archived copy from ${archive.from}–${archive.to}, so nothing on it was checked).`;
+      case "no_answer":
+        return `${base}; the Wayback Machine answered HTTP ${archive.status}, so its archived copies could not be read).`;
+      case "unreachable":
+        return `${base}; its archived copies could not be read: ${archive.reason}).`;
+      case "not_looked_up":
+        return `${base}; not looked up in the Wayback Machine: only sustainability-type pages, at most ${archive.maxPages} per brand).`;
+    }
+  },
   labelClaimed: (name: string, url: string) => `${name}: label claimed on page; not verified in v1 (${url}).`,
   waybackUnreachable: (reason: string) => `Archived versions of the brand’s pages: ${reason}.`,
   waybackNoHistory: (url: string, status: number) => `Archived versions of ${url} (the Wayback Machine answered HTTP ${status}).`,

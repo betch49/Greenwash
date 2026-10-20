@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { RunPagesRepo } from "@/lib/db/run-pages-repo";
-import { RunTimelineRepo } from "@/lib/db/run-timeline-repo";
+import { RunOutputsRepo } from "@/lib/db/run-outputs-repo";
 import { RunsRepo } from "@/lib/db/runs-repo";
 import { FetchError, type Fetcher } from "@/lib/fetch/fetcher";
 import { runPipeline } from "@/lib/pipeline/run";
@@ -8,6 +8,7 @@ import { claimsStep } from "@/lib/pipeline/steps/claims";
 import { discoverStep } from "@/lib/pipeline/steps/discover";
 import { fetchPagesStep } from "@/lib/pipeline/steps/fetch-pages";
 import { waybackStep, waybackTargets } from "@/lib/pipeline/steps/wayback";
+import { robotsLines } from "@/lib/pipeline/run";
 import { OfflineFetcher } from "../helpers/brands";
 import { tempDb } from "../helpers/db";
 
@@ -36,12 +37,12 @@ describe("Wayback step (4.6)", () => {
   let env: ReturnType<typeof tempDb>;
   let runs: RunsRepo;
   let pages: RunPagesRepo;
-  let timeline: RunTimelineRepo;
+  let outputs: RunOutputsRepo;
   beforeEach(() => {
     env = tempDb();
     runs = new RunsRepo(env.db);
     pages = new RunPagesRepo(env.db);
-    timeline = new RunTimelineRepo(env.db);
+    outputs = new RunOutputsRepo(env.db);
   });
   afterEach(() => env.cleanup());
 
@@ -56,7 +57,7 @@ describe("Wayback step (4.6)", () => {
   ] as const)("%s ⇒ skipped with a reason naming Wayback; the run continues to the next step", async (_name, answer, reason) => {
     const run = northwind();
     const fetcher = withWayback(answer);
-    const out = await runPipeline(run, { runs, pages, timeline, fetcher, now: NOW, steps });
+    const out = await runPipeline(run, { runs, pages, outputs, fetcher, now: NOW, steps });
 
     expect(out.status).toBe("done");
     const line = out.progress.find((p) => p.step === STEP);
@@ -71,24 +72,23 @@ describe("Wayback step (4.6)", () => {
 
   it("offline fixtures: the step is done, emits the removed claim, and the timeline is persisted", async () => {
     const run = northwind();
-    const out = await runPipeline(run, { runs, pages, timeline, fetcher: new OfflineFetcher(), now: NOW });
+    const out = await runPipeline(run, { runs, pages, outputs, fetcher: new OfflineFetcher(), now: NOW });
     expect(out.progress.find((p) => p.step === STEP)).toEqual({ step: STEP, status: "done" });
     const removed = out.signals.filter((s) => s.kind === "claim.removed");
     expect(removed).toHaveLength(1);
     expect(out.diff_candidates).toHaveLength(1);
-    const stored = timeline.list(run.id);
+    const stored = outputs.get(run.id).timeline;
     expect(stored).toEqual(out.timeline);
+    expect(outputs.get(run.id).could_not_check).toEqual(out.could_not_check);
     expect(stored.find((t) => t.claims_removed.length > 0)).toMatchObject({ year: 2024, previous_year: 2021 });
     // Pages without archived copies are listed under "what we could not check", not hidden.
-    expect(out.could_not_check).toContain(
-      "https://www.northwind-outdoor.example/stories/archive/our-footprint-2019/: no archived snapshot from 2019–2026 in the Wayback Machine.",
-    );
+    expect(out.could_not_check).toContain("https://www.northwind-outdoor.example/our-responsibility/supply-chain/: no archived snapshot from 2019–2026 in the Wayback Machine.");
   });
 
   it("Wayback endpoints are not robots-guarded, brand pages are (ADR-010): the robots-disallowed page gets a history lookup", async () => {
     const run = northwind();
     const fetcher = new OfflineFetcher();
-    await runPipeline(run, { runs, pages, timeline, fetcher, now: NOW });
+    await runPipeline(run, { runs, pages, outputs, fetcher, now: NOW });
     const cdx = fetcher.calls.filter((u) => u.startsWith("https://web.archive.org/cdx/"));
     expect(cdx.some((u) => u.includes(encodeURIComponent("https://www.northwind-outdoor.example/stories/archive/our-footprint-2019/")))).toBe(true);
     expect(fetcher.calls).not.toContain("https://www.northwind-outdoor.example/stories/archive/our-footprint-2019/");
@@ -106,11 +106,46 @@ describe("Wayback step (4.6)", () => {
 
   it("no sustainability-type page ⇒ skipped with a reason", async () => {
     const run = runs.create({ query: "acme", brand: "acme", website: "https://example.com" });
-    const out = await runPipeline(run, { runs, pages, timeline, fetcher: new OfflineFetcher(), now: NOW });
+    const out = await runPipeline(run, { runs, pages, outputs, fetcher: new OfflineFetcher(), now: NOW });
     expect(out.progress.find((p) => p.step === STEP)).toEqual({
       step: STEP,
       status: "skipped",
       reason: "no sustainability-type page to look up in the Wayback Machine",
+    });
+  });
+
+  describe("robots-disallowed page: the could-not-check line says what the archive gave instead (brief Section 8, ADR-016)", () => {
+    const ARCHIVE = "https://www.northwind-outdoor.example/stories/archive/our-footprint-2019/";
+    const FOOTPRINT = "https://www.northwind-outdoor.example/our-footprint/";
+    const linesFor = (out: { could_not_check: string[] }) => out.could_not_check.filter((c) => c.includes(ARCHIVE));
+    const base = `${ARCHIVE} (robots.txt does not allow us to fetch it`;
+
+    it("disallowed, CDX [] ⇒ one line: no archived copy, nothing checked", async () => {
+      const out = await runPipeline(northwind(), { runs, pages, outputs, fetcher: new OfflineFetcher(), now: NOW });
+      expect(linesFor(out)).toEqual([`${base}; the Wayback Machine has no archived copy from 2019–2026, so nothing on it was checked).`]);
+    });
+
+    it("disallowed, archived copies found ⇒ says they were read instead, with count and years", async () => {
+      const inner = new OfflineFetcher();
+      // Serve the footprint history for the archive page's CDX query.
+      const fetcher = withWayback((url) => inner.get(url.replace(encodeURIComponent(ARCHIVE), encodeURIComponent(FOOTPRINT))));
+      const out = await runPipeline(northwind(), { runs, pages, outputs, fetcher, now: NOW });
+      expect(linesFor(out)).toEqual([
+        `${base}; we read 4 archived copies from the Wayback Machine instead (2020–2025), used for the timeline only, not scored as current wording).`,
+      ]);
+    });
+
+    it("disallowed, archive unreachable ⇒ says its archived copies could not be read and why", async () => {
+      const out = await runPipeline(northwind(), { runs, pages, outputs, fetcher: withWayback(status(429)), now: NOW, steps });
+      expect(linesFor(out)).toEqual([`${base}; its archived copies could not be read: Wayback unreachable (HTTP 429)).`]);
+    });
+
+    it("no Wayback step in the run ⇒ the plain robots line; not looked up ⇒ says so", async () => {
+      const out = await runPipeline(northwind(), { runs, pages, outputs, fetcher: new OfflineFetcher(), now: NOW, steps: [discoverStep, fetchPagesStep] });
+      expect(linesFor(out)).toEqual([`${base}).`]);
+      expect(robotsLines({ robotsDisallowed: [ARCHIVE], archiveOutcomes: { [ARCHIVE]: { kind: "not_looked_up", maxPages: 3 } } })).toEqual([
+        `${base}; not looked up in the Wayback Machine: only sustainability-type pages, at most 3 per brand).`,
+      ]);
     });
   });
 });

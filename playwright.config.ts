@@ -21,6 +21,7 @@ export default defineConfig({
     url: `http://127.0.0.1:${PORT}/`,
     reuseExistingServer: false,
     timeout: 180_000,
-    env: { GR_OFFLINE_FIXTURES: "1", GR_DB_PATH: DB, NEXT_TELEMETRY_DISABLED: "1" },
+    // GR_FIXED_NOW pins the pipeline clock (offline only) so the Wayback year window is 2019–2026 forever.
+    env: { GR_OFFLINE_FIXTURES: "1", GR_FIXED_NOW: "2026-10-20T00:00:00Z", GR_DB_PATH: DB, NEXT_TELEMETRY_DISABLED: "1" },
   },
 });

@@ -17,7 +17,8 @@ export const fetchPagesStep: Step = {
     ctx.pages = res.pages;
     ctx.robotsDisallowed = res.skipped.filter((s) => s.robots).map((s) => s.url);
     const progress: ProgressEntry[] = res.skipped.map((s) => ({ step: steps.fetchPage(s.url), status: "skipped", reason: s.reason }));
-    const could_not_check = ctx.robotsDisallowed.map((u) => couldNotCheck.robotsDisallowed(u));
+    // One line per robots-disallowed page is added when the run ends, with the Wayback outcome (ADR-016).
+    const could_not_check: string[] = [];
     if (!res.pages.some((p) => isSustainabilityPath(p.url, ctx.config))) {
       could_not_check.push(couldNotCheck.noSustainabilityPage(host));
     }

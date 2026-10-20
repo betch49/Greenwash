@@ -89,6 +89,16 @@ export function Progress({ initial }: { initial: RunView }) {
         </section>
       )}
       {finished(view.status) && <Timeline entries={view.timeline ?? []} />}
+      {finished(view.status) && (view.could_not_check ?? []).length > 0 && (
+        <section aria-labelledby="cnc-heading">
+          <h2 id="cnc-heading">{ui.couldNotCheckHeading}</h2>
+          <ul className="pages" data-testid="could-not-check">
+            {view.could_not_check.map((c, i) => (
+              <li key={`${i}-${c}`}>{c}</li>
+            ))}
+          </ul>
+        </section>
+      )}
     </>
   );
 }

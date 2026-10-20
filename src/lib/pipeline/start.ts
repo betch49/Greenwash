@@ -1,8 +1,8 @@
 import { reasons, steps } from "../copy/wording";
 import type { ProgressEntry, Run, RunsRepo } from "../db/runs-repo";
 import { RunPagesRepo } from "../db/run-pages-repo";
-import { RunTimelineRepo } from "../db/run-timeline-repo";
-import { getServices } from "../services";
+import { RunOutputsRepo } from "../db/run-outputs-repo";
+import { getServices, pipelineClock } from "../services";
 import { runPipeline, type PipelineOutcome } from "./run";
 
 const g = globalThis as unknown as { __grInflight?: Map<string, Promise<PipelineOutcome>> };
@@ -17,7 +17,7 @@ export function startAnalysis(runId: string): boolean {
   const { runs, db, fetcher } = getServices();
   const run = runs.get(runId);
   if (!run || !runs.claimStart(runId)) return false;
-  const p = runPipeline(run, { runs, pages: new RunPagesRepo(db), timeline: new RunTimelineRepo(db), fetcher }).finally(() => inflight().delete(runId));
+  const p = runPipeline(run, { runs, pages: new RunPagesRepo(db), outputs: new RunOutputsRepo(db), fetcher, now: pipelineClock() }).finally(() => inflight().delete(runId));
   inflight().set(runId, p);
   return true;
 }
