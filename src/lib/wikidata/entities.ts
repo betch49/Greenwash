@@ -29,7 +29,7 @@ export interface WikidataEntity {
   label: string;
   description?: string;
   aliases: string[];
-  /** P856 official website (first non-deprecated, preferred first). */
+  /** P856 official website (first non-deprecated, preferred first; among normal rank, https before http). */
   website?: string;
   /** P749 parent organisation. */
   parent?: Ref;
@@ -72,6 +72,14 @@ function claimValues(e: RawEntity, prop: string): unknown[] {
   return (preferred.length ? [...preferred, ...claims.filter((c) => c.rank !== "preferred")] : claims).map(
     (c) => c.mainsnak.datavalue?.value,
   );
+}
+
+/** P856: the first preferred-rank value; otherwise the first https value of normal rank, then the first value. */
+function officialWebsite(e: RawEntity): string | undefined {
+  const sites = strings(e, "P856");
+  const preferred = (e.claims?.P856 ?? []).some((c) => c.rank === "preferred" && c.mainsnak.snaktype === "value");
+  if (preferred) return sites[0];
+  return sites.find((s) => /^https:\/\//i.test(s)) ?? sites[0];
 }
 
 function itemIds(e: RawEntity, prop: string): string[] {
@@ -122,7 +130,7 @@ export async function resolveEntities(fetcher: Fetcher, ids: string[]): Promise<
         label: label(e, id),
         description: e.descriptions?.en?.value ?? e.descriptions?.mul?.value,
         aliases: [...(e.aliases?.en ?? []), ...(e.aliases?.mul ?? [])].map((a) => a.value),
-        website: strings(e, "P856")[0],
+        website: officialWebsite(e),
         parent: parentId ? lookup(parentId) : undefined,
         industries: itemIds(e, "P452").map(lookup),
         countries: itemIds(e, "P17").map(lookup),

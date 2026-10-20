@@ -1,0 +1,28 @@
+{
+  "capturedAt": "2026-10-20T22:56:47.628Z",
+  "files": {
+    "https://www.mammut.com/robots.txt": "robots/www-mammut-com.txt",
+    "https://www.mammut.com/sitemap.xml": "sitemaps/www-mammut-com-sitemap-xml.xml",
+    "https://www.mammut.com/int/en/sitemap.xml": "sitemaps/www-mammut-com-int-en-sitemap-xml.xml",
+    "https://www.mammut.com/fr/fr/sitemap.xml": "sitemaps/www-mammut-com-fr-fr-sitemap-xml.xml",
+    "https://www.mammut.com/fr/en/sitemap.xml": "sitemaps/www-mammut-com-fr-en-sitemap-xml.xml",
+    "https://www.mammut.com/us/en/sitemap.xml": "sitemaps/www-mammut-com-us-en-sitemap-xml.xml",
+    "https://www.mammut.com/de/de/sitemap.xml": "sitemaps/www-mammut-com-de-de-sitemap-xml.xml",
+    "https://www.mammut.com/de/en/sitemap.xml": "sitemaps/www-mammut-com-de-en-sitemap-xml.xml",
+    "https://www.mammut.com/no/en/sitemap.xml": "sitemaps/www-mammut-com-no-en-sitemap-xml.xml",
+    "https://www.mammut.com/no/no/sitemap.xml": "sitemaps/www-mammut-com-no-no-sitemap-xml.xml",
+    "https://www.mammut.com/at/de/sitemap.xml": "sitemaps/www-mammut-com-at-de-sitemap-xml.xml",
+    "https://www.mammut.com/us/en/": "pages/www-mammut-com-us-en.html",
+    "https://www.mammut.com/us/en/responsibility": "pages/www-mammut-com-us-en-responsibility.html",
+    "https://www.mammut.com/us/en/responsibility-net-zero": "pages/www-mammut-com-us-en-responsibility-net-zero.html",
+    "https://www.mammut.com/us/en/repair-and-care": "pages/www-mammut-com-us-en-repair-and-care.html",
+    "https://www.mammut.com/us/en/about-us": "pages/www-mammut-com-us-en-about-us.html",
+    "https://www.mammut.com/us/en/support": "pages/www-mammut-com-us-en-support.html",
+    "https://www.mammut.com/us/en/stories-guides/journalCategory/responsibility": "pages/www-mammut-com-us-en-stories-guides-journalcategory-responsibility.html",
+    "https://www.mammut.com/us/en/support/contact": "pages/www-mammut-com-us-en-support-contact.html",
+    "https://www.mammut.com/us/en/support/snow-safety": "pages/www-mammut-com-us-en-support-snow-safety.html",
+    "https://www.mammut.com/us/en/support/product-support": "pages/www-mammut-com-us-en-support-product-support.html",
+    "https://www.mammut.com/us/en/products/2810-00990/mammut-repair-kit": "pages/www-mammut-com-us-en-products-2810-00990-mammut-repair-kit.html",
+    "https://www.mammut.com/us/en/products/2810-00980/mammut-repair-patch-kit": "pages/www-mammut-com-us-en-products-2810-00980-mammut-repair-patch-kit.html"
+  }
+}

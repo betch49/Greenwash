@@ -40,8 +40,13 @@ export function sameSite(a: string, b: string): boolean {
   }
 }
 
-/** Splits a leading locale segment off a path: "/da-dk/sustainability" ⇒ { locale: "da-dk", rest: "/sustainability" }. */
+/**
+ * Splits a leading locale off a path: "/da-dk/sustainability" ⇒ { locale: "da-dk", rest: "/sustainability" };
+ * a country/language pair of two-letter segments counts as one locale: "/us/en/responsibility" ⇒ "us/en".
+ */
 export function stripLocale(pathname: string): { locale: string | null; rest: string } {
+  const pair = /^\/([a-z]{2})\/([a-z]{2})(\/.*)?$/i.exec(pathname);
+  if (pair) return { locale: `${pair[1]}/${pair[2]}`.toLowerCase(), rest: pair[3] || "/" };
   const m = /^\/([^/]+)(\/.*)?$/.exec(pathname);
   if (m && LOCALE_SEGMENT.test(m[1])) return { locale: m[1].toLowerCase(), rest: m[2] || "/" };
   return { locale: null, rest: pathname || "/" };
@@ -63,10 +68,12 @@ export function keywordScore(path: string, keywords: Record<string, number>): nu
   return best;
 }
 
-/** Locale preference among translations of one page: no locale, then English, then the rest. */
-function localeRank(locale: string | null): number {
+/** Locale preference among translations of one page: the website's own locale, no locale, English, then the rest. */
+function localeRank(locale: string | null, siteLocale: string | null): number {
+  if (siteLocale && locale === siteLocale) return -1;
   if (!locale) return 0;
-  return locale === "en" || locale.startsWith("en-") || locale.startsWith("en_") ? 1 : 2;
+  const lang = locale.includes("/") ? locale.split("/")[1] : locale;
+  return lang === "en" || lang.startsWith("en-") || lang.startsWith("en_") ? 1 : 2;
 }
 
 const depth = (path: string) => path.split("/").filter(Boolean).length;
@@ -79,6 +86,7 @@ const depth = (path: string) => path.split("/").filter(Boolean).length;
  */
 export function rankSitemapUrls(urls: string[], website: string, config: DiscoveryConfig = DISCOVERY_CONFIG): Candidate[] {
   const best = new Map<string, { url: string; score: number; rank: number; locale: number; depth: number; section: string }>();
+  const siteLocale = stripLocale(new URL(website).pathname).locale;
   for (const raw of urls) {
     let u: URL;
     try {
@@ -98,7 +106,7 @@ export function rankSitemapUrls(urls: string[], website: string, config: Discove
       url: u.toString(),
       score,
       rank: score - config.ranking.depthPenalty * Math.max(0, d - 1),
-      locale: localeRank(locale),
+      locale: localeRank(locale, siteLocale),
       depth: d,
       section: d > 1 ? rest.split("/").filter(Boolean)[0].toLowerCase() : "",
     };

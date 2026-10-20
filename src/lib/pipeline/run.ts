@@ -4,6 +4,7 @@ import type { FetchedPage } from "../discover/fetch-pages";
 import { DISCOVERY_CONFIG, type DiscoveryConfig } from "../discover/heuristics";
 import type { Fetcher } from "../fetch/fetcher";
 import { RobotsChecker, RobotsGuardedFetcher } from "../fetch/robots";
+import { steps } from "../copy/wording";
 import { withReceipts, type Signal } from "./signal";
 import { discoverStep } from "./steps/discover";
 import { fetchPagesStep } from "./steps/fetch-pages";
@@ -84,7 +85,7 @@ export async function runPipeline(run: Pick<Run, "id" | "brand" | "website">, de
     deps.runs.setStatus(run.id, "done");
     return { status: "done", progress, signals, could_not_check, pages: ctx.pages };
   } catch (err) {
-    progress.push({ step: "Pipeline", status: "skipped", reason: messageOf(err) });
+    progress.push({ step: steps.pipeline, status: "skipped", reason: messageOf(err) });
     try {
       save();
       deps.runs.setStatus(run.id, "failed");

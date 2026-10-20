@@ -1,6 +1,7 @@
 # Brand fixtures
 
-The three fixture brands (PLAN conventions: one outdoor apparel, one electronics, one food).
+The three fixture brands (PLAN conventions: one outdoor apparel, one electronics, one food) are **real captures**.
+A fourth, **fictional** fixture (`northwind`) is hand-built for rule and edge-case tests only (ADR-011).
 Offline mode (`GR_OFFLINE_FIXTURES=1`) and the unit tests serve these files through
 `FixtureFetcher`. `src/lib/fetch/brand-fixtures.ts` reads each brand's `manifest.json`.
 A URL that is not in a manifest is served as 404, which is also what the live sites returned
@@ -8,9 +9,10 @@ for the heuristic paths they do not have.
 
 | Slug | Sector | Wikidata | Website | Capture | Pages |
 |---|---|---|---|---|---|
-| `patagonia` | outdoor apparel | Q1660552 Patagonia, Inc. | https://www.patagonia.com | **synthetic**, hand-built 2026-10-20 | 7 |
+| `mammut` | outdoor apparel | Q495318 Mammut (query `mammut sports group`) | https://www.mammut.com/us/en/ | **real**, 2026-10-20T22:56Z | 12 |
 | `fairphone` | electronics | Q5019402 Fairphone | https://www.fairphone.com/ | **real**, 2026-10-20T22:36Z | 14 (12 kept, 2 dropped as duplicates) |
 | `oatly` | food | Q10605824 Oatly AB | https://www.oatly.com/ | **real**, 2026-10-20T22:36Z | 10 (9 kept; the home page has too little server-rendered text) |
+| `northwind` | fictional, test-only | none | https://www.northwind-outdoor.example | **synthetic**, hand-built 2026-10-20 | 7 |
 
 ## Layout of each brand directory
 
@@ -20,7 +22,7 @@ for the heuristic paths they do not have.
   offline receipts carry the capture date and not the time of the test.
 - `robots/<host>.txt`, `sitemaps/<host>-<path>.xml`, `pages/<host>-<path>.html`.
 
-## Real captures (Fairphone, Oatly)
+## Real captures (Mammut, Fairphone, Oatly)
 
 Recorded with `npm run record:brand -- <slug> <query> <sector>` (`scripts/record-brand.ts`). The script runs the
 pipeline's own discovery and page fetch steps against the live site: descriptive User-Agent
@@ -37,14 +39,28 @@ Two changes are made at capture time; both leave the visible text unchanged:
 
 Each HTML file starts with a `<!-- real capture: <url> on <date> … -->` comment.
 
-## Synthetic capture (Patagonia)
+## Why not Patagonia
 
 `www.patagonia.com` and `eu.patagonia.com` answered every request from the build container, including
-`/robots.txt`, with a bot-protection page ("Hang Tight! Routing to checkout..."). We did not try to get around
-it. Patagonia is still the plan's preferred outdoor-apparel brand, and its Wikidata fixture is real, so its
-robots.txt, sitemaps and pages were written by hand. Every file starts with a `synthetic fixture` comment. **The
-page text is not a quote of Patagonia.** It is written to resemble a brand sustainability site and to exercise
-the pipeline:
+`/robots.txt`, with a bot-protection page ("Hang Tight! Routing to checkout..."). We did not try to get around it,
+and we do not imitate it (ADR-011): a hand-written page under a real brand's URL would become a "receipt" for text
+the brand never published. Mammut replaced it as the outdoor-apparel brand. The Phase 1 Wikidata fixtures for
+"patagonia" stay; offline, a Patagonia run ends with `skipped: no page could be fetched from patagonia.com`.
+
+Mammut notes: plain "mammut" finds the extinct genus first on Wikidata (no company offered, URL fallback), so the
+recorded query is "mammut sports group". Its Wikidata entity lists `http://www.mammut.ch` and
+`https://www.mammut.com/us/en/` (both normal rank); the https one is used (`src/lib/wikidata/entities.ts`). The
+site's sitemaps use `/<country>/<language>/` prefixes; these collapse as translations, and the website's own
+locale (`us/en`) wins.
+
+## Synthetic, fictional fixture (Northwind Outdoor)
+
+A fictional brand on a reserved `.example` domain (RFC 2606), with no Wikidata entity. Every file starts with a
+`synthetic fixture … FICTIONAL brand` comment; no real company published this text. It is used only by the
+rule and edge-case tests (2.2, 2.3, 2.4; later Phases 3 and 5), never as one of the three brands. You reach it in
+the app by pasting `https://www.northwind-outdoor.example` in the URL fallback. A unit test
+(`tests/unit/fetch/brand-fixtures.test.ts`) enforces ADR-011: a `synthetic` fixture has a reserved TLD and no
+Wikidata id, and every HTML file of a `real` fixture starts with `<!-- real capture:`.
 
 - `robots.txt` declares `sitemap_index.xml` and disallows `/stories/archive/`. The pages sitemap lists
   `/stories/archive/our-footprint-2019/`, so a run shows `skipped: robots.txt disallows …` (criterion 2.4).
@@ -59,6 +75,7 @@ the pipeline:
 
 | Brand | Page | Sentinel (only in site chrome) |
 |---|---|---|
-| patagonia | `pages/www-patagonia-com-our-footprint.html` | `NAV SENTINEL 7F3A` (synthetic) |
+| mammut | `pages/www-mammut-com-us-en-responsibility.html` | `Loyalty Program` (real menu item) |
 | fairphone | `pages/www-fairphone-com-impact-report.html` | `Shop smartphone accessories` (real menu item) |
 | oatly | `pages/oatly-com-sustainability.html` | `For Investors` (real menu item) |
+| northwind (fictional) | `pages/www-northwind-outdoor-example-our-footprint.html` | `NAV SENTINEL 7F3A` (synthetic) |

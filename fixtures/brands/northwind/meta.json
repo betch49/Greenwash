@@ -1,0 +1,16 @@
+{
+  "slug": "northwind",
+  "query": "northwind outdoor",
+  "sector": "outdoor apparel (fictional, test-only)",
+  "website": "https://www.northwind-outdoor.example",
+  "capture": "synthetic",
+  "capturedAt": "2026-10-20T22:45:00.000Z",
+  "note": "Fictional brand on a reserved .example domain (RFC 2606), hand-built for rule and edge-case tests only (ADR-011). It is not one of the three fixture brands, it has no Wikidata entity, and no real company published this text.",
+  "entity": {
+    "id": null,
+    "name": "Northwind Outdoor Ltd.",
+    "description": "fictional outdoor clothing company (test fixture)",
+    "website": "https://www.northwind-outdoor.example",
+    "websiteHost": "northwind-outdoor.example"
+  }
+}

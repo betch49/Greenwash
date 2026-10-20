@@ -1,0 +1,36 @@
+{
+ "searchinfo": {
+  "search": "mammut sports group"
+ },
+ "search": [
+  {
+   "id": "Q495318",
+   "title": "Q495318",
+   "pageid": 465994,
+   "concepturi": "http://www.wikidata.org/entity/Q495318",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q495318",
+   "display": {
+    "label": {
+     "value": "Mammut",
+     "language": "en"
+    },
+    "description": {
+     "value": "Swiss mountaineering, climbing, snow sports and trailrunning company",
+     "language": "en"
+    }
+   },
+   "label": "Mammut",
+   "description": "Swiss mountaineering, climbing, snow sports and trailrunning company",
+   "match": {
+    "type": "alias",
+    "language": "en",
+    "text": "Mammut Sports Group AG"
+   },
+   "aliases": [
+    "Mammut Sports Group AG"
+   ]
+  }
+ ],
+ "success": 1
+}

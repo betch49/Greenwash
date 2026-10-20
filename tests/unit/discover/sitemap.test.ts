@@ -38,14 +38,14 @@ describe("nested sitemaps and caps (2.2)", () => {
     expect(crawl.urls).toEqual([`${SITE}/sustainability`, `${SITE}/our-impact`, `${SITE}/careers`]);
   });
 
-  it("follows the Patagonia fixture's sitemap index (declared in robots.txt), page sitemaps before product sitemaps", async () => {
+  it("follows the Northwind fixture's sitemap index (declared in robots.txt), page sitemaps before product sitemaps", async () => {
     const fetcher = new OfflineFetcher();
     const { pageFetcher, robots } = guardedPageFetcher(fetcher);
-    const { sitemap } = await discoverCandidates("https://www.patagonia.com", pageFetcher, robots);
+    const { sitemap } = await discoverCandidates("https://www.northwind-outdoor.example", pageFetcher, robots);
     expect(sitemap.fetched).toEqual([
-      "https://www.patagonia.com/sitemap_index.xml",
-      "https://www.patagonia.com/sitemap_pages.xml",
-      "https://www.patagonia.com/sitemap_products.xml",
+      "https://www.northwind-outdoor.example/sitemap_index.xml",
+      "https://www.northwind-outdoor.example/sitemap_pages.xml",
+      "https://www.northwind-outdoor.example/sitemap_products.xml",
     ]);
   });
 

@@ -1,0 +1,193 @@
+{
+ "searchinfo": {
+  "search": "mammut"
+ },
+ "search": [
+  {
+   "id": "Q192272",
+   "title": "Q192272",
+   "pageid": 190460,
+   "concepturi": "http://www.wikidata.org/entity/Q192272",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q192272",
+   "display": {
+    "label": {
+     "value": "Mammut",
+     "language": "en"
+    },
+    "description": {
+     "value": "extinct genus of proboscideans (Proboscidea)",
+     "language": "en"
+    }
+   },
+   "label": "Mammut",
+   "description": "extinct genus of proboscideans (Proboscidea)",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Mammut"
+   }
+  },
+  {
+   "id": "Q3699044",
+   "title": "Q3699044",
+   "pageid": 3525134,
+   "concepturi": "http://www.wikidata.org/entity/Q3699044",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q3699044",
+   "display": {
+    "label": {
+     "value": "Woolly Mammoth",
+     "language": "en"
+    },
+    "description": {
+     "value": "extinct species of mammoth (Mammuthus)",
+     "language": "en"
+    }
+   },
+   "label": "Woolly Mammoth",
+   "description": "extinct species of mammoth (Mammuthus)",
+   "match": {
+    "type": "alias",
+    "language": "en",
+    "text": "Mammuthus primigenius"
+   },
+   "aliases": [
+    "Mammuthus primigenius"
+   ]
+  },
+  {
+   "id": "Q36715",
+   "title": "Q36715",
+   "pageid": 39332,
+   "concepturi": "http://www.wikidata.org/entity/Q36715",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q36715",
+   "display": {
+    "label": {
+     "value": "Mammuthus",
+     "language": "en"
+    },
+    "description": {
+     "value": "extinct genus of elephants (Elephantidae)",
+     "language": "en"
+    }
+   },
+   "label": "Mammuthus",
+   "description": "extinct genus of elephants (Elephantidae)",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Mammuthus"
+   }
+  },
+  {
+   "id": "Q329194",
+   "title": "Q329194",
+   "pageid": 315938,
+   "concepturi": "http://www.wikidata.org/entity/Q329194",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q329194",
+   "display": {
+    "label": {
+     "value": "Mammut",
+     "language": "en"
+    },
+    "description": {
+     "value": "wooden roller coaster at Erlebnispark Tripsdrill",
+     "language": "en"
+    }
+   },
+   "label": "Mammut",
+   "description": "wooden roller coaster at Erlebnispark Tripsdrill",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Mammut"
+   }
+  },
+  {
+   "id": "Q13424536",
+   "title": "Q13424536",
+   "pageid": 15103421,
+   "concepturi": "http://www.wikidata.org/entity/Q13424536",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q13424536",
+   "display": {
+    "label": {
+     "value": "Mammutidae",
+     "language": "en"
+    },
+    "description": {
+     "value": "extinct family of proboscideans (Proboscidea)",
+     "language": "en"
+    }
+   },
+   "label": "Mammutidae",
+   "description": "extinct family of proboscideans (Proboscidea)",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Mammutidae"
+   }
+  },
+  {
+   "id": "Q550390",
+   "title": "Q550390",
+   "pageid": 518642,
+   "concepturi": "http://www.wikidata.org/entity/Q550390",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q550390",
+   "display": {
+    "label": {
+     "value": "southern mammoth",
+     "language": "en"
+    },
+    "description": {
+     "value": "extinct species of mammoth (Mammuthus)",
+     "language": "en"
+    }
+   },
+   "label": "southern mammoth",
+   "description": "extinct species of mammoth (Mammuthus)",
+   "match": {
+    "type": "alias",
+    "language": "en",
+    "text": "Mammuthus meridionalis"
+   },
+   "aliases": [
+    "Mammuthus meridionalis"
+   ]
+  },
+  {
+   "id": "Q378771",
+   "title": "Q378771",
+   "pageid": 360504,
+   "concepturi": "http://www.wikidata.org/entity/Q378771",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q378771",
+   "display": {
+    "label": {
+     "value": "American mastodon",
+     "language": "en"
+    },
+    "description": {
+     "value": "extinct species of mastodons (Mammut)",
+     "language": "en"
+    }
+   },
+   "label": "American mastodon",
+   "description": "extinct species of mastodons (Mammut)",
+   "match": {
+    "type": "alias",
+    "language": "en",
+    "text": "Mammut americanum"
+   },
+   "aliases": [
+    "Mammut americanum"
+   ]
+  }
+ ],
+ "search-continue": 7,
+ "success": 1
+}

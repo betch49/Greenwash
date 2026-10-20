@@ -31,6 +31,16 @@ describe("Wikidata ranking on recorded fixtures (1.5)", () => {
     expect(r.candidates).toHaveLength(1);
   });
 
+  it("'mammut sports group' ⇒ the company, with its https website (normal rank: https before http)", async () => {
+    const r = await disambiguate(fixtures, "mammut sports group");
+    expect(r.confident).toMatchObject({ id: "Q495318", name: "Mammut", website: "https://www.mammut.com/us/en/", websiteHost: "mammut.com" });
+  });
+
+  it("'mammut' alone ⇒ the extinct genus ranks first on Wikidata, so no company is offered (URL fallback)", async () => {
+    const r = await disambiguate(fixtures, "mammut");
+    expect(r.confident).toBeNull();
+  });
+
   it("'acme' ⇒ no confident match (and no company candidates: URL fallback)", async () => {
     const r = await disambiguate(fixtures, "acme");
     expect(r.confident).toBeNull();

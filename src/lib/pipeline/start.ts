@@ -1,3 +1,5 @@
+import { reasons, steps } from "../copy/wording";
+import type { ProgressEntry, Run, RunsRepo } from "../db/runs-repo";
 import { RunPagesRepo } from "../db/run-pages-repo";
 import { getServices } from "../services";
 import { runPipeline, type PipelineOutcome } from "./run";
@@ -21,3 +23,23 @@ export function startAnalysis(runId: string): boolean {
 
 /** The in-flight pipeline promise for a run, if this process is running it. */
 export const inflightRun = (runId: string) => inflight().get(runId);
+
+/**
+ * A run marked `running` that no pipeline in this process is executing was
+ * interrupted (server restart, crash). It is marked `failed` and the step that
+ * was running becomes "skipped: analysis interrupted …", so the failure is shown
+ * instead of an endless "running…" (ADR-013). Single-process assumption: v1 runs
+ * one server process. Returns the run as it should be shown.
+ */
+export function settleInterrupted(run: Run, runs: RunsRepo, isInflight: (id: string) => boolean = (id) => inflightRun(id) !== undefined): Run {
+  if (run.status !== "running" || isInflight(run.id)) return run;
+  const progress: ProgressEntry[] = run.progress.map((p) =>
+    p.status === "running" ? { step: p.step, status: "skipped", reason: reasons.interrupted } : p,
+  );
+  if (!progress.some((p) => p.reason === reasons.interrupted)) {
+    progress.push({ step: steps.pipeline, status: "skipped", reason: reasons.interrupted });
+  }
+  runs.setProgress(run.id, progress);
+  runs.setStatus(run.id, "failed");
+  return { ...run, status: "failed", progress };
+}

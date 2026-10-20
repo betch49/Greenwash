@@ -3,7 +3,7 @@ import { join } from "node:path";
 import * as cheerio from "cheerio";
 import { describe, expect, it } from "vitest";
 import { countWords, visibleText } from "@/lib/discover/visible-text";
-import { BRANDS } from "../helpers/brands";
+import { BRANDS, NORTHWIND } from "../helpers/brands";
 
 describe("visibleText on fixture sustainability pages (2.3)", () => {
   it.each(BRANDS)("$slug: nav sentinel removed, wordCount > 100", (brand) => {
@@ -19,13 +19,18 @@ describe("visibleText on fixture sustainability pages (2.3)", () => {
     expect(vt.title).not.toBe("");
   });
 
-  it("drops the synthetic Patagonia footer sentinel and keeps chrome links marked as such", () => {
-    const brand = BRANDS[0];
+  it.each([NORTHWIND])("$slug (fictional): nav sentinel removed", (brand) => {
+    const html = readFileSync(join("fixtures/brands", brand.slug, brand.sustainabilityPage), "utf8");
+    expect(visibleText(html, brand.sustainabilityUrl).text).not.toContain(brand.navSentinel);
+  });
+
+  it("drops the synthetic Northwind footer sentinel and keeps chrome links marked as such", () => {
+    const brand = NORTHWIND;
     const html = readFileSync(join("fixtures/brands", brand.slug, brand.sustainabilityPage), "utf8");
     const vt = visibleText(html, brand.sustainabilityUrl);
     expect(vt.text).not.toContain("FOOTER SENTINEL 9B2C");
     expect(vt.text).toContain("We are carbon neutral.");
-    const report = vt.links.filter((l) => l.href === "https://www.patagonia.com/media/impact-report-2025.pdf");
+    const report = vt.links.filter((l) => l.href === "https://www.northwind-outdoor.example/media/impact-report-2025.pdf");
     expect(report.map((l) => l.region).sort()).toEqual(["chrome", "content"]);
   });
 });

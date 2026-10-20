@@ -1,5 +1,5 @@
 // Records live Wikidata responses as offline fixtures under fixtures/wikidata/.
-// Usage: npm run record:wikidata -- patagonia acme fairphone oatly
+// Usage: npm run record:wikidata -- patagonia acme fairphone oatly mammut "mammut sports group"
 // Behind a TLS-intercepting proxy, set NODE_EXTRA_CA_CERTS to the proxy CA bundle.
 import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";

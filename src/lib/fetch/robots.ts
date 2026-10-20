@@ -1,5 +1,5 @@
 import type { FetchOptions, FetchResult, Fetcher } from "./fetcher";
-import { skippedReason } from "../copy/wording";
+import { reasons, skippedReason } from "../copy/wording";
 
 interface Rule {
   allow: boolean;
@@ -96,30 +96,64 @@ export function isAllowed(robots: Robots, url: string, userAgent = "GreenwashRad
 }
 
 export class RobotsDisallowedError extends Error {
-  constructor(readonly url: string) {
-    super(`robots.txt disallows ${url}`);
+  constructor(
+    readonly url: string,
+    message = `robots.txt disallows ${url}`,
+  ) {
+    super(message);
     this.name = "RobotsDisallowedError";
   }
 }
 
+/** robots.txt could not be read (5xx, network error, not a robots file): the whole origin is disallowed (ADR-012). */
+export class RobotsUnavailableError extends RobotsDisallowedError {
+  constructor(url: string, reason: string) {
+    super(url, reason);
+    this.name = "RobotsUnavailableError";
+  }
+}
+
+/** The robots.txt of one origin, or why it could not be read (then nothing on the origin may be fetched). */
+export type RobotsState = { robots: Robots; unavailable?: undefined } | { robots: Robots; unavailable: string };
+
 const EMPTY_ROBOTS: Robots = { groups: [], sitemaps: [] };
 
-/** Fetches and caches robots.txt per origin; a missing or failing robots.txt allows everything. */
+/**
+ * Interprets the response to `<origin>/robots.txt` per RFC 9309 §2.3.1.3–2.3.1.4 (ADR-012):
+ * 2xx robots file ⇒ its rules; 4xx ⇒ no restrictions; 5xx, any other status, or a 2xx
+ * that is an HTML page (a bot wall, not a robots file) ⇒ complete disallow.
+ */
+export function robotsFromResponse(origin: string, res: FetchResult): RobotsState {
+  if (res.status >= 400 && res.status < 500) return { robots: EMPTY_ROBOTS };
+  if (res.status >= 200 && res.status < 300) {
+    const html = /html/i.test(res.contentType) || res.body.trimStart().startsWith("<");
+    if (!html) return { robots: parseRobots(res.body) };
+    return { robots: EMPTY_ROBOTS, unavailable: reasons.robotsUnavailable(origin, "an HTML page, not a robots file") };
+  }
+  return { robots: EMPTY_ROBOTS, unavailable: reasons.robotsUnavailable(origin, `HTTP ${res.status}`) };
+}
+
+/** Fetches and caches robots.txt per origin; fails closed when it cannot be read (ADR-012). */
 export class RobotsChecker {
-  private readonly byOrigin = new Map<string, Promise<Robots>>();
+  private readonly byOrigin = new Map<string, Promise<RobotsState>>();
 
   constructor(
     private readonly fetcher: Fetcher,
     private readonly userAgent = "GreenwashRadar",
   ) {}
 
-  private robotsFor(origin: string): Promise<Robots> {
+  private robotsFor(origin: string): Promise<RobotsState> {
     let p = this.byOrigin.get(origin);
     if (!p) {
       p = this.fetcher
         .get(`${origin}/robots.txt`)
-        .then((res) => (res.status >= 200 && res.status < 300 ? parseRobots(res.body) : EMPTY_ROBOTS))
-        .catch(() => EMPTY_ROBOTS);
+        .then((res) => robotsFromResponse(origin, res))
+        .catch(
+          (err: unknown): RobotsState => ({
+            robots: EMPTY_ROBOTS,
+            unavailable: reasons.robotsUnavailable(origin, err instanceof Error ? err.message : String(err)),
+          }),
+        );
       this.byOrigin.set(origin, p);
     }
     return p;
@@ -127,14 +161,20 @@ export class RobotsChecker {
 
   /** Sitemap URLs declared in the origin's robots.txt (empty if none or missing). */
   async sitemaps(origin: string): Promise<string[]> {
-    return (await this.robotsFor(origin)).sitemaps;
+    return (await this.robotsFor(origin)).robots.sitemaps;
   }
 
-  async check(url: string): Promise<{ allowed: true } | { allowed: false; reason: string }> {
-    const robots = await this.robotsFor(new URL(url).origin);
-    return isAllowed(robots, url, this.userAgent)
+  /** Why nothing on `origin` may be fetched (robots.txt unreadable), or undefined when its robots.txt was usable. */
+  async unavailable(origin: string): Promise<string | undefined> {
+    return (await this.robotsFor(origin)).unavailable;
+  }
+
+  async check(url: string): Promise<{ allowed: true } | { allowed: false; reason: string; unavailable: boolean }> {
+    const state = await this.robotsFor(new URL(url).origin);
+    if (state.unavailable) return { allowed: false, reason: state.unavailable, unavailable: true };
+    return isAllowed(state.robots, url, this.userAgent)
       ? { allowed: true }
-      : { allowed: false, reason: new RobotsDisallowedError(url).message };
+      : { allowed: false, reason: new RobotsDisallowedError(url).message, unavailable: false };
   }
 }
 
@@ -147,13 +187,14 @@ export class RobotsGuardedFetcher implements Fetcher {
 
   async get(url: string, opts?: FetchOptions): Promise<FetchResult> {
     const verdict = await this.checker.check(url);
-    if (!verdict.allowed) throw new RobotsDisallowedError(url);
+    if (!verdict.allowed) {
+      throw verdict.unavailable ? new RobotsUnavailableError(url, verdict.reason) : new RobotsDisallowedError(url);
+    }
     return this.inner.get(url, opts);
   }
 }
 
 /** Converts an error from a fetch into the user-facing "skipped: <reason>" line. */
 export function skippedFromError(err: unknown): string {
-  if (err instanceof RobotsDisallowedError) return skippedReason(err.message);
   return skippedReason(err instanceof Error ? err.message : String(err));
 }

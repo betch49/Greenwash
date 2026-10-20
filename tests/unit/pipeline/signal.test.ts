@@ -7,7 +7,7 @@ const good: Signal = {
   kind: "claim.unsupported",
   label: "Unsupported claim",
   weight_hint: 1,
-  source_url: "https://www.patagonia.com/our-footprint/",
+  source_url: "https://www.northwind-outdoor.example/our-footprint/",
   fetched_at: "2026-10-20T22:45:00.000Z",
   excerpt: "We are carbon neutral.",
   llm_used: false,

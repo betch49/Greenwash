@@ -2,14 +2,23 @@ import { loadBrandFixtures } from "@/lib/fetch/brand-fixtures";
 import type { FetchResult, Fetcher } from "@/lib/fetch/fetcher";
 import { FixtureFetcher } from "@/lib/fetch/fixture-fetcher";
 
-/** The three fixture brands (fixtures/brands/README.md) and what the tests expect of them. */
+/** The fictional, test-only fixture (ADR-011): hand-built edge cases on a reserved domain. */
+export const NORTHWIND = {
+  slug: "northwind",
+  website: "https://www.northwind-outdoor.example",
+  sustainabilityPage: "pages/www-northwind-outdoor-example-our-footprint.html",
+  sustainabilityUrl: "https://www.northwind-outdoor.example/our-footprint/",
+  navSentinel: "NAV SENTINEL 7F3A",
+} as const;
+
+/** The three real fixture brands (fixtures/brands/README.md) and what the tests expect of them. */
 export const BRANDS = [
   {
-    slug: "patagonia",
-    website: "https://www.patagonia.com",
-    sustainabilityPage: "pages/www-patagonia-com-our-footprint.html",
-    sustainabilityUrl: "https://www.patagonia.com/our-footprint/",
-    navSentinel: "NAV SENTINEL 7F3A",
+    slug: "mammut",
+    website: "https://www.mammut.com/us/en/",
+    sustainabilityPage: "pages/www-mammut-com-us-en-responsibility.html",
+    sustainabilityUrl: "https://www.mammut.com/us/en/responsibility",
+    navSentinel: "Loyalty Program",
   },
   {
     slug: "fairphone",

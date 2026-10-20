@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- synthetic fixture (hand-built 2026-10-20) for the FICTIONAL brand Northwind Outdoor on a reserved .example domain (ADR-011). Test-only; no real company published this text. See fixtures/brands/README.md. -->
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap><loc>https://www.northwind-outdoor.example/sitemap_products.xml</loc><lastmod>2026-10-01</lastmod></sitemap>
+  <sitemap><loc>https://www.northwind-outdoor.example/sitemap_pages.xml</loc><lastmod>2026-10-01</lastmod></sitemap>
+</sitemapindex>

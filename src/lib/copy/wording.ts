@@ -35,6 +35,7 @@ export const ui = {
 
 /** Pipeline step names shown in the progress list. */
 export const steps = {
+  pipeline: "Pipeline",
   discover: "Discovering pages",
   fetchPages: "Fetching current pages",
   fetchPage: (url: string) => `Fetching ${url}`,
@@ -49,11 +50,14 @@ export const reasons = {
   fetchFailed: (url: string, message: string) => `could not fetch ${url} (${message})`,
   tooLittleText: (url: string, words: number) => `too little visible text at ${url} (${words} words)`,
   notHtml: (url: string, type: string) => `not an HTML page: ${url} (${type})`,
+  robotsUnavailable: (origin: string, cause: string) => `robots.txt unavailable for ${origin} (${cause})`,
+  interrupted: "analysis interrupted (server restarted); search again to retry",
   stepError: (message: string) => `internal error (${message})`,
 };
 
 /** Entries for the report's "What we could not check" section. */
 export const couldNotCheck = {
   noSustainabilityPage: (host: string) => `No sustainability, impact or responsibility page could be fetched from ${host}.`,
+  robotsUnavailable: (origin: string) => `${origin} (its robots.txt could not be read, so we did not fetch from it).`,
   robotsDisallowed: (url: string) => `${url} (robots.txt does not allow us to fetch it).`,
 };

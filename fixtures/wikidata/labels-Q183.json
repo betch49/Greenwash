@@ -1,0 +1,15 @@
+{
+ "entities": {
+  "Q183": {
+   "type": "item",
+   "id": "Q183",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Germany"
+    }
+   }
+  }
+ },
+ "success": 1
+}

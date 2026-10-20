@@ -33,14 +33,14 @@ describe("discovery on the fixture brands (2.1)", () => {
     expect(res.fetchedAt).toMatch(/^2026-10-20T/);
   });
 
-  it("dedupes candidates and collapses translations (Patagonia /fr/our-footprint/)", async () => {
+  it("dedupes candidates and collapses translations (Northwind /fr/our-footprint/)", async () => {
     const fetcher = new OfflineFetcher();
     const { pageFetcher, robots } = guardedPageFetcher(fetcher);
-    const { candidates } = await discoverCandidates("https://www.patagonia.com", pageFetcher, robots);
+    const { candidates } = await discoverCandidates("https://www.northwind-outdoor.example", pageFetcher, robots);
     const urls = candidates.map((c) => c.url);
-    expect(urls[0]).toBe("https://www.patagonia.com");
-    expect(urls).toContain("https://www.patagonia.com/our-footprint/");
-    expect(urls).not.toContain("https://www.patagonia.com/fr/our-footprint/");
+    expect(urls[0]).toBe("https://www.northwind-outdoor.example");
+    expect(urls).toContain("https://www.northwind-outdoor.example/our-footprint/");
+    expect(urls).not.toContain("https://www.northwind-outdoor.example/fr/our-footprint/");
     expect(urls.some((u) => u.endsWith(".pdf"))).toBe(false);
     expect(new Set(urls).size).toBe(urls.length);
     // Heuristic paths come after sitemap matches.

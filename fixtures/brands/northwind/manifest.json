@@ -1,0 +1,16 @@
+{
+  "capturedAt": "2026-10-20T22:45:00.000Z",
+  "files": {
+    "https://www.northwind-outdoor.example/robots.txt": "robots/www-northwind-outdoor-example.txt",
+    "https://www.northwind-outdoor.example/sitemap_index.xml": "sitemaps/www-northwind-outdoor-example-sitemap-index-xml.xml",
+    "https://www.northwind-outdoor.example/sitemap_pages.xml": "sitemaps/www-northwind-outdoor-example-sitemap-pages-xml.xml",
+    "https://www.northwind-outdoor.example/sitemap_products.xml": "sitemaps/www-northwind-outdoor-example-sitemap-products-xml.xml",
+    "https://www.northwind-outdoor.example/": "pages/www-northwind-outdoor-example-home.html",
+    "https://www.northwind-outdoor.example/our-footprint/": "pages/www-northwind-outdoor-example-our-footprint.html",
+    "https://www.northwind-outdoor.example/our-responsibility/supply-chain/": "pages/www-northwind-outdoor-example-our-responsibility-supply-chain.html",
+    "https://www.northwind-outdoor.example/environmental-responsibility/climate-goals/": "pages/www-northwind-outdoor-example-environmental-responsibility-climate-goals.html",
+    "https://www.northwind-outdoor.example/about-us/": "pages/www-northwind-outdoor-example-about-us.html",
+    "https://www.northwind-outdoor.example/gear-care/repairs/": "pages/www-northwind-outdoor-example-gear-care-repairs.html",
+    "https://www.northwind-outdoor.example/warranty": "pages/www-northwind-outdoor-example-warranty.html"
+  }
+}

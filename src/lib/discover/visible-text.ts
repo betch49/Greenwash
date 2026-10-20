@@ -22,6 +22,9 @@ const JUNK = "script, style, noscript, template, svg, iframe, object, embed, can
 const CHROME =
   "nav, header, footer, aside, [role='navigation'], [role='banner'], [role='contentinfo'], [role='complementary']";
 
+/** The page's main content landmark. When a page has one, only its text is kept (menus outside it are chrome). */
+const MAIN = "main, [role='main']";
+
 const BLOCK = new Set([
   "address", "article", "blockquote", "br", "caption", "dd", "details", "dialog", "div", "dl", "dt",
   "fieldset", "figcaption", "figure", "form", "h1", "h2", "h3", "h4", "h5", "h6", "hr", "li", "main",
@@ -61,13 +64,17 @@ function resolveHref(href: string, baseUrl?: string): string | null {
 
 /**
  * Extracts the visible text of an HTML page: drops scripts, styles, hidden
- * elements and site chrome (nav/header/footer/aside), keeps headings,
+ * elements and site chrome (nav/header/footer/aside, and everything outside the page's single main landmark when it has one), keeps headings,
  * paragraphs and list items as separate lines, collapses whitespace.
  */
 export function visibleText(html: string, baseUrl?: string): VisibleText {
   const $ = cheerio.load(html);
   const title = collapse($("title").first().text());
   $(JUNK).remove();
+  // A page with a main landmark that holds text: everything outside it is site chrome
+  // (e.g. a menu drawer built from <div>s rather than <nav>).
+  const mains = $(MAIN).filter((_, el) => collapse($(el).text()) !== "");
+  const main = mains.length === 1 ? mains.first() : null;
 
   const links: PageLink[] = [];
   const seen = new Set<string>();
@@ -75,7 +82,8 @@ export function visibleText(html: string, baseUrl?: string): VisibleText {
     const href = resolveHref($(el).attr("href") ?? "", baseUrl);
     const text = collapse($(el).text()) || collapse($(el).attr("aria-label") ?? "") || collapse($(el).attr("title") ?? "");
     if (!href) return;
-    const region = $(el).closest(CHROME).length > 0 ? "chrome" : "content";
+    const outsideMain = main !== null && $(el).closest(MAIN).length === 0;
+    const region = outsideMain || $(el).closest(CHROME).length > 0 ? "chrome" : "content";
     const key = `${region} ${href} ${text}`;
     if (seen.has(key)) return;
     seen.add(key);
@@ -102,7 +110,9 @@ export function visibleText(html: string, baseUrl?: string): VisibleText {
     for (const child of node.children ?? []) walk(child);
     if (block) flush();
   };
-  const root = ($("body").get(0) ?? $.root().get(0)) as unknown as DomNode | undefined;
+  const root = ((main && main.closest("body").length > 0 ? main.get(0) : undefined) ??
+    $("body").get(0) ??
+    $.root().get(0)) as unknown as DomNode | undefined;
   if (root) walk(root);
   flush();
 

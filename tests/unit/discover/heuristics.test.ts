@@ -28,6 +28,15 @@ describe("discovery heuristics", () => {
     expect(stripLocale("/da-dk/sustainability")).toEqual({ locale: "da-dk", rest: "/sustainability" });
     expect(stripLocale("/fr")).toEqual({ locale: "fr", rest: "/" });
     expect(stripLocale("/sustainability")).toEqual({ locale: null, rest: "/sustainability" });
+    // Country/language pairs (Mammut: /us/en/, /de/de/) are one locale, so translations collapse.
+    expect(stripLocale("/us/en/responsibility")).toEqual({ locale: "us/en", rest: "/responsibility" });
+    expect(stripLocale("/de/de/")).toEqual({ locale: "de/de", rest: "/" });
+  });
+
+  it("prefers the website's own locale among translations of one page", () => {
+    const urls = ["https://www.brand.example/de/de/responsibility", "https://www.brand.example/us/en/responsibility", "https://www.brand.example/fr/fr/responsibility"];
+    expect(rankSitemapUrls(urls, "https://www.brand.example/us/en/").map((c) => c.url)).toEqual(["https://www.brand.example/us/en/responsibility"]);
+    expect(rankSitemapUrls(urls, "https://www.brand.example/fr/fr/").map((c) => c.url)).toEqual(["https://www.brand.example/fr/fr/responsibility"]);
   });
 
   it("builds a dedupe key that ignores www, trailing slash and fragments", () => {

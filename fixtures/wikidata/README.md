@@ -14,3 +14,7 @@ Real responses from `https://www.wikidata.org/w/api.php`, recorded on 2026-10-20
 
 `<ids>` is the sorted id list joined with `_` when there are at most 6 ids, otherwise `h` +
 the first 12 hex characters of the SHA-1 of the `|`-joined sorted ids.
+
+Queries recorded: `patagonia`, `acme`, `continental`, `fairphone`, `oatly` (Phase 1), and `mammut`,
+`mammut sports group` (Phase 2 rework, 2026-10-20). Plain `mammut` returns the extinct genus and other
+non-companies (no confident match, no candidates), which is why the Mammut brand fixture uses `mammut sports group`.
