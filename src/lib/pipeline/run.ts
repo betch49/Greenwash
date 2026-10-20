@@ -6,11 +6,14 @@ import type { Fetcher } from "../fetch/fetcher";
 import { RobotsChecker, RobotsGuardedFetcher } from "../fetch/robots";
 import { steps } from "../copy/wording";
 import { withReceipts, type Signal } from "./signal";
+import type { ClaimStats } from "../claims/engine";
+import { claimsStep } from "./steps/claims";
 import { discoverStep } from "./steps/discover";
+import { evidenceStep } from "./steps/evidence";
 import { fetchPagesStep } from "./steps/fetch-pages";
 import type { PipelineContext, Step } from "./types";
 
-export const DEFAULT_STEPS: Step[] = [discoverStep, fetchPagesStep];
+export const DEFAULT_STEPS: Step[] = [discoverStep, fetchPagesStep, claimsStep, evidenceStep];
 
 export interface PipelineDeps {
   runs: RunsRepo;
@@ -27,6 +30,7 @@ export interface PipelineOutcome {
   signals: Signal[];
   could_not_check: string[];
   pages: FetchedPage[];
+  claim_stats?: ClaimStats;
 }
 
 /** Every brand, regulator and repair page goes through this guard (ADR-010). */
@@ -53,6 +57,7 @@ export async function runPipeline(run: Pick<Run, "id" | "brand" | "website">, de
     candidates: [],
     pages: [],
     robotsDisallowed: [],
+    claimHits: [],
   };
   const progress: ProgressEntry[] = [];
   const signals: Signal[] = [];
@@ -83,7 +88,7 @@ export async function runPipeline(run: Pick<Run, "id" | "brand" | "website">, de
     }
     deps.pages.replace(run.id, ctx.pages);
     deps.runs.setStatus(run.id, "done");
-    return { status: "done", progress, signals, could_not_check, pages: ctx.pages };
+    return { status: "done", progress, signals, could_not_check, pages: ctx.pages, claim_stats: ctx.claimStats };
   } catch (err) {
     progress.push({ step: steps.pipeline, status: "skipped", reason: messageOf(err) });
     try {
@@ -92,6 +97,6 @@ export async function runPipeline(run: Pick<Run, "id" | "brand" | "website">, de
     } catch {
       // The database itself failed; nothing more can be recorded.
     }
-    return { status: "failed", progress, signals, could_not_check, pages: ctx.pages };
+    return { status: "failed", progress, signals, could_not_check, pages: ctx.pages, claim_stats: ctx.claimStats };
   }
 }

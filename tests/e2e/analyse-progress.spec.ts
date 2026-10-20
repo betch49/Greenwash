@@ -21,6 +21,9 @@ test("2.6 after confirm, /analyse lists 'Discovering pages' and 'Fetching curren
   const progress = page.getByTestId("progress");
   await expect(progress.locator('[data-step="Discovering pages"]')).toHaveAttribute("data-status", "done", { timeout: 30_000 });
   await expect(progress.locator('[data-step="Fetching current pages"]')).toHaveAttribute("data-status", "done", { timeout: 30_000 });
+  // Phase 3: the rule-based claim and evidence steps run on the fetched pages.
+  await expect(progress.locator('[data-step="Checking claim language"]')).toHaveAttribute("data-status", "done", { timeout: 30_000 });
+  await expect(progress.locator('[data-step="Checking published evidence"]')).toHaveAttribute("data-status", "done", { timeout: 30_000 });
   await expect(page.getByTestId("run-status")).toHaveAttribute("data-status", "done");
 
   // Fetched pages are listed with their fetch date (the capture date).

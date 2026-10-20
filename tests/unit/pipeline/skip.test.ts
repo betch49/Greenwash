@@ -71,6 +71,8 @@ describe("pipeline skips (2.4)", () => {
     expect(out.progress).toEqual([
       { step: "Discovering pages", status: "done" },
       { step: "Fetching current pages", status: "skipped", reason: "no page could be fetched from example.com" },
+      { step: "Checking claim language", status: "skipped", reason: "no fetched page to scan" },
+      { step: "Checking published evidence", status: "skipped", reason: "no fetched page to scan" },
     ]);
     expect(out.could_not_check).toContain("No sustainability, impact or responsibility page could be fetched from example.com.");
   });
@@ -127,6 +129,8 @@ describe("pipeline skips (2.4)", () => {
     expect(out.progress).toEqual([
       { step: "Discovering pages", status: "skipped", reason },
       { step: "Fetching current pages", status: "skipped", reason: "no candidate pages were found" },
+      { step: "Checking claim language", status: "skipped", reason: "no fetched page to scan" },
+      { step: "Checking published evidence", status: "skipped", reason: "no fetched page to scan" },
     ]);
     expect(skippedReason(out.progress[0].reason!)).toBe(`skipped: ${reason}`);
     expect(calls).toEqual(["https://www.northwind-outdoor.example/robots.txt"]);

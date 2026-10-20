@@ -1,5 +1,8 @@
-// All user-facing wording templates live here (ADR-008). Phase 3 extends this
-// file with the signal templates and adds the forbidden-word test.
+// All user-facing wording templates live here (ADR-008). Allowed vocabulary:
+// "risk signal", "unsupported claim", "no supporting data found on the fetched
+// page", "label claimed on page; not verified in v1", "not found",
+// "skipped: <reason>". tests/unit/copy/forbidden.test.ts scans every string
+// literal under src/ against src/lib/copy/forbidden.ts.
 
 export const skippedReason = (reason: string) => `skipped: ${reason}`;
 
@@ -39,6 +42,8 @@ export const steps = {
   discover: "Discovering pages",
   fetchPages: "Fetching current pages",
   fetchPage: (url: string) => `Fetching ${url}`,
+  claims: "Checking claim language",
+  evidence: "Checking published evidence",
 };
 
 /** Reasons recorded when a step or a page is skipped (shown as "skipped: <reason>"). */
@@ -53,6 +58,7 @@ export const reasons = {
   robotsUnavailable: (origin: string, cause: string) => `robots.txt unavailable for ${origin} (${cause})`,
   interrupted: "analysis interrupted (server restarted); search again to retry",
   stepError: (message: string) => `internal error (${message})`,
+  noPagesToScan: "no fetched page to scan",
 };
 
 /** Entries for the report's "What we could not check" section. */
@@ -60,4 +66,33 @@ export const couldNotCheck = {
   noSustainabilityPage: (host: string) => `No sustainability, impact or responsibility page could be fetched from ${host}.`,
   robotsUnavailable: (origin: string) => `${origin} (its robots.txt could not be read, so we did not fetch from it).`,
   robotsDisallowed: (url: string) => `${url} (robots.txt does not allow us to fetch it).`,
+  labelClaimed: (name: string, url: string) => `${name}: label claimed on page; not verified in v1 (${url}).`,
+};
+
+/** How each claim-language rule family is named in signal labels (rule ids: src/lib/claims/rules). */
+export const claimFamilyNames = {
+  vague: "vague environmental wording",
+  absolute: "absolute claim",
+  offset: "neutrality claim without a reduction figure",
+  baseline_less_comparison: "comparison without a baseline",
+  future_only: "future commitment without a progress figure",
+} as const;
+
+/** Signal labels (one line each, shown next to the receipt). */
+export const signalLabels = {
+  claimUnsupported: (family: string) => `Unsupported claim (${family}): no supporting data found on the fetched page`,
+  claimSupported: (family: string) => `Risk signal (${family}); a figure, year, standard or report link appears next to it on the page`,
+  reportFound: (year: number) => `Impact or sustainability report linked (${year})`,
+  reportFoundUndated: "Impact or sustainability report linked (no year given)",
+  staleReport: (year: number, fetchYear: number, years: number) =>
+    `Risk signal: the newest report linked is from ${year}, more than ${years} years before the page was fetched (${fetchYear})`,
+  noReport: "Risk signal: no impact or sustainability report link found on the fetched pages",
+  absoluteEmissions: "Absolute emissions figure (tonnes of CO2e) published on the page",
+  supplierList: "Supplier or factory list linked",
+};
+
+/** Excerpts that the engine writes itself (the receipt still points at the page). */
+export const excerpts = {
+  link: (text: string, href: string) => (text ? `“${text}” (${href})` : href),
+  pagesScanned: (titles: string[]) => `Pages scanned: ${titles.join("; ")}`,
 };

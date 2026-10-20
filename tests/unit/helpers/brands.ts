@@ -1,3 +1,6 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+import { visibleText, type PageLink } from "@/lib/discover/visible-text";
 import { loadBrandFixtures } from "@/lib/fetch/brand-fixtures";
 import type { FetchResult, Fetcher } from "@/lib/fetch/fetcher";
 import { FixtureFetcher } from "@/lib/fetch/fixture-fetcher";
@@ -52,4 +55,24 @@ export class OfflineFetcher implements Fetcher {
     if (res.source !== "fixture") throw new Error(`non-fixture fetch: ${url}`);
     return res;
   }
+}
+
+/** Every HTML page of a brand fixture as the pipeline would hold it (visible text, links, capture date). */
+export function loadBrandPages(slug: string, root = "fixtures"): { url: string; title: string; text: string; links: PageLink[]; fetchedAt: string; wordCount: number }[] {
+  const dir = join(root, "brands", slug);
+  const manifest = JSON.parse(readFileSync(join(dir, "manifest.json"), "utf8")) as { capturedAt: string; files: Record<string, string> };
+  return Object.entries(manifest.files)
+    .filter(([, rel]) => rel.endsWith(".html"))
+    .map(([url, rel]) => {
+      const v = visibleText(readFileSync(join(dir, rel), "utf8"), url);
+      return { url, title: v.title, text: v.text, links: v.links, fetchedAt: manifest.capturedAt, wordCount: v.wordCount };
+    });
+}
+
+/** One fixture page by its file, with the brand's capture date. */
+export function loadBrandPage(slug: string, file: string, url: string, root = "fixtures") {
+  const dir = join(root, "brands", slug);
+  const manifest = JSON.parse(readFileSync(join(dir, "manifest.json"), "utf8")) as { capturedAt: string };
+  const v = visibleText(readFileSync(join(dir, file), "utf8"), url);
+  return { url, title: v.title, text: v.text, links: v.links, fetchedAt: manifest.capturedAt, wordCount: v.wordCount };
 }
