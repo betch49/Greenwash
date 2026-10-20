@@ -8,7 +8,7 @@ You are building **Greenwash Radar**: a web app where a person types a brand nam
 
 ### 0.1 Roles
 
-Create two subagents in `.claude/agents/`:
+Two subagents are **already defined** in `.claude/agents/director.md` and `.claude/agents/builder.md` (committed before the session started, because a running session does not pick up agent files created during it). Do not recreate them. If either is reported as not found, fall back to the built-in `general-purpose` agent and paste the full content of the corresponding file at the top of the task prompt, then log the fallback in `docs/DECISIONS.md`.
 
 - **`director`** — model `claude-fable-5-1`, effort **medium**. Owns judgment: runs the brainstorm, scores the proposals, picks the differentiators, writes the plan, reviews each phase, and decides when the app is done. Never writes application code. Writes only under `docs/`.
 - **`builder`** — model `claude-opus-5-5`. Owns execution: implements the plan phase by phase, writes tests, runs them, fixes failures. May not change scope, weights or differentiators; if it believes the plan is wrong, it writes `docs/CHALLENGES.md` and the director rules on it.
@@ -153,7 +153,7 @@ After each phase: run tests, write `docs/phases/<n>.md`, get the director's verd
 
 ## 9. Startup sequence (no human in the loop)
 
-1. Create the two subagents (Section 0.1).
+1. Check that the `director` and `builder` agents are available (Section 0.1); apply the fallback if not.
 2. Run the brainstorm protocol (Section 0.2) until `docs/PLAN.md` exists.
 3. Run the phase loop (Section 0.3) until the director's `docs/FINAL-REVIEW.md` states that every item in Section 10 is met, with the command or test that proves each one.
 4. Print a final summary: what was built, the three differentiators chosen, `ai_share` on the fixture brands, known limitations, and the exact commands to run the app.
