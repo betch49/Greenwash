@@ -147,3 +147,42 @@ The default is kept; no override reasoning is needed, but for the record: E is r
 **Decision.** `RobotsGuardedFetcher` is mandatory for every page fetched from a brand site, a regulator site or a repair source (Phases 2, 4 page content, 5). It is **not** applied to the three API endpoints the brief itself mandates: the Wikidata `api.php`, the Wayback CDX API and Wayback snapshot retrieval. For those we follow the operator's published API etiquette instead: descriptive User-Agent, `Retry-After`-aware retry, SQLite caching, and the ≤ 1 req/s limit for `web.archive.org`. The exemption list is exactly these hosts' API paths; it is not extended without a new ADR.
 
 **Consequences.** `docs/LIMITATIONS.md` (Phase 9) states the exemption and its reasoning. The Phase 2 review checks that every non-API fetch goes through the robots guard and that a disallowed page appears as `skipped: robots.txt disallows <url>` and is served from Wayback where available (brief Section 8).
+
+---
+
+## ADR-011 — Synthetic fixtures never impersonate a real brand
+
+**Date:** 2026-10-20
+**Status:** accepted
+
+**Context.** patagonia.com bot-blocks the build container (every request, including `/robots.txt`, returns a "Hang Tight!" page). The builder hand-wrote a Patagonia fixture under real `www.patagonia.com` URLs and the real Wikidata entity Q1660552, with invented claim sentences, relying on ADR-006's "otherwise synthetic, marked" clause. In offline mode and in every later test that fixture would produce receipts (source URL + excerpt) for text the brand never published, under the brand's own name. Brief Section 1 (receipt = real fetch), Section 8 (no wording about a brand that is not in a receipt) and Section 6 ("real saved HTML of 3 brands") all point the same way. The director verified today that other outdoor-apparel brands are reachable (Mammut, VAUDE), so a real capture is executable.
+
+**Decision.** The three fixture brands are real captures. A synthetic fixture is allowed only for a fictional brand under a reserved domain (`.example`, `.test` or `.invalid`), with no real Wikidata id and no real company name, and is used for rule and edge-case tests only. A unit test enforces this for every `fixtures/brands/*/meta.json`. The same rule applies to Wayback snapshot fixtures (Phase 4): hand-built snapshots belong to the fictional brand; a real brand's timeline comes only from recorded CDX/`id_` responses. If a real site is unreachable, the brand is replaced, not imitated. Patagonia's Wikidata fixtures stay for the Phase 1 disambiguation tests; offline, a Patagonia run honestly ends with `skipped: no page could be fetched …`.
+
+**Consequences.** Phase 2 rework: Patagonia fixture re-homed to a fictional brand; Mammut or VAUDE recorded as the outdoor-apparel brand. ADR-006's synthetic clause is narrowed accordingly.
+
+---
+
+## ADR-012 — robots.txt unreachable or malformed ⇒ do not crawl (fail closed)
+
+**Date:** 2026-10-20
+**Status:** accepted
+
+**Context.** `RobotsChecker` treated a 5xx, a network error, or a 2xx HTML bot-wall page as "no rules", i.e. allowed everything. RFC 9309 §2.3.1.4 says an unreachable robots.txt (5xx, network failure) must be treated as complete disallow; §2.3.1.3 says 4xx means no restrictions. A bot wall served with 200 is not a robots file and gives no permission.
+
+**Decision.** 4xx ⇒ allowed. 5xx, network error, or a 2xx body that is HTML (content type `text/html` or body starting with `<`) ⇒ the whole origin is disallowed for this run with the shown reason `robots.txt unavailable for <origin> (<cause>)`. A cached robots.txt from SQLite is used when the live fetch fails and a copy exists. The brief-mandated API endpoints (ADR-010) are unaffected.
+
+**Consequences.** Some sites will be skipped with a visible reason instead of crawled; Wayback (Phase 4) is the fallback, as brief Section 8 already prescribes.
+
+---
+
+## ADR-013 — Run lifecycle: a GET may create a pending run row, but a run can never sit in `running` without a process executing it
+
+**Date:** 2026-10-20
+**Status:** accepted
+
+**Context.** Two Phase 2 observations. (1) The confident auto-proceed on `GET /confirm?q=…` creates a `runs` row before redirecting; nothing is fetched until the explicit POST `startRun` action claims the run (`pending → running`, atomic). (2) A run whose process dies mid-pipeline stays `running` forever and the analyse page shows "running…" indefinitely.
+
+**Decision.** (1) Accepted for v1: the side effect is a database row with no fetching; Phase 8 serves a cached report for an already-analysed brand, which removes the duplicate rows in practice. (2) Not accepted: a hung `running` state hides a failure, and the brief requires failures to appear as `skipped: <reason>`. When the run view is built and the run is `running` but no in-flight pipeline exists in this process, the run is marked `failed` and the running step becomes `skipped: analysis interrupted (server restarted); search again to retry`. Resume is out of scope for v1 (`docs/LATER.md`); the single-process assumption is documented in `docs/LIMITATIONS.md` in Phase 9.
+
+**Consequences.** Phase 2 rework item 3 implements (2) with a unit test. No change for (1).
