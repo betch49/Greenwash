@@ -1,0 +1,35 @@
+{
+ "entities": {
+  "Q30": {
+   "type": "item",
+   "id": "Q30",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "United States"
+    }
+   }
+  },
+  "Q34": {
+   "type": "item",
+   "id": "Q34",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Sweden"
+    }
+   }
+  },
+  "Q4899370": {
+   "type": "item",
+   "id": "Q4899370",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "beverage industry"
+    }
+   }
+  }
+ },
+ "success": 1
+}

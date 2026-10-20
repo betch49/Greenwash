@@ -1,0 +1,123 @@
+{
+ "searchinfo": {
+  "search": "oatly"
+ },
+ "search": [
+  {
+   "id": "Q10605824",
+   "title": "Q10605824",
+   "pageid": 11892334,
+   "concepturi": "http://www.wikidata.org/entity/Q10605824",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q10605824",
+   "display": {
+    "label": {
+     "value": "Oatly AB",
+     "language": "en"
+    },
+    "description": {
+     "value": "Business in Sweden, from 1994 from Malmö",
+     "language": "en"
+    }
+   },
+   "label": "Oatly AB",
+   "description": "Business in Sweden, from 1994 from Malmö",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Oatly AB"
+   }
+  },
+  {
+   "id": "Q137511134",
+   "title": "Q137511134",
+   "pageid": 131181244,
+   "concepturi": "http://www.wikidata.org/entity/Q137511134",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q137511134",
+   "display": {
+    "label": {
+     "value": "Oatly",
+     "language": "en"
+    },
+    "description": {
+     "value": "Swedish beverage brand",
+     "language": "en"
+    }
+   },
+   "label": "Oatly",
+   "description": "Swedish beverage brand",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Oatly"
+   }
+  },
+  {
+   "id": "Q95582745",
+   "title": "Q95582745",
+   "pageid": 94460149,
+   "concepturi": "http://www.wikidata.org/entity/Q95582745",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q95582745",
+   "display": {
+    "label": {
+     "value": "Oatly Oat Drink Barista Edition",
+     "language": "en"
+    }
+   },
+   "label": "Oatly Oat Drink Barista Edition",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Oatly Oat Drink Barista Edition"
+   }
+  },
+  {
+   "id": "Q88279251",
+   "title": "Q88279251",
+   "pageid": 87519718,
+   "concepturi": "http://www.wikidata.org/entity/Q88279251",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q88279251",
+   "display": {
+    "label": {
+     "value": "Oatly Lake",
+     "language": "en"
+    },
+    "description": {
+     "value": "lake in Wexford County, Michigan, United States of America",
+     "language": "en"
+    }
+   },
+   "label": "Oatly Lake",
+   "description": "lake in Wexford County, Michigan, United States of America",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Oatly Lake"
+   }
+  },
+  {
+   "id": "Q99489030",
+   "title": "Q99489030",
+   "pageid": 97420724,
+   "concepturi": "http://www.wikidata.org/entity/Q99489030",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q99489030",
+   "display": {
+    "label": {
+     "value": "Oatly",
+     "language": "en"
+    }
+   },
+   "label": "Oatly",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Oatly"
+   }
+  }
+ ],
+ "success": 1
+}

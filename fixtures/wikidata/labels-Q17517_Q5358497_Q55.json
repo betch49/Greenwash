@@ -1,0 +1,35 @@
+{
+ "entities": {
+  "Q17517": {
+   "type": "item",
+   "id": "Q17517",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "mobile phone"
+    }
+   }
+  },
+  "Q5358497": {
+   "type": "item",
+   "id": "Q5358497",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "electronics industry"
+    }
+   }
+  },
+  "Q55": {
+   "type": "item",
+   "id": "Q55",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Netherlands"
+    }
+   }
+  }
+ },
+ "success": 1
+}

@@ -1,0 +1,3923 @@
+{
+ "entities": {
+  "Q10605824": {
+   "type": "item",
+   "id": "Q10605824",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Oatly AB"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Oatly AB"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "Business in Sweden, from 1994 from Malmö"
+    }
+   },
+   "aliases": {
+    "en": [
+     {
+      "language": "en",
+      "value": "Oatly Group AB"
+     }
+    ],
+    "mul": [
+     {
+      "language": "mul",
+      "value": "Oatly AB"
+     }
+    ]
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "326e3d41d1e9c34715e880be6e1c6a1e822e4317",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 4830453,
+         "id": "Q4830453"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q10605824$6FD09264-11A7-491E-876A-4FCE5218718C",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "d46a0f2c3ab02ce7806495cc5c0c29dc745158cd",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 15834057,
+         "id": "Q15834057"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P1056": [
+        {
+         "snaktype": "value",
+         "property": "P1056",
+         "hash": "5ad0c82fe43f3fb7bdd172963247b7eb0c8de8f7",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 20972637,
+           "id": "Q20972637"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ],
+       "P585": [
+        {
+         "snaktype": "value",
+         "property": "P585",
+         "hash": "4a6fe7f861358928efef462e361b21704446d129",
+         "datavalue": {
+          "value": {
+           "time": "+2021-00-00T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 9,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P1056",
+       "P585"
+      ],
+      "id": "Q10605824$cd5277b3-49ae-6890-674d-62933841b5ed",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "ed821919d8bd386cfe54397d273ac14e128c6982",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "5fcaae8d2a8ba210ee43fc4d41fe7d7da6f1adb7",
+           "datavalue": {
+            "value": "https://www.tagesschau.de/wirtschaft/unternehmen/ernaehrung-milchersatz-vegan-101.html",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P1683": [
+          {
+           "snaktype": "value",
+           "property": "P1683",
+           "hash": "e0116253cda0d5e545aab4c4a01346b8903ae9e4",
+           "datavalue": {
+            "value": {
+             "text": "Als Marktführer bei den populären Alternativen von Milch wird oft Oatly genannt. Der schwedische Konzern, der seit März exklusiv mehr als 15.000 Starbucks-Filialen in den USA mit Hafermilch beliefert, strebt nun in New York an die Börse und wäre dort nach Beyond Meat der zweite Vegan-Produzent.",
+             "language": "de"
+            },
+            "type": "monolingualtext"
+           },
+           "datatype": "monolingualtext"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P1683"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "af3410ae4f813c757b304403dd1af5becc963ebe",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 891723,
+         "id": "Q891723"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q10605824$04E2A170-EDCC-413F-9AB9-39F83707D60E",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "c83b0e7fbdd58e611aa93b9d84b6194c20051c09",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 34,
+         "id": "Q34"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q10605824$4F257B95-0A6C-4038-A3D9-1EAAFCB8AF73",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "ed821919d8bd386cfe54397d273ac14e128c6982",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "5fcaae8d2a8ba210ee43fc4d41fe7d7da6f1adb7",
+           "datavalue": {
+            "value": "https://www.tagesschau.de/wirtschaft/unternehmen/ernaehrung-milchersatz-vegan-101.html",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P1683": [
+          {
+           "snaktype": "value",
+           "property": "P1683",
+           "hash": "e0116253cda0d5e545aab4c4a01346b8903ae9e4",
+           "datavalue": {
+            "value": {
+             "text": "Als Marktführer bei den populären Alternativen von Milch wird oft Oatly genannt. Der schwedische Konzern, der seit März exklusiv mehr als 15.000 Starbucks-Filialen in den USA mit Hafermilch beliefert, strebt nun in New York an die Börse und wäre dort nach Beyond Meat der zweite Vegan-Produzent.",
+             "language": "de"
+            },
+            "type": "monolingualtext"
+           },
+           "datatype": "monolingualtext"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P1683"
+        ]
+       },
+       {
+        "hash": "0b95ebd0bde9be5969825225a2a00472731eb5cf",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "7f6041ba2c893ea661386d32fe70a1f364fe887d",
+           "datavalue": {
+            "value": "https://www.lobbyfacts.eu/datacard/oatly-ab?rid=364260236434-80",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854"
+        ]
+       }
+      ]
+     }
+    ],
+    "P159": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P159",
+       "hash": "0ac57af339885169bb7ef21d9ec075e7903a891b",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 2211,
+         "id": "Q2211"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P625": [
+        {
+         "snaktype": "value",
+         "property": "P625",
+         "hash": "21dbea02779b7c7097d0f89ae83a0e761753b840",
+         "datavalue": {
+          "value": {
+           "latitude": 55.872408,
+           "longitude": 12.880414,
+           "altitude": null,
+           "precision": 0.000001,
+           "globe": "http://www.wikidata.org/entity/Q2"
+          },
+          "type": "globecoordinate"
+         },
+         "datatype": "globe-coordinate"
+        }
+       ],
+       "P281": [
+        {
+         "snaktype": "value",
+         "property": "P281",
+         "hash": "8d61e351de808b1a97dc97b0b4131f3edc1a5eb7",
+         "datavalue": {
+          "value": "21119",
+          "type": "string"
+         },
+         "datatype": "string"
+        }
+       ],
+       "P670": [
+        {
+         "snaktype": "value",
+         "property": "P670",
+         "hash": "8f75f3cfca78d63d3dc7a9d5b95e0eb3c10653ec",
+         "datavalue": {
+          "value": "8",
+          "type": "string"
+         },
+         "datatype": "string"
+        }
+       ],
+       "P6375": [
+        {
+         "snaktype": "value",
+         "property": "P6375",
+         "hash": "b42dc24a57b4ca2fb5512d6877c7a3e0bf66d966",
+         "datavalue": {
+          "value": {
+           "text": "Ångfärjekajen 8",
+           "language": "sv"
+          },
+          "type": "monolingualtext"
+         },
+         "datatype": "monolingualtext"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P625",
+       "P281",
+       "P670",
+       "P6375"
+      ],
+      "id": "Q10605824$CBEC19CC-F92A-4D11-88F1-D36FFAC275C0",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "3982f09a45cadd90d153c88ff4bf81b786737f4e",
+        "snaks": {
+         "P2427": [
+          {
+           "snaktype": "value",
+           "property": "P2427",
+           "hash": "3d451eb9616a9f3f90f780a7582c284f403a8353",
+           "datavalue": {
+            "value": "grid.451900.9",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P2427"
+        ]
+       }
+      ]
+     }
+    ],
+    "P571": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P571",
+       "hash": "0eb66670bd6f164588b00ccdb50a2b650d425ee4",
+       "datavalue": {
+        "value": {
+         "time": "+1994-01-01T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 9,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      },
+      "type": "statement",
+      "id": "Q10605824$19F1045C-09AA-41F8-88FF-A614CF4C0A50",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "bd49d3e4f67bc460ce7a06b6ac3027347cf5ee55",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e84b0343e79e2a9aa8abadd7301051e15fba52d6",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 169514,
+             "id": "Q169514"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "1ae69b49368c62d79ffbd7f8c2a956c0d5381d6f",
+       "datavalue": {
+        "value": "https://www.oatly.com/",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q10605824$9DCD924E-6211-42D6-85C9-3C028FCAB4D2",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "3982f09a45cadd90d153c88ff4bf81b786737f4e",
+        "snaks": {
+         "P2427": [
+          {
+           "snaktype": "value",
+           "property": "P2427",
+           "hash": "3d451eb9616a9f3f90f780a7582c284f403a8353",
+           "datavalue": {
+            "value": "grid.451900.9",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P2427"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "9c7fadff14f7b4590d3d59853e5117696092dc88",
+       "datavalue": {
+        "value": "https://www.oatly.com/en",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q10605824$49AC3AB4-D5EB-462F-A94B-92FAC101385A",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "11354e12ca38593c52a41145ef67760e506632c2",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "a3925b652aa2d24e67ce813b059b658eb0a89a5a",
+           "datavalue": {
+            "value": "https://www.oatly.com/en",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P1476": [
+          {
+           "snaktype": "value",
+           "property": "P1476",
+           "hash": "c0f9dc9b767fa96c6c7e2c42b94a6b5df6d9d0be",
+           "datavalue": {
+            "value": {
+             "text": "Oatly I the Original Oat Drink Company",
+             "language": "en"
+            },
+            "type": "monolingualtext"
+           },
+           "datatype": "monolingualtext"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "aac2549acc53c868f77ca7a0289f78088e3072f7",
+           "datavalue": {
+            "value": {
+             "time": "+2023-04-02T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P1476",
+         "P813"
+        ]
+       }
+      ]
+     }
+    ],
+    "P2427": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P2427",
+       "hash": "3d451eb9616a9f3f90f780a7582c284f403a8353",
+       "datavalue": {
+        "value": "grid.451900.9",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      },
+      "type": "statement",
+      "id": "Q10605824$E2FF9902-9742-42F6-9561-1801DB9D3077",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "56a0410f161434baeaf149d4c06314ea35abaed8",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "97d3aa39a406982f96799397568f72b465872b4b",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 30142332,
+             "id": "Q30142332"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       }
+      ]
+     }
+    ],
+    "P6782": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P6782",
+       "hash": "e55d63e3f9f6ae76836e0cbe7d6b46459d7cfcb1",
+       "datavalue": {
+        "value": "03d7pcc67",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      },
+      "type": "statement",
+      "id": "Q10605824$90B29489-7C6D-4C8F-B8D5-165582AAAF13",
+      "rank": "normal"
+     }
+    ],
+    "P452": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P452",
+       "hash": "2ed45ed731f809143ef6da404bcf88183feb99a0",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 4899370,
+         "id": "Q4899370"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q10605824$7acae92e-475e-73e6-8b35-8bfc3810d90d",
+      "rank": "normal"
+     }
+    ],
+    "P3984": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P3984",
+       "hash": "213e69eaf558b9a0e5d656d326763a072bc98e6e",
+       "datavalue": {
+        "value": "Oatly",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P580": [
+        {
+         "snaktype": "value",
+         "property": "P580",
+         "hash": "a49dc85d470fca3c7bf56ad77b9b2bbcfcf31262",
+         "datavalue": {
+          "value": {
+           "time": "+2018-03-31T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ],
+       "P1810": [
+        {
+         "snaktype": "value",
+         "property": "P1810",
+         "hash": "79f9bb656aa6111ba3bbba901022771906f48ea7",
+         "datavalue": {
+          "value": "Oatly: Wow, no cow!",
+          "type": "string"
+         },
+         "datatype": "string"
+        }
+       ],
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P580",
+       "P1810",
+       "P407"
+      ],
+      "id": "Q10605824$90071B73-5FFC-4D75-BF13-53294DA2125D",
+      "rank": "normal"
+     }
+    ],
+    "P2003": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P2003",
+       "hash": "4db99d75ccfff22b77b751d53f0502fcb63da91c",
+       "datavalue": {
+        "value": "oatly",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P12546": [
+        {
+         "snaktype": "value",
+         "property": "P12546",
+         "hash": "4fd41e05b4657b8b155f3e618ab9a038073e76ee",
+         "datavalue": {
+          "value": "270387220",
+          "type": "string"
+         },
+         "datatype": "external-id"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P12546"
+      ],
+      "id": "Q10605824$DC8784A2-2359-4406-92AE-CD37368F365F",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "cb2589dfe8cf4da58c9749c271fc041d30a9e517",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "8ab77c7cd50031c3ae514693b69b28bd375a315a",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 648625,
+             "id": "Q648625"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "ed0123e2e062edd643476df87821a12f939e41d9",
+           "datavalue": {
+            "value": {
+             "time": "+2020-10-18T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ],
+         "P2671": [
+          {
+           "snaktype": "value",
+           "property": "P2671",
+           "hash": "b9c1edad7d47664691fe3711e87bf301315d30be",
+           "datavalue": {
+            "value": "/g/11dyl_ck4",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P813",
+         "P2671"
+        ]
+       }
+      ]
+     }
+    ],
+    "P2002": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P2002",
+       "hash": "4dc1bc775efeccaa53201ad3efd4241822abb3d9",
+       "datavalue": {
+        "value": "oatly",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P6552": [
+        {
+         "snaktype": "value",
+         "property": "P6552",
+         "hash": "33f5bdbf3a090a14410bb1fb641fc656da5e0dcf",
+         "datavalue": {
+          "value": "595460804",
+          "type": "string"
+         },
+         "datatype": "external-id"
+        }
+       ],
+       "P580": [
+        {
+         "snaktype": "value",
+         "property": "P580",
+         "hash": "cfc4e0f1fc46a5d0f4983739cbdf35b8dd531fc0",
+         "datavalue": {
+          "value": {
+           "time": "+2012-05-31T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ],
+       "P585": [
+        {
+         "snaktype": "value",
+         "property": "P585",
+         "hash": "663e123a631854edc9d07d03a329a0499efeb7d3",
+         "datavalue": {
+          "value": {
+           "time": "+2020-12-25T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P6552",
+       "P580",
+       "P585"
+      ],
+      "id": "Q10605824$E52C69E9-98B9-4750-BFC9-76D86C16B610",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "cb2589dfe8cf4da58c9749c271fc041d30a9e517",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "8ab77c7cd50031c3ae514693b69b28bd375a315a",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 648625,
+             "id": "Q648625"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "ed0123e2e062edd643476df87821a12f939e41d9",
+           "datavalue": {
+            "value": {
+             "time": "+2020-10-18T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ],
+         "P2671": [
+          {
+           "snaktype": "value",
+           "property": "P2671",
+           "hash": "b9c1edad7d47664691fe3711e87bf301315d30be",
+           "datavalue": {
+            "value": "/g/11dyl_ck4",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P813",
+         "P2671"
+        ]
+       }
+      ]
+     }
+    ],
+    "P2013": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P2013",
+       "hash": "44d2b4ce3204021ce35c83a2fafe1a6ef4a33cf8",
+       "datavalue": {
+        "value": "Oatly",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      },
+      "type": "statement",
+      "id": "Q10605824$0B0EE91F-4D6B-40CE-A274-E3E33F3C195A",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "cb2589dfe8cf4da58c9749c271fc041d30a9e517",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "8ab77c7cd50031c3ae514693b69b28bd375a315a",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 648625,
+             "id": "Q648625"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "ed0123e2e062edd643476df87821a12f939e41d9",
+           "datavalue": {
+            "value": {
+             "time": "+2020-10-18T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ],
+         "P2671": [
+          {
+           "snaktype": "value",
+           "property": "P2671",
+           "hash": "b9c1edad7d47664691fe3711e87bf301315d30be",
+           "datavalue": {
+            "value": "/g/11dyl_ck4",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P813",
+         "P2671"
+        ]
+       }
+      ]
+     }
+    ],
+    "P2671": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P2671",
+       "hash": "b9c1edad7d47664691fe3711e87bf301315d30be",
+       "datavalue": {
+        "value": "/g/11dyl_ck4",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      },
+      "type": "statement",
+      "id": "Q10605824$422B8393-3B87-48E2-B4A2-190FE52A3F39",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "933ae84dc253fd7d7908764b6de9ee9095dc4130",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "8ab77c7cd50031c3ae514693b69b28bd375a315a",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 648625,
+             "id": "Q648625"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "ed0123e2e062edd643476df87821a12f939e41d9",
+           "datavalue": {
+            "value": {
+             "time": "+2020-10-18T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P813"
+        ]
+       }
+      ]
+     }
+    ],
+    "P8687": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P8687",
+       "hash": "431ca8af4c2c66c95810853143c64c9b7bce0794",
+       "datavalue": {
+        "value": {
+         "amount": "+15628",
+         "unit": "1"
+        },
+        "type": "quantity"
+       },
+       "datatype": "quantity"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P6552": [
+        {
+         "snaktype": "value",
+         "property": "P6552",
+         "hash": "33f5bdbf3a090a14410bb1fb641fc656da5e0dcf",
+         "datavalue": {
+          "value": "595460804",
+          "type": "string"
+         },
+         "datatype": "external-id"
+        }
+       ],
+       "P585": [
+        {
+         "snaktype": "value",
+         "property": "P585",
+         "hash": "8552f04e3fe13e217ac3fab2b3511fd1a9b30247",
+         "datavalue": {
+          "value": {
+           "time": "+2021-01-06T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P6552",
+       "P585"
+      ],
+      "id": "Q10605824$35df2ed3-0f23-4704-8013-734c054135bf",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P8687",
+       "hash": "87e16e7efbb0122e60986db084ba5e732e688d2a",
+       "datavalue": {
+        "value": {
+         "amount": "+5470",
+         "unit": "1",
+         "upperBound": "+5479",
+         "lowerBound": "+5470"
+        },
+        "type": "quantity"
+       },
+       "datatype": "quantity"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P2397": [
+        {
+         "snaktype": "value",
+         "property": "P2397",
+         "hash": "4609a20ddd116e531a6656e1b3cbda8566cc3b5d",
+         "datavalue": {
+          "value": "UCz3aOYkyqovmsCiG78Xbhow",
+          "type": "string"
+         },
+         "datatype": "external-id"
+        }
+       ],
+       "P585": [
+        {
+         "snaktype": "value",
+         "property": "P585",
+         "hash": "86b9baa8ffad160af6fbcebff9c99978438432b7",
+         "datavalue": {
+          "value": {
+           "time": "+2022-01-19T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P2397",
+       "P585"
+      ],
+      "id": "Q10605824$ee700fe6-0454-4968-979e-2df5a09bb971",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P8687",
+       "hash": "6bddb7e9e61cf4b9d9afa69e452ce457305fa461",
+       "datavalue": {
+        "value": {
+         "amount": "+22121",
+         "unit": "1"
+        },
+        "type": "quantity"
+       },
+       "datatype": "quantity"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P6552": [
+        {
+         "snaktype": "value",
+         "property": "P6552",
+         "hash": "33f5bdbf3a090a14410bb1fb641fc656da5e0dcf",
+         "datavalue": {
+          "value": "595460804",
+          "type": "string"
+         },
+         "datatype": "external-id"
+        }
+       ],
+       "P585": [
+        {
+         "snaktype": "value",
+         "property": "P585",
+         "hash": "cc204b5b4738cf214a068d626dc55342010de10f",
+         "datavalue": {
+          "value": {
+           "time": "+2022-03-01T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P6552",
+       "P585"
+      ],
+      "id": "Q10605824$b8e8f3d4-4027-4c80-a6c3-448c0baccd86",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P8687",
+       "hash": "dfbe0db3d365ec8cdb3642ad661c698f65f9debb",
+       "datavalue": {
+        "value": {
+         "amount": "+7240",
+         "unit": "1",
+         "upperBound": "+7249",
+         "lowerBound": "+7240"
+        },
+        "type": "quantity"
+       },
+       "datatype": "quantity"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P2397": [
+        {
+         "snaktype": "value",
+         "property": "P2397",
+         "hash": "4609a20ddd116e531a6656e1b3cbda8566cc3b5d",
+         "datavalue": {
+          "value": "UCz3aOYkyqovmsCiG78Xbhow",
+          "type": "string"
+         },
+         "datatype": "external-id"
+        }
+       ],
+       "P585": [
+        {
+         "snaktype": "value",
+         "property": "P585",
+         "hash": "fb92b691ce0bacd457f1eac1c95ea87882b8e41c",
+         "datavalue": {
+          "value": {
+           "time": "+2022-03-17T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P2397",
+       "P585"
+      ],
+      "id": "Q10605824$30fe5589-2cbc-4555-ba25-e07894386854",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P8687",
+       "hash": "e575fafb19e686fa5ff6ef8bf9930e2613ffdf61",
+       "datavalue": {
+        "value": {
+         "amount": "+23332",
+         "unit": "1"
+        },
+        "type": "quantity"
+       },
+       "datatype": "quantity"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P6552": [
+        {
+         "snaktype": "value",
+         "property": "P6552",
+         "hash": "33f5bdbf3a090a14410bb1fb641fc656da5e0dcf",
+         "datavalue": {
+          "value": "595460804",
+          "type": "string"
+         },
+         "datatype": "external-id"
+        }
+       ],
+       "P585": [
+        {
+         "snaktype": "value",
+         "property": "P585",
+         "hash": "7ab39e77dd1d3321d069213aa797b846bc8988f8",
+         "datavalue": {
+          "value": {
+           "time": "+2023-02-06T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P6552",
+       "P585"
+      ],
+      "id": "Q10605824$6cda1813-7b47-41ee-941b-133fdb9ab98f",
+      "rank": "preferred"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P8687",
+       "hash": "a83ad2bda08d536ffbce39a5aa3787efe68048e3",
+       "datavalue": {
+        "value": {
+         "amount": "+12100",
+         "unit": "1",
+         "upperBound": "+12199",
+         "lowerBound": "+12100"
+        },
+        "type": "quantity"
+       },
+       "datatype": "quantity"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P2397": [
+        {
+         "snaktype": "value",
+         "property": "P2397",
+         "hash": "4609a20ddd116e531a6656e1b3cbda8566cc3b5d",
+         "datavalue": {
+          "value": "UCz3aOYkyqovmsCiG78Xbhow",
+          "type": "string"
+         },
+         "datatype": "external-id"
+        }
+       ],
+       "P585": [
+        {
+         "snaktype": "value",
+         "property": "P585",
+         "hash": "20483c6f3caf2de1c166cfb8006d2414c35eb990",
+         "datavalue": {
+          "value": {
+           "time": "+2023-02-17T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P2397",
+       "P585"
+      ],
+      "id": "Q10605824$c3c25f75-b3fe-4c49-b629-3592cfa01ed9",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P8687",
+       "hash": "51354e42baa0d3241c1ac9238c0d479c1088a0f3",
+       "datavalue": {
+        "value": {
+         "amount": "+13500",
+         "unit": "1",
+         "upperBound": "+13599",
+         "lowerBound": "+13500"
+        },
+        "type": "quantity"
+       },
+       "datatype": "quantity"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P2397": [
+        {
+         "snaktype": "value",
+         "property": "P2397",
+         "hash": "4609a20ddd116e531a6656e1b3cbda8566cc3b5d",
+         "datavalue": {
+          "value": "UCz3aOYkyqovmsCiG78Xbhow",
+          "type": "string"
+         },
+         "datatype": "external-id"
+        }
+       ],
+       "P585": [
+        {
+         "snaktype": "value",
+         "property": "P585",
+         "hash": "a8bd43a0e4d959a5c9c558c2834b81311ce9054b",
+         "datavalue": {
+          "value": {
+           "time": "+2023-03-22T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P2397",
+       "P585"
+      ],
+      "id": "Q10605824$323d0682-816a-442c-85b8-3940bf4f0be8",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "58a6269a7282347320705325b7864f6a78658db2",
+        "snaks": {
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "b30214ab2341df33eaf6cd0166751459da477f79",
+           "datavalue": {
+            "value": {
+             "time": "+2023-03-22T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ],
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "e6e6374525f7d680f01ff599745f367fb1369b87",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 8056784,
+             "id": "Q8056784"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P813",
+         "P248"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P8687",
+       "hash": "7c603b5b7248fa5c302a5b19a8ec8b563879b4ba",
+       "datavalue": {
+        "value": {
+         "amount": "+15200",
+         "unit": "1",
+         "upperBound": "+15299",
+         "lowerBound": "+15200"
+        },
+        "type": "quantity"
+       },
+       "datatype": "quantity"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P2397": [
+        {
+         "snaktype": "value",
+         "property": "P2397",
+         "hash": "4609a20ddd116e531a6656e1b3cbda8566cc3b5d",
+         "datavalue": {
+          "value": "UCz3aOYkyqovmsCiG78Xbhow",
+          "type": "string"
+         },
+         "datatype": "external-id"
+        }
+       ],
+       "P585": [
+        {
+         "snaktype": "value",
+         "property": "P585",
+         "hash": "9d64e8af0848e60ef457a2cc2e3dfdf54af0f5a3",
+         "datavalue": {
+          "value": {
+           "time": "+2023-05-31T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P2397",
+       "P585"
+      ],
+      "id": "Q10605824$b57c9cac-a83a-4605-8f6e-3cb5419d32da",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "671e7e50e0904a7e6a4c274c56d5af1407ab40d5",
+        "snaks": {
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "d6b6438d2a93e2106850d8b5dccbf532771237a1",
+           "datavalue": {
+            "value": {
+             "time": "+2023-05-31T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ],
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "e6e6374525f7d680f01ff599745f367fb1369b87",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 8056784,
+             "id": "Q8056784"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P813",
+         "P248"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P8687",
+       "hash": "49bc43da80c7a00ead5e168eabe226b136e2dcb4",
+       "datavalue": {
+        "value": {
+         "amount": "+17200",
+         "unit": "1",
+         "upperBound": "+17299",
+         "lowerBound": "+17200"
+        },
+        "type": "quantity"
+       },
+       "datatype": "quantity"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P2397": [
+        {
+         "snaktype": "value",
+         "property": "P2397",
+         "hash": "4609a20ddd116e531a6656e1b3cbda8566cc3b5d",
+         "datavalue": {
+          "value": "UCz3aOYkyqovmsCiG78Xbhow",
+          "type": "string"
+         },
+         "datatype": "external-id"
+        }
+       ],
+       "P585": [
+        {
+         "snaktype": "value",
+         "property": "P585",
+         "hash": "2fb9a10aec4bb8ddc42a700adee26f0b8d56681a",
+         "datavalue": {
+          "value": {
+           "time": "+2024-01-14T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P2397",
+       "P585"
+      ],
+      "id": "Q10605824$5d0d64dc-4ec2-4340-812f-455d562d3030",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "a1a61c7591e621eb0d289aaa53bf3299e2eda30e",
+        "snaks": {
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "c7f83b72e107b8c391e7d624746e17a4920ab261",
+           "datavalue": {
+            "value": {
+             "time": "+2024-01-14T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ],
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "e6e6374525f7d680f01ff599745f367fb1369b87",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 8056784,
+             "id": "Q8056784"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P813",
+         "P248"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P8687",
+       "hash": "e0bc9e4db7c379bb99dc1cbc078c83b93cf17152",
+       "datavalue": {
+        "value": {
+         "amount": "+18200",
+         "unit": "1",
+         "upperBound": "+18299",
+         "lowerBound": "+18200"
+        },
+        "type": "quantity"
+       },
+       "datatype": "quantity"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P2397": [
+        {
+         "snaktype": "value",
+         "property": "P2397",
+         "hash": "4609a20ddd116e531a6656e1b3cbda8566cc3b5d",
+         "datavalue": {
+          "value": "UCz3aOYkyqovmsCiG78Xbhow",
+          "type": "string"
+         },
+         "datatype": "external-id"
+        }
+       ],
+       "P585": [
+        {
+         "snaktype": "value",
+         "property": "P585",
+         "hash": "84c9bd83dc78cb04b0dd89afd6c903ecddd2917e",
+         "datavalue": {
+          "value": {
+           "time": "+2025-01-25T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P2397",
+       "P585"
+      ],
+      "id": "Q10605824$310023e8-4350-40a2-8ee4-a79b5de86460",
+      "rank": "preferred",
+      "references": [
+       {
+        "hash": "38640cd01ee85b046edf0aa8eb4d8b9947e5afd6",
+        "snaks": {
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "d05648b6276cc57892ef196d6d349b4f8892428b",
+           "datavalue": {
+            "value": {
+             "time": "+2025-01-25T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ],
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "e6e6374525f7d680f01ff599745f367fb1369b87",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 8056784,
+             "id": "Q8056784"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P813",
+         "P248"
+        ]
+       }
+      ]
+     }
+    ],
+    "P414": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P414",
+       "hash": "56dd8a5b3b528fdc99f1238fb73f1bc8f3858bfc",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 82059,
+         "id": "Q82059"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P249": [
+        {
+         "snaktype": "value",
+         "property": "P249",
+         "hash": "359b8f3db3863c174ab3ab787de339bbe9fa2b0c",
+         "datavalue": {
+          "value": "OTLY",
+          "type": "string"
+         },
+         "datatype": "string"
+        }
+       ],
+       "P580": [
+        {
+         "snaktype": "somevalue",
+         "property": "P580",
+         "hash": "591beafd4b23b81744b09486d54b98520c54fa5e",
+         "datatype": "time"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P249",
+       "P580"
+      ],
+      "id": "Q10605824$0d5a734f-494c-fa8e-141b-05b6515f695a",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "48f4f2f4a4c6803aa2122b8c4336837cef923d33",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "11e9b8c20c876db9d84fe7bd5f24224198c8b004",
+           "datavalue": {
+            "value": "https://www.streetinsider.com/ipo_lookup.php?id=1632",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P1683": [
+          {
+           "snaktype": "value",
+           "property": "P1683",
+           "hash": "0d031436e499e2362c4e90148383062bc1734eff",
+           "datavalue": {
+            "value": {
+             "text": "Company Name: Oatly Stock ␤ Symbol: OTLY ␤ Exchange: NASDAQ ␤ Status: Upcoming",
+             "language": "en"
+            },
+            "type": "monolingualtext"
+           },
+           "datatype": "monolingualtext"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "7bd87d83f64becb7c80f702ce2a2b8a923c9e877",
+           "datavalue": {
+            "value": {
+             "time": "+2021-04-26T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P1683",
+         "P813"
+        ]
+       },
+       {
+        "hash": "08606220111aaf86847fbb439be648173d563db7",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "9ad2cbafae29b9fbd7ed069c2d22618fdb655b69",
+           "datavalue": {
+            "value": "https://www.streetinsider.com/Hot+IPOs/Oatly+files+for+IPO%3B+Plans+to+list+on+NASDAQ+under+the+ticker+OTLY+After+107%25+2020+Revenue+Growth/18279120.html",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P1476": [
+          {
+           "snaktype": "value",
+           "property": "P1476",
+           "hash": "644bc881a2781beb32d9c620a7c66bb7e500ef8b",
+           "datavalue": {
+            "value": {
+             "text": "Oatly files for IPO; Plans to list on NASDAQ under the ticker 'OTLY' After 107% 2020 Revenue Growth",
+             "language": "en"
+            },
+            "type": "monolingualtext"
+           },
+           "datatype": "monolingualtext"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P1476"
+        ]
+       }
+      ]
+     }
+    ],
+    "P1056": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P1056",
+       "hash": "5ad0c82fe43f3fb7bdd172963247b7eb0c8de8f7",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 20972637,
+         "id": "Q20972637"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q10605824$61eef9e6-42d7-e80d-5698-7209fb05d712",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P1056",
+       "hash": "8f58f32cc8eedb579d352606f02b0627c15a260f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 95582745,
+         "id": "Q95582745"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q10605824$d3f10617-494f-41ef-0fbe-65cf9bdd322d",
+      "rank": "normal"
+     }
+    ],
+    "P1451": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P1451",
+       "hash": "a61e6f6735cd2447a43c46dcfe327f23f062550e",
+       "datavalue": {
+        "value": {
+         "text": "Wow, no cow!",
+         "language": "en"
+        },
+        "type": "monolingualtext"
+       },
+       "datatype": "monolingualtext"
+      },
+      "type": "statement",
+      "id": "Q10605824$33506ae2-40e2-1429-41c5-18fbb10c761c",
+      "rank": "normal"
+     }
+    ],
+    "P1128": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P1128",
+       "hash": "99e23e9f2944e70143bc2f3a10620c4d33ea4af2",
+       "datavalue": {
+        "value": {
+         "amount": "+2009",
+         "unit": "1"
+        },
+        "type": "quantity"
+       },
+       "datatype": "quantity"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P585": [
+        {
+         "snaktype": "value",
+         "property": "P585",
+         "hash": "2158d4b68f82b8f36f47c98bd3609a99913faa59",
+         "datavalue": {
+          "value": {
+           "time": "+2022-00-00T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 9,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P585"
+      ],
+      "id": "Q10605824$3b1bd444-42b8-f731-4141-3775da29e440",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "972690dc35842b0e971ed9ab5d38e60fc9f0cf36",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "353922c40336c63f6deff9fc670b2833f4ecfc12",
+           "datavalue": {
+            "value": "https://www.nasdaq.com/market-activity/ipos/overview?dealId=1155564-97230",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854"
+        ]
+       }
+      ]
+     }
+    ],
+    "P6375": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P6375",
+       "hash": "3c1454e93ac75d23533a90726915cf4da910e01f",
+       "datavalue": {
+        "value": {
+         "text": "C/o Oatly Group Stora Varvsgatan 6a Malmo 211 19",
+         "language": "sv"
+        },
+        "type": "monolingualtext"
+       },
+       "datatype": "monolingualtext"
+      },
+      "type": "statement",
+      "id": "Q10605824$7a567b80-4059-55bd-c09c-bde52d2b695c",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "972690dc35842b0e971ed9ab5d38e60fc9f0cf36",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "353922c40336c63f6deff9fc670b2833f4ecfc12",
+           "datavalue": {
+            "value": "https://www.nasdaq.com/market-activity/ipos/overview?dealId=1155564-97230",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854"
+        ]
+       }
+      ]
+     }
+    ],
+    "P1329": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P1329",
+       "hash": "cbfd3c4a3cd68a9a80d6235a0b42e45336139d94",
+       "datavalue": {
+        "value": "+46418475500",
+        "type": "string"
+       },
+       "datatype": "string"
+      },
+      "type": "statement",
+      "id": "Q10605824$5d4e623d-4a6a-c39b-d163-ffded6b2a400",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "972690dc35842b0e971ed9ab5d38e60fc9f0cf36",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "353922c40336c63f6deff9fc670b2833f4ecfc12",
+           "datavalue": {
+            "value": "https://www.nasdaq.com/market-activity/ipos/overview?dealId=1155564-97230",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854"
+        ]
+       }
+      ]
+     }
+    ],
+    "P5531": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P5531",
+       "hash": "81f01a7351a4acb1c1df29d8939ace7a301508ec",
+       "datavalue": {
+        "value": "0001843586",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      },
+      "type": "statement",
+      "id": "Q10605824$56215d5c-424d-eafa-2666-38ecd445804b",
+      "rank": "normal"
+     }
+    ],
+    "P2397": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P2397",
+       "hash": "4609a20ddd116e531a6656e1b3cbda8566cc3b5d",
+       "datavalue": {
+        "value": "UCz3aOYkyqovmsCiG78Xbhow",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P1810": [
+        {
+         "snaktype": "value",
+         "property": "P1810",
+         "hash": "f17f4d725e295e0196168ba6d7d9b30359e57722",
+         "datavalue": {
+          "value": "Oatly",
+          "type": "string"
+         },
+         "datatype": "string"
+        }
+       ],
+       "P580": [
+        {
+         "snaktype": "value",
+         "property": "P580",
+         "hash": "5d76ea78d3ed12b442889769ac6d0cebb960b484",
+         "datavalue": {
+          "value": {
+           "time": "+2014-06-18T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ],
+       "P3744": [
+        {
+         "snaktype": "value",
+         "property": "P3744",
+         "hash": "dd9a998aaa4b26373fee06e630772c2caa2e48e9",
+         "datavalue": {
+          "value": {
+           "amount": "+13900",
+           "unit": "1"
+          },
+          "type": "quantity"
+         },
+         "datatype": "quantity"
+        }
+       ],
+       "P3740": [
+        {
+         "snaktype": "value",
+         "property": "P3740",
+         "hash": "c1833b7b49c357a6b93ace8040850f7b0f82ae95",
+         "datavalue": {
+          "value": {
+           "amount": "+147",
+           "unit": "1"
+          },
+          "type": "quantity"
+         },
+         "datatype": "quantity"
+        }
+       ],
+       "P5436": [
+        {
+         "snaktype": "value",
+         "property": "P5436",
+         "hash": "552e79635afd09faf89c72ae5df9da77d098d2ec",
+         "datavalue": {
+          "value": {
+           "amount": "+44660906",
+           "unit": "1"
+          },
+          "type": "quantity"
+         },
+         "datatype": "quantity"
+        }
+       ],
+       "P585": [
+        {
+         "snaktype": "value",
+         "property": "P585",
+         "hash": "90574fd3694f3c9f3a8199fad9918348842130e3",
+         "datavalue": {
+          "value": {
+           "time": "+2023-04-09T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P1810",
+       "P580",
+       "P3744",
+       "P3740",
+       "P5436",
+       "P585"
+      ],
+      "id": "Q10605824$A28E3B6A-C866-4038-8082-9C472A772ED4",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "ae3d2520c58aab19a8a4f7751d89fc6287903704",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "9468ba0dfb6f8cb8471c3f8bd2d90d2359dc8a08",
+           "datavalue": {
+            "value": "https://www.youtube.com/channel/UCz3aOYkyqovmsCiG78Xbhow",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P1476": [
+          {
+           "snaktype": "value",
+           "property": "P1476",
+           "hash": "0f5377ce88dfe9c9ffc74df3cea2ea4a59c9f3ca",
+           "datavalue": {
+            "value": {
+             "text": "Oatly - YouTube",
+             "language": "en-gb"
+            },
+            "type": "monolingualtext"
+           },
+           "datatype": "monolingualtext"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "8197cf330a4f4fee9a4673e98dd5c958f4c9aaed",
+           "datavalue": {
+            "value": {
+             "time": "+2021-04-27T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P1476",
+         "P813"
+        ]
+       },
+       {
+        "hash": "700f9093fba0eb16b24c704c37f469da123cffa9",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "b67e2a642dcc98a27b7d8ecc8dc261a8184ca2af",
+           "datavalue": {
+            "value": "https://www.oatly.com/",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P1476": [
+          {
+           "snaktype": "value",
+           "property": "P1476",
+           "hash": "c0f9dc9b767fa96c6c7e2c42b94a6b5df6d9d0be",
+           "datavalue": {
+            "value": {
+             "text": "Oatly I the Original Oat Drink Company",
+             "language": "en"
+            },
+            "type": "monolingualtext"
+           },
+           "datatype": "monolingualtext"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P1476"
+        ]
+       },
+       {
+        "hash": "f54b1221a4b42044c6bcefee59104453dccd1178",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "971e3eb16ea01ec6a94cf783cfdc96a838479107",
+           "datavalue": {
+            "value": "https://www.oatly.com/en#footer",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P1476": [
+          {
+           "snaktype": "value",
+           "property": "P1476",
+           "hash": "c0f9dc9b767fa96c6c7e2c42b94a6b5df6d9d0be",
+           "datavalue": {
+            "value": {
+             "text": "Oatly I the Original Oat Drink Company",
+             "language": "en"
+            },
+            "type": "monolingualtext"
+           },
+           "datatype": "monolingualtext"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P1476"
+        ]
+       }
+      ]
+     }
+    ],
+    "P2088": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P2088",
+       "hash": "4348f1ecf9dfc8e3143e57e8e34678fe8c2c5c77",
+       "datavalue": {
+        "value": "oatly",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      },
+      "type": "statement",
+      "id": "Q10605824$b3e52f70-4dbd-d7ac-b168-2765cac9ef31",
+      "rank": "normal"
+     }
+    ],
+    "P18": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P18",
+       "hash": "bfe0a79ecc55e0675ae6d1daa48c4cdb042cdb31",
+       "datavalue": {
+        "value": "Oatly.jpg",
+        "type": "string"
+       },
+       "datatype": "commonsMedia"
+      },
+      "type": "statement",
+      "id": "Q10605824$5FC5BBA0-59E6-4459-99B8-07CBF2F80F69",
+      "rank": "normal"
+     }
+    ],
+    "P1454": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P1454",
+       "hash": "70e0c8184ca2e15853ade894666659bd689f28fe",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 422007,
+         "id": "Q422007"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q10605824$7CA2AD40-7CB9-4EFE-A8DB-137F6B8E152D",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "a7719bd526777d30b5f0280d2eda95d325ca3cd4",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "d38375ffe6fe142663ff55cd783aa4df4301d83d",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 48183,
+             "id": "Q48183"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P4656": [
+          {
+           "snaktype": "value",
+           "property": "P4656",
+           "hash": "2ab5987b98d825dc233a15705540f1d9037bb060",
+           "datavalue": {
+            "value": "https://de.wikipedia.org/w/index.php?title=Oatly&oldid=215575783",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143",
+         "P4656"
+        ]
+       }
+      ]
+     }
+    ],
+    "P169": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P169",
+       "hash": "085b5a168049fd4acd672461f421653680773b1b",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 112764534,
+         "id": "Q112764534"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q10605824$e84d873d-400b-1533-1048-38a60ffeb76a",
+      "rank": "normal"
+     }
+    ],
+    "P373": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P373",
+       "hash": "3607aab6efcc85738b02095c4fef589c0d83e004",
+       "datavalue": {
+        "value": "Oatly",
+        "type": "string"
+       },
+       "datatype": "string"
+      },
+      "type": "statement",
+      "id": "Q10605824$784f7ea7-7c19-4587-8d6c-193b9d77c20f",
+      "rank": "normal"
+     }
+    ],
+    "P7085": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P7085",
+       "hash": "86ade25e769ad3198f3fe79b14bf9f0bc0abcc3d",
+       "datavalue": {
+        "value": "oatly",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      },
+      "type": "statement",
+      "id": "Q10605824$FA63B2CB-215D-412F-A9F6-38E729F99D71",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "700f9093fba0eb16b24c704c37f469da123cffa9",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "b67e2a642dcc98a27b7d8ecc8dc261a8184ca2af",
+           "datavalue": {
+            "value": "https://www.oatly.com/",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P1476": [
+          {
+           "snaktype": "value",
+           "property": "P1476",
+           "hash": "c0f9dc9b767fa96c6c7e2c42b94a6b5df6d9d0be",
+           "datavalue": {
+            "value": {
+             "text": "Oatly I the Original Oat Drink Company",
+             "language": "en"
+            },
+            "type": "monolingualtext"
+           },
+           "datatype": "monolingualtext"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P1476"
+        ]
+       }
+      ]
+     }
+    ],
+    "P10311": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P10311",
+       "hash": "066b04d9b989b90755589bc42992de93a84b91c6",
+       "datavalue": {
+        "value": "https://careers.oatly.com/",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q10605824$5BD1FD6D-EBC2-4973-86C1-1626F030E7B4",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "480030a9d1d16d7ae982fabc88d25cdf4fb03cd5",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "19c590d847d33b412c7f428eace44841eafad1de",
+           "datavalue": {
+            "value": "https://careers.oatly.com/",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P1476": [
+          {
+           "snaktype": "value",
+           "property": "P1476",
+           "hash": "dcda5d8416f1c071fabf79c8649eb9e1384bef1c",
+           "datavalue": {
+            "value": {
+             "text": "A unique career - Oatly",
+             "language": "en"
+            },
+            "type": "monolingualtext"
+           },
+           "datatype": "monolingualtext"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "6225a51e3a3516575fdd40ed56400e2dd6cd74d4",
+           "datavalue": {
+            "value": {
+             "time": "+2022-11-05T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P1476",
+         "P813"
+        ]
+       }
+      ]
+     }
+    ],
+    "P7101": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P7101",
+       "hash": "9556c3c5c8876827dc87e122439d2c8d10c2945c",
+       "datavalue": {
+        "value": "https://www.oatly.com/privacy-policy",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q10605824$BD6BB21A-BAD7-4850-A8A8-72FB92684516",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "ebbedebe3d3c99fb84faa8ffd0eaa418c6ae3d8b",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "5e4887340595f475d7e47b3e7dc2cc59d3f5e208",
+           "datavalue": {
+            "value": "https://www.oatly.com/privacy-policy",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P1476": [
+          {
+           "snaktype": "value",
+           "property": "P1476",
+           "hash": "649929a0bceee04c217b185604c964acb507a8e7",
+           "datavalue": {
+            "value": {
+             "text": "Privacy Policy",
+             "language": "en"
+            },
+            "type": "monolingualtext"
+           },
+           "datatype": "monolingualtext"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "6225a51e3a3516575fdd40ed56400e2dd6cd74d4",
+           "datavalue": {
+            "value": {
+             "time": "+2022-11-05T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P1476",
+         "P813"
+        ]
+       }
+      ]
+     }
+    ],
+    "P9214": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P9214",
+       "hash": "9b430a284c5c2cc265c746a44ab7714b2d1ab23b",
+       "datavalue": {
+        "value": "https://community.oatly.com/",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q10605824$A8716ADD-B3A1-4695-BC64-3B47A3D5B15A",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "77f18a8907f61ffcccd2c6312dc3881f662089e2",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "df5f5975c7eb276199cd5500a805b6ed98191613",
+           "datavalue": {
+            "value": "https://community.oatly.com/",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P1476": [
+          {
+           "snaktype": "value",
+           "property": "P1476",
+           "hash": "5466f4fd4cc160c8586d57935f72e38b1996f0b3",
+           "datavalue": {
+            "value": {
+             "text": "OatlyFans",
+             "language": "en"
+            },
+            "type": "monolingualtext"
+           },
+           "datatype": "monolingualtext"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "6225a51e3a3516575fdd40ed56400e2dd6cd74d4",
+           "datavalue": {
+            "value": {
+             "time": "+2022-11-05T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P1476",
+         "P813"
+        ]
+       }
+      ]
+     }
+    ],
+    "P2657": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P2657",
+       "hash": "d06792edd522e56b44213a310e03e6c4f46fdeda",
+       "datavalue": {
+        "value": "364260236434-80",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P1932": [
+        {
+         "snaktype": "value",
+         "property": "P1932",
+         "hash": "431fb70feb54eb28e0629f1cb454eb058652c324",
+         "datavalue": {
+          "value": "Oatly AB",
+          "type": "string"
+         },
+         "datatype": "string"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P1932"
+      ],
+      "id": "Q10605824$A6B168F3-DA75-4DD4-A1BC-B40D4B7767B4",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "0b95ebd0bde9be5969825225a2a00472731eb5cf",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "7f6041ba2c893ea661386d32fe70a1f364fe887d",
+           "datavalue": {
+            "value": "https://www.lobbyfacts.eu/datacard/oatly-ab?rid=364260236434-80",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854"
+        ]
+       }
+      ]
+     }
+    ],
+    "P946": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P946",
+       "hash": "5fe89fe800982c80cacaf1fb1fa1cc014ace61b1",
+       "datavalue": {
+        "value": "US67421J2078",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      },
+      "type": "statement",
+      "id": "Q10605824$42de3060-4697-254f-fba2-e102dae7e56b",
+      "rank": "normal"
+     }
+    ],
+    "P4264": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P4264",
+       "hash": "0ed5c45bf89c2e33a3a2c22fe43d51b7e0364d15",
+       "datavalue": {
+        "value": "oatly",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      },
+      "type": "statement",
+      "id": "Q10605824$b3d0eefa-46be-869b-053c-1441344684f8",
+      "rank": "normal"
+     }
+    ],
+    "P14075": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P14075",
+       "hash": "d1395c0a74381484dfe2a684bc4e13d64b92a066",
+       "datavalue": {
+        "value": "42719",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      },
+      "type": "statement",
+      "id": "Q10605824$905093DF-70B1-4C2F-9471-142BC2210077",
+      "rank": "normal"
+     }
+    ],
+    "P14750": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P14750",
+       "hash": "6242d90f27132530b3dc7847e5df7e5d12dafc64",
+       "datavalue": {
+        "value": "C7C2-41F2-1EE1-638B-7001",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      },
+      "type": "statement",
+      "id": "Q10605824$EE7651A6-22A5-4BF6-89E3-CC990E3AF986",
+      "rank": "normal"
+     }
+    ],
+    "P361": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P361",
+       "hash": "e84490fb6954db9c7178a85a9490646fc43c0e6d",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 118522762,
+         "id": "Q118522762"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P580": [
+        {
+         "snaktype": "value",
+         "property": "P580",
+         "hash": "79cd3430e6bfe195c57660a487ff8f30acddeca7",
+         "datavalue": {
+          "value": {
+           "time": "+2022-00-00T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 9,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ],
+       "P1365": [
+        {
+         "snaktype": "value",
+         "property": "P1365",
+         "hash": "838086f661a6c8d3f2d88301b2323898e9c788f9",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 18205509,
+           "id": "Q18205509"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P580",
+       "P1365"
+      ],
+      "id": "Q10605824$3558e14d-43b7-26f8-13f0-96d81dd17fb8",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q137511134": {
+   "type": "item",
+   "id": "Q137511134",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Oatly"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "Swedish beverage brand"
+    }
+   },
+   "aliases": {},
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "0e927775e66c2e1483313a29c0f15e8e38800b2a",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 114392939,
+         "id": "Q114392939"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q137511134$abb8e886-4e6e-2401-20f4-e5e30c0bdb0a",
+      "rank": "normal"
+     }
+    ],
+    "P1535": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P1535",
+       "hash": "9175646e823c648e20c785f90771ac281af4f780",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 10605824,
+         "id": "Q10605824"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q137511134$7ea7e0d2-426c-0c3e-f696-2983f275988c",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q88279251": {
+   "type": "item",
+   "id": "Q88279251",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Oatly Lake"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "lake in Wexford County, Michigan, United States of America"
+    }
+   },
+   "aliases": {},
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "c2a3f5d683e961979fa421f24aad190c5a7c25ff",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 23397,
+         "id": "Q23397"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q88279251$E705EF00-9E38-422F-B80D-1137A9DADDCC",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "3958ce067ddd51434ccc3d41f76770382d37c6e9",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "c3ed7e4ccdd333ff9aec7f951cdf2ee06987b3ba",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 136736,
+             "id": "Q136736"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P577": [
+          {
+           "snaktype": "value",
+           "property": "P577",
+           "hash": "e3bed2d7f7e50596bfbc48ec5fa170a6ceca3895",
+           "datavalue": {
+            "value": {
+             "time": "+2020-03-01T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ],
+         "P590": [
+          {
+           "snaktype": "value",
+           "property": "P590",
+           "hash": "d4cf015777eb7a2d284601feb29068e8cb7e7be7",
+           "datavalue": {
+            "value": "1621090",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P577",
+         "P590"
+        ]
+       }
+      ]
+     }
+    ],
+    "P131": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P131",
+       "hash": "b9bf2974622d4b604251040d8077faaf6f46db41",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 506975,
+         "id": "Q506975"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q88279251$02E78B6E-1063-492A-A315-5C6F1AAF9C86",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "3958ce067ddd51434ccc3d41f76770382d37c6e9",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "c3ed7e4ccdd333ff9aec7f951cdf2ee06987b3ba",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 136736,
+             "id": "Q136736"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P577": [
+          {
+           "snaktype": "value",
+           "property": "P577",
+           "hash": "e3bed2d7f7e50596bfbc48ec5fa170a6ceca3895",
+           "datavalue": {
+            "value": {
+             "time": "+2020-03-01T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ],
+         "P590": [
+          {
+           "snaktype": "value",
+           "property": "P590",
+           "hash": "d4cf015777eb7a2d284601feb29068e8cb7e7be7",
+           "datavalue": {
+            "value": "1621090",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P577",
+         "P590"
+        ]
+       }
+      ]
+     }
+    ],
+    "P625": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P625",
+       "hash": "dd7da1682a024ce3bdd84edccc31588c7882f767",
+       "datavalue": {
+        "value": {
+         "latitude": 44.402555,
+         "longitude": -85.68292,
+         "altitude": null,
+         "precision": 0.000001,
+         "globe": "http://www.wikidata.org/entity/Q2"
+        },
+        "type": "globecoordinate"
+       },
+       "datatype": "globe-coordinate"
+      },
+      "type": "statement",
+      "id": "Q88279251$0EE7108D-C1F2-4AF0-9D52-E28460B37159",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "3958ce067ddd51434ccc3d41f76770382d37c6e9",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "c3ed7e4ccdd333ff9aec7f951cdf2ee06987b3ba",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 136736,
+             "id": "Q136736"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P577": [
+          {
+           "snaktype": "value",
+           "property": "P577",
+           "hash": "e3bed2d7f7e50596bfbc48ec5fa170a6ceca3895",
+           "datavalue": {
+            "value": {
+             "time": "+2020-03-01T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ],
+         "P590": [
+          {
+           "snaktype": "value",
+           "property": "P590",
+           "hash": "d4cf015777eb7a2d284601feb29068e8cb7e7be7",
+           "datavalue": {
+            "value": "1621090",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P577",
+         "P590"
+        ]
+       }
+      ]
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q88279251$10096E6F-6B9C-4F5C-B36E-06F9A4D5EC56",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "3958ce067ddd51434ccc3d41f76770382d37c6e9",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "c3ed7e4ccdd333ff9aec7f951cdf2ee06987b3ba",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 136736,
+             "id": "Q136736"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P577": [
+          {
+           "snaktype": "value",
+           "property": "P577",
+           "hash": "e3bed2d7f7e50596bfbc48ec5fa170a6ceca3895",
+           "datavalue": {
+            "value": {
+             "time": "+2020-03-01T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ],
+         "P590": [
+          {
+           "snaktype": "value",
+           "property": "P590",
+           "hash": "d4cf015777eb7a2d284601feb29068e8cb7e7be7",
+           "datavalue": {
+            "value": "1621090",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P577",
+         "P590"
+        ]
+       }
+      ]
+     }
+    ],
+    "P590": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P590",
+       "hash": "d4cf015777eb7a2d284601feb29068e8cb7e7be7",
+       "datavalue": {
+        "value": "1621090",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      },
+      "type": "statement",
+      "id": "Q88279251$ACC2095B-004C-4FFE-B62E-0168E5E46D07",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "3958ce067ddd51434ccc3d41f76770382d37c6e9",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "c3ed7e4ccdd333ff9aec7f951cdf2ee06987b3ba",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 136736,
+             "id": "Q136736"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P577": [
+          {
+           "snaktype": "value",
+           "property": "P577",
+           "hash": "e3bed2d7f7e50596bfbc48ec5fa170a6ceca3895",
+           "datavalue": {
+            "value": {
+             "time": "+2020-03-01T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ],
+         "P590": [
+          {
+           "snaktype": "value",
+           "property": "P590",
+           "hash": "d4cf015777eb7a2d284601feb29068e8cb7e7be7",
+           "datavalue": {
+            "value": "1621090",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P577",
+         "P590"
+        ]
+       }
+      ]
+     }
+    ],
+    "P1566": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P1566",
+       "hash": "3f1085a53a90c71da5fd66c669cd1439c3454b1a",
+       "datavalue": {
+        "value": "5004284",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      },
+      "type": "statement",
+      "id": "Q88279251$D392F6E5-5F67-4266-8131-817BB17C00BF",
+      "rank": "normal"
+     }
+    ],
+    "P10689": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P10689",
+       "hash": "343dce29ac890dc3cbf4986c91171735383bc732",
+       "datavalue": {
+        "value": "788176705",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      },
+      "type": "statement",
+      "id": "Q88279251$e4128194-99a2-400b-bc73-6ff2a1527993",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q95582745": {
+   "type": "item",
+   "id": "Q95582745",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Oatly Oat Drink Barista Edition"
+    }
+   },
+   "descriptions": {},
+   "aliases": {
+    "en": [
+     {
+      "language": "en",
+      "value": "barista edition"
+     },
+     {
+      "language": "en",
+      "value": "barista oatmilk"
+     }
+    ]
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "66d37b5b0914f8042b3b2429afe90a76f83e4c68",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 20972637,
+         "id": "Q20972637"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q95582745$ef593c3e-4601-e445-4e3b-4f3b1bbc6921",
+      "rank": "normal"
+     }
+    ],
+    "P176": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P176",
+       "hash": "9e9426dd1d5668573138bfe58c406266c1261e74",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 10605824,
+         "id": "Q10605824"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q95582745$bf9bd6cc-4ab1-c3be-ced0-c1fdacca7b97",
+      "rank": "normal"
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "d9a08bd49cdd694da4790bfa804c4b8c5839cd00",
+       "datavalue": {
+        "value": "https://www.oatly.com/int/products/oat-drink-barista-edition",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "id": "Q95582745$0f577ee4-40be-a74c-8efb-cbbf3a8783af",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q99489030": {
+   "type": "item",
+   "id": "Q99489030",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Oatly"
+    }
+   },
+   "descriptions": {},
+   "aliases": {},
+   "claims": {
+    "P356": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P356",
+       "hash": "a206d2c969bc1708b5410aba8969eb494d53aaa6",
+       "datavalue": {
+        "value": "10.1108/NFS.2007.01737CAB.006",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      },
+      "type": "statement",
+      "id": "Q99489030$99A18A7F-1E2C-4CE4-92E9-070BAFA535A2",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "29465f78f13add11b617f0de4ade56cd1122c19c",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 13442814,
+         "id": "Q13442814"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q99489030$B84CAA79-4BE9-4402-AF70-AD40583B5B5E",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "174056e2ad188b7bb39eb3f06e9ea303634f8543",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 11796892,
+         "id": "Q11796892"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q99489030$c3fbd3ea-4dcd-9827-d53e-31fcbd7cb145",
+      "rank": "normal"
+     }
+    ],
+    "P1476": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P1476",
+       "hash": "91ad9480cc0b9ce6903cbe885ec115d3f80a2096",
+       "datavalue": {
+        "value": {
+         "text": "Oatly",
+         "language": "en"
+        },
+        "type": "monolingualtext"
+       },
+       "datatype": "monolingualtext"
+      },
+      "type": "statement",
+      "id": "Q99489030$027A83F5-CCC3-428E-BC3C-592ED1EC5543",
+      "rank": "normal"
+     }
+    ],
+    "P433": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P433",
+       "hash": "8c15ee77a4f513ba375ac9564cbfafec51be2f12",
+       "datavalue": {
+        "value": "3",
+        "type": "string"
+       },
+       "datatype": "string"
+      },
+      "type": "statement",
+      "id": "Q99489030$1E9C3640-B44F-46A6-94CD-4E447ABDAC56",
+      "rank": "normal"
+     }
+    ],
+    "P478": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P478",
+       "hash": "d3477755aefa62d918907fd7dd4050b2687c3257",
+       "datavalue": {
+        "value": "37",
+        "type": "string"
+       },
+       "datatype": "string"
+      },
+      "type": "statement",
+      "id": "Q99489030$80B8D1B1-7859-4FA9-B73C-7C6B10689C28",
+      "rank": "normal"
+     }
+    ],
+    "P577": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P577",
+       "hash": "b981476049304aff49f5e1d02ca2664785813179",
+       "datavalue": {
+        "value": {
+         "time": "+2007-05-29T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 11,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      },
+      "type": "statement",
+      "id": "Q99489030$80D928D6-7428-424C-B96B-64644E97E914",
+      "rank": "normal"
+     }
+    ],
+    "P1433": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P1433",
+       "hash": "377b24b1af95811b44088b073e47f9e63a688039",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 15762210,
+         "id": "Q15762210"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q99489030$D6755F6E-3390-4907-B4B5-D502077179B2",
+      "rank": "normal"
+     }
+    ],
+    "P407": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P407",
+       "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 1860,
+         "id": "Q1860"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q99489030$3900e5f6-4ed5-20dd-873b-92602f1981ad",
+      "rank": "normal"
+     }
+    ],
+    "P921": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P921",
+       "hash": "5ce593aeb4c7df74d9d36b98119012f5bc8bfd3b",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 10605824,
+         "id": "Q10605824"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q99489030$bd094c1f-41a8-6b34-6bf4-7dc1484cec1f",
+      "rank": "normal"
+     }
+    ]
+   }
+  }
+ },
+ "success": 1
+}

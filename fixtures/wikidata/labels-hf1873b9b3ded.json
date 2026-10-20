@@ -1,0 +1,85 @@
+{
+ "entities": {
+  "Q107598157": {
+   "type": "item",
+   "id": "Q107598157",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "plastics and rubber industry"
+    }
+   }
+  },
+  "Q17018236": {
+   "type": "item",
+   "id": "Q17018236",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "bicycle industry"
+    }
+   }
+  },
+  "Q1757562": {
+   "type": "item",
+   "id": "Q1757562",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "air transport"
+    }
+   }
+  },
+  "Q183": {
+   "type": "item",
+   "id": "Q183",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Germany"
+    }
+   }
+  },
+  "Q190117": {
+   "type": "item",
+   "id": "Q190117",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "automotive industry"
+    }
+   }
+  },
+  "Q29585181": {
+   "type": "item",
+   "id": "Q29585181",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "manufacture of rubber tyres and tubes; retreading and rebuilding of rubber tyres"
+    }
+   }
+  },
+  "Q30": {
+   "type": "item",
+   "id": "Q30",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "United States"
+    }
+   }
+  },
+  "Q871700": {
+   "type": "item",
+   "id": "Q871700",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "United Airlines Holdings"
+    }
+   }
+  }
+ },
+ "success": 1
+}

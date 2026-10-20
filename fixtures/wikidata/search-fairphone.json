@@ -1,0 +1,184 @@
+{
+ "searchinfo": {
+  "search": "fairphone"
+ },
+ "search": [
+  {
+   "id": "Q5019402",
+   "title": "Q5019402",
+   "pageid": 4796228,
+   "concepturi": "http://www.wikidata.org/entity/Q5019402",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q5019402",
+   "display": {
+    "label": {
+     "value": "Fairphone",
+     "language": "mul"
+    },
+    "description": {
+     "value": "Dutch smartphone manufacturer",
+     "language": "en"
+    }
+   },
+   "label": "Fairphone",
+   "description": "Dutch smartphone manufacturer",
+   "match": {
+    "type": "label",
+    "language": "mul",
+    "text": "Fairphone"
+   }
+  },
+  {
+   "id": "Q21000819",
+   "title": "Q21000819",
+   "pageid": 23052350,
+   "concepturi": "http://www.wikidata.org/entity/Q21000819",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q21000819",
+   "display": {
+    "label": {
+     "value": "Fairphone 2",
+     "language": "en"
+    },
+    "description": {
+     "value": "second phone model of the company Fairphone",
+     "language": "en"
+    }
+   },
+   "label": "Fairphone 2",
+   "description": "second phone model of the company Fairphone",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Fairphone 2"
+   }
+  },
+  {
+   "id": "Q21041244",
+   "title": "Q21041244",
+   "pageid": 23087997,
+   "concepturi": "http://www.wikidata.org/entity/Q21041244",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q21041244",
+   "display": {
+    "label": {
+     "value": "Fairphone 1",
+     "language": "en"
+    },
+    "description": {
+     "value": "smartphone by Fairphone",
+     "language": "en"
+    }
+   },
+   "label": "Fairphone 1",
+   "description": "smartphone by Fairphone",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Fairphone 1"
+   }
+  },
+  {
+   "id": "Q82774066",
+   "title": "Q82774066",
+   "pageid": 82111519,
+   "concepturi": "http://www.wikidata.org/entity/Q82774066",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q82774066",
+   "display": {
+    "label": {
+     "value": "Fairphone smartphones",
+     "language": "en"
+    },
+    "description": {
+     "value": "Line of smartphones by Fairphone",
+     "language": "en"
+    }
+   },
+   "label": "Fairphone smartphones",
+   "description": "Line of smartphones by Fairphone",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Fairphone smartphones"
+   }
+  },
+  {
+   "id": "Q67174340",
+   "title": "Q67174340",
+   "pageid": 66765122,
+   "concepturi": "http://www.wikidata.org/entity/Q67174340",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q67174340",
+   "display": {
+    "label": {
+     "value": "Fairphone 3",
+     "language": "mul"
+    },
+    "description": {
+     "value": "third phone model of the company Fairphone",
+     "language": "en"
+    }
+   },
+   "label": "Fairphone 3",
+   "description": "third phone model of the company Fairphone",
+   "match": {
+    "type": "label",
+    "language": "mul",
+    "text": "Fairphone 3"
+   }
+  },
+  {
+   "id": "Q109851604",
+   "title": "Q109851604",
+   "pageid": 104953120,
+   "concepturi": "http://www.wikidata.org/entity/Q109851604",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q109851604",
+   "display": {
+    "label": {
+     "value": "Fairphone 4",
+     "language": "mul"
+    },
+    "description": {
+     "value": "fourth iteration of the Fairphone brand cell phone",
+     "language": "en"
+    }
+   },
+   "label": "Fairphone 4",
+   "description": "fourth iteration of the Fairphone brand cell phone",
+   "match": {
+    "type": "label",
+    "language": "mul",
+    "text": "Fairphone 4"
+   }
+  },
+  {
+   "id": "Q122070914",
+   "title": "Q122070914",
+   "pageid": 116401475,
+   "concepturi": "http://www.wikidata.org/entity/Q122070914",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q122070914",
+   "display": {
+    "label": {
+     "value": "Fairphone 5",
+     "language": "mul"
+    },
+    "description": {
+     "value": "fifth iteration of the Fairphone brand cell phone",
+     "language": "en"
+    }
+   },
+   "label": "Fairphone 5",
+   "description": "fifth iteration of the Fairphone brand cell phone",
+   "match": {
+    "type": "label",
+    "language": "mul",
+    "text": "Fairphone 5"
+   }
+  }
+ ],
+ "search-continue": 7,
+ "success": 1
+}
