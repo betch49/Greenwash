@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { skippedReason, ui } from "@/lib/copy/wording";
 import type { RunView } from "@/lib/pipeline/view";
 import { startRun, startRunForm } from "./actions";
+import { Timeline } from "./timeline";
 
 const POLL_MS = 800;
 const finished = (s: string) => s === "done" || s === "failed";
@@ -87,6 +88,7 @@ export function Progress({ initial }: { initial: RunView }) {
           )}
         </section>
       )}
+      {finished(view.status) && <Timeline entries={view.timeline ?? []} />}
     </>
   );
 }

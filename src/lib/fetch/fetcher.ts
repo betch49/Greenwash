@@ -139,14 +139,15 @@ export class CachedFetcher implements Fetcher {
   constructor(
     private readonly inner: Fetcher,
     private readonly cache: FetchCacheRepo,
-    /** Time to live in ms; Infinity = never refetch. */
-    private readonly ttlMs: number = Infinity,
+    /** Time to live in ms (Infinity = never refetch), or a per-URL policy. */
+    private readonly ttlMs: number | ((url: string) => number) = Infinity,
     private readonly now: () => Date = () => new Date(),
   ) {}
 
   async get(url: string, opts?: FetchOptions): Promise<FetchResult> {
     const hit = this.cache.get(url);
-    if (hit && this.now().getTime() - Date.parse(hit.fetchedAt) <= this.ttlMs) {
+    const ttl = typeof this.ttlMs === "function" ? this.ttlMs(url) : this.ttlMs;
+    if (hit && this.now().getTime() - Date.parse(hit.fetchedAt) <= ttl) {
       return {
         url,
         status: hit.status,

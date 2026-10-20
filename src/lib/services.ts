@@ -7,6 +7,8 @@ import { loadBrandFixtures } from "./fetch/brand-fixtures";
 import { FixtureFetcher, combineMaps } from "./fetch/fixture-fetcher";
 import { RateLimiter } from "./fetch/rate-limiter";
 import { wikidataFixturePath } from "./wikidata/fixtures";
+import { WAYBACK_HOST, waybackIntervalMs } from "./wayback/cdx";
+import { waybackAwareTtl } from "./wayback/snapshot";
 
 export interface Services {
   offline: boolean;
@@ -26,11 +28,22 @@ export function buildFetcher(db: Db, offline: boolean): Fetcher {
     const brands = loadBrandFixtures(root);
     return new FixtureFetcher(root, combineMaps(wikidataFixturePath, brands.map), (url) => brands.capturedAt(url) ?? new Date().toISOString());
   }
-  const perHostMs = Number(process.env.GR_RATE_LIMIT_MS || 1000);
-  const waybackMs = Math.max(1000, Number(process.env.WAYBACK_RATE_LIMIT_MS || 1000));
-  const limiter = new RateLimiter(perHostMs, { hostMinimums: { "web.archive.org": waybackMs } });
   const ttlMs = Number(process.env.GR_CACHE_TTL_HOURS || 168) * HOUR_MS;
-  return new CachedFetcher(new RateLimitedFetcher(new UndiciFetcher(), limiter), new FetchCacheRepo(db), ttlMs);
+  // Archived snapshots never change: cached forever. CDX listings and live pages: the default TTL.
+  return new CachedFetcher(new RateLimitedFetcher(new UndiciFetcher(), buildRateLimiter()), new FetchCacheRepo(db), waybackAwareTtl(ttlMs));
+}
+
+/**
+ * Per-host limiter for network fetches: GR_RATE_LIMIT_MS (default 1000) per host,
+ * and web.archive.org never faster than one request per second whatever
+ * WAYBACK_RATE_LIMIT_MS says (brief Section 1).
+ */
+export function buildRateLimiter(
+  env: Record<string, string | undefined> = process.env,
+  opts: { now?: () => number; sleep?: (ms: number) => Promise<void> } = {},
+): RateLimiter {
+  const perHostMs = Number(env.GR_RATE_LIMIT_MS || 1000);
+  return new RateLimiter(perHostMs, { ...opts, hostMinimums: { [WAYBACK_HOST]: waybackIntervalMs(env) } });
 }
 
 const g = globalThis as unknown as { __grServices?: Services };

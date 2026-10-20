@@ -60,6 +60,30 @@ describe("ADR-011: synthetic fixtures never impersonate a real brand", () => {
     for (const url of Object.keys(manifest(slug).files)) expect(new URL(url).hostname, url).toMatch(RESERVED_TLD);
   });
 
+  it.each(slugs)("%s: Wayback histories (Phase 4): hand-built only for a fictional brand; every CDX row has its snapshot file", (slug) => {
+    const m = meta(slug);
+    const history = manifest(slug).wayback ?? {};
+    for (const [pageUrl, pageSlug] of Object.entries(history)) {
+      if (m.capture === "synthetic") expect(new URL(pageUrl).hostname, pageUrl).toMatch(RESERVED_TLD);
+      const cdxFile = join(ROOT, slug, "cdx", `${pageSlug}.json`);
+      expect(existsSync(cdxFile), cdxFile).toBe(true);
+      const rows = JSON.parse(readFileSync(cdxFile, "utf8")) as string[][];
+      for (const row of rows.slice(1)) {
+        const [ts, original] = [row[rows[0].indexOf("timestamp")], row[rows[0].indexOf("original")]];
+        if (m.capture === "synthetic") expect(new URL(original).hostname, original).toMatch(RESERVED_TLD);
+        const file = join(ROOT, slug, "snapshots", pageSlug, `${ts.slice(0, 8)}.html`);
+        expect(existsSync(file), file).toBe(true);
+        const head = readFileSync(file, "utf8");
+        // A real brand's timeline may only come from recorded id_ responses, never from hand-built pages (ADR-011).
+        if (m.capture === "real") expect(head.startsWith("<!-- real capture: "), file).toBe(true);
+        else expect(head.startsWith("<!-- synthetic fixture"), file).toBe(true);
+      }
+    }
+    // No stray snapshot directories outside the manifest.
+    const snapDir = join(ROOT, slug, "snapshots");
+    if (existsSync(snapDir)) for (const d of readdirSync(snapDir)) expect(Object.values(history), `${slug}/snapshots/${d}`).toContain(d);
+  });
+
   it.each(slugs)("%s: every HTML file of a real fixture starts with the 'real capture:' comment", (slug) => {
     const m = meta(slug);
     if (m.capture !== "real") return;

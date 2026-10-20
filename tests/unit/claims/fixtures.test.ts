@@ -35,12 +35,14 @@ describe("pipeline wiring", () => {
     const runs = new RunsRepo(env.db);
     const pages = new RunPagesRepo(env.db);
     const run = runs.create({ query: "fairphone", brand: "Fairphone", website: "https://www.fairphone.com/" });
-    const out = await runPipeline(run, { runs, pages, fetcher: new OfflineFetcher() });
+    const out = await runPipeline(run, { runs, pages, fetcher: new OfflineFetcher(), now: () => new Date("2026-10-20T12:00:00Z") });
     expect(out.status).toBe("done");
     const steps = out.progress.filter((p) => !p.step.startsWith("Fetching http")).map((p) => [p.step, p.status]);
     expect(steps).toEqual([
       ["Discovering pages", "done"],
       ["Fetching current pages", "done"],
+      // No Wayback history is recorded for the real brands (web.archive.org was unreachable from the build container).
+      ["Pulling 2019–2026 snapshots", "skipped"],
       ["Checking claim language", "done"],
       ["Checking published evidence", "done"],
     ]);

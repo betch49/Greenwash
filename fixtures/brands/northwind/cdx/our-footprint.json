@@ -1,0 +1,7 @@
+[
+["urlkey", "timestamp", "original", "mimetype", "statuscode", "digest", "length"],
+["example,northwind-outdoor)/our-footprint", "20200611093012", "https://www.northwind-outdoor.example/our-footprint/", "text/html", "200", "SYNTHETIC20200611093012", "4096"],
+["example,northwind-outdoor)/our-footprint", "20210315141503", "https://www.northwind-outdoor.example/our-footprint/", "text/html", "200", "SYNTHETIC20210315141503", "4096"],
+["example,northwind-outdoor)/our-footprint", "20240902080044", "https://www.northwind-outdoor.example/our-footprint/", "text/html", "200", "SYNTHETIC20240902080044", "4096"],
+["example,northwind-outdoor)/our-footprint", "20250410172230", "https://www.northwind-outdoor.example/our-footprint/", "text/html", "200", "SYNTHETIC20250410172230", "4096"]
+]

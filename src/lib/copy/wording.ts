@@ -34,6 +34,13 @@ export const ui = {
   words: (n: number) => `${n} words`,
   statusDone: "done",
   statusRunning: "running…",
+  timelineHeading: "Timeline of archived claims",
+  timelineIntro: "Claim sentences found in archived copies of the brand’s pages (Wayback Machine), one copy per year.",
+  timelineNone: "No archived copies were compared.",
+  timelineSnapshot: (year: number, date: string) => `${year} (archived ${date})`,
+  timelineClaimsPresent: (n: number) => `${n} claim sentence${n === 1 ? "" : "s"} present`,
+  timelineRemoved: (from: number, to: number) => `claim removed between ${from} and ${to}`,
+  timelineArchivedCopy: "archived copy",
 };
 
 /** Pipeline step names shown in the progress list. */
@@ -44,6 +51,8 @@ export const steps = {
   fetchPage: (url: string) => `Fetching ${url}`,
   claims: "Checking claim language",
   evidence: "Checking published evidence",
+  wayback: (from: number, to: number) => `Pulling ${from}–${to} snapshots`,
+  fetchSnapshot: (url: string) => `Fetching snapshot ${url}`,
 };
 
 /** Reasons recorded when a step or a page is skipped (shown as "skipped: <reason>"). */
@@ -59,6 +68,8 @@ export const reasons = {
   interrupted: "analysis interrupted (server restarted); search again to retry",
   stepError: (message: string) => `internal error (${message})`,
   noPagesToScan: "no fetched page to scan",
+  waybackUnreachable: (cause: string) => `Wayback unreachable (${cause})`,
+  noPagesForWayback: "no sustainability-type page to look up in the Wayback Machine",
 };
 
 /** Entries for the report's "What we could not check" section. */
@@ -67,6 +78,10 @@ export const couldNotCheck = {
   robotsUnavailable: (origin: string) => `${origin} (its robots.txt could not be read, so we did not fetch from it).`,
   robotsDisallowed: (url: string) => `${url} (robots.txt does not allow us to fetch it).`,
   labelClaimed: (name: string, url: string) => `${name}: label claimed on page; not verified in v1 (${url}).`,
+  waybackUnreachable: (reason: string) => `Archived versions of the brand’s pages: ${reason}.`,
+  waybackNoHistory: (url: string, status: number) => `Archived versions of ${url} (the Wayback Machine answered HTTP ${status}).`,
+  waybackNoSnapshots: (url: string, from: number, to: number) => `${url}: no archived snapshot from ${from}–${to} in the Wayback Machine.`,
+  waybackOneSnapshot: (url: string, year: number) => `${url}: only one archived snapshot (${year}), so no change over time could be checked.`,
 };
 
 /** How each claim-language rule family is named in signal labels (rule ids: src/lib/claims/rules). */
@@ -89,6 +104,8 @@ export const signalLabels = {
   noReport: "Risk signal: no impact or sustainability report link found on the fetched pages",
   absoluteEmissions: "Absolute emissions figure (tonnes of CO2e) published on the page",
   supplierList: "Supplier or factory list linked",
+  claimRemoved: (from: number, to: number) =>
+    `Claim removed between ${from} and ${to}: present in the ${from} archived copy of the page, absent from the ${to} copy`,
 };
 
 /** Excerpts that the engine writes itself (the receipt still points at the page). */

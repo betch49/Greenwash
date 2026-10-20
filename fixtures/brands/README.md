@@ -12,7 +12,8 @@ for the heuristic paths they do not have.
 | `mammut` | outdoor apparel | Q495318 Mammut (query `mammut sports group`) | https://www.mammut.com/us/en/ | **real**, 2026-10-20T22:56Z | 12 |
 | `fairphone` | electronics | Q5019402 Fairphone | https://www.fairphone.com/ | **real**, 2026-10-20T22:36Z | 14 (12 kept, 2 dropped as duplicates) |
 | `oatly` | food | Q10605824 Oatly AB | https://www.oatly.com/ | **real**, 2026-10-20T22:36Z | 10 (9 kept; the home page has too little server-rendered text) |
-| `northwind` | fictional, test-only | none | https://www.northwind-outdoor.example | **synthetic**, hand-built 2026-10-20 | 7 |
+| `northwind` | fictional, test-only | none | https://www.northwind-outdoor.example | **synthetic**, hand-built 2026-10-20 | 7 (+ 4 Wayback snapshots) |
+| `quillmoor` | fictional, test-only (food) | none | https://www.quillmoor-foods.example | **synthetic**, hand-built 2026-10-20 | 2 (+ 3 Wayback snapshots) |
 
 ## Layout of each brand directory
 
@@ -21,6 +22,11 @@ for the heuristic paths they do not have.
 - `manifest.json`: `{ capturedAt, files: { "<url>": "<file>" } }`. `capturedAt` is served as `fetched_at`, so
   offline receipts carry the capture date and not the time of the test.
 - `robots/<host>.txt`, `sitemaps/<host>-<path>.xml`, `pages/<host>-<path>.html`.
+- Wayback history (Phase 4, optional): `manifest.json` `wayback: { "<page url>": "<page-slug>" }`; the CDX query for that page
+  is served from `cdx/<page-slug>.json` (header row + one row per capture, exactly the CDX `output=json` format) and the
+  `id_` snapshot with timestamp `YYYYMMDDhhmmss` from `snapshots/<page-slug>/<YYYYMMDD>.html`. Hand-built histories exist
+  only for the fictional brands (ADR-011); a real brand's history may only be a recorded CDX/`id_` response, and none
+  could be recorded because web.archive.org resets connections from the build container (`docs/LIMITATIONS.md`).
 
 ## Real captures (Mammut, Fairphone, Oatly)
 
@@ -70,6 +76,17 @@ Wikidata id, and every HTML file of a `real` fixture starts with `<!-- real capt
   and neither may appear in the visible text (2.3).
 - The text holds a mix of substantiated and unsubstantiated claim sentences, a report link, a supplier
   list link, labels, repair and warranty pages, for Phases 3 and 5.
+
+## Wayback snapshot fixtures (fictional brands only)
+
+- **Northwind, `/our-footprint/`**: CDX rows for 2020-06-11, 2021-03-15, 2024-09-02 and 2025-04-10. The 2020 and 2021
+  copies contain "Every Northwind jacket is climate neutral, so you can wear it with a clear conscience."; the 2024 and
+  2025 copies do not. The rest of the page is largely unchanged (figures updated each year, a nav item and the promo
+  bar changed). Expected: exactly one `claim.removed` (2021 → 2024), test 4.4 and e2e 4.7. The other Northwind pages
+  the step looks up (the robots-disallowed archive page, supply chain, climate goals) have empty CDX answers (`[]`).
+- **Quillmoor Foods, `/sustainability`**: CDX rows for 2020-08-07, 2022-05-19 (table layout) and 2025-01-28 (redesign:
+  cards and headings, the carbon-neutral sentence becomes a heading, "We're committed" becomes "We are committed",
+  paragraphs reordered). Expected: zero `claim.removed`, test 4.5. The live `/sustainability` page matches the 2025 design.
 
 ## Nav sentinels used by tests/unit/discover/visible-text.test.ts
 

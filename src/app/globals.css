@@ -191,13 +191,15 @@ h2 {
 }
 
 ol.progress,
-ul.pages {
+ul.pages,
+ol.timeline {
   padding-left: 1.25rem;
   overflow-wrap: anywhere;
 }
 
 ol.progress li,
-ul.pages li {
+ul.pages li,
+ol.timeline li {
   margin: 0.25rem 0;
 }
 
@@ -208,4 +210,15 @@ ul.pages li {
 .progress-done .progress-status {
   color: var(--accent);
   font-weight: 600;
+}
+
+h3 {
+  font-size: 1rem;
+  margin: 1rem 0 0.25rem;
+  overflow-wrap: anywhere;
+}
+
+ul.timeline-removed {
+  padding-left: 1.25rem;
+  margin: 0.25rem 0 0.5rem;
 }

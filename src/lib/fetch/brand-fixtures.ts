@@ -24,6 +24,33 @@ export function fixtureKey(url: string): string | null {
 export interface BrandManifest {
   capturedAt: string;
   files: Record<string, string>;
+  /**
+   * Wayback history (Phase 4): brand page URL ⇒ page slug. The CDX query for the
+   * page is served from `cdx/<page-slug>.json` and the `id_` snapshot with
+   * timestamp YYYYMMDDhhmmss from `snapshots/<page-slug>/<YYYYMMDD>.html`.
+   * Hand-built histories are allowed only for fictional brands (ADR-011).
+   */
+  wayback?: Record<string, string>;
+}
+
+const WAYBACK_HOST = "web.archive.org";
+const SNAPSHOT_PATH = /^\/web\/(\d{14})id_\/(.+)$/;
+
+/** The brand page a Wayback URL asks about, and the snapshot timestamp if it is an `id_` URL. */
+export function waybackTarget(url: string): { page: string; timestamp?: string } | null {
+  let u: URL;
+  try {
+    u = new URL(url);
+  } catch {
+    return null;
+  }
+  if (u.host !== WAYBACK_HOST) return null;
+  if (u.pathname === "/cdx/search/cdx") {
+    const page = u.searchParams.get("url");
+    return page ? { page } : null;
+  }
+  const m = SNAPSHOT_PATH.exec(u.pathname + u.search);
+  return m ? { page: m[2], timestamp: m[1] } : null;
 }
 
 export interface BrandFixtures {
@@ -35,6 +62,8 @@ export interface BrandFixtures {
 /** Loads every brand manifest under `<root>/brands/`. Unlisted URLs ⇒ null (served as 404). */
 export function loadBrandFixtures(root: string): BrandFixtures {
   const map = new Map<string, { rel: string; capturedAt: string }>();
+  /** Brand page key ⇒ { brand dir, page slug, capture date } for Wayback fixtures. */
+  const history = new Map<string, { dir: string; pageSlug: string; capturedAt: string }>();
   const dir = join(root, "brands");
   if (existsSync(dir)) {
     for (const slug of readdirSync(dir).sort()) {
@@ -45,9 +74,21 @@ export function loadBrandFixtures(root: string): BrandFixtures {
         const key = fixtureKey(url);
         if (key && !map.has(key)) map.set(key, { rel: `brands/${slug}/${rel}`, capturedAt: manifest.capturedAt });
       }
+      for (const [url, pageSlug] of Object.entries(manifest.wayback ?? {})) {
+        const key = fixtureKey(url);
+        if (key && !history.has(key)) history.set(key, { dir: `brands/${slug}`, pageSlug, capturedAt: manifest.capturedAt });
+      }
     }
   }
-  const lookup = (url: string) => {
+  const lookup = (url: string): { rel: string; capturedAt: string } | undefined => {
+    const wb = waybackTarget(url);
+    if (wb) {
+      const key = fixtureKey(wb.page);
+      const h = key ? history.get(key) : undefined;
+      if (!h) return undefined;
+      const rel = wb.timestamp ? `${h.dir}/snapshots/${h.pageSlug}/${wb.timestamp.slice(0, 8)}.html` : `${h.dir}/cdx/${h.pageSlug}.json`;
+      return { rel, capturedAt: h.capturedAt };
+    }
     const key = fixtureKey(url);
     return key ? map.get(key) : undefined;
   };

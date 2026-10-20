@@ -9,6 +9,7 @@ import type { Step } from "@/lib/pipeline/types";
 import { OfflineFetcher } from "../helpers/brands";
 import { tempDb } from "../helpers/db";
 
+const NOW = () => new Date("2026-10-20T12:00:00Z");
 const DISALLOWED = "https://www.northwind-outdoor.example/stories/archive/our-footprint-2019/";
 
 describe("pipeline skips (2.4)", () => {
@@ -67,10 +68,11 @@ describe("pipeline skips (2.4)", () => {
 
   it("a site with no fetchable page ends 'Fetching current pages' as skipped with a reason", async () => {
     const run = runs.create({ query: "acme", brand: "acme", website: "https://example.com" });
-    const out = await runPipeline(run, { runs, pages, fetcher: new OfflineFetcher() });
+    const out = await runPipeline(run, { runs, pages, fetcher: new OfflineFetcher(), now: NOW });
     expect(out.progress).toEqual([
       { step: "Discovering pages", status: "done" },
       { step: "Fetching current pages", status: "skipped", reason: "no page could be fetched from example.com" },
+      { step: "Pulling 2019–2026 snapshots", status: "skipped", reason: "no sustainability-type page to look up in the Wayback Machine" },
       { step: "Checking claim language", status: "skipped", reason: "no fetched page to scan" },
       { step: "Checking published evidence", status: "skipped", reason: "no fetched page to scan" },
     ]);
@@ -124,11 +126,12 @@ describe("pipeline skips (2.4)", () => {
         return url.endsWith("/robots.txt") ? { ...res, status: 503, body: "Service Unavailable" } : res;
       },
     };
-    const out = await runPipeline(run, { runs, pages, fetcher: down });
+    const out = await runPipeline(run, { runs, pages, fetcher: down, now: NOW });
     const reason = "robots.txt unavailable for https://www.northwind-outdoor.example (HTTP 503)";
     expect(out.progress).toEqual([
       { step: "Discovering pages", status: "skipped", reason },
       { step: "Fetching current pages", status: "skipped", reason: "no candidate pages were found" },
+      { step: "Pulling 2019–2026 snapshots", status: "skipped", reason: "no sustainability-type page to look up in the Wayback Machine" },
       { step: "Checking claim language", status: "skipped", reason: "no fetched page to scan" },
       { step: "Checking published evidence", status: "skipped", reason: "no fetched page to scan" },
     ]);

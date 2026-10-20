@@ -12,5 +12,11 @@
     "https://www.northwind-outdoor.example/about-us/": "pages/www-northwind-outdoor-example-about-us.html",
     "https://www.northwind-outdoor.example/gear-care/repairs/": "pages/www-northwind-outdoor-example-gear-care-repairs.html",
     "https://www.northwind-outdoor.example/warranty": "pages/www-northwind-outdoor-example-warranty.html"
+  },
+  "wayback": {
+    "https://www.northwind-outdoor.example/our-footprint/": "our-footprint",
+    "https://www.northwind-outdoor.example/stories/archive/our-footprint-2019/": "stories-archive-our-footprint-2019",
+    "https://www.northwind-outdoor.example/environmental-responsibility/climate-goals/": "environmental-responsibility-climate-goals",
+    "https://www.northwind-outdoor.example/our-responsibility/supply-chain/": "our-responsibility-supply-chain"
   }
 }

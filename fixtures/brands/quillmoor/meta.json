@@ -1,0 +1,16 @@
+{
+  "slug": "quillmoor",
+  "query": "quillmoor foods",
+  "sector": "food (fictional, test-only)",
+  "website": "https://www.quillmoor-foods.example",
+  "capture": "synthetic",
+  "capturedAt": "2026-10-20T23:30:00.000Z",
+  "note": "Fictional brand on a reserved .example domain (RFC 2606), hand-built for the Phase 4 redesign case (same claims, new markup) only (ADR-011). It is not one of the three fixture brands, it has no Wikidata entity, and no real company published this text. Its Wayback snapshots are hand-built; web.archive.org never served them.",
+  "entity": {
+    "id": null,
+    "name": "Quillmoor Foods Ltd.",
+    "description": "fictional oat-drink maker (test fixture)",
+    "website": "https://www.quillmoor-foods.example",
+    "websiteHost": "quillmoor-foods.example"
+  }
+}

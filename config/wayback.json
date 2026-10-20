@@ -1,0 +1,8 @@
+{
+  "$comment": "Wayback Machine history (Phase 4, differentiator A). years: one snapshot per calendar year for this many years, ending with the current year (the CDX query asks from <current year - years>). maxPages: how many brand pages get a history lookup per run (robots-disallowed sustainability pages first, then fetched sustainability-type pages in fetch order); each page costs one CDX request plus up to `years` snapshot requests at 1 request per second. sameClaimSimilarity: a removed claim sentence whose normalised character-bigram similarity to any sentence of the later snapshot is at least this value is the same claim reworded or moved, not removed. contextSentences: sentences kept on each side of a removed claim for the Phase 7 diff classifier. The minimum spacing of 1000 ms between requests to web.archive.org is not configurable downwards (WAYBACK_RATE_LIMIT_MS can only raise it).",
+  "years": 8,
+  "maxPages": 3,
+  "sameClaimSimilarity": 0.8,
+  "contextSentences": 2,
+  "minIntervalMs": 1000
+}

@@ -125,13 +125,35 @@ A number followed by an absolute emissions unit: tCO2e, t CO2, tonnes (of) CO2e,
 
 A link whose text names a supplier list, factory list, list of suppliers or factories, "our factories", a supply chain map or a supplier map. The first such link gives `evidence.supplier_list_found`; excerpt = the link text and target.
 
-## 6. Weights
+## 6. Archived claims: claim removed (axis: track record)
+
+Differentiator A. Deterministic; no LLM is involved in Phase 4 (`llm_used: false`). Code: `src/lib/wayback/`; parameters: `config/wayback.json`.
+
+1. **Pages.** Up to `maxPages` (3) pages per run: sustainability-type pages that robots.txt did not let us fetch live come first (brief Section 8: rely on the archive for those), then the fetched sustainability-type pages in fetch order.
+2. **Snapshots.** For each page the Wayback CDX API is asked `https://web.archive.org/cdx/search/cdx?url=<page>&output=json&filter=statuscode:200&collapse=timestamp:4&from=<current year − 8>`. One capture per calendar year is kept for the last 8 years. Because of `collapse=timestamp:4` the archive normally lists one capture per year (the year's first); if it lists several, the newest is kept. Each is fetched raw with `https://web.archive.org/web/<timestamp>id_/<url>` and reduced to visible text exactly like a live page (Section 1: navigation, header, footer and sidebars stripped). Requests to web.archive.org are at least 1,000 ms apart; snapshots are cached forever (an archived copy never changes).
+3. **Diff.** Consecutive snapshots of the same page are split into sentences (Section 1) and compared with a sentence-level array diff. Sentences that differ only in case, spacing, quote style or closing punctuation are the same sentence.
+4. **Removed claim.** A sentence of the earlier snapshot that is missing from the later one is a removed claim only when **both** hold:
+   - one of the claim-language rules of Section 2 matches it (same rules and next-sentence context as on live pages), and
+   - no sentence of the later snapshot is a near-equivalent: normalised character-bigram similarity (Sørensen–Dice) below `sameClaimSimilarity` (0.8). At or above 0.8 the claim was reworded, moved or put under a heading, which is a redesign, not a removal.
+5. **Signal.** Kind `claim.removed`, label "Claim removed between X and Y: present in the X archived copy of the page, absent from the Y copy". Receipt: `source_url` = the `id_` URL of the earlier snapshot, `snapshot_date` = its capture date, `fetched_at` = when we fetched it, `excerpt` = the removed sentence (≤ 300 characters). A claim removed, restored and removed again gives one signal (the first removal).
+6. **Timeline.** Every snapshot becomes one row: year, snapshot URL, the claim sentences present, and the claims removed since the previous snapshot of the same page.
+7. **What it is not.** A removed sentence is a risk signal, not a finding about why it was removed. Phase 7 may ask an LLM whether a candidate is a redesign or a move and then drop it; it can only remove candidates, never add one.
+
+Examples (fictional test fixtures):
+- Hit: 2021 copy "Every Northwind jacket is climate neutral, so you can wear it with a clear conscience." (an `offset` match); the 2024 copy has no sentence within 0.8 similarity ⇒ `claim.removed`, "claim removed between 2021 and 2024".
+- Miss (reworded): "We're committed to regenerative farming on every partner farm." ⇒ "We are committed to regenerative farming on every partner farm." (similarity ≥ 0.8).
+- Miss (new markup): "Our oat drinks are carbon neutral." inside a paragraph ⇒ the heading "Our oat drinks are carbon neutral" (same sentence once punctuation is ignored).
+
+If web.archive.org cannot be reached (network error, HTTP 429 or 5xx, or no CDX answer for any page), the step is shown as `skipped: Wayback unreachable (<status>)` and listed under "What we could not check"; it never ends silently.
+
+## 7. Weights
 
 Placeholder until Phase 6. Every Phase 3 signal carries `weight_hint: 1`; the points per kind, the axis weights (claims 25%, evidence 25%, track record 30%, ownership & repair 20%), caps and confidence rules will live in one file, `config/weights.json`, and this section will be generated from it and checked by `tests/unit/score/methodology-sync.test.ts`.
 
-## 7. Known limits of these rules
+## 8. Known limits of these rules
 
 - Phrase lists, not understanding: a sentence quoting someone else, or criticising a practice, can match. Every match is shown with its sentence so a reader can judge it.
 - Same-page substantiation only (Section 3); PDFs are not read.
 - English only.
 - Pages that need JavaScript to show their text are not seen (Phase 2 skips them with a reason).
+- Archived claims: one snapshot per year, so a claim that appeared and vanished within one year is not seen; a claim that moved to another page counts as removed from this page; only up to three pages per brand are looked up.

@@ -1,5 +1,6 @@
 import type { ProgressEntry, Run, RunsRepo } from "../db/runs-repo";
 import type { RunPagesRepo } from "../db/run-pages-repo";
+import type { RunTimelineRepo } from "../db/run-timeline-repo";
 import type { FetchedPage } from "../discover/fetch-pages";
 import { DISCOVERY_CONFIG, type DiscoveryConfig } from "../discover/heuristics";
 import type { Fetcher } from "../fetch/fetcher";
@@ -11,15 +12,24 @@ import { claimsStep } from "./steps/claims";
 import { discoverStep } from "./steps/discover";
 import { evidenceStep } from "./steps/evidence";
 import { fetchPagesStep } from "./steps/fetch-pages";
+import { waybackStep } from "./steps/wayback";
+import type { DiffCandidate, TimelineEntry } from "../wayback/retraction";
 import type { PipelineContext, Step } from "./types";
 
-export const DEFAULT_STEPS: Step[] = [discoverStep, fetchPagesStep, claimsStep, evidenceStep];
+/** Brief Section 5 order: discover → fetch current pages → Wayback snapshots + diff → claim engine → evidence. */
+export const DEFAULT_STEPS: Step[] = [discoverStep, fetchPagesStep, waybackStep, claimsStep, evidenceStep];
 
 export interface PipelineDeps {
   runs: RunsRepo;
   pages: RunPagesRepo;
-  /** The cached (+ rate-limited) fetcher, or the fixture fetcher offline. Wrapped in the robots guard here. */
+  /** Stores the archived-claim timeline (Phase 4); optional so step-level tests can omit it. */
+  timeline?: RunTimelineRepo;
+  /**
+   * The cached (+ rate-limited) fetcher, or the fixture fetcher offline. Wrapped in the robots guard
+   * for brand pages; used as is only for the Wayback API endpoints (ADR-010).
+   */
   fetcher: Fetcher;
+  now?: () => Date;
   config?: DiscoveryConfig;
   steps?: Step[];
 }
@@ -31,6 +41,8 @@ export interface PipelineOutcome {
   could_not_check: string[];
   pages: FetchedPage[];
   claim_stats?: ClaimStats;
+  timeline: TimelineEntry[];
+  diff_candidates: DiffCandidate[];
 }
 
 /** Every brand, regulator and repair page goes through this guard (ADR-010). */
@@ -52,12 +64,16 @@ export async function runPipeline(run: Pick<Run, "id" | "brand" | "website">, de
   const ctx: PipelineContext = {
     run,
     pageFetcher,
+    apiFetcher: deps.fetcher,
     robots,
+    now: deps.now ?? (() => new Date()),
     config: deps.config ?? DISCOVERY_CONFIG,
     candidates: [],
     pages: [],
     robotsDisallowed: [],
     claimHits: [],
+    timeline: [],
+    diffCandidates: [],
   };
   const progress: ProgressEntry[] = [];
   const signals: Signal[] = [];
@@ -87,8 +103,9 @@ export async function runPipeline(run: Pick<Run, "id" | "brand" | "website">, de
       save();
     }
     deps.pages.replace(run.id, ctx.pages);
+    deps.timeline?.replace(run.id, ctx.timeline);
     deps.runs.setStatus(run.id, "done");
-    return { status: "done", progress, signals, could_not_check, pages: ctx.pages, claim_stats: ctx.claimStats };
+    return { status: "done", progress, signals, could_not_check, pages: ctx.pages, claim_stats: ctx.claimStats, timeline: ctx.timeline, diff_candidates: ctx.diffCandidates };
   } catch (err) {
     progress.push({ step: steps.pipeline, status: "skipped", reason: messageOf(err) });
     try {
@@ -97,6 +114,6 @@ export async function runPipeline(run: Pick<Run, "id" | "brand" | "website">, de
     } catch {
       // The database itself failed; nothing more can be recorded.
     }
-    return { status: "failed", progress, signals, could_not_check, pages: ctx.pages, claim_stats: ctx.claimStats };
+    return { status: "failed", progress, signals, could_not_check, pages: ctx.pages, claim_stats: ctx.claimStats, timeline: ctx.timeline, diff_candidates: ctx.diffCandidates };
   }
 }
