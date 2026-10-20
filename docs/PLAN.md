@@ -206,6 +206,7 @@ Differentiators (ADR-002): **A** claim retraction (Wayback), **C** regulator rul
 5. `summary.ts`: input = `ReportV1` without the summary + allowed URL list; output `{ summary: string, cited_urls: string[] }`; every URL in the text or `cited_urls` must be in the allowed list (else the summary is rejected and the UI shows "Summary unavailable"); summary passes the forbidden-word filter; ≤ 120 words.
 6. Pipeline wiring: extraction after fetch, classification after retraction, summary after scoring. Each with `skipped: LLM unavailable` path. `ReportV1.summary?` and `llm_calls[]` log `{name, used_fixture: bool}`.
 7. Recorded fixtures for all three brands so the offline flow exercises all three calls.
+8. (ADR-017) Live page as the final element of the sequence: for every page fetched live that has ≥ 1 archived snapshot, `detectRetractions` runs over `[...snapshots, livePage]` where the live entry has `year = current year`, `snapshot_url = the page URL` and is marked `live: true` in the timeline. A claim present in the newest snapshot and absent from the live page (same 0.8 similarity rule) ⇒ `claim.removed` with label "claim removed between <year> and the current page", `source_url` = the newest snapshot's `id_` URL, `snapshot_date` = its capture date, plus a `DiffCandidate` for `classify-diff`. Robots-disallowed pages (no live text) are unchanged.
 
 **Acceptance criteria and proofs**
 
@@ -216,8 +217,9 @@ Differentiators (ADR-002): **A** claim retraction (Wayback), **C** regulator rul
 | 7.3 | `classify-diff`: mock returning `redesign` removes the Phase 4 candidate; `claim_removed` keeps it with `llm_used: true`; `unsure` halves `weight_hint`. | `tests/unit/llm/classify-diff.test.ts`. |
 | 7.4 | Summary citing a URL not in the fetched list is rejected; a summary with only fetched URLs passes; a summary containing a forbidden word is rejected. | `tests/unit/llm/summary.test.ts`. |
 | 7.5 | With `MockLLM` and no fixture file, every call returns an empty valid result and the pipeline completes. | `tests/unit/llm/mock.test.ts`. |
-| 7.6 | `ai_share` on all three fixture brands, with LLM fixtures active, is ≤ 0.5 and > 0 for at least the removed-claim brand. | `tests/unit/llm/ai-share-fixtures.test.ts`. |
+| 7.6 | `ai_share` on the three real fixture brands plus the fictional removed-claim brand (Northwind, ADR-011), with LLM fixtures active, is ≤ 0.5 for all and > 0 for Northwind (ADR-017). | `tests/unit/llm/ai-share-fixtures.test.ts`. |
 | 7.7 | Anthropic client construction: with no key ⇒ `MockLLM`; with key and `GR_OFFLINE_FIXTURES=1` ⇒ `MockLLM`; with key only ⇒ `AnthropicLLM` (constructor only, no network). | `tests/unit/llm/client-select.test.ts`. |
+| 7.8 | (ADR-017) A fixture page whose newest snapshot carries a claim that the live page no longer has ⇒ exactly one `claim.removed` labelled "claim removed between <year> and the current page", `source_url` = the newest snapshot's `id_` URL; the same claim still on the live page ⇒ none; a robots-disallowed page ⇒ no live comparison. | `tests/unit/wayback/live-diff.test.ts` (Northwind: add the claim back to its 2025 snapshot and keep it off the live `/our-footprint/`, or a dedicated case). |
 
 ---
 

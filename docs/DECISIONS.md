@@ -225,3 +225,31 @@ PLAN Phase 3 deliverable 2 is amended to this wording and criterion 3.2 gains th
 - Third-party statistics matching `future_only` ("By 2050, an estimated 120 million tons of e-waste will be generated"): **not accepted**. The brief's F asks for future-tense *commitments*. When the only trigger is "by 20XX", the sentence must also carry a commitment subject (we, our, us, the company, the brand name from the run) to match. Rework item 2 of Phase 3.
 
 **Consequences.** Logged for Phase 6 (points per kind) and Phase 9 (LIMITATIONS).
+
+---
+
+## ADR-016 — Archived copies of robots-disallowed pages are diffed for the timeline, not scored as current claims
+
+**Date:** 2026-10-20 (Phase 4 review)
+**Status:** accepted
+
+**Context.** Brief Section 8: "Scraping sites that forbid it in robots.txt: rely on Wayback for those and say so." Phase 4 pulls the Wayback history of robots-disallowed sustainability-type pages first (they are never fetched live) and diffs it for `claim.removed` signals, but the claim-language engine (axis: claims) only scores pages fetched live. The question was whether the newest archived copy should be scored as if it were the live page.
+
+**Decision.** No. An archived copy can be years old; scoring it on the claims axis would present text the brand may since have changed as its current wording, with a receipt that does not support "current" (brief Sections 1 and 8: no wording about a brand that is not in a receipt). The archive is used for what it proves — what the page said on dated occasions — so the history is diffed, the claims present in each archived copy are listed in the timeline with their `id_` receipts and capture dates, and removals are scored on the track-record axis. The "What we could not check" line for such a page must say that its archived copies were read instead (or that none were found, or that the archive was unreachable); this is Phase 4 rework item 2.
+
+**Consequences.** Brands that block crawling get a timeline and removed-claim signals but no claim-language score for the blocked pages; this is stated per page in the report. Logged in `docs/LIMITATIONS.md` by the Phase 4 rework.
+
+---
+
+## ADR-017 — Newest snapshot vs live page moves into Phase 7; criterion 7.6 names the fictional removed-claim brand
+
+**Date:** 2026-10-20 (Phase 4 review)
+**Status:** accepted
+
+**Context.** Phase 4 deliverable 3 compares consecutive archived snapshots only. With `collapse=timestamp:4` the archive returns the *first* capture of each year, so a claim removed at any point after January of the current year is not visible until the following year: the most recent removals, the ones that matter most for differentiator A, are missed. The live page text is already fetched (`ctx.pages`), and `detectRetractions` works on any ordered sequence of texts. The builder put this in `docs/LATER.md`; the director rules it is v1 scope.
+
+Separately, PLAN Phase 7 criterion 7.6 asked for `ai_share > 0` "for at least the removed-claim brand" among "all three fixture brands". The removed-claim brand is the fictional Northwind (ADR-011), and the three real fixture brands have no recorded Wayback history (`docs/LIMITATIONS.md`), so as written 7.6 could not be met.
+
+**Decision.** PLAN Phase 7 gains deliverable 8 and criterion 7.8: for every page that was fetched live and has at least one archived snapshot, the live page is the final element of the sequence (its entry in the timeline is marked as the live page, year = current year, URL = the page URL); a claim present in the newest snapshot and absent from the live page yields `claim.removed` with the label "claim removed between <year> and the current page", receipt = the newest snapshot's `id_` URL, and a diff candidate for the classifier. Criterion 7.6 is reworded to "the three real fixture brands plus Northwind; > 0 for Northwind". These are edits to a phase that has not started, in the same class as the fixture-brand rename recorded under ADR-011; they are not a re-plan of a reviewed phase (re-plans used: 0/2).
+
+**Consequences.** Phase 7 is slightly larger. The Phase 4 rework does not touch this. `docs/LATER.md`'s "newest snapshot vs live page" row is to be removed by the Phase 7 builder; the "record real-brand histories" half of that row stays.
