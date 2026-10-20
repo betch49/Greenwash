@@ -1,0 +1,3 @@
+User-Agent: *
+Sitemap: https://www.oatly.com/sitemap.xml
+Disallow: /es-es/sophie-tiktok-test

@@ -11,7 +11,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "record:wikidata": "tsx scripts/record-wikidata.ts"
+    "record:wikidata": "tsx scripts/record-wikidata.ts",
+    "record:brand": "tsx scripts/record-brand.ts"
   },
   "dependencies": {
     "better-sqlite3": "^13.0.3",

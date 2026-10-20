@@ -1,0 +1,49 @@
+{
+  "$comment": "Page discovery (Phase 2). heuristicPaths are probed on the brand's origin; sitemap URLs are kept only when their path (locale prefix removed) contains one of sitemapKeywords. Higher keyword weight = fetched earlier. Limits bound the work done per brand. sustainabilityKeywords decide which pages count as sustainability-type pages. ranking: each path segment beyond the first costs depthPenalty points, and at most maxPerSection URLs are kept under one first path segment (e.g. /stories/...), so a blog cannot crowd out the brand's own policy pages.",
+  "heuristicPaths": [
+    "/sustainability",
+    "/impact",
+    "/responsibility",
+    "/our-footprint",
+    "/about",
+    "/environment",
+    "/planet",
+    "/repair",
+    "/warranty",
+    "/support"
+  ],
+  "sitemapKeywords": {
+    "sustainab": 10,
+    "impact": 9,
+    "footprint": 9,
+    "responsib": 8,
+    "environment": 8,
+    "climate": 8,
+    "planet": 7,
+    "repair": 7,
+    "recycl": 6,
+    "warrant": 6,
+    "about": 5,
+    "support": 3
+  },
+  "sustainabilityKeywords": [
+    "sustainab",
+    "impact",
+    "responsib",
+    "footprint",
+    "environment",
+    "planet",
+    "climate"
+  ],
+  "limits": {
+    "maxPages": 12,
+    "maxFetchAttempts": 24,
+    "maxSitemapUrls": 200,
+    "maxSitemaps": 10,
+    "minWords": 50
+  },
+  "ranking": {
+    "depthPenalty": 4,
+    "maxPerSection": 3
+  }
+}

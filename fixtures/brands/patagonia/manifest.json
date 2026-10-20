@@ -1,0 +1,16 @@
+{
+  "capturedAt": "2026-10-20T22:45:00.000Z",
+  "files": {
+    "https://www.patagonia.com/robots.txt": "robots/www-patagonia-com.txt",
+    "https://www.patagonia.com/sitemap_index.xml": "sitemaps/www-patagonia-com-sitemap-index-xml.xml",
+    "https://www.patagonia.com/sitemap_pages.xml": "sitemaps/www-patagonia-com-sitemap-pages-xml.xml",
+    "https://www.patagonia.com/sitemap_products.xml": "sitemaps/www-patagonia-com-sitemap-products-xml.xml",
+    "https://www.patagonia.com/": "pages/www-patagonia-com-home.html",
+    "https://www.patagonia.com/our-footprint/": "pages/www-patagonia-com-our-footprint.html",
+    "https://www.patagonia.com/our-responsibility/supply-chain/": "pages/www-patagonia-com-our-responsibility-supply-chain.html",
+    "https://www.patagonia.com/environmental-responsibility/climate-goals/": "pages/www-patagonia-com-environmental-responsibility-climate-goals.html",
+    "https://www.patagonia.com/about-us/": "pages/www-patagonia-com-about-us.html",
+    "https://www.patagonia.com/worn-wear/repairs/": "pages/www-patagonia-com-worn-wear-repairs.html",
+    "https://www.patagonia.com/warranty": "pages/www-patagonia-com-warranty.html"
+  }
+}

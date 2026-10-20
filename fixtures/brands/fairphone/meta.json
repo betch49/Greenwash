@@ -1,0 +1,21 @@
+{
+  "slug": "fairphone",
+  "query": "fairphone",
+  "sector": "electronics",
+  "website": "https://www.fairphone.com/",
+  "capture": "real",
+  "capturedAt": "2026-10-20T22:36:07.082Z",
+  "userAgent": "GreenwashRadar/0.1 (+https://github.com/; evidence-based greenwashing risk signals; respects robots.txt)",
+  "entity": {
+    "id": "Q5019402",
+    "name": "Fairphone",
+    "description": "Dutch smartphone manufacturer",
+    "website": "https://www.fairphone.com/",
+    "websiteHost": "fairphone.com",
+    "industry": "electronics industry",
+    "country": "Netherlands",
+    "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Fairphone_new_logo_2.svg",
+    "exactName": true,
+    "score": 6
+  }
+}

@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ui } from "@/lib/copy/wording";
+import { toRunView } from "@/lib/pipeline/view";
 import { getServices } from "@/lib/services";
 import { displayHost } from "@/lib/website";
+import { Progress } from "./progress";
 
 export const dynamic = "force-dynamic";
 
@@ -33,7 +35,7 @@ export default async function AnalysePage({ params }: { params: Promise<{ runId:
           </>
         )}
       </dl>
-      <p className="muted">{ui.analysePlaceholder}</p>
+      <Progress initial={toRunView(run)} />
       <p>
         <Link href="/">Search for another brand</Link>
       </p>

@@ -1,4 +1,4 @@
-import { sqliteTable, text, integer, real } from "drizzle-orm/sqlite-core";
+import { sqliteTable, text, integer, real, primaryKey } from "drizzle-orm/sqlite-core";
 
 /** Every external fetch, keyed by URL. `fetched_at` is the time of the original network fetch. */
 export const fetchCache = sqliteTable("fetch_cache", {
@@ -22,6 +22,25 @@ export const runs = sqliteTable("runs", {
   progress: text("progress").notNull().default("[]"),
   createdAt: text("created_at").notNull(),
 });
+
+/** Brand pages fetched for a run (Phase 2): the receipt source for page-based signals. */
+export const runPages = sqliteTable(
+  "run_pages",
+  {
+    runId: text("run_id").notNull(),
+    position: integer("position").notNull(),
+    url: text("url").notNull(),
+    via: text("via").notNull(),
+    title: text("title").notNull(),
+    text: text("text").notNull(),
+    wordCount: integer("word_count").notNull(),
+    linksJson: text("links_json").notNull(),
+    fetchedAt: text("fetched_at").notNull(),
+    source: text("source").notNull(),
+    contentHash: text("content_hash").notNull(),
+  },
+  (t) => [primaryKey({ columns: [t.runId, t.url] })],
+);
 
 /** Finished reports (ReportV1 JSON, Phase 6). */
 export const reports = sqliteTable("reports", {
@@ -73,6 +92,20 @@ CREATE TABLE IF NOT EXISTS runs (
   status TEXT NOT NULL,
   progress TEXT NOT NULL DEFAULT '[]',
   created_at TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS run_pages (
+  run_id TEXT NOT NULL,
+  position INTEGER NOT NULL,
+  url TEXT NOT NULL,
+  via TEXT NOT NULL,
+  title TEXT NOT NULL,
+  text TEXT NOT NULL,
+  word_count INTEGER NOT NULL,
+  links_json TEXT NOT NULL,
+  fetched_at TEXT NOT NULL,
+  source TEXT NOT NULL,
+  content_hash TEXT NOT NULL,
+  PRIMARY KEY (run_id, url)
 );
 CREATE TABLE IF NOT EXISTS reports (
   id TEXT PRIMARY KEY,

@@ -19,5 +19,41 @@ export const ui = {
   urlInvalid: "Please enter a valid website address, for example https://example.com.",
   lookupFailed: (reason: string) => `Brand lookup unavailable (${reason}). You can paste the brand’s website instead.`,
   analyseHeading: (brand: string) => `Analysing ${brand}`,
-  analysePlaceholder: "The analysis pipeline arrives in the next build phase. Nothing has been fetched yet.",
+  analyseStart: "Start analysis",
+  analyseNotStarted: "The analysis has not started yet.",
+  analyseRunning: "Analysis in progress…",
+  analyseDone: "Page collection finished. Scoring arrives in a later build phase.",
+  analyseFailed: "The analysis stopped because of an error. Steps that ran are listed below.",
+  progressHeading: "Progress",
+  pagesHeading: (n: number) => `Pages fetched (${n})`,
+  pagesNone: "No pages could be fetched from this website.",
+  fetchedOn: (iso: string) => `fetched ${iso.slice(0, 10)}`,
+  words: (n: number) => `${n} words`,
+  statusDone: "done",
+  statusRunning: "running…",
+};
+
+/** Pipeline step names shown in the progress list. */
+export const steps = {
+  discover: "Discovering pages",
+  fetchPages: "Fetching current pages",
+  fetchPage: (url: string) => `Fetching ${url}`,
+};
+
+/** Reasons recorded when a step or a page is skipped (shown as "skipped: <reason>"). */
+export const reasons = {
+  invalidWebsite: (website: string) => `the website address is not usable (${website})`,
+  noCandidates: "no candidate pages were found",
+  noPages: (host: string) => `no page could be fetched from ${host}`,
+  httpStatus: (status: number, url: string) => `HTTP ${status} for ${url}`,
+  fetchFailed: (url: string, message: string) => `could not fetch ${url} (${message})`,
+  tooLittleText: (url: string, words: number) => `too little visible text at ${url} (${words} words)`,
+  notHtml: (url: string, type: string) => `not an HTML page: ${url} (${type})`,
+  stepError: (message: string) => `internal error (${message})`,
+};
+
+/** Entries for the report's "What we could not check" section. */
+export const couldNotCheck = {
+  noSustainabilityPage: (host: string) => `No sustainability, impact or responsibility page could be fetched from ${host}.`,
+  robotsDisallowed: (url: string) => `${url} (robots.txt does not allow us to fetch it).`,
 };

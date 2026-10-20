@@ -20,7 +20,8 @@ export class FixtureFetcher implements Fetcher {
   constructor(
     rootDir: string,
     private readonly map: FixtureMap,
-    private readonly fetchedAt: () => string = () => new Date().toISOString(),
+    /** `fetched_at` to report for a URL (e.g. the fixture's capture date); default: now. */
+    private readonly fetchedAt: (url: string) => string = () => new Date().toISOString(),
   ) {
     this.root = resolve(rootDir);
   }
@@ -32,7 +33,7 @@ export class FixtureFetcher implements Fetcher {
       status: 404,
       body: "",
       contentType: "text/plain",
-      fetchedAt: this.fetchedAt(),
+      fetchedAt: this.fetchedAt(url),
       source: "fixture",
     };
     if (!rel) return notFound;
@@ -45,7 +46,7 @@ export class FixtureFetcher implements Fetcher {
         status: 200,
         body,
         contentType: CONTENT_TYPES[extname(file).toLowerCase()] ?? "application/octet-stream",
-        fetchedAt: this.fetchedAt(),
+        fetchedAt: this.fetchedAt(url),
         source: "fixture",
       };
     } catch {

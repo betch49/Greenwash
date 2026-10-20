@@ -3,6 +3,7 @@ import { getDb, type Db } from "./db/client";
 import { FetchCacheRepo } from "./db/fetch-cache-repo";
 import { RunsRepo } from "./db/runs-repo";
 import { CachedFetcher, RateLimitedFetcher, UndiciFetcher, type Fetcher } from "./fetch/fetcher";
+import { loadBrandFixtures } from "./fetch/brand-fixtures";
 import { FixtureFetcher, combineMaps } from "./fetch/fixture-fetcher";
 import { RateLimiter } from "./fetch/rate-limiter";
 import { wikidataFixturePath } from "./wikidata/fixtures";
@@ -22,7 +23,8 @@ const HOUR_MS = 3_600_000;
 export function buildFetcher(db: Db, offline: boolean): Fetcher {
   if (offline) {
     const root = process.env.GR_FIXTURES_DIR || join(process.cwd(), "fixtures");
-    return new FixtureFetcher(root, combineMaps(wikidataFixturePath));
+    const brands = loadBrandFixtures(root);
+    return new FixtureFetcher(root, combineMaps(wikidataFixturePath, brands.map), (url) => brands.capturedAt(url) ?? new Date().toISOString());
   }
   const perHostMs = Number(process.env.GR_RATE_LIMIT_MS || 1000);
   const waybackMs = Math.max(1000, Number(process.env.WAYBACK_RATE_LIMIT_MS || 1000));

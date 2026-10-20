@@ -13,11 +13,14 @@ interface Group {
 
 export interface Robots {
   groups: Group[];
+  /** Absolute URLs from `Sitemap:` lines (they apply to the whole file, not to a group). */
+  sitemaps: string[];
 }
 
 /** Parses robots.txt per RFC 9309 (groups of user-agent lines followed by allow/disallow rules). */
 export function parseRobots(text: string): Robots {
   const groups: Group[] = [];
+  const sitemaps: string[] = [];
   let current: Group | null = null;
   let lastWasAgent = false;
   for (const rawLine of text.split(/\r?\n/)) {
@@ -41,10 +44,11 @@ export function parseRobots(text: string): Robots {
       if (value === "") continue;
       current.rules.push({ allow: key === "allow", pattern: value });
     } else {
+      if (key === "sitemap" && /^https?:\/\//i.test(value)) sitemaps.push(value);
       lastWasAgent = false;
     }
   }
-  return { groups };
+  return { groups, sitemaps };
 }
 
 function patternToRegExp(pattern: string): RegExp {
@@ -98,6 +102,8 @@ export class RobotsDisallowedError extends Error {
   }
 }
 
+const EMPTY_ROBOTS: Robots = { groups: [], sitemaps: [] };
+
 /** Fetches and caches robots.txt per origin; a missing or failing robots.txt allows everything. */
 export class RobotsChecker {
   private readonly byOrigin = new Map<string, Promise<Robots>>();
@@ -112,11 +118,16 @@ export class RobotsChecker {
     if (!p) {
       p = this.fetcher
         .get(`${origin}/robots.txt`)
-        .then((res) => (res.status >= 200 && res.status < 300 ? parseRobots(res.body) : { groups: [] }))
-        .catch(() => ({ groups: [] }));
+        .then((res) => (res.status >= 200 && res.status < 300 ? parseRobots(res.body) : EMPTY_ROBOTS))
+        .catch(() => EMPTY_ROBOTS);
       this.byOrigin.set(origin, p);
     }
     return p;
+  }
+
+  /** Sitemap URLs declared in the origin's robots.txt (empty if none or missing). */
+  async sitemaps(origin: string): Promise<string[]> {
+    return (await this.robotsFor(origin)).sitemaps;
   }
 
   async check(url: string): Promise<{ allowed: true } | { allowed: false; reason: string }> {

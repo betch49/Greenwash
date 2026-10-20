@@ -32,3 +32,10 @@ test("1.9 URL fallback has no horizontal overflow on a phone", async ({ page }) 
   await expect(page.getByLabel("Brand website URL")).toBeVisible();
   await noHorizontalOverflow(page);
 });
+
+test("2.6 analyse page with progress and page list has no horizontal overflow on a phone", async ({ page }) => {
+  await search(page, "fairphone");
+  await page.waitForURL(/\/analyse\/[0-9a-f-]{36}$/);
+  await expect(page.getByTestId("run-status")).toHaveAttribute("data-status", "done", { timeout: 30_000 });
+  await noHorizontalOverflow(page);
+});

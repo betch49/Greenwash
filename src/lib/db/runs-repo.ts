@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { count, eq } from "drizzle-orm";
+import { and, count, eq } from "drizzle-orm";
 import type { Db } from "./client";
 import { runs } from "./schema";
 
@@ -8,6 +8,8 @@ export interface ProgressEntry {
   status: "running" | "done" | "skipped";
   reason?: string;
 }
+
+export type RunStatus = "pending" | "running" | "done" | "failed";
 
 export interface NewRun {
   query: string;
@@ -51,6 +53,28 @@ export class RunsRepo {
   get(id: string): Run | undefined {
     const row = this.db.select().from(runs).where(eq(runs.id, id)).get();
     return row ? this.toRun(row) : undefined;
+  }
+
+  /**
+   * Atomically moves a run from "pending" to "running". Returns true for exactly
+   * one caller per run, so starting the pipeline is idempotent (a refresh, a
+   * double submit or React strict mode never starts it twice).
+   */
+  claimStart(id: string): boolean {
+    const res = this.db
+      .update(runs)
+      .set({ status: "running" })
+      .where(and(eq(runs.id, id), eq(runs.status, "pending")))
+      .run();
+    return res.changes === 1;
+  }
+
+  setProgress(id: string, progress: ProgressEntry[]): void {
+    this.db.update(runs).set({ progress: JSON.stringify(progress) }).where(eq(runs.id, id)).run();
+  }
+
+  setStatus(id: string, status: RunStatus): void {
+    this.db.update(runs).set({ status }).where(eq(runs.id, id)).run();
   }
 
   count(): number {
