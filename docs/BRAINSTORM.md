@@ -177,3 +177,53 @@ All requests went through the pre-configured HTTPS proxy with its CA bundle (TLS
 | global-standard.org GOTS database | 301 | Not investigated further. |
 | ANTHROPIC_API_KEY | **Absent** (`ANTHROPIC_BASE_URL` is set by the environment, key is not) | All LLM tests must use the mocked client; the real end-to-end check is "deferred: no API key". |
 | Toolchain | Node 22.22.0, npm 10.9.4, Python 3.13, g++/make present | See Section 3. |
+
+---
+
+## 5. Director critique (Phase 0, steps 2–3)
+
+Reviewed 2026-10-20. I edited scores in place below rather than requesting a revision round; the builder's original numbers stay visible in Section 2 for the record. The rule applied throughout: **a differentiator earns a place only if it can produce a receipted signal (source URL + fetch date + raw excerpt) on at least one fixture brand, offline, in the build container.**
+
+### 5.1 Score challenges
+
+| ID | Builder | Director | Reason |
+|---|---|---|---|
+| A value | 5 | **5** | Stands. The only candidate that produces a dated, self-sourced signal no competitor shows. |
+| A feasibility | 3 | **3** | Stands, with a condition: the "correlate removal with regulator actions" clause is **struck**. Correlation implies causation to a reader; the timeline may show a removal and a ruling side by side, never as cause. The LLM classifier (removed vs redesign) is capped by rule (Phase 6). |
+| A data | 3 (build 1) | **3 / build 1** | Confirmed. Wayback resets the connection from this container on every attempt. It may well work in production, so the code ships; the **tests use hand-built snapshot fixtures** and the live path is "deferred: Wayback unreachable in build env" in LIMITATIONS. |
+| B feasibility | 2 | **1** | Inflated. "Same target across rewordings" is LLM-heavy matching, which collides with the 50% AI cap and with "LLM never produces numbers that feed the score" (a shifted year is a number). Cut from v1. |
+| C data | 4 | **3** | Inflated. "Returned 200" is not "parseable". Only ASA (`/search.html?q=`) and JDP (`/avis/`) were shown to server-render usable result lists. FTC's full-text filter did not filter; ACM, Reclame Code, AGCM have unknown search paths. Two countries ship; the rest go to LATER. |
+| C legal | 2 | **2** | Stands, with a hard rule: the adapter matches on normalised brand name **and** the ruling page must name the brand in its title/advertiser field; the ruled entity name is shown verbatim; partial-name matches ("Shell Energy" for "Shell") are shown as "possible match, not scored". |
+| D data | 2 | **1** | bcorporation.net is Cloudflare-challenged on every page and the alternative dataset needs an account, which Section 0.4 forbids. GOTS and SBTi are unverified. Cannot produce a receipt in the build env. **Struck** as a differentiator. Its deterministic sub-inputs that need no registry (impact-report present, absolute emissions figure present, supplier list present) survive as evidence-axis rules (see 5.3). |
+| E value | 4 | **3** | Inflated for the product as a whole: two of three fixture sectors (apparel, food) will mostly return "not applicable". Still the only axis of its kind, and the scoring table in brief Section 4 reserves 20% for it, so dropping E leaves an empty axis. |
+| E feasibility | 3 | **3** | Stands, with "known anti-repair practices (serialised parts, warranty-void stickers, lawsuits)" **struck**: no structured public source, so no receipt. What ships: iFixit search/repairability (JSON API verified), and rule-based detection on the brand's own pages of repair manual, spare parts, warranty length, repair program. |
+| F value | 3 | **4** | Under-scored. With substantiation proximity (H) folded in, F stops being a word count and becomes "claim with no proof on the page", which is what ASA/CMA guidance tests. |
+| G | 3/2/2/2 | **struck** | PDF table extraction with `pdf-parse` is fragile and report-specific; cannot promise a receipt on a fixture without a Python service we have decided not to add. LATER. |
+| H legal | 1 | **2** | Slightly under-scored: "no substantiation found" is wrong if the proof sits in a PDF we did not fetch. Wording must be "no supporting data found on the fetched page", and the receipt is the page itself. H is scoped to **same page only** (no extra link hop) to keep Phase 3 to one session. |
+| I | 4/4/4/3 | **struck for v1** | A citation layer, not a signal: it produces no new receipt. Also legal risk 3 ("restricted under" reads as "non-compliant") and the brand may not sell in the EU. LATER. |
+| J | 3/4/3/1 | **folded into evidence axis** | Not a differentiator, but the brief's evidence axis explicitly lists "presence of impact report". Ships as a deterministic rule in Phase 3. |
+| K | 4/4/4/3 | **struck for v1** | Legal risk 3 and zero score weight by design means it is cost without score value in v1. LATER. |
+
+### 5.2 Decision: the three differentiators
+
+**A (claim retraction), C (regulator rulings, UK ASA + France JDP), E (ownership & repair), plus F as the baseline.** This is the brief's default; after critique the scores still support it:
+
+- A: 5 / 3 / 3 / 2 — highest user value of any candidate; fixtures carry the tests.
+- C: 5 / 3 / 3 / 2 — the most authoritative receipt available; two adapters verified parseable.
+- E: 3 / 3 / 3 / 2 — the only candidate that fills the fourth scoring axis; without it 20% of the formula is dead weight.
+- The strongest challenger, H (4 / 4 / 4 / 2), is an extension of F, not an independent source of receipts, so it ships inside F at no cost to the three slots.
+
+Full reasoning in `docs/DECISIONS.md` ADR-002.
+
+### 5.3 What each scoring axis is fed by in v1
+
+| Axis (weight) | Deterministic inputs | LLM-touched inputs |
+|---|---|---|
+| Claim language 25% | F rules (vague, absolute, offset, baseline-less, future-only) + H substantiation-proximity, per 1,000 words | LLM may *propose* candidate sentences; rules decide |
+| Evidence & certifications 25% | Labels claimed on page (lexicon) marked "claimed, not verified in v1" and listed under "could not check"; impact report link present and its year (J); absolute emissions figure present (number + tCO2e/CO2e unit); supplier list link present | None |
+| Track record 30% | A: removed claims from snapshot diffs; C: ASA + JDP rulings (upheld and recent weigh more) | A's diff classification (removed vs redesign); rule cap in scorer |
+| Ownership & repair 20% | E: iFixit repairability score / guides; repair manual, parts, warranty, repair program on brand pages | None |
+
+### 5.4 Stack ruling
+
+Builder's stack note accepted: Next.js App Router + TypeScript, Drizzle + `better-sqlite3`, `undici` + `cheerio` + `diff`, Vitest + Playwright, no Python service. See ADR-004, ADR-005.
