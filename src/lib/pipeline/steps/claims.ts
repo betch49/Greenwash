@@ -15,7 +15,7 @@ export const claimsStep: Step = {
     const seen = new Set<string>();
     const stats = [];
     for (const page of ctx.pages) {
-      const res = scanPage(page.text, { url: page.url, fetchedAt: page.fetchedAt, links: page.links });
+      const res = scanPage(page.text, { url: page.url, fetchedAt: page.fetchedAt, links: page.links, brand: ctx.run.brand });
       stats.push(res.stats);
       ctx.claimHits.push(...res.hits);
       // The same sentence on two pages (shared blocks, translations) gives one signal, from the first page.

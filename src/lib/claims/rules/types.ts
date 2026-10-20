@@ -17,6 +17,8 @@ export interface RuleMatch {
 export interface RuleContext {
   /** The sentence that follows on the page, if any (offset and future-only rules look at it). */
   next?: string;
+  /** The run's brand name: a commitment subject for "by 20XX"-only sentences (ADR-015). */
+  brand?: string;
 }
 
 export interface ClaimRule {

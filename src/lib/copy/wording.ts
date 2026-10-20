@@ -81,7 +81,7 @@ export const claimFamilyNames = {
 /** Signal labels (one line each, shown next to the receipt). */
 export const signalLabels = {
   claimUnsupported: (family: string) => `Unsupported claim (${family}): no supporting data found on the fetched page`,
-  claimSupported: (family: string) => `Risk signal (${family}); a figure, year, standard or report link appears next to it on the page`,
+  claimSupported: (family: string) => `Risk signal (${family}); a figure with a unit, a named standard or a report link appears next to it on the page`,
   reportFound: (year: number) => `Impact or sustainability report linked (${year})`,
   reportFoundUndated: "Impact or sustainability report linked (no year given)",
   staleReport: (year: number, fetchYear: number, years: number) =>

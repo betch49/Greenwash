@@ -55,11 +55,12 @@ Comparisons with nothing to compare against: more sustainable / responsible / ci
 
 ### `future_only` — future commitments without a progress figure
 
-Commitments about the future: we will / we'll / we shall, "our products (packaging, company…) will", "will be carbon neutral / net zero…", by 20XX, aim to, aspire to, committed to, pledge to, our goal / target / ambition is, we plan to, strive to, working towards, on the way to. The sentence must also name an environmental topic (emissions, carbon, climate, net zero, renewable, recycling, packaging, waste, water, plastic, regenerative, sustainability, biodiversity, footprint, energy, circularity, environment, planet, nature, scope 1/2/3, fossil, PFAS, chemicals), otherwise "will" is ordinary grammar. The rule does not match when the same sentence or the next one contains a **progress figure**: a number with a unit in a sentence that also has a progress word (since, so far, to date, already, have / has / had, achieved, reached, cut, reduced, fell, decreased, dropped, was, were, last year, in 20XX).
+Commitments about the future: we will / we'll / we shall, "our products (packaging, company…) will", "will be carbon neutral / net zero…", by 20XX, aim to, aspire to, committed to, pledge to, our goal / target / ambition is, we plan to, strive to, working towards, on the way to. When "by 20XX" is the only trigger in the sentence, the sentence must also name who commits: we, we're, we've, our, us, the company, the brand, the group, or the brand name of the run (with legal suffixes such as AB, Inc or Ltd removed). "By 2050, an estimated 120 million tons of e-waste will be generated" is a statistic, not a commitment, and does not match. The sentence must also name an environmental topic (emissions, carbon, climate, net zero, renewable, recycling, packaging, waste, water, plastic, regenerative, sustainability, biodiversity, footprint, energy, circularity, environment, planet, nature, scope 1/2/3, fossil, PFAS, chemicals), otherwise "will" is ordinary grammar. The rule does not match when the same sentence or the next one contains a **progress figure**: a number with a unit in a sentence that also has a progress word (since, so far, to date, already, have / has / had, achieved, reached, cut, reduced, fell, decreased, dropped, was, were, last year, in 20XX).
 
 - hit: “We will be net zero by 2040.”
-- hit: “We aim to halve our packaging waste.”
+- hit: “By 2030 we will halve our packaging waste.”
 - miss: “We will email you a receipt.”
+- miss: “By 2050, an estimated 120 million tons of e-waste will be generated annually.”
 
 The twenty sentences in `tests/unit/claims/sentences.ts` (four per rule) are the acceptance set for these rules.
 
@@ -68,18 +69,23 @@ The twenty sentences in `tests/unit/claims/sentences.ts` (four per rule) are the
 For every matched sentence the engine looks at a **window**: the sentence itself and the two sentences that follow it on the page. The claim is **substantiated** if the window contains at least one marker:
 
 - a number with a unit: %, percent, t, tCO2e, tonnes, kg, kWh, MWh, litres, m³…;
-- a year (1950–2099);
 - a named standard or certifier: GOTS, Fair Trade, Fairtrade, B Corp, FSC, bluesign, OEKO-TEX, SBTi, ISO 14001, Cradle to Cradle, EU Ecolabel, Rainforest Alliance, RWS, RDS, GRS, RCS, Climate Neutral Certified, 1% for the Planet, Fair Wear, TCO Certified, iFixit (acronyms are matched in capitals only);
 - a content link whose text appears in the window and matches report, data, methodology, footnote, study or assessment (at least four characters long).
 
-The claim's own trigger words are blanked out before the matched sentence is searched, so a claim is never its own evidence: "100% sustainable" is not substantiated by its "100%", and "net zero by 2040" is not substantiated by its "2040".
+**Targets are not evidence** (ADR-014):
+
+- **A year is never a marker on its own.** "Founded in 1998" or "Shop the 2025 collection" supports nothing. A year (1950–2099) is recorded only next to a number with a unit in the same sentence, to show when the figure applies, and never when it follows by, until, till, before, no later than, towards, toward or ahead of (a target date).
+- **A window sentence that is itself a `future_only` commitment contributes no marker of any kind.** "We are carbon neutral." followed by "We will be net zero by 2040." stays unsupported. For a hit of another rule, this includes the matched sentence: in "We will be a sustainable company by 2030." both the vague hit and the future-only hit are unsupported.
+- **For a `future_only` hit, its own sentence contributes no number with a unit.** The rule has already established that the figure sits next to no progress word, so it is the target ("committed to 100% renewable electricity"). A named standard or an evidence link in that sentence still counts.
+
+The claim's own trigger words are blanked out before the matched sentence is searched, so a claim is never its own evidence: "100% sustainable" is not substantiated by its "100%".
 
 Result per match:
 
 | Kind | Meaning | Label |
 |---|---|---|
 | `claim.unsupported` | No marker in the window. | "Unsupported claim (…): no supporting data found on the fetched page" |
-| `claim.supported` | At least one marker in the window. Still a risk signal: a marker shows that detail is nearby, not that the claim is right. | "Risk signal (…); a figure, year, standard or report link appears next to it on the page" |
+| `claim.supported` | At least one marker in the window. Still a risk signal: a marker shows that detail is nearby, not that the claim is right. | "Risk signal (…); a figure with a unit, a named standard or a report link appears next to it on the page" |
 
 Substantiation is limited to the same page: a figure published elsewhere (a PDF report, another page) is not seen by this rule.
 

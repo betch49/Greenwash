@@ -53,3 +53,25 @@ describe("rule registry", () => {
     expect(ids).toEqual(["vague", "baseline_less_comparison"]);
   });
 });
+
+describe("future_only needs a commitment subject when 'by 20XX' is its only trigger (ADR-015)", () => {
+  it("a third-party statistic does not match", () => {
+    expect(classify("By 2050, an estimated 120 million tons of e-waste will be generated annually.")).toEqual([]);
+  });
+
+  it("'By 2030 we will halve our packaging waste.' matches", () => {
+    expect(classify("By 2030 we will halve our packaging waste.").map((m) => m.ruleId)).toEqual(["future_only"]);
+  });
+
+  it("'We will be net zero by 2040.' is unchanged", () => {
+    expect(classify("We will be net zero by 2040.").map((m) => m.ruleId)).toEqual(["future_only"]);
+  });
+
+  it("the brand name from the run is a subject; legal suffixes are stripped", () => {
+    expect(classify("Net zero by 2045 for Fairphone.")).toEqual([]);
+    expect(classify("Net zero by 2045 for Fairphone.", undefined, "Fairphone").map((m) => m.ruleId)).toEqual(["future_only"]);
+    expect(classify("Oatly reaches net zero by 2050.", undefined, "Oatly AB").map((m) => m.ruleId)).toEqual(["future_only"]);
+    expect(classify("A plain heading: net zero by 2045", undefined, "Oatly AB")).toEqual([]);
+  });
+});
+

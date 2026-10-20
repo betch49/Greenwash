@@ -142,7 +142,6 @@ export const FUTURE = {
     "we’ll",
     "(?:our|the) (?:company|business|brand|group|products?|packaging|operations|supply chain|factories|stores|sites|collection) will",
     "will (?:be|become|reach|achieve|go|turn) (?:fully |100 ?% )?(?:carbon|climate|co2|co₂|net|plastic|e-waste|renewable|circular|recycl\\w*)",
-    "by (?:19|20)\\d\\d",
     "aim(?:s|ing)? to",
     "aspire(?:s)? to",
     "committed to",
@@ -156,6 +155,16 @@ export const FUTURE = {
     "working towards?",
     "on (?:our|the) (?:way|path|journey) to",
   ],
+  /**
+   * "by 20XX" is a trigger too, but when it is the only one the sentence must
+   * also name who commits (ADR-015): "By 2050, an estimated 120 million tons of
+   * e-waste will be generated" is a statistic, not a commitment.
+   */
+  byYear: "by (?:19|20)\\d\\d",
+  /** Commitment subjects; the run's brand name is added at scan time. */
+  commitmentSubjects: ["we", "we're", "we’re", "we've", "we’ve", "our", "ours", "us", "the company", "the brand", "the group"],
+  /** Legal suffixes stripped from the brand name before it is used as a subject cue. */
+  brandSuffixes: ["inc", "ltd", "llc", "ag", "ab", "sa", "gmbh", "bv", "plc", "corp", "corporation", "co", "group", "s\\.a", "b\\.v"],
   /** The sentence must be about an environmental topic, otherwise "will" is ordinary grammar. */
   topics: [
     "emissions?",
@@ -246,8 +255,10 @@ export const SUBSTANTIATION = {
   /** Number + unit. The number may use thousands separators and decimals. */
   numberUnit:
     "\\d+(?:[.,]\\d+)*\\s?(?:%|percent|per cent|tco2e?|t co2e?|tco₂e?|t co₂e?|tonnes?|tons?|t|kt|mt|kg|kgco2e|kwh|mwh|gwh|twh|litres?|liters?|m3|m³)",
-  /** A calendar year. */
+  /** A calendar year. Recorded only next to a number + unit in the same sentence (ADR-014). */
   year: "(?:19[5-9]\\d|20\\d\\d)",
+  /** A year after one of these is a target date, never a marker (ADR-014). */
+  targetPrepositions: ["by", "until", "till", "before", "no later than", "towards", "toward", "ahead of"],
   /** Link text that points at evidence. */
   anchorText: "report|data|methodology|footnote|study|assessment",
   /** Window: the matched sentence and this many following sentences. */

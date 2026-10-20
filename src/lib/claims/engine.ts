@@ -12,6 +12,8 @@ export interface PageMeta {
   url: string;
   fetchedAt: string;
   links?: PageLink[];
+  /** The run's brand name (a commitment subject for the future_only rule, ADR-015). */
+  brand?: string;
 }
 
 export interface RuleStats {
@@ -111,11 +113,11 @@ const normalise = (s: string) => s.toLowerCase().replace(/\s+/g, " ").trim();
 export const isQuestion = (sentence: string) => /\?["”’»)\]]*$/u.test(sentence.trim());
 
 /** Runs every rule on one sentence (with the next sentence as context). Questions never match. */
-export function classify(sentence: string, next?: string): RuleMatch[] {
+export function classify(sentence: string, next?: string, brand?: string): RuleMatch[] {
   const out: RuleMatch[] = [];
   if (isQuestion(sentence)) return out;
   for (const rule of CLAIM_RULES) {
-    const m = rule.test(sentence, { next });
+    const m = rule.test(sentence, { next, brand });
     if (m) out.push(m);
   }
   return out;
@@ -139,8 +141,8 @@ export function scanPage(pageText: string, meta: PageMeta): ScanResult {
   let unsupported = 0;
 
   sentences.forEach((sentence, i) => {
-    for (const m of classify(sentence, sentences[i + 1])) {
-      const sub = findSubstantiation(sentences, i, m.spans, meta.links ?? []);
+    for (const m of classify(sentence, sentences[i + 1], meta.brand)) {
+      const sub = findSubstantiation(sentences, i, m.spans, meta.links ?? [], { ruleId: m.ruleId, brand: meta.brand });
       matches++;
       byRule[m.ruleId].matches++;
       if (!sub.supported) {
