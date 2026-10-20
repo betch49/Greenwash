@@ -121,3 +121,29 @@ The default is kept; no override reasoning is needed, but for the record: E is r
 **Decision.** A single file `src/lib/copy/wording.ts` holds every user-facing signal template. Allowed vocabulary: "risk signal", "unsupported claim", "claim removed between X and Y", "no supporting data found on the fetched page", "ruling found naming <entity verbatim>", "label claimed on page; not verified in v1", "not found", "skipped: <reason>". Forbidden anywhere in UI, summary prompt or docs: "lies", "lying", "guilty", "illegal", "non-compliant", "fraud", "deceptive" (as a verdict), "greenwashing" used as a verdict about a named brand (the product name and the phrase "greenwashing risk signals" are fine). A unit test scans `src/` and the rendered report fixture for the forbidden list. The LLM summary passes through the same filter before display.
 
 **Consequences.** Copy changes are reviewed by the test, not by a human.
+
+---
+
+## ADR-009 — Confident Wikidata match auto-proceeds; the confirm card is shown only when the match is not confident
+
+**Date:** 2026-10-20
+**Status:** accepted
+
+**Context.** Brief Section 7 describes the Phase 1 done-when as "patagonia → confirm card → proceeds", while Section 3.2 says that a result scoring clearly above the rest (exact-name match + website + company) proceeds without a card, and Section 1 makes disambiguation mandatory only when the match is *not* confident. The recorded fixture makes Patagonia, Inc. (Q1660552) the single confident match. The builder auto-proceeds for "patagonia" and proves the card path with "continental" (Continental AG vs United Airlines).
+
+**Decision.** Section 3.2 is normative; Section 7's phrase is an illustrative test description. Confident ⇔ exactly one eligible (brand/company/organisation) item has an exact normalised-name match and a website. A confident match proceeds; anything else shows ≤ 3 cards; no candidates or all rejected ⇒ URL fallback. The pipeline is never run on an unconfirmed match (1.8). The e2e test for 1.6 keeps the card branch so it still passes if the fixture stops being confident.
+
+**Consequences.** Phase 1 passes on this point. Any future change to the confident rule needs a new ADR and a fixture that exercises both branches.
+
+---
+
+## ADR-010 — robots.txt is enforced for crawled pages, not for the brief-mandated API endpoints
+
+**Date:** 2026-10-20
+**Status:** accepted
+
+**Context.** Brief Section 1 requires respecting robots.txt. `https://www.wikidata.org/robots.txt` (checked by the director 2026-10-20) contains `User-agent: *` / `Disallow: /w/`, which covers `/w/api.php`, the endpoint Section 3.2 instructs us to call. The Wayback CDX and `id_` raw-snapshot endpoints of Section 5 are likewise API-style endpoints that robots.txt was not written to govern.
+
+**Decision.** `RobotsGuardedFetcher` is mandatory for every page fetched from a brand site, a regulator site or a repair source (Phases 2, 4 page content, 5). It is **not** applied to the three API endpoints the brief itself mandates: the Wikidata `api.php`, the Wayback CDX API and Wayback snapshot retrieval. For those we follow the operator's published API etiquette instead: descriptive User-Agent, `Retry-After`-aware retry, SQLite caching, and the ≤ 1 req/s limit for `web.archive.org`. The exemption list is exactly these hosts' API paths; it is not extended without a new ADR.
+
+**Consequences.** `docs/LIMITATIONS.md` (Phase 9) states the exemption and its reasoning. The Phase 2 review checks that every non-API fetch goes through the robots guard and that a disallowed page appears as `skipped: robots.txt disallows <url>` and is served from Wayback where available (brief Section 8).
