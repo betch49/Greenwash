@@ -16,3 +16,5 @@ Cut by the director in Phase 0 (see `docs/BRAINSTORM.md` Section 5 and `docs/DEC
 | **Brand comparisons, accounts, browser extension** | Brief Section 8 forbids in v1. | — |
 | **Wayback live verification in CI** | web.archive.org resets connections from the build container. | Run the live Wayback smoke test on a machine with normal internet. |
 | **Stale robots.txt on fetch failure (ADR-012 amendment)** | Phase 1 cached fetcher does not serve a stale entry when the live fetch fails; today the origin is skipped with a shown reason. | Phase 8: serve the last cached `/robots.txt` from SQLite on 5xx/network error. (Director, Phase 2 round-2 review.) |
+
+- **Quotation and stance detection for the claim engine.** Sentences that quote a third party, criticise a practice or state a global statistic can match a claim rule (seen on Oatly, Mammut, Fairphone pages). v1 shows every match with its sentence (ADR-015); a deterministic quote/stance filter is a later improvement.
