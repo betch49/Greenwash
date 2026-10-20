@@ -15,3 +15,4 @@ Cut by the director in Phase 0 (see `docs/BRAINSTORM.md` Section 5 and `docs/DEC
 | **Headless rendering of JS-only brand pages** | Pipeline is fetch + cheerio only; Playwright is a test dependency. | Optional Playwright-based fetcher behind the `Fetcher` interface, rate-limited. |
 | **Brand comparisons, accounts, browser extension** | Brief Section 8 forbids in v1. | — |
 | **Wayback live verification in CI** | web.archive.org resets connections from the build container. | Run the live Wayback smoke test on a machine with normal internet. |
+| **Stale robots.txt on fetch failure (ADR-012 amendment)** | Phase 1 cached fetcher does not serve a stale entry when the live fetch fails; today the origin is skipped with a shown reason. | Phase 8: serve the last cached `/robots.txt` from SQLite on 5xx/network error. (Director, Phase 2 round-2 review.) |

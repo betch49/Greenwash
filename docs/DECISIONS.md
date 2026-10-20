@@ -161,6 +161,8 @@ The default is kept; no override reasoning is needed, but for the record: E is r
 
 **Consequences.** Phase 2 rework: Patagonia fixture re-homed to a fictional brand; Mammut or VAUDE recorded as the outdoor-apparel brand. ADR-006's synthetic clause is narrowed accordingly.
 
+**Outcome (round-2 review, 2026-10-20).** Mammut (Q495318, query "mammut sports group", 12 real pages captured 2026-10-20T22:56Z) is the outdoor-apparel brand. The synthetic fixture is `northwind` (Northwind Outdoor Ltd., `www.northwind-outdoor.example`, no Wikidata id). The guard test `tests/unit/fetch/brand-fixtures.test.ts` enforces this ADR. PLAN.md's fixture-brand line was renamed accordingly (not a re-plan).
+
 ---
 
 ## ADR-012 — robots.txt unreachable or malformed ⇒ do not crawl (fail closed)
@@ -173,6 +175,8 @@ The default is kept; no override reasoning is needed, but for the record: E is r
 **Decision.** 4xx ⇒ allowed. 5xx, network error, or a 2xx body that is HTML (content type `text/html` or body starting with `<`) ⇒ the whole origin is disallowed for this run with the shown reason `robots.txt unavailable for <origin> (<cause>)`. A cached robots.txt from SQLite is used when the live fetch fails and a copy exists. The brief-mandated API endpoints (ADR-010) are unaffected.
 
 **Consequences.** Some sites will be skipped with a visible reason instead of crawled; Wayback (Phase 4) is the fallback, as brief Section 8 already prescribes.
+
+**Amendment (round-2 review, 2026-10-20).** Implemented in Phase 2 rework except the "cached robots.txt used when the live fetch fails" clause: the Phase 1 cached fetcher serves a fresh cache entry before any live request but does not serve a stale entry on failure. Deferred to Phase 8 (cache/stale handling) and recorded in docs/LATER.md; until then an unreadable robots.txt costs coverage, never honesty, because the skip is shown.
 
 ---
 
