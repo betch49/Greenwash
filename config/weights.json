@@ -32,7 +32,9 @@
       "repair.warranty_found": 0,
       "repair.ifixit_devices": 0,
       "repair.ifixit_guides": 0,
-      "repair.ifixit_score": 0
+      "repair.ifixit_score": 0,
+      "repair.fr_index_found": 0,
+      "repair.fr_index_low": 30
     }
   },
   "caps": {
@@ -68,7 +70,7 @@
       "claims": ["claims"],
       "evidence": ["evidence"],
       "track": ["wayback", "asa-uk", "jdp-fr"],
-      "repair": ["repair"]
+      "repair": ["repair", "fr-repair"]
     },
     "timelineCountsAsData": ["track"]
   }

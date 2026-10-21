@@ -1,0 +1,2992 @@
+{
+ "$comment": "Trimmed real capture of the data.gouv.fr datasets API (fields read by src/lib/registries/fr-repair.ts); original size and sha256 in manifest.json.",
+ "data": [
+  {
+   "id": "6abd6a4ea0f5c55a424e4203",
+   "slug": "indice-de-reparabilite-cdiscount",
+   "title": "Indice de réparabilité (CDISCOUNT)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-cdiscount",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-cdiscount/",
+   "license": "notspecified",
+   "created_at": "2026-09-30T20:00:14.742000+00:00",
+   "last_modified": "2026-09-30T20:00:22.667000+00:00",
+   "organization": {
+    "id": "6a156b6a01ab02316280e6dc",
+    "name": "CDISCOUNT",
+    "slug": "cdiscount-4",
+    "page": "https://www.data.gouv.fr/organizations/cdiscount-4"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "bd1f5856-5210-407e-a527-83f4684b3239",
+     "title": "donnees-schema-indice-reparabilite",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-cdiscount/20260930-200014/donnees-schema-indice-reparabilite.csv",
+     "created_at": "2026-09-30T20:00:15.027000+00:00",
+     "last_modified": "2026-09-30T20:00:15.150000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ee61cc7eb57061b6fce6a3",
+   "slug": "nilfisk-indice-de-reparabilite",
+   "title": "Nilfisk - Indice de réparabilité",
+   "page": "https://www.data.gouv.fr/datasets/nilfisk-indice-de-reparabilite",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/nilfisk-indice-de-reparabilite/",
+   "license": "notspecified",
+   "created_at": "2025-04-03T10:24:12.656000+00:00",
+   "last_modified": "2025-05-22T13:51:10.015000+00:00",
+   "organization": null,
+   "owner": {
+    "id": "67ee3dd1393c08846ca34233",
+    "first_name": "Gaëtan",
+    "last_name": "Bouvret"
+   },
+   "resources": [
+    {
+     "id": "e5abe8e5-d1d2-4162-94e4-1fbc61c7f1a0",
+     "title": "ecotaxe-data-gouv-a-deposer.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/nilfisk-indice-de-reparabilite/20250403-102420/ecotaxe-data-gouv-a-deposer.csv",
+     "created_at": "2025-04-03T10:24:20.594000+00:00",
+     "last_modified": "2025-05-22T13:51:09.990000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "69bab656addae3e1492f212f",
+   "slug": "indice-de-reparabilite-organisation-hisense-2",
+   "title": "Indice de réparabilité (organisation Hisense)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-hisense-2",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-hisense-2/",
+   "license": "notspecified",
+   "created_at": "2026-03-18T14:27:33.965000+00:00",
+   "last_modified": "2026-03-18T14:27:35.655000+00:00",
+   "organization": {
+    "id": "67b60b2c1d85481636a19b9e",
+    "name": "Hisense",
+    "slug": "hisense",
+    "page": "https://www.data.gouv.fr/organizations/hisense"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "aad89b1c-2f26-4547-981e-103b213ec032",
+     "title": "donnees-indice-reparabilite-hisense.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-hisense-2/20260318-142734/data.csv",
+     "created_at": "2026-03-18T14:27:35.008000+00:00",
+     "last_modified": "2026-03-18T14:27:35.655000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "69b2d28880209ca8e0338929",
+   "slug": "indice-de-reparabilite-organisation-hisense",
+   "title": "Indice de réparabilité (organisation Hisense)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-hisense",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-hisense/",
+   "license": "notspecified",
+   "created_at": "2026-03-12T14:49:44.826000+00:00",
+   "last_modified": "2026-03-12T14:49:47.970000+00:00",
+   "organization": {
+    "id": "67b60b2c1d85481636a19b9e",
+    "name": "Hisense",
+    "slug": "hisense",
+    "page": "https://www.data.gouv.fr/organizations/hisense"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "1d4c4870-4e22-4537-8787-bab3747c0910",
+     "title": "GI672B90X",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-hisense/20260312-144945/data.csv",
+     "created_at": "2026-03-12T14:49:45.359000+00:00",
+     "last_modified": "2026-03-12T14:49:47.970000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "69860acc8bc86d905beaee67",
+   "slug": "indice-de-reparabilite-organisation-adeoservices",
+   "title": "Indice de réparabilité (organisation ADEOSERVICES)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-adeoservices",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-adeoservices/",
+   "license": "notspecified",
+   "created_at": "2026-02-06T15:37:48.634000+00:00",
+   "last_modified": "2026-02-06T15:37:49.193000+00:00",
+   "organization": {
+    "id": "69860a7a1e847366e5d4ed2e",
+    "name": "ADEOSERVICES",
+    "slug": "adeoservices",
+    "page": "https://www.data.gouv.fr/organizations/adeoservices"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "ed5d2861-fbf6-4eff-b6a9-94d939ea81b8",
+     "title": "donnees-indice-reparabilite.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-adeoservices/20260206-153748/data.csv",
+     "created_at": "2026-02-06T15:37:49.012000+00:00",
+     "last_modified": "2026-02-06T15:37:49.193000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ee62126421f6919ec20d06",
+   "slug": "indice-de-reparabilite-organisation-nilfisk",
+   "title": "Indice de réparabilité (organisation NILFISK)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-nilfisk",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-nilfisk/",
+   "license": "notspecified",
+   "created_at": "2025-04-03T10:25:22.421000+00:00",
+   "last_modified": "2025-04-03T10:27:18.352000+00:00",
+   "organization": {
+    "id": "67ee612c4b52208969e1d590",
+    "name": "NILFISK",
+    "slug": "nilfisk",
+    "page": "https://www.data.gouv.fr/organizations/nilfisk"
+   },
+   "owner": null,
+   "resources": []
+  },
+  {
+   "id": "67ee6221d693532d4afa6ab2",
+   "slug": "indice-de-reparabilite-organisation-nilfisk-2",
+   "title": "Indice de réparabilité (organisation NILFISK)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-nilfisk-2",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-nilfisk-2/",
+   "license": "notspecified",
+   "created_at": "2025-04-03T10:25:37.509000+00:00",
+   "last_modified": "2025-04-03T10:25:37.509000+00:00",
+   "organization": {
+    "id": "67ee612c4b52208969e1d590",
+    "name": "NILFISK",
+    "slug": "nilfisk",
+    "page": "https://www.data.gouv.fr/organizations/nilfisk"
+   },
+   "owner": null,
+   "resources": []
+  },
+  {
+   "id": "686cd770a6b2a2ca0f7d2d2f",
+   "slug": "indice-de-reparabilite-organisation-fairphone-1",
+   "title": "Indice de réparabilité (organisation Fairphone)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-fairphone-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-fairphone-1/",
+   "license": "lov2",
+   "created_at": "2025-07-08T08:31:44.120000+00:00",
+   "last_modified": "2025-07-09T09:12:04.007000+00:00",
+   "organization": {
+    "id": "6839a42291d8416df1559260",
+    "name": "Fairphone",
+    "slug": "fairphone",
+    "page": "https://www.data.gouv.fr/organizations/fairphone"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "5207fe39-1c14-4a40-8301-c84dc9b9a839",
+     "title": "FP6 Repairability",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-fairphone-1/20250708-084159/fp6-repairability-donnees-indice-reparabilite-fairphone-2-.csv",
+     "created_at": "2025-07-08T08:42:00.491000+00:00",
+     "last_modified": "2025-07-09T09:12:04.006000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ee6240da98735f30c83c9b",
+   "slug": "indice-de-reparabilite-organisation-nilfisk-5",
+   "title": "Indice de réparabilité (organisation NILFISK)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-nilfisk-5",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-nilfisk-5/",
+   "license": "notspecified",
+   "created_at": "2025-04-03T10:26:08.275000+00:00",
+   "last_modified": "2025-04-03T10:28:16.541000+00:00",
+   "organization": {
+    "id": "67ee612c4b52208969e1d590",
+    "name": "NILFISK",
+    "slug": "nilfisk",
+    "page": "https://www.data.gouv.fr/organizations/nilfisk"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "46ab1cd9-b729-4a2c-a4e6-327bf49ed0f6",
+     "title": "ECOTAXE DATA GOUV A DEPOSER.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-nilfisk-5/20250403-102815/data.csv",
+     "created_at": "2025-04-03T10:28:16.241000+00:00",
+     "last_modified": "2025-04-03T10:28:16.514000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6a6ca39131a98d09e22070f1",
+   "slug": "indice-de-reparabilite-electrolux-france",
+   "title": "Indice de réparabilité (ELECTROLUX FRANCE)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-electrolux-france",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-electrolux-france/",
+   "license": "notspecified",
+   "created_at": "2026-07-31T13:30:57.461000+00:00",
+   "last_modified": "2026-07-31T13:31:04.043000+00:00",
+   "organization": {
+    "id": "65169dff596b1714f482bbb6",
+    "name": "ELECTROLUX FRANCE",
+    "slug": "electrolux-france",
+    "page": "https://www.data.gouv.fr/organizations/electrolux-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "f439d740-5030-4a93-912f-ff173a8b0e44",
+     "title": "donnees-schema-indice-reparabilite",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-electrolux-france/20260731-133057/donnees-schema-indice-reparabilite.csv",
+     "created_at": "2026-07-31T13:30:58.063000+00:00",
+     "last_modified": "2026-07-31T13:30:58.223000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ff7ff67a8f86cc204db0fd",
+   "slug": "indice-de-reparabilite-organisation-polti",
+   "title": "Indice de réparabilité (organisation POLTI)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-polti",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-polti/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T10:01:26.313000+00:00",
+   "last_modified": "2025-04-16T10:01:27.128000+00:00",
+   "organization": {
+    "id": "67ff7f7fbfd4d6392de82879",
+    "name": "POLTI",
+    "slug": "polti",
+    "page": "https://www.data.gouv.fr/organizations/polti"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "c9991e74-c2b2-446a-b820-95e76467dc0c",
+     "title": "IDR_POLTI",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-polti/20250416-100126/data.csv",
+     "created_at": "2025-04-16T10:01:26.885000+00:00",
+     "last_modified": "2025-04-16T10:01:27.117000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "69b2d28c63783a6a1c0c5d15",
+   "slug": "indice-de-reparabilite-organisation-hisense-1",
+   "title": "Indice de réparabilité (organisation Hisense)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-hisense-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-hisense-1/",
+   "license": "notspecified",
+   "created_at": "2026-03-12T14:49:47.984000+00:00",
+   "last_modified": "2026-03-12T14:49:48.919000+00:00",
+   "organization": {
+    "id": "67b60b2c1d85481636a19b9e",
+    "name": "Hisense",
+    "slug": "hisense",
+    "page": "https://www.data.gouv.fr/organizations/hisense"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "12e871d4-3891-468e-b1de-1a6a2d44087a",
+     "title": "GI672B90X",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-hisense-1/20260312-144948/data.csv",
+     "created_at": "2026-03-12T14:49:48.791000+00:00",
+     "last_modified": "2026-03-12T14:49:48.919000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ee622d8243712e622fd3e5",
+   "slug": "indice-de-reparabilite-organisation-nilfisk-3",
+   "title": "Indice de réparabilité (organisation NILFISK)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-nilfisk-3",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-nilfisk-3/",
+   "license": "notspecified",
+   "created_at": "2025-04-03T10:25:48.999000+00:00",
+   "last_modified": "2025-04-03T10:25:48.999000+00:00",
+   "organization": {
+    "id": "67ee612c4b52208969e1d590",
+    "name": "NILFISK",
+    "slug": "nilfisk",
+    "page": "https://www.data.gouv.fr/organizations/nilfisk"
+   },
+   "owner": null,
+   "resources": []
+  },
+  {
+   "id": "67ee6237db7122f3dab35362",
+   "slug": "indice-de-reparabilite-organisation-nilfisk-4",
+   "title": "Indice de réparabilité (organisation NILFISK)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-nilfisk-4",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-nilfisk-4/",
+   "license": "notspecified",
+   "created_at": "2025-04-03T10:25:59.258000+00:00",
+   "last_modified": "2025-04-03T10:25:59.258000+00:00",
+   "organization": {
+    "id": "67ee612c4b52208969e1d590",
+    "name": "NILFISK",
+    "slug": "nilfisk",
+    "page": "https://www.data.gouv.fr/organizations/nilfisk"
+   },
+   "owner": null,
+   "resources": []
+  },
+  {
+   "id": "66d9883def268968964e00db",
+   "slug": "indice-de-reparabilite-brandt-france",
+   "title": "Indice de réparabilité  - BRANDT FRANCE",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-brandt-france",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-brandt-france/",
+   "license": "other-pd",
+   "created_at": "2024-09-05T10:30:20.982000+00:00",
+   "last_modified": "2025-10-23T14:02:16.139000+00:00",
+   "organization": {
+    "id": "651549118eddec8daa95cd33",
+    "name": "BRANDT FRANCE",
+    "slug": "brandt-france",
+    "page": "https://www.data.gouv.fr/organizations/brandt-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "e4eaec1e-5768-49d3-8d0a-0e44c05c65f3",
+     "title": "Grilles_reparabilite_compilees_2025_10_22a.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-brandt-france/20251023-135900/data.csv",
+     "created_at": "2025-10-23T13:59:00.514000+00:00",
+     "last_modified": "2025-10-23T13:59:00.756000+00:00"
+    },
+    {
+     "id": "1ccdd02e-5079-41f0-bda2-c95647eef508",
+     "title": "Grilles_reparabilite_compilees_2025_07_17.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-brandt-france/20250819-074630/data.csv",
+     "created_at": "2025-08-19T07:46:31.043000+00:00",
+     "last_modified": "2025-08-19T07:46:31.356000+00:00"
+    },
+    {
+     "id": "d2b944ee-015b-4463-94db-37216777a4fd",
+     "title": "aa_grilles_reparabilite_compilees 53p_27052025.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-brandt-france/20250527-081937/data.csv",
+     "created_at": "2025-05-27T08:19:37.599000+00:00",
+     "last_modified": "2025-05-27T08:19:37.876000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ee621ada98735f30c83c9a",
+   "slug": "indice-de-reparabilite-organisation-nilfisk-1",
+   "title": "Indice de réparabilité (organisation NILFISK)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-nilfisk-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-nilfisk-1/",
+   "license": "notspecified",
+   "created_at": "2025-04-03T10:25:29.957000+00:00",
+   "last_modified": "2025-04-03T10:25:29.957000+00:00",
+   "organization": {
+    "id": "67ee612c4b52208969e1d590",
+    "name": "NILFISK",
+    "slug": "nilfisk",
+    "page": "https://www.data.gouv.fr/organizations/nilfisk"
+   },
+   "owner": null,
+   "resources": []
+  },
+  {
+   "id": "6554a0154eccc8c44bd02ca7",
+   "slug": "indice-de-reparabilite-organisation-ribimex",
+   "title": "Indice de réparabilité (organisation RIBIMEX)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-ribimex",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-ribimex/",
+   "license": "notspecified",
+   "created_at": "2023-11-15T10:40:21.886000+00:00",
+   "last_modified": "2024-09-16T14:18:39.498000+00:00",
+   "organization": {
+    "id": "65549fc7000ea50c9ae80694",
+    "name": "RIBIMEX",
+    "slug": "ribimex",
+    "page": "https://www.data.gouv.fr/organizations/ribimex"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "e2bc9b7c-4598-4bdb-92c3-9109a16f288c",
+     "title": "tondeuse_batterie_fr.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-ribimex/20231115-104022/data.csv",
+     "created_at": "2023-11-15T10:40:22.288000+00:00",
+     "last_modified": "2024-09-16T14:18:39.484000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "677cf80b64fc4643a90f122d",
+   "slug": "indices-de-reparabilite-outillage-bosch",
+   "title": "Indices de réparabilité Outillage Bosch",
+   "page": "https://www.data.gouv.fr/datasets/indices-de-reparabilite-outillage-bosch",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indices-de-reparabilite-outillage-bosch/",
+   "license": "notspecified",
+   "created_at": "2025-01-07T09:46:51.143000+00:00",
+   "last_modified": "2026-10-20T14:01:23.527000+00:00",
+   "organization": {
+    "id": "677cf42a41af259d76b615f5",
+    "name": "Robert Bosch France SAS",
+    "slug": "robert-bosch-france-sas",
+    "page": "https://www.data.gouv.fr/organizations/robert-bosch-france-sas"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "87d6205e-ce32-47c0-9889-bb6e96b49763",
+     "title": "Bosch-tondeuses.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indices-de-reparabilite-outillage-bosch/20261020-140123/bosch-tondeuses.csv",
+     "created_at": "2026-05-07T14:29:37.721000+00:00",
+     "last_modified": "2026-10-20T14:01:23.527000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6996dbee9226d12b8e67efe4",
+   "slug": "indice-de-reparabilite-organisation-boulanger-1",
+   "title": "Indice de réparabilité (organisation BOULANGER)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-boulanger-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-boulanger-1/",
+   "license": "notspecified",
+   "created_at": "2026-02-19T09:46:22.399000+00:00",
+   "last_modified": "2026-09-28T14:42:23.212000+00:00",
+   "organization": {
+    "id": "6995c49e9ecf1fb66fa9bec0",
+    "name": "BOULANGER",
+    "slug": "boulanger",
+    "page": "https://www.data.gouv.fr/organizations/boulanger"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "de264cf3-4a37-47a5-b557-39c1ca821d08",
+     "title": "Import_2026T03",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-boulanger-1/20260928-144101/aet-boulanger-d3e-supermodulation-fichierimport-202609-env.csv",
+     "created_at": "2026-09-28T14:41:01.778000+00:00",
+     "last_modified": "2026-09-28T14:42:23.212000+00:00"
+    },
+    {
+     "id": "ba54a287-4a62-4fa4-bc9a-59da1f076d02",
+     "title": "Import_2026S1",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-boulanger-1/20260629-074806/data.csv",
+     "created_at": "2026-06-29T07:48:06.585000+00:00",
+     "last_modified": "2026-06-29T08:01:39.122000+00:00"
+    },
+    {
+     "id": "a1e7b7f5-c0d9-4c14-946e-8abd40438553",
+     "title": "Import_2025",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-boulanger-1/20260219-094622/data.csv",
+     "created_at": "2026-02-19T09:46:23.097000+00:00",
+     "last_modified": "2026-06-29T08:01:26.993000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "69ef698cc694bf3ed6168cd2",
+   "slug": "indice-de-reparabilite-organisation-smeg",
+   "title": "Indice de réparabilité (organisation SMEG)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-smeg",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-smeg/",
+   "license": "notspecified",
+   "created_at": "2026-04-27T13:50:04.926000+00:00",
+   "last_modified": "2026-05-20T12:27:22.595000+00:00",
+   "organization": {
+    "id": "69441a1bd16d1b4e8555f2f1",
+    "name": "SMEG FRANCE",
+    "slug": "smeg-france",
+    "page": "https://www.data.gouv.fr/organizations/smeg-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "7a88b8ee-c2c5-46a6-972a-580915bce57e",
+     "title": "aa_compiled_reparabilite_grid_smeg.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-smeg/20260427-141529/aa-compiled-reparabilite-grid-smeg.csv",
+     "created_at": "2026-04-27T13:50:05.422000+00:00",
+     "last_modified": "2026-04-27T14:15:29.770000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "687fad65e0431590cf08f63f",
+   "slug": "indice-de-reparabilite-organisation-btlec-est-1",
+   "title": "Indice de réparabilité (organisation BTLec EST)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-btlec-est-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-btlec-est-1/",
+   "license": "notspecified",
+   "created_at": "2025-07-22T15:25:25.609000+00:00",
+   "last_modified": "2025-07-22T15:25:26.337000+00:00",
+   "organization": {
+    "id": "6878c07a48a4f20ef9c5eb90",
+    "name": "BTLec EST",
+    "slug": "btlec-est",
+    "page": "https://www.data.gouv.fr/organizations/btlec-est"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "c8b2ab1c-e9a9-4a64-9bd8-05e2bb84ef3d",
+     "title": "ECOSYSTEMET2",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-btlec-est-1/20250722-152526/data.csv",
+     "created_at": "2025-07-22T15:25:26.162000+00:00",
+     "last_modified": "2025-07-22T15:25:26.337000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6878c0c871c946670ff94ea6",
+   "slug": "indice-de-reparabilite-organisation-btlec-est",
+   "title": "Indice de réparabilité (organisation BTLec EST)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-btlec-est",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-btlec-est/",
+   "license": "notspecified",
+   "created_at": "2025-07-17T09:22:16.845000+00:00",
+   "last_modified": "2025-07-17T09:22:17.776000+00:00",
+   "organization": {
+    "id": "6878c07a48a4f20ef9c5eb90",
+    "name": "BTLec EST",
+    "slug": "btlec-est",
+    "page": "https://www.data.gouv.fr/organizations/btlec-est"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "76f99f5f-4cb4-4cad-9bd1-b72e62c80111",
+     "title": "Monfichier",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-btlec-est/20250717-092217/data.csv",
+     "created_at": "2025-07-17T09:22:17.499000+00:00",
+     "last_modified": "2025-07-17T09:22:17.776000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6777bcd5059392f07d382ddf",
+   "slug": "indice-de-reparabilite-organisation-global-applius",
+   "title": "Indice de réparabilité (organisation GLOBAL APPLIUS)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-global-applius",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-global-applius/",
+   "license": "lov2",
+   "created_at": "2025-01-03T10:32:53.021000+00:00",
+   "last_modified": "2025-12-19T15:38:58.723000+00:00",
+   "organization": {
+    "id": "6777a48e8e0ad8aa628c0ca4",
+    "name": "GLOBAL APPLIUS",
+    "slug": "global-applius",
+    "page": "https://www.data.gouv.fr/organizations/global-applius"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "1978c3da-853f-4d19-8d51-9a4ed4d7159f",
+     "title": "donnees-indice-reparabilite-global-applius-20250110.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-global-applius/20250110-085919/data.csv",
+     "created_at": "2025-01-10T08:59:19.826000+00:00",
+     "last_modified": "2025-01-13T15:16:09.806000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "69c2b91fba387e141ce58058",
+   "slug": "indice-de-reparabilite-groupe-seb-france-1",
+   "title": "Indice de réparabilité (Groupe SEB France)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-groupe-seb-france-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-groupe-seb-france-1/",
+   "license": "notspecified",
+   "created_at": "2026-03-24T16:17:34.809000+00:00",
+   "last_modified": "2026-03-24T16:17:37.874000+00:00",
+   "organization": {
+    "id": "68123393bfd0b04a2243cd52",
+    "name": "Groupe SEB France",
+    "slug": "groupe-seb-france",
+    "page": "https://www.data.gouv.fr/organizations/groupe-seb-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "5a7475f7-cd99-48e8-985c-23c2b434bfed",
+     "title": "donnees-schema-indice-reparabilite",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-groupe-seb-france-1/20260324-161735/donnees-schema-indice-reparabilite.csv",
+     "created_at": "2026-03-24T16:17:35.577000+00:00",
+     "last_modified": "2026-03-24T16:17:35.833000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6945705d4eaca447a9b0e5ae",
+   "slug": "indice-de-reparabilite-organisation-global-applius-1",
+   "title": "Indice de réparabilité (organisation GLOBAL APPLIUS)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-global-applius-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-global-applius-1/",
+   "license": "lov2",
+   "created_at": "2025-12-19T15:33:48.859000+00:00",
+   "last_modified": "2025-12-19T15:38:48.928000+00:00",
+   "organization": {
+    "id": "6777a48e8e0ad8aa628c0ca4",
+    "name": "GLOBAL APPLIUS",
+    "slug": "global-applius",
+    "page": "https://www.data.gouv.fr/organizations/global-applius"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "36709ae6-935a-4967-a925-6c517f58341a",
+     "title": "donnees-indice-reparabilite-global-applius-2026-IDU.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-global-applius-1/20251219-153349/data.csv",
+     "created_at": "2025-12-19T15:33:49.515000+00:00",
+     "last_modified": "2025-12-19T15:33:49.719000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "69ca3f3f2e7ce6ebd80fa95a",
+   "slug": "indice-de-reparabilite-groupe-seb-retailing-1",
+   "title": "Indice de réparabilité (Groupe SEB Retailing)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-groupe-seb-retailing-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-groupe-seb-retailing-1/",
+   "license": "notspecified",
+   "created_at": "2026-03-30T09:15:43.197000+00:00",
+   "last_modified": "2026-03-31T08:36:47.915000+00:00",
+   "organization": {
+    "id": "684026924329bd6c4be7bf4f",
+    "name": "Groupe SEB Retailing",
+    "slug": "groupe-seb-retailing",
+    "page": "https://www.data.gouv.fr/organizations/groupe-seb-retailing"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "efde4153-b1e1-4049-8aca-a9b1b28cfeaa",
+     "title": "donnees-schema-indice-reparabilite Aspi robots 2026",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-groupe-seb-retailing-1/20260330-091544/donnees-schema-indice-reparabilite-aspi-robots-2026.csv",
+     "created_at": "2026-03-30T09:15:44.204000+00:00",
+     "last_modified": "2026-03-30T09:15:44.408000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "69660fd55ab997a85f43dfed",
+   "slug": "indice-de-reparabilite-organisation-btlec-est-6",
+   "title": "Indice de réparabilité (organisation BTLec EST)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-btlec-est-6",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-btlec-est-6/",
+   "license": "notspecified",
+   "created_at": "2026-01-13T09:26:45.513000+00:00",
+   "last_modified": "2026-01-13T09:26:46.279000+00:00",
+   "organization": {
+    "id": "6878c07a48a4f20ef9c5eb90",
+    "name": "BTLec EST",
+    "slug": "btlec-est",
+    "page": "https://www.data.gouv.fr/organizations/btlec-est"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "ad98ad5c-693a-4226-8cbe-fac6451e41f3",
+     "title": "Monfichier",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-btlec-est-6/20260113-092645/data.csv",
+     "created_at": "2026-01-13T09:26:46.134000+00:00",
+     "last_modified": "2026-01-13T09:26:46.279000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "675c50c7173fff77fc6be41a",
+   "slug": "indice-de-reparabilite-organisation-beko-france",
+   "title": "Indice de réparabilité (organisation Beko France)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-beko-france",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-beko-france/",
+   "license": "notspecified",
+   "created_at": "2024-12-13T15:20:39.221000+00:00",
+   "last_modified": "2025-04-03T08:02:16.491000+00:00",
+   "organization": {
+    "id": "6735dd92c8b811718fecc12f",
+    "name": "Beko France",
+    "slug": "beko-france",
+    "page": "https://www.data.gouv.fr/organizations/beko-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "1a00c80b-35ce-4a35-8261-0b55c696e0b5",
+     "title": "BDFS26041WQ.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-beko-france/20241213-152040/data.csv",
+     "created_at": "2024-12-13T15:20:40.875000+00:00",
+     "last_modified": "2024-12-13T15:20:41.081000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6a429c5c76544f19d063df48",
+   "slug": "indice-de-reparabilite-td-synnex-france",
+   "title": "Indice de réparabilité (TD SYNNEX FRANCE)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-td-synnex-france",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-td-synnex-france/",
+   "license": "notspecified",
+   "created_at": "2026-06-29T16:25:00.137000+00:00",
+   "last_modified": "2026-06-29T16:30:14.997000+00:00",
+   "organization": {
+    "id": "651705c61f405f6f276f4df2",
+    "name": "TD SYNNEX FRANCE",
+    "slug": "td-synnex-france",
+    "page": "https://www.data.gouv.fr/organizations/td-synnex-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "4a1ade69-7843-4b47-8187-fca94831626e",
+     "title": "donnees-schema-indice-reparabilite",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-td-synnex-france/20260629-162500/donnees-schema-indice-reparabilite.csv",
+     "created_at": "2026-06-29T16:25:00.863000+00:00",
+     "last_modified": "2026-06-29T16:28:20.409000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "679b386d366d51c402197ed5",
+   "slug": "indice-de-reparabilite-organisation-daan-technologies",
+   "title": "Indice de réparabilité (organisation Daan Technologies)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-daan-technologies",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-daan-technologies/",
+   "license": "notspecified",
+   "created_at": "2025-01-30T08:29:33.062000+00:00",
+   "last_modified": "2025-02-06T07:33:29.635000+00:00",
+   "organization": {
+    "id": "679b36a847e0d876500035aa",
+    "name": "Daan Technologies",
+    "slug": "daan-technologies",
+    "page": "https://www.data.gouv.fr/organizations/daan-technologies"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "f26d379c-3192-49f2-a118-2ac69f683701",
+     "title": "fichier Daan Tech data.gouv.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-daan-technologies/20250206-073329/data.csv",
+     "created_at": "2025-02-06T07:33:29.383000+00:00",
+     "last_modified": "2025-02-06T07:33:29.625000+00:00"
+    },
+    {
+     "id": "fc63051a-ae17-46cd-8df1-cae0f2318386",
+     "title": "fichier Daan Tech data.gouv.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-daan-technologies/20250130-082933/data.csv",
+     "created_at": "2025-01-30T08:29:33.533000+00:00",
+     "last_modified": "2025-01-30T08:29:33.734000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6a42dd2093cf3f503a691bf2",
+   "slug": "indice-de-reparabilite-td-synnex-france-1",
+   "title": "Indice de réparabilité (TD SYNNEX FRANCE)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-td-synnex-france-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-td-synnex-france-1/",
+   "license": "notspecified",
+   "created_at": "2026-06-29T21:01:20.570000+00:00",
+   "last_modified": "2026-06-29T21:11:54.032000+00:00",
+   "organization": {
+    "id": "651705c61f405f6f276f4df2",
+    "name": "TD SYNNEX FRANCE",
+    "slug": "td-synnex-france",
+    "page": "https://www.data.gouv.fr/organizations/td-synnex-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "54efdeaf-ae3c-4048-8f87-1e4360d0c713",
+     "title": "donnees-schema-indice-reparabilite",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-td-synnex-france-1/20260629-211153/schema-index-reparabilite.csv",
+     "created_at": "2026-06-29T21:01:22.451000+00:00",
+     "last_modified": "2026-06-29T21:11:54.029000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "69c55c09754cc9ad02d94de5",
+   "slug": "indice-de-reparabilite-seb-international-services",
+   "title": "Indice de réparabilité (SEB International Services)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-seb-international-services",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-seb-international-services/",
+   "license": "notspecified",
+   "created_at": "2026-03-26T16:17:13.280000+00:00",
+   "last_modified": "2026-03-26T16:24:53.413000+00:00",
+   "organization": {
+    "id": "68402751510fa5ac9d98ce14",
+    "name": "SEB International Services",
+    "slug": "seb-international-services",
+    "page": "https://www.data.gouv.fr/organizations/seb-international-services"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "acbca94a-e012-40d4-8cb4-b57fa7d2849c",
+     "title": "donnees-schema-indice-reparabilite",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-seb-international-services/20260326-162312/donnees-schema-indice-reparabilite.csv",
+     "created_at": "2026-03-26T16:23:13.138000+00:00",
+     "last_modified": "2026-03-26T16:23:13.364000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6756b9ade34efeb358f26576",
+   "slug": "indice-de-reparabilite-organisation-beko-france-1",
+   "title": "Indice de réparabilité (organisation Beko France)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-beko-france-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-beko-france-1/",
+   "license": "notspecified",
+   "created_at": "2024-12-09T09:34:37.183000+00:00",
+   "last_modified": "2026-03-10T13:29:25.624000+00:00",
+   "organization": {
+    "id": "6735dd92c8b811718fecc12f",
+    "name": "Beko France",
+    "slug": "beko-france",
+    "page": "https://www.data.gouv.fr/organizations/beko-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "c7f3fd84-0364-42ba-83ea-9340b62819e4",
+     "title": "Fichier_Total_LV_ Beko _10032026_7app.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-beko-france-1/20260310-132925/data.csv",
+     "created_at": "2026-03-10T13:29:25.530000+00:00",
+     "last_modified": "2026-03-10T13:29:25.623000+00:00"
+    },
+    {
+     "id": "900da04a-c55c-4de4-9a87-2e76e2a41cb3",
+     "title": "BDFN26B4C0W.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-beko-france/20241209-093437/data.csv",
+     "created_at": "2024-12-09T09:34:37.657000+00:00",
+     "last_modified": "2024-12-09T10:56:02.887000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "69c55e9f883477cd8b5d8b6d",
+   "slug": "indice-de-reparabilite-groupe-seb-retailing",
+   "title": "Indice de réparabilité (Groupe SEB Retailing)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-groupe-seb-retailing",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-groupe-seb-retailing/",
+   "license": "notspecified",
+   "created_at": "2026-03-26T16:28:15.307000+00:00",
+   "last_modified": "2026-03-26T16:28:26.897000+00:00",
+   "organization": {
+    "id": "684026924329bd6c4be7bf4f",
+    "name": "Groupe SEB Retailing",
+    "slug": "groupe-seb-retailing",
+    "page": "https://www.data.gouv.fr/organizations/groupe-seb-retailing"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "58290eea-f75b-45ff-9ff5-2ea7a277883a",
+     "title": "donnees-schema-indice-reparabilite",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-groupe-seb-retailing/20260326-162815/donnees-schema-indice-reparabilite.csv",
+     "created_at": "2026-03-26T16:28:16.001000+00:00",
+     "last_modified": "2026-03-26T16:28:16.173000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "689463823224991549a9b90c",
+   "slug": "indice-de-reparabilite-organisation-ingram-micro",
+   "title": "Indice de réparabilité (organisation INGRAM MICRO)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-ingram-micro",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-ingram-micro/",
+   "license": "notspecified",
+   "created_at": "2025-08-07T08:27:46.571000+00:00",
+   "last_modified": "2025-08-07T08:56:39.060000+00:00",
+   "organization": {
+    "id": "688ba9fef4090d547d449d35",
+    "name": "INGRAM MICRO",
+    "slug": "ingram-micro",
+    "page": "https://www.data.gouv.fr/organizations/ingram-micro"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "66be94ba-54e2-4083-a319-79b87c660106",
+     "title": "data BM1403CDA.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-ingram-micro/20250807-085224/data.csv",
+     "created_at": "2025-08-07T08:52:24.476000+00:00",
+     "last_modified": "2025-08-07T08:56:39.059000+00:00"
+    },
+    {
+     "id": "2fb5bdda-efd6-4613-8c0d-373b6ef0caeb",
+     "title": "donnees-indice-reparabilite-ingram-micro.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-ingram-micro/20250807-082746/data.csv",
+     "created_at": "2025-08-07T08:27:46.961000+00:00",
+     "last_modified": "2025-08-07T08:27:47.092000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "68dfbb283be0fc84e3dddc51",
+   "slug": "indice-de-reparabilite-organisation-btlec-est-2",
+   "title": "Indice de réparabilité (organisation BTLec EST)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-btlec-est-2",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-btlec-est-2/",
+   "license": "notspecified",
+   "created_at": "2025-10-03T12:01:44.688000+00:00",
+   "last_modified": "2025-10-03T12:01:45.574000+00:00",
+   "organization": {
+    "id": "6878c07a48a4f20ef9c5eb90",
+    "name": "BTLec EST",
+    "slug": "btlec-est",
+    "page": "https://www.data.gouv.fr/organizations/btlec-est"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "8b2c97fd-d2e9-4475-9c62-762507744a2d",
+     "title": "ECO 3EME TRIMESTRE 2025",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-btlec-est-2/20251003-120145/data.csv",
+     "created_at": "2025-10-03T12:01:45.372000+00:00",
+     "last_modified": "2025-10-03T12:01:45.574000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "697a1de9c4090c69711cc58d",
+   "slug": "indice-de-reparabilite-organisation-dell-sas-2",
+   "title": "Indice de réparabilité (organisation Dell SAS)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-dell-sas-2",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-dell-sas-2/",
+   "license": "notspecified",
+   "created_at": "2026-01-28T14:32:08.648000+00:00",
+   "last_modified": "2026-01-28T14:32:09.584000+00:00",
+   "organization": {
+    "id": "685b23ff17adc91009b9d8ac",
+    "name": "Dell SAS",
+    "slug": "dell-sas",
+    "page": "https://www.data.gouv.fr/organizations/dell-sas"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "5a1b3bae-a880-41b3-926c-e9d64612d7fc",
+     "title": "donnees-indice-reparabilite-dell-sas.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-dell-sas-2/20260128-143209/data.csv",
+     "created_at": "2026-01-28T14:32:09.372000+00:00",
+     "last_modified": "2026-01-28T14:32:09.584000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "685b258be19c425abb0b0712",
+   "slug": "indice-de-reparabilite-organisation-dell-sas",
+   "title": "Indice de réparabilité (organisation Dell SAS)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-dell-sas",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-dell-sas/",
+   "license": "notspecified",
+   "created_at": "2025-06-24T22:24:11.865000+00:00",
+   "last_modified": "2025-06-24T22:24:12.477000+00:00",
+   "organization": {
+    "id": "685b23ff17adc91009b9d8ac",
+    "name": "Dell SAS",
+    "slug": "dell-sas",
+    "page": "https://www.data.gouv.fr/organizations/dell-sas"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "ffcaa33c-92fe-4e9d-81d5-c30c6e7faec7",
+     "title": "Dell fichier indice reparabilite.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-dell-sas/20250624-222412/data.csv",
+     "created_at": "2025-06-24T22:24:12.316000+00:00",
+     "last_modified": "2025-06-24T22:24:12.477000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "68e7a30a1978964ce8e20fbe",
+   "slug": "indice-de-reparabilite-organisation-btlec-est-3",
+   "title": "Indice de réparabilité (organisation BTLec EST)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-btlec-est-3",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-btlec-est-3/",
+   "license": "notspecified",
+   "created_at": "2025-10-09T11:56:58.601000+00:00",
+   "last_modified": "2025-10-09T11:56:59.466000+00:00",
+   "organization": {
+    "id": "6878c07a48a4f20ef9c5eb90",
+    "name": "BTLec EST",
+    "slug": "btlec-est",
+    "page": "https://www.data.gouv.fr/organizations/btlec-est"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "5b915ba6-c248-4f05-a44a-8294b43af474",
+     "title": "ECO 3EME TRIM V3",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-btlec-est-3/20251009-115659/data.csv",
+     "created_at": "2025-10-09T11:56:59.318000+00:00",
+     "last_modified": "2025-10-09T11:56:59.466000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6759b2276ed603aa7cb195ee",
+   "slug": "indice-de-reparabilite-organisation-bsh-electromenager-1",
+   "title": "Indice de réparabilité (organisation BSH ELECTROMENAGER)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-bsh-electromenager-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-bsh-electromenager-1/",
+   "license": "lov2",
+   "created_at": "2024-12-11T15:39:19.643000+00:00",
+   "last_modified": "2026-07-24T15:19:48.548000+00:00",
+   "organization": {
+    "id": "66d6b9e41f203c7bbb3bb53f",
+    "name": "BSH ELECTROMENAGER",
+    "slug": "bsh-electromenager",
+    "page": "https://www.data.gouv.fr/organizations/bsh-electromenager"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "c8890616-55ab-4e86-a5ee-c0487fb8e087",
+     "title": "aa-compiled-reparabilite-grid-bsh.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-bsh-electromenager-1/20260520-132001/aa-compiled-reparabilite-grid-bsh.csv",
+     "created_at": "2025-10-15T14:02:02.236000+00:00",
+     "last_modified": "2026-05-20T13:21:27.728000+00:00"
+    },
+    {
+     "id": "3cc77e2d-c0b3-493c-a19d-1c03e83331a8",
+     "title": "aa-compiled-reparabilility-grid.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-bsh-electromenager-1/20250430-090424/data.csv",
+     "created_at": "2025-04-30T09:04:24.337000+00:00",
+     "last_modified": "2025-04-30T09:04:24.714000+00:00"
+    },
+    {
+     "id": "71b20c6c-5cbe-4169-ac9b-6c047e876708",
+     "title": "aa-compiled-reparabilility-grid.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-bsh-electromenager-1/20250424-100326/data.csv",
+     "created_at": "2025-04-24T10:03:27.336000+00:00",
+     "last_modified": "2025-04-24T10:03:27.685000+00:00"
+    },
+    {
+     "id": "49b8a110-b733-4852-9dbb-3fc083984fe6",
+     "title": "aa-compiled-reparability-grid_4.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-2/20250116-100110/data.csv",
+     "created_at": "2025-01-16T10:01:11.091000+00:00",
+     "last_modified": "2025-01-16T10:01:11.379000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "685c130b0aa4759e09b6d2e6",
+   "slug": "indice-de-reparabilite-organisation-dell-sas-1",
+   "title": "Indice de réparabilité (organisation Dell SAS)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-dell-sas-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-dell-sas-1/",
+   "license": "notspecified",
+   "created_at": "2025-06-25T15:17:31.145000+00:00",
+   "last_modified": "2025-06-25T15:17:31.756000+00:00",
+   "organization": {
+    "id": "685b23ff17adc91009b9d8ac",
+    "name": "Dell SAS",
+    "slug": "dell-sas",
+    "page": "https://www.data.gouv.fr/organizations/dell-sas"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "adea3130-2a10-49f3-a613-1fc6b8295dd7",
+     "title": "Dell fichier indice reparabilite.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-dell-sas-1/20250625-151731/data.csv",
+     "created_at": "2025-06-25T15:17:31.601000+00:00",
+     "last_modified": "2025-06-25T15:17:31.755000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "681b29f671d14ef719c11ad6",
+   "slug": "indice-de-reparabilite-organisation-haier-france",
+   "title": "Indice de réparabilité (organisation Haier France)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-haier-france",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-haier-france/",
+   "license": "notspecified",
+   "created_at": "2025-05-07T09:37:58.911000+00:00",
+   "last_modified": "2026-07-17T08:14:16.569000+00:00",
+   "organization": {
+    "id": "67c04edad85b03206bea80ec",
+    "name": "Haier France",
+    "slug": "haier-france",
+    "page": "https://www.data.gouv.fr/organizations/haier-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "da054c6d-6b7a-451a-9eb3-1acd36feab84",
+     "title": "aa-compiled-reparabilite-grid-haier-france.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-haier-france/20260709-130426/test-pipeline-repair-output.csv",
+     "created_at": "2025-10-30T13:15:33.632000+00:00",
+     "last_modified": "2026-07-17T08:14:16.568000+00:00"
+    },
+    {
+     "id": "90d277cf-d747-4e3d-a749-fd16bd1b1ba0",
+     "title": "aa-compiled-reparabilite-grid-haier-france.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-haier-france/20260709-131411/aa-compiled-reparabilite-grid-haier-france.csv",
+     "created_at": "2025-10-16T07:34:15.306000+00:00",
+     "last_modified": "2026-07-17T08:14:00.706000+00:00"
+    },
+    {
+     "id": "97b4b75a-a7c6-4e34-b5c0-f6ea15d70e2e",
+     "title": "aa_compiled_reparability_grid.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-haier-france/20250507-093759/data.csv",
+     "created_at": "2025-05-07T09:37:59.565000+00:00",
+     "last_modified": "2025-05-07T09:37:59.815000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6862b3cc296e5373603f16dd",
+   "slug": "indice-de-reparabilite-organisation-groupe-seb-retailing-2",
+   "title": "Indice de réparabilité (organisation Groupe SEB Retailing)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-groupe-seb-retailing-2",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-groupe-seb-retailing-2/",
+   "license": "notspecified",
+   "created_at": "2025-06-30T15:57:00.822000+00:00",
+   "last_modified": "2025-07-09T15:29:00.498000+00:00",
+   "organization": {
+    "id": "684026924329bd6c4be7bf4f",
+    "name": "Groupe SEB Retailing",
+    "slug": "groupe-seb-retailing",
+    "page": "https://www.data.gouv.fr/organizations/groupe-seb-retailing"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "834c530d-3320-4365-8a2a-071211bb66a2",
+     "title": "GSR data nouveaux versatiles.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-groupe-seb-retailing-2/20250630-155701/data.csv",
+     "created_at": "2025-06-30T15:57:01.371000+00:00",
+     "last_modified": "2025-07-09T15:29:00.498000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6860fa6e82f7c2822334a6ce",
+   "slug": "indice-de-reparabilite-organisation-groupe-seb-retailing",
+   "title": "Indice de réparabilité (organisation Groupe SEB Retailing)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-groupe-seb-retailing",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-groupe-seb-retailing/",
+   "license": "lov2",
+   "created_at": "2025-06-29T08:33:50.045000+00:00",
+   "last_modified": "2025-10-02T07:54:25.531000+00:00",
+   "organization": {
+    "id": "684026924329bd6c4be7bf4f",
+    "name": "Groupe SEB Retailing",
+    "slug": "groupe-seb-retailing",
+    "page": "https://www.data.gouv.fr/organizations/groupe-seb-retailing"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "99fe105d-1942-4cd7-a77b-11e523eee55c",
+     "title": "GSR nouveaux non filaires corrigés 20 08 25.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-groupe-seb-retailing/20250910-180750/data.csv",
+     "created_at": "2025-09-10T18:07:50.316000+00:00",
+     "last_modified": "2025-09-10T18:07:50.586000+00:00"
+    },
+    {
+     "id": "a2ba993f-d2a1-4c37-bb03-ba0f61265dff",
+     "title": "Data set test pour les aspis filaires GSR 1.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-groupe-seb-retailing/20250629-083350/data.csv",
+     "created_at": "2025-06-29T08:33:50.886000+00:00",
+     "last_modified": "2025-07-01T07:58:56.343000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6862b44755bd75267b6b27da",
+   "slug": "indice-de-reparabilite-organisation-seb-international-services-2",
+   "title": "Indice de réparabilité (organisation SEB International Services)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-seb-international-services-2",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-seb-international-services-2/",
+   "license": "notspecified",
+   "created_at": "2025-06-30T15:59:03.779000+00:00",
+   "last_modified": "2026-04-07T09:45:20.797000+00:00",
+   "organization": {
+    "id": "68402751510fa5ac9d98ce14",
+    "name": "SEB International Services",
+    "slug": "seb-international-services",
+    "page": "https://www.data.gouv.fr/organizations/seb-international-services"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "92cadbb4-288c-4c21-8b5c-20fc2e73a58d",
+     "title": "GSF nouveaux non filaires corrigés 20 08 25.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-seb-international-services-2/20250910-180413/gsf-nouveaux-non-filaires-corriges-20-08-25.csv",
+     "created_at": "2025-09-10T18:04:14.139000+00:00",
+     "last_modified": "2025-09-10T18:04:14.336000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67adb94e6098dddf87a0dc2e",
+   "slug": "indice-de-reparabilite-organisation-miele-s-a-s",
+   "title": "Indice de réparabilité (organisation MIELE S.A.S)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-miele-s-a-s",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-miele-s-a-s/",
+   "license": "notspecified",
+   "created_at": "2025-02-13T09:20:14.955000+00:00",
+   "last_modified": "2025-10-08T15:31:00.993000+00:00",
+   "organization": {
+    "id": "6762955549e0d1edc3c1c670",
+    "name": "MIELE S.A.S",
+    "slug": "miele-s-a-s-1",
+    "page": "https://www.data.gouv.fr/organizations/miele-s-a-s-1"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "1302599d-12ab-4e4a-9c97-c404f09b45aa",
+     "title": "Indice-reparabilite-Lave-Vaisselle-07-2025.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-miele-s-a-s/20251008-151758/data.csv",
+     "created_at": "2025-10-08T15:17:58.763000+00:00",
+     "last_modified": "2025-10-08T15:17:59.057000+00:00"
+    },
+    {
+     "id": "162c01c2-8aba-4638-8d5a-df3f6c78a5b1",
+     "title": "data-1-.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-miele-s-a-s/20250227-155603/data-1-.csv",
+     "created_at": "2025-02-13T09:20:15.489000+00:00",
+     "last_modified": "2025-02-27T15:56:04.810000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6862b2dbc0a6755dae3e1322",
+   "slug": "indice-de-reparabilite-organisation-groupe-seb-france-1",
+   "title": "Indice de réparabilité (organisation Groupe SEB France)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-groupe-seb-france-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-groupe-seb-france-1/",
+   "license": "notspecified",
+   "created_at": "2025-06-30T15:52:59.596000+00:00",
+   "last_modified": "2025-07-01T08:53:36.446000+00:00",
+   "organization": {
+    "id": "68123393bfd0b04a2243cd52",
+    "name": "Groupe SEB France",
+    "slug": "groupe-seb-france",
+    "page": "https://www.data.gouv.fr/organizations/groupe-seb-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "595f3e03-758a-403a-873a-4d7e3f9081b5",
+     "title": "GSF data nouveaux versatiles.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-groupe-seb-france-1/20250630-155259/data.csv",
+     "created_at": "2025-06-30T15:53:00.078000+00:00",
+     "last_modified": "2025-07-01T08:53:36.446000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "685e6e7586146f4ca9892d5a",
+   "slug": "indice-de-reparabilite-organisation-groupe-seb-france-3",
+   "title": "Indice de réparabilité (organisation Groupe SEB France)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-groupe-seb-france-3",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-groupe-seb-france-3/",
+   "license": "lov2",
+   "created_at": "2025-06-27T10:12:05.432000+00:00",
+   "last_modified": "2025-08-28T09:41:46.453000+00:00",
+   "organization": {
+    "id": "68123393bfd0b04a2243cd52",
+    "name": "Groupe SEB France",
+    "slug": "groupe-seb-france",
+    "page": "https://www.data.gouv.fr/organizations/groupe-seb-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "0e135681-afdc-4b26-92ff-424601e4f5ce",
+     "title": "Data indice de réparabilité ",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-groupe-seb-france-3/20250627-101817/data-set-test-pour-les-aspis-filaires-gsf.csv",
+     "created_at": "2025-06-27T10:18:17.598000+00:00",
+     "last_modified": "2025-08-28T09:41:46.452000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "68f910946632ab8be65f8971",
+   "slug": "indice-de-reparabilite-organisation-groupe-seb-retailing-4",
+   "title": "Indice de réparabilité (organisation Groupe SEB Retailing)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-groupe-seb-retailing-4",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-groupe-seb-retailing-4/",
+   "license": "notspecified",
+   "created_at": "2025-10-22T17:12:51.796000+00:00",
+   "last_modified": "2025-10-22T17:12:52.626000+00:00",
+   "organization": {
+    "id": "684026924329bd6c4be7bf4f",
+    "name": "Groupe SEB Retailing",
+    "slug": "groupe-seb-retailing",
+    "page": "https://www.data.gouv.fr/organizations/groupe-seb-retailing"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "4b38dc86-fd08-4223-8ee1-091331807972",
+     "title": "GSR nouveaux non filaires corrigés 22 10 25.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-groupe-seb-retailing-4/20251022-171252/data.csv",
+     "created_at": "2025-10-22T17:12:52.474000+00:00",
+     "last_modified": "2025-10-22T17:12:52.626000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6909bb68e5d1c9cb6ab95d1a",
+   "slug": "indice-de-reparabilite-organisation-groupe-seb-france-4",
+   "title": "Indice de réparabilité (organisation Groupe SEB France)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-groupe-seb-france-4",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-groupe-seb-france-4/",
+   "license": "notspecified",
+   "created_at": "2025-11-04T08:38:00.360000+00:00",
+   "last_modified": "2025-11-04T08:38:02.351000+00:00",
+   "organization": {
+    "id": "68123393bfd0b04a2243cd52",
+    "name": "Groupe SEB France",
+    "slug": "groupe-seb-france",
+    "page": "https://www.data.gouv.fr/organizations/groupe-seb-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "65588fd6-9408-4795-9434-54a88696f0b9",
+     "title": "GSF nouveaux non filaires corrigés 04 11 25.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-groupe-seb-france-4/20251104-083801/data.csv",
+     "created_at": "2025-11-04T08:38:02.180000+00:00",
+     "last_modified": "2025-11-04T08:38:02.350000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "68624ac07700d62244cd633b",
+   "slug": "indice-de-reparabilite-organisation-seb-international-services",
+   "title": "Indice de réparabilité (organisation SEB International Services)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-seb-international-services",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-seb-international-services/",
+   "license": "notspecified",
+   "created_at": "2025-06-30T08:28:48.063000+00:00",
+   "last_modified": "2025-09-10T18:07:04.151000+00:00",
+   "organization": {
+    "id": "68402751510fa5ac9d98ce14",
+    "name": "SEB International Services",
+    "slug": "seb-international-services",
+    "page": "https://www.data.gouv.fr/organizations/seb-international-services"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "c6e3f946-ac55-4043-af7b-7825b02e00e8",
+     "title": "SIS nouveaux non filaires corrigés 20 08 25.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-seb-international-services/20250910-180703/data.csv",
+     "created_at": "2025-09-10T18:07:03.876000+00:00",
+     "last_modified": "2025-09-10T18:07:04.151000+00:00"
+    },
+    {
+     "id": "ebaabcc5-f9f3-4f35-9e6d-ae9be19b794a",
+     "title": "RH1128WO_SIS SEB INTERNATIONAL.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-seb-international-services/20250630-082848/data.csv",
+     "created_at": "2025-06-30T08:28:48.542000+00:00",
+     "last_modified": "2025-07-01T07:55:51.628000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "68f9112849f22146ff6844a2",
+   "slug": "indice-de-reparabilite-organisation-seb-international-services-1",
+   "title": "Indice de réparabilité (organisation SEB International Services)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-seb-international-services-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-seb-international-services-1/",
+   "license": "notspecified",
+   "created_at": "2025-10-22T17:15:20.267000+00:00",
+   "last_modified": "2025-10-22T17:15:21.040000+00:00",
+   "organization": {
+    "id": "68402751510fa5ac9d98ce14",
+    "name": "SEB International Services",
+    "slug": "seb-international-services",
+    "page": "https://www.data.gouv.fr/organizations/seb-international-services"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "162efef7-af78-410b-a6e6-3a7ba30d1c80",
+     "title": "SIS nouveaux non filaires corrigés 22 10 25.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-seb-international-services-1/20251022-171520/data.csv",
+     "created_at": "2025-10-22T17:15:20.881000+00:00",
+     "last_modified": "2025-10-22T17:15:21.040000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "69b41de8a55c2f1bb7c68c6b",
+   "slug": "indice-de-reparabilite-organisation-sourcing-et-creation",
+   "title": "Indice de réparabilité (organisation SOURCING ET CREATION )",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-sourcing-et-creation",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-sourcing-et-creation/",
+   "license": "notspecified",
+   "created_at": "2026-03-13T14:23:36.860000+00:00",
+   "last_modified": "2026-03-13T14:23:37.500000+00:00",
+   "organization": {
+    "id": "67bee7ece1dd615ba55e26cf",
+    "name": "SOURCING ET CREATION ",
+    "slug": "sourcing-et-creation",
+    "page": "https://www.data.gouv.fr/organizations/sourcing-et-creation"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "92c85cd4-4aa2-4320-8129-04d429a79eed",
+     "title": "EVCSK500 13 MARS 2026.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-sourcing-et-creation/20260313-142337/data.csv",
+     "created_at": "2026-03-13T14:23:37.328000+00:00",
+     "last_modified": "2026-03-13T14:23:37.499000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6862996a4d2c5928ef1927e7",
+   "slug": "indice-de-reparabilite-organisation-groupe-seb-retailing-1",
+   "title": "Indice de réparabilité (organisation Groupe SEB Retailing)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-groupe-seb-retailing-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-groupe-seb-retailing-1/",
+   "license": "notspecified",
+   "created_at": "2025-06-30T14:04:26.094000+00:00",
+   "last_modified": "2025-07-01T07:58:16.317000+00:00",
+   "organization": {
+    "id": "684026924329bd6c4be7bf4f",
+    "name": "Groupe SEB Retailing",
+    "slug": "groupe-seb-retailing",
+    "page": "https://www.data.gouv.fr/organizations/groupe-seb-retailing"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "10d83bd7-cc82-4f66-891f-04adf4aa0a7b",
+     "title": "RH1128WO_GSR.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-groupe-seb-retailing-1/20250630-140426/data.csv",
+     "created_at": "2025-06-30T14:04:26.529000+00:00",
+     "last_modified": "2025-07-01T07:58:16.317000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "68ed13b174f4a7cc4f8a465a",
+   "slug": "indice-de-reparabilite-organisation-seb-international-services-3",
+   "title": "Indice de réparabilité (organisation SEB International Services)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-seb-international-services-3",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-seb-international-services-3/",
+   "license": "notspecified",
+   "created_at": "2025-10-13T14:58:56.770000+00:00",
+   "last_modified": "2025-10-13T14:58:57.860000+00:00",
+   "organization": {
+    "id": "68402751510fa5ac9d98ce14",
+    "name": "SEB International Services",
+    "slug": "seb-international-services",
+    "page": "https://www.data.gouv.fr/organizations/seb-international-services"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "f923fb50-ccf2-45bb-995d-7f3b5f85d1c4",
+     "title": "data-set-test-pour-les-aspis-filaires-sis-101025.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-seb-international-services-3/20251013-145857/data.csv",
+     "created_at": "2025-10-13T14:58:57.623000+00:00",
+     "last_modified": "2025-10-13T14:58:57.860000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6a638bfc281dd9c47d6ae3ac",
+   "slug": "indice-de-reparabilite-bsh-electromenager-juillet-2026",
+   "title": "Indice de réparabilité (BSH ELECTROMENAGER) - Juillet 2026",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-bsh-electromenager-juillet-2026",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-bsh-electromenager-juillet-2026/",
+   "license": "notspecified",
+   "created_at": "2026-07-24T15:59:56.104000+00:00",
+   "last_modified": "2026-07-24T16:00:02.919000+00:00",
+   "organization": {
+    "id": "66d6b9e41f203c7bbb3bb53f",
+    "name": "BSH ELECTROMENAGER",
+    "slug": "bsh-electromenager",
+    "page": "https://www.data.gouv.fr/organizations/bsh-electromenager"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "c0eae666-d9d4-48c3-b411-d82c157f78ca",
+     "title": "donnees-schema-indice-reparabilite",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-bsh-electromenager-juillet-2026/20260724-155956/donnees-schema-indice-reparabilite.csv",
+     "created_at": "2026-07-24T15:59:57.070000+00:00",
+     "last_modified": "2026-07-24T15:59:57.193000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "68f8d87f8d5320b9c36d176f",
+   "slug": "indice-de-reparabilite-organisation-groupe-seb-retailing-3",
+   "title": "Indice de réparabilité (organisation Groupe SEB Retailing)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-groupe-seb-retailing-3",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-groupe-seb-retailing-3/",
+   "license": "notspecified",
+   "created_at": "2025-10-22T13:13:35.622000+00:00",
+   "last_modified": "2025-10-22T13:13:36.695000+00:00",
+   "organization": {
+    "id": "684026924329bd6c4be7bf4f",
+    "name": "Groupe SEB Retailing",
+    "slug": "groupe-seb-retailing",
+    "page": "https://www.data.gouv.fr/organizations/groupe-seb-retailing"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "d2922b4c-c1c6-4fe9-8bde-2670a7c56c36",
+     "title": "data-set-test-pour-les-aspis-filaires-gsr-101025.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-groupe-seb-retailing-3/20251022-131336/data.csv",
+     "created_at": "2025-10-22T13:13:36.314000+00:00",
+     "last_modified": "2025-10-22T13:13:36.695000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6819d8e0eb5737d25e8cc339",
+   "slug": "indice-de-reparabilite-organisation-groupe-seb-france",
+   "title": "Indice de réparabilité (organisation Groupe SEB France)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-groupe-seb-france",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-groupe-seb-france/",
+   "license": "lov2",
+   "created_at": "2025-05-06T09:39:44.799000+00:00",
+   "last_modified": "2025-10-02T08:05:22.088000+00:00",
+   "organization": {
+    "id": "68123393bfd0b04a2243cd52",
+    "name": "Groupe SEB France",
+    "slug": "groupe-seb-france",
+    "page": "https://www.data.gouv.fr/organizations/groupe-seb-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "c7cf8fbc-855c-4cde-ab51-c5159d9f9a0c",
+     "title": "GSF nouveaux non filaires corrigés 20 08 25.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-groupe-seb-france/20250910-180838/data.csv",
+     "created_at": "2025-09-10T18:08:38.542000+00:00",
+     "last_modified": "2025-09-10T18:08:38.776000+00:00"
+    },
+    {
+     "id": "cbbc50d4-b6e0-4e1f-9535-f787b447c48b",
+     "title": "GSF-valide-Aspirateur non filaire version VM 6.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-groupe-seb-france/20250625-161224/data.csv",
+     "created_at": "2025-06-25T16:12:24.993000+00:00",
+     "last_modified": "2025-06-25T16:12:25.228000+00:00"
+    },
+    {
+     "id": "6439180f-f231-485e-b240-59bf1d93c630",
+     "title": "aa_compiled_reparability_grid.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-groupe-seb-france/20251002-080144/rh1128wo-11juillet.csv",
+     "created_at": "2025-05-06T09:39:45.323000+00:00",
+     "last_modified": "2025-10-02T08:05:22.087000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "68b5c399834499fdea790135",
+   "slug": "indice-de-reparabilite-organisation-hp-france-sas",
+   "title": "Indice de réparabilité (organisation HP FRANCE SAS)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-hp-france-sas",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-hp-france-sas/",
+   "license": "notspecified",
+   "created_at": "2025-09-01T16:02:33.088000+00:00",
+   "last_modified": "2025-11-26T09:45:17.340000+00:00",
+   "organization": {
+    "id": "651542fc645a36c3f1fedd5a",
+    "name": "HP FRANCE SAS",
+    "slug": "hp-france-sas",
+    "page": "https://www.data.gouv.fr/organizations/hp-france-sas"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "a29a75e0-c73d-4962-843e-ed1f34e3ea66",
+     "title": "HP ZBook Fury G1i 16 inch Mobile Workstation_C79X0ET.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-hp-france-sas/20251126-094516/data.csv",
+     "created_at": "2025-11-26T09:45:16.989000+00:00",
+     "last_modified": "2025-11-26T09:45:17.339000+00:00"
+    },
+    {
+     "id": "9d28ac3f-5cf7-49aa-b6e5-b35474c209cc",
+     "title": "HP ZBook 8 G1i 16 inch Mobile Workstation _C79N0ET.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-hp-france-sas/20251113-195333/data.csv",
+     "created_at": "2025-11-13T19:53:33.793000+00:00",
+     "last_modified": "2025-11-13T19:53:34.129000+00:00"
+    },
+    {
+     "id": "49e914e0-e0e7-4115-9beb-2851bbeadac2",
+     "title": "HP ZBook 8 G1i 14 inch Mobile Workstation _C79MYET.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-hp-france-sas/20251113-192244/data.csv",
+     "created_at": "2025-11-13T19:22:44.602000+00:00",
+     "last_modified": "2025-11-13T19:22:44.824000+00:00"
+    },
+    {
+     "id": "a4de322a-1ffe-4c84-80ad-43742b6229b6",
+     "title": "HP ZBook 8 G1ak 14 inch Mobile Workstation_C78T7ET .csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-hp-france-sas/20251113-185231/data.csv",
+     "created_at": "2025-11-13T18:52:31.878000+00:00",
+     "last_modified": "2025-11-13T18:52:32.083000+00:00"
+    },
+    {
+     "id": "89d7e639-dbab-48eb-a13f-1462b1f54591",
+     "title": "HP ZBook 8 G1as 14 inch Mobile Workstation PC_B72XJET.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-hp-france-sas/20251113-175919/data.csv",
+     "created_at": "2025-11-13T17:59:19.831000+00:00",
+     "last_modified": "2025-11-13T17:59:20.098000+00:00"
+    },
+    {
+     "id": "10c80111-f565-4ef9-8e68-8aa0d1ea9643",
+     "title": "HP ZBook Fury G1i 18 inch Mobile Workstation_C79Y3ET.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-hp-france-sas/20251028-133618/data.csv",
+     "created_at": "2025-10-28T13:36:18.234000+00:00",
+     "last_modified": "2025-10-28T13:36:18.418000+00:00"
+    },
+    {
+     "id": "8c08ea7e-95fc-4791-bb3d-d9cc8461c6d6",
+     "title": "HP ZBook Fury G1i 18 inch Mobile Workstation_C79X7ET.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-hp-france-sas/20251028-133308/data.csv",
+     "created_at": "2025-10-28T13:33:08.618000+00:00",
+     "last_modified": "2025-10-28T13:33:08.834000+00:00"
+    },
+    {
+     "id": "bdc2a0ef-b950-49cd-9fb4-ff3eec777b14",
+     "title": "HP ZBook Fury G1i 18 inch Mobile Workstation_C79X3ET.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-hp-france-sas/20251028-131733/data.csv",
+     "created_at": "2025-10-28T13:17:33.937000+00:00",
+     "last_modified": "2025-10-28T13:17:34.108000+00:00"
+    },
+    {
+     "id": "15aac6f0-cabc-4dab-a921-2a34a1918c7b",
+     "title": "HP ZBook Fury G1i 16 inch Mobile Workstation_C79YPET.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-hp-france-sas/20251024-151055/data.csv",
+     "created_at": "2025-10-24T15:10:56.188000+00:00",
+     "last_modified": "2025-10-24T15:10:56.316000+00:00"
+    },
+    {
+     "id": "d9bfbb5f-23a3-493a-ad2e-d1adf12ed31d",
+     "title": "HP ZBook Fury G1i 16 inch Mobile Workstation_C79Y8ET.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-hp-france-sas/20251024-150314/data.csv",
+     "created_at": "2025-10-24T15:03:14.832000+00:00",
+     "last_modified": "2025-10-24T15:03:14.991000+00:00"
+    },
+    {
+     "id": "ec4d965e-bbb7-409c-88a2-617a4d29d708",
+     "title": "HP ZBook Fury G1i 16 inch Mobile Workstation_C79X2ET.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-hp-france-sas/20251024-150023/data.csv",
+     "created_at": "2025-10-24T15:00:24.160000+00:00",
+     "last_modified": "2025-10-24T15:00:24.304000+00:00"
+    },
+    {
+     "id": "a8a00960-a2c9-4f02-9b17-dcb60f4e4fae",
+     "title": "HP ZBook Fury G1i 16 inch Mobile Workstation_C79X1ET.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-hp-france-sas/20251024-145757/data.csv",
+     "created_at": "2025-10-24T14:57:57.804000+00:00",
+     "last_modified": "2025-10-24T14:57:57.926000+00:00"
+    },
+    {
+     "id": "c7ca1194-76da-49a0-ae47-57775215b8b7",
+     "title": "HP Elitebook 8 G1i 16 inch Notebook AI PC_AD3Z0ET.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-hp-france-sas/20251021-171259/data.csv",
+     "created_at": "2025-10-21T17:12:59.375000+00:00",
+     "last_modified": "2025-10-21T17:12:59.608000+00:00"
+    },
+    {
+     "id": "0276dc54-91f9-473b-bcd4-46f786e27441",
+     "title": "HP Elitebook 8 G1i 16 inch Notebook AI PC_AD3Y9ET.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-hp-france-sas/20251021-165908/data.csv",
+     "created_at": "2025-10-21T16:59:08.715000+00:00",
+     "last_modified": "2025-10-21T16:59:08.877000+00:00"
+    },
+    {
+     "id": "5f261169-cd1f-4193-af45-f133c25023b9",
+     "title": "HP Elitebook 8 G1i 16 inch Notebook AI PC_AD3Y8ET.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-hp-france-sas/20251021-165252/data.csv",
+     "created_at": "2025-10-21T16:52:53.105000+00:00",
+     "last_modified": "2025-10-21T16:52:53.284000+00:00"
+    },
+    {
+     "id": "d37b45e5-f0d5-4daf-9d03-f463e2e02056",
+     "title": "HP Elitebook 8 G1i 16 inch Notebook AI PC_AD3Y5ET.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-hp-france-sas/20251021-163832/data.csv",
+     "created_at": "2025-10-21T16:38:32.326000+00:00",
+     "last_modified": "2025-10-21T16:38:32.433000+00:00"
+    },
+    {
+     "id": "887e7f89-d637-4c3d-ab1c-11771596e51f",
+     "title": "HP Elitebook 8 G1i 16 inch Notebook AI PC_AD3Y5ET.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-hp-france-sas/20250901-160233/data.csv",
+     "created_at": "2025-09-01T16:02:33.861000+00:00",
+     "last_modified": "2025-09-01T16:02:34.002000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ffd85da5988f7bde3068bb",
+   "slug": "indice-de-reparabilite-vestel-france-lave-linge-tll147bi",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Linge TLL147BI",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-linge-tll147bi",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-linge-tll147bi/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T16:18:37.229000+00:00",
+   "last_modified": "2025-04-16T16:18:37.788000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "e5205a6b-dca9-4e5b-a5ec-a7e58e4d0ec8",
+     "title": "WM-TLL147BI-TELEFUNKEN-2025-04-11.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-linge-tll147bi/20250416-161837/data.csv",
+     "created_at": "2025-04-16T16:18:37.613000+00:00",
+     "last_modified": "2025-04-16T16:18:37.779000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6888719eff31998e1d909027",
+   "slug": "indice-de-reparabilite-organisation-asus-global-pte-ltd",
+   "title": "Indice de réparabilité (organisation ASUS Global PTE LTD)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-asus-global-pte-ltd",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-asus-global-pte-ltd/",
+   "license": "notspecified",
+   "created_at": "2025-07-29T07:00:46.040000+00:00",
+   "last_modified": "2025-07-29T07:01:12.524000+00:00",
+   "organization": {
+    "id": "682166ff235780e504f58135",
+    "name": "ASUS Global PTE LTD",
+    "slug": "asus-global-pte-ltd",
+    "page": "https://www.data.gouv.fr/organizations/asus-global-pte-ltd"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "cb98067d-93da-4064-8cca-be5fb429d3bb",
+     "title": "donnees-indice-reparabilite-V3607VH.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-asus-global-pte-ltd/20250729-070047/data.csv",
+     "created_at": "2025-07-29T07:00:47.691000+00:00",
+     "last_modified": "2025-07-29T07:00:49.036000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6ab14f589acec4b6b2eb7701",
+   "slug": "indice-de-reparabilite-fnac-darty-participations-et-services-1",
+   "title": "Indice de réparabilité (FNAC DARTY PARTICIPATIONS ET SERVICES)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-fnac-darty-participations-et-services-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-fnac-darty-participations-et-services-1/",
+   "license": "notspecified",
+   "created_at": "2026-09-21T15:38:00.248000+00:00",
+   "last_modified": "2026-09-21T15:38:06.337000+00:00",
+   "organization": {
+    "id": "6721d87b7c70912a3cec69a6",
+    "name": "FNAC DARTY PARTICIPATIONS ET SERVICES",
+    "slug": "fnac-darty-participations-et-services",
+    "page": "https://www.data.gouv.fr/organizations/fnac-darty-participations-et-services"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "f7f6eaa4-5da3-4b62-b602-05b8e3ce3e6b",
+     "title": "donnees-schema-indice-reparabilite",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-fnac-darty-participations-et-services-1/20260921-153801/donnees-schema-indice-reparabilite.csv",
+     "created_at": "2026-09-21T15:38:01.298000+00:00",
+     "last_modified": "2026-09-21T15:38:01.466000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6889e3ffe11010a5cd529650",
+   "slug": "indice-de-reparabilite-organisation-asus-global-pte-ltd-2",
+   "title": "Indice de réparabilité (organisation ASUS Global PTE LTD)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-asus-global-pte-ltd-2",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-asus-global-pte-ltd-2/",
+   "license": "notspecified",
+   "created_at": "2025-07-30T09:21:02.662000+00:00",
+   "last_modified": "2025-07-30T09:21:33.323000+00:00",
+   "organization": {
+    "id": "682166ff235780e504f58135",
+    "name": "ASUS Global PTE LTD",
+    "slug": "asus-global-pte-ltd",
+    "page": "https://www.data.gouv.fr/organizations/asus-global-pte-ltd"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "3f4501ba-c3e8-4510-b536-3b1cb86848d4",
+     "title": "donnees-indice-reparabilite-G815LM.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-asus-global-pte-ltd-2/20250730-092104/data.csv",
+     "created_at": "2025-07-30T09:21:04.234000+00:00",
+     "last_modified": "2025-07-30T09:21:04.929000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6a903fbb39fb87fd3e1e5af6",
+   "slug": "indice-de-reparabilite-gsr-new-s2-2026-filaire",
+   "title": "Indice de réparabilité GSR (New S2 2026) Filaire",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-gsr-new-s2-2026-filaire",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-gsr-new-s2-2026-filaire/",
+   "license": "notspecified",
+   "created_at": "2026-08-27T13:46:35.483000+00:00",
+   "last_modified": "2026-08-27T13:46:41.639000+00:00",
+   "organization": {
+    "id": "684026924329bd6c4be7bf4f",
+    "name": "Groupe SEB Retailing",
+    "slug": "groupe-seb-retailing",
+    "page": "https://www.data.gouv.fr/organizations/groupe-seb-retailing"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "f002de01-cb7d-4a92-af07-edd234e90f61",
+     "title": "Indice de réparabilité GSR (New S2 2026) Filaire",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-gsr-new-s2-2026-filaire/20260827-134636/indice-de-reparabilite-gsr-new-s2-2026-filaire.csv",
+     "created_at": "2026-08-27T13:46:36.253000+00:00",
+     "last_modified": "2026-08-27T13:46:36.451000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6acca0e6420cdc5ebddaf68a",
+   "slug": "indice-de-reparabilite-fnac-darty-participations-et-services-3",
+   "title": "Indice de réparabilité (FNAC DARTY PARTICIPATIONS ET SERVICES)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-fnac-darty-participations-et-services-3",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-fnac-darty-participations-et-services-3/",
+   "license": "notspecified",
+   "created_at": "2026-10-12T08:57:10.360000+00:00",
+   "last_modified": "2026-10-12T08:57:17.515000+00:00",
+   "organization": {
+    "id": "6721d87b7c70912a3cec69a6",
+    "name": "FNAC DARTY PARTICIPATIONS ET SERVICES",
+    "slug": "fnac-darty-participations-et-services",
+    "page": "https://www.data.gouv.fr/organizations/fnac-darty-participations-et-services"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "0b58cff6-7381-46f5-b06a-eef46357b96c",
+     "title": "donnees-schema-indice-reparabilite",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-fnac-darty-participations-et-services-3/20261012-085711/donnees-schema-indice-reparabilite.csv",
+     "created_at": "2026-10-12T08:57:11.426000+00:00",
+     "last_modified": "2026-10-12T08:57:11.577000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "69ca3e973be95ed6862d3150",
+   "slug": "indice-de-reparabilite-groupe-seb-france-new-2026",
+   "title": "Indice de réparabilité (Groupe SEB France) - New 2026",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-groupe-seb-france-new-2026",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-groupe-seb-france-new-2026/",
+   "license": "notspecified",
+   "created_at": "2026-03-30T09:12:55.621000+00:00",
+   "last_modified": "2026-03-30T09:13:00.117000+00:00",
+   "organization": {
+    "id": "68123393bfd0b04a2243cd52",
+    "name": "Groupe SEB France",
+    "slug": "groupe-seb-france",
+    "page": "https://www.data.gouv.fr/organizations/groupe-seb-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "29c09167-49e3-49ed-a5b4-006b09fbf2c2",
+     "title": "donnees-schema-indice-reparabilite",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-groupe-seb-france-new-2026/20260330-091255/donnees-schema-indice-reparabilite.csv",
+     "created_at": "2026-03-30T09:12:56.131000+00:00",
+     "last_modified": "2026-03-30T09:12:56.346000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "685abe02c073685e348ae334",
+   "slug": "indice-de-reparabilite-vestel-france-lave-linge-tll148bi-1",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Linge TLL148BI",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-linge-tll148bi-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-linge-tll148bi-1/",
+   "license": "notspecified",
+   "created_at": "2025-06-24T15:02:26.452000+00:00",
+   "last_modified": "2025-06-24T15:02:27.404000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "db24d699-ba12-457c-91ea-c4fc30f6b8ce",
+     "title": "WM-TLL148BI-TELEFUNKEN-2025-06-16",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-linge-tll148bi-1/20250624-150226/data.csv",
+     "created_at": "2025-06-24T15:02:27.162000+00:00",
+     "last_modified": "2025-06-24T15:02:27.403000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6a903cce0c8c138d4c2c84fc",
+   "slug": "indice-de-reparabilite-gsf-new-s2-2026-filaire",
+   "title": "Indice de réparabilité GSF (New S2 2026) Filaire",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-gsf-new-s2-2026-filaire",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-gsf-new-s2-2026-filaire/",
+   "license": "notspecified",
+   "created_at": "2026-08-27T13:34:06.918000+00:00",
+   "last_modified": "2026-08-27T13:34:13.167000+00:00",
+   "organization": {
+    "id": "68123393bfd0b04a2243cd52",
+    "name": "Groupe SEB France",
+    "slug": "groupe-seb-france",
+    "page": "https://www.data.gouv.fr/organizations/groupe-seb-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "851d464e-1a44-4374-a6fe-9945cf789a50",
+     "title": "Indice de réparabilité GSF (New 2026 S2) Filaire",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-gsf-new-s2-2026-filaire/20260827-133407/indice-de-reparabilite-gsf-new-2026-s2-filaire.csv",
+     "created_at": "2026-08-27T13:34:07.715000+00:00",
+     "last_modified": "2026-08-27T13:34:07.894000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ffdd59ed70444ce77f2a3c",
+   "slug": "indice-de-reparabilite-vestel-france-lave-linge-tll148w",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Linge TLL148W",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-linge-tll148w",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-linge-tll148w/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T16:39:53.743000+00:00",
+   "last_modified": "2025-04-16T16:39:54.216000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "a25d2626-d112-4310-aa85-48f6f7f21d8e",
+     "title": "WM-TLL148W-TELEFUNKEN-2025-04-11.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-linge-tll148w/20250416-163953/data.csv",
+     "created_at": "2025-04-16T16:39:54.044000+00:00",
+     "last_modified": "2025-04-16T16:39:54.209000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6ab14a6cbbcce072938e511a",
+   "slug": "indice-de-reparabilite-fnac-darty-participations-et-services",
+   "title": "Indice de réparabilité (FNAC DARTY PARTICIPATIONS ET SERVICES)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-fnac-darty-participations-et-services",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-fnac-darty-participations-et-services/",
+   "license": "notspecified",
+   "created_at": "2026-09-21T15:17:00.800000+00:00",
+   "last_modified": "2026-09-21T15:17:10.804000+00:00",
+   "organization": {
+    "id": "6721d87b7c70912a3cec69a6",
+    "name": "FNAC DARTY PARTICIPATIONS ET SERVICES",
+    "slug": "fnac-darty-participations-et-services",
+    "page": "https://www.data.gouv.fr/organizations/fnac-darty-participations-et-services"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "29d2a93e-afb2-4cd4-8679-c050ecbfc51a",
+     "title": "donnees-schema-indice-reparabilite",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-fnac-darty-participations-et-services/20260921-151701/donnees-schema-indice-reparabilite.csv",
+     "created_at": "2026-09-21T15:17:01.358000+00:00",
+     "last_modified": "2026-09-21T15:17:01.524000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ffd5015dd09c99facce0a3",
+   "slug": "indice-de-reparabilite-vestel-france-lave-linge-tll128w",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Linge TLL128W",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-linge-tll128w",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-linge-tll128w/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T16:04:17.496000+00:00",
+   "last_modified": "2025-04-16T16:04:18.217000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "a171b486-3bff-4918-a948-4f94caa79b3b",
+     "title": "WM-TLL128W-TELEFUNKEN-2025-04-11.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-linge-tll128w/20250416-160417/data.csv",
+     "created_at": "2025-04-16T16:04:18.038000+00:00",
+     "last_modified": "2025-04-16T16:04:18.208000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "69ca41c18e332b1c833bdc82",
+   "slug": "indice-de-reparabilite-seb-international-services-new-2026",
+   "title": "Indice de réparabilité (SEB International Services) - New 2026",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-seb-international-services-new-2026",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-seb-international-services-new-2026/",
+   "license": "notspecified",
+   "created_at": "2026-03-30T09:26:25.680000+00:00",
+   "last_modified": "2026-03-30T09:26:30.646000+00:00",
+   "organization": {
+    "id": "68402751510fa5ac9d98ce14",
+    "name": "SEB International Services",
+    "slug": "seb-international-services",
+    "page": "https://www.data.gouv.fr/organizations/seb-international-services"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "3d5d7fa1-5452-4b14-9819-bddd056a6ec1",
+     "title": "donnees-schema-indice-reparabilite",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-seb-international-services-new-2026/20260330-092626/donnees-schema-indice-reparabilite.csv",
+     "created_at": "2026-03-30T09:26:26.931000+00:00",
+     "last_modified": "2026-03-30T09:26:27.083000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ffd6f63f2d5b371e4c9acd",
+   "slug": "indice-de-reparabilite-vestel-france-lave-linge-tll129wa",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Linge TLL129WA",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-linge-tll129wa",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-linge-tll129wa/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T16:12:38.352000+00:00",
+   "last_modified": "2025-04-16T16:12:39.015000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "54de628d-6e3b-45a4-8a1c-c726fafce382",
+     "title": "WM-TLL129WA-TELEFUNKEN-2025-04-11.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-linge-tll129wa/20250416-161238/data.csv",
+     "created_at": "2025-04-16T16:12:38.714000+00:00",
+     "last_modified": "2025-04-16T16:12:39.006000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "685ac28be8c33b56be4e83e1",
+   "slug": "indice-de-reparabilite-vestel-france-lave-linge-tll148bi-2",
+   "title": "Indice de réparabilité (Vestel France)  - Lave-Linge TLL148BI",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-linge-tll148bi-2",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-linge-tll148bi-2/",
+   "license": "notspecified",
+   "created_at": "2025-06-24T15:21:47.940000+00:00",
+   "last_modified": "2025-06-24T15:21:48.620000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "da30f686-11ba-4c6d-9b42-d59a46e6b41a",
+     "title": "WM-TLL148BI-TELEFUNKEN-2026-06-16",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-linge-tll148bi-2/20250624-152148/data.csv",
+     "created_at": "2025-06-24T15:21:48.435000+00:00",
+     "last_modified": "2025-06-24T15:21:48.620000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6a903e7d8cfd0fe15b3daeb7",
+   "slug": "indice-de-reparabilite-sis-new-s2-2026-filaire",
+   "title": "Indice de réparabilité SIS (New S2 2026) Filaire",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-sis-new-s2-2026-filaire",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-sis-new-s2-2026-filaire/",
+   "license": "notspecified",
+   "created_at": "2026-08-27T13:41:17.924000+00:00",
+   "last_modified": "2026-08-27T13:41:24.244000+00:00",
+   "organization": {
+    "id": "68402751510fa5ac9d98ce14",
+    "name": "SEB International Services",
+    "slug": "seb-international-services",
+    "page": "https://www.data.gouv.fr/organizations/seb-international-services"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "1d66188c-908b-4582-b3d2-d3aae9c96d5d",
+     "title": "Indice de réparabilité SIS (New S2 2026) Filaire",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-sis-new-s2-2026-filaire/20260827-134118/indice-de-reparabilite-sis-new-s2-2026-filaire.csv",
+     "created_at": "2026-08-27T13:41:19.096000+00:00",
+     "last_modified": "2026-08-27T13:41:19.303000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6889e39b2d2844117e819fc1",
+   "slug": "indice-de-reparabilite-organisation-asus-global-pte-ltd-1",
+   "title": "Indice de réparabilité (organisation ASUS Global PTE LTD)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-asus-global-pte-ltd-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-asus-global-pte-ltd-1/",
+   "license": "notspecified",
+   "created_at": "2025-07-30T09:19:22.774000+00:00",
+   "last_modified": "2025-07-30T09:21:50.422000+00:00",
+   "organization": {
+    "id": "682166ff235780e504f58135",
+    "name": "ASUS Global PTE LTD",
+    "slug": "asus-global-pte-ltd",
+    "page": "https://www.data.gouv.fr/organizations/asus-global-pte-ltd"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "31145026-59f7-4299-b0c5-c35356e4fd32",
+     "title": "donnees-indice-reparabilite-G815LP.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-asus-global-pte-ltd-1/20250730-091923/data.csv",
+     "created_at": "2025-07-30T09:19:24.118000+00:00",
+     "last_modified": "2025-07-30T09:19:24.737000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "69f9dee136f278abfcd33694",
+   "slug": "indice-de-reparabilite-organisation-fnac-darty-participations-et-services",
+   "title": "Indice de réparabilité (organisation FNAC DARTY PARTICIPATIONS ET SERVICES)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-fnac-darty-participations-et-services",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-fnac-darty-participations-et-services/",
+   "license": "notspecified",
+   "created_at": "2026-05-05T12:13:21.075000+00:00",
+   "last_modified": "2026-05-05T12:18:46.445000+00:00",
+   "organization": {
+    "id": "6721d87b7c70912a3cec69a6",
+    "name": "FNAC DARTY PARTICIPATIONS ET SERVICES",
+    "slug": "fnac-darty-participations-et-services",
+    "page": "https://www.data.gouv.fr/organizations/fnac-darty-participations-et-services"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "6776ae1e-5806-4e06-b88e-4ac3234bad19",
+     "title": "IR-importateur-2026-FR001380_05Y5JM",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-fnac-darty-participations-et-services/20260505-121322/data.csv",
+     "created_at": "2026-05-05T12:13:22.991000+00:00",
+     "last_modified": "2026-05-05T12:13:23.784000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6a903e1a3cdae99703ee3565",
+   "slug": "indice-de-reparabilite-groupe-seb-retailing-new-2026-s2",
+   "title": "Indice de réparabilité (Groupe SEB Retailing) (New 2026 S2)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-groupe-seb-retailing-new-2026-s2",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-groupe-seb-retailing-new-2026-s2/",
+   "license": "notspecified",
+   "created_at": "2026-08-27T13:39:38.613000+00:00",
+   "last_modified": "2026-08-27T13:39:42.660000+00:00",
+   "organization": {
+    "id": "684026924329bd6c4be7bf4f",
+    "name": "Groupe SEB Retailing",
+    "slug": "groupe-seb-retailing",
+    "page": "https://www.data.gouv.fr/organizations/groupe-seb-retailing"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "2534b2a2-7f62-4b3d-b961-9a45087831a3",
+     "title": "Indice de réparabilité GSR (New 2026 S2)",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-groupe-seb-retailing-new-2026-s2/20260827-133939/indice-de-reparabilite-gsr-new-2026-s2-.csv",
+     "created_at": "2026-08-27T13:39:39.464000+00:00",
+     "last_modified": "2026-08-27T13:39:39.639000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "69d65bb70eeff32674043a85",
+   "slug": "indice-de-reparabilite-lave-vaisselle-organisation-sourcing-et-creation",
+   "title": "Indice de réparabilité LAVE VAISSELLE (organisation SOURCING ET CREATION )",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-lave-vaisselle-organisation-sourcing-et-creation",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-lave-vaisselle-organisation-sourcing-et-creation/",
+   "license": "notspecified",
+   "created_at": "2026-04-08T13:44:23.242000+00:00",
+   "last_modified": "2026-04-20T13:30:07.887000+00:00",
+   "organization": {
+    "id": "67bee7ece1dd615ba55e26cf",
+    "name": "SOURCING ET CREATION ",
+    "slug": "sourcing-et-creation",
+    "page": "https://www.data.gouv.fr/organizations/sourcing-et-creation"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "8329ef4a-5078-495b-aa6a-d02070a84122",
+     "title": "csv IR _ELV42CW 8012096 publié.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-lave-vaisselle-organisation-sourcing-et-creation/20260420-132951/data.csv",
+     "created_at": "2026-04-20T13:29:51.172000+00:00",
+     "last_modified": "2026-04-20T13:29:51.361000+00:00"
+    },
+    {
+     "id": "04f95feb-27d2-4350-858a-061b66417b61",
+     "title": "csv IR LLV44DW code 8012095 publié.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-lave-vaisselle-organisation-sourcing-et-creation/20260420-132807/data.csv",
+     "created_at": "2026-04-20T13:28:07.531000+00:00",
+     "last_modified": "2026-04-20T13:30:07.887000+00:00"
+    },
+    {
+     "id": "f227315c-4019-4393-90bb-303a2ced6a58",
+     "title": "csv IR ELV42CB code 8012093 .csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-lave-vaisselle-organisation-sourcing-et-creation/20260420-132606/data.csv",
+     "created_at": "2026-04-20T13:26:06.694000+00:00",
+     "last_modified": "2026-04-20T13:26:06.848000+00:00"
+    },
+    {
+     "id": "53954828-23c2-49a8-b8d1-3d755220fbcd",
+     "title": "csv IR LLVS46DW code 8012094 .csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-lave-vaisselle-organisation-sourcing-et-creation/20260420-132344/data.csv",
+     "created_at": "2026-04-20T13:23:44.839000+00:00",
+     "last_modified": "2026-04-20T13:23:45.024000+00:00"
+    },
+    {
+     "id": "8bb2eb1e-6864-4717-962b-183c75157126",
+     "title": "csv IR ELVF40B 8012091 .csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-lave-vaisselle-organisation-sourcing-et-creation/20260420-131944/data.csv",
+     "created_at": "2026-04-20T13:19:44.626000+00:00",
+     "last_modified": "2026-04-20T13:19:44.822000+00:00"
+    },
+    {
+     "id": "5d320b50-6057-4a59-bbc8-a6b5ebabe1ba",
+     "title": "csv IR ELV42BG code 8012092 .csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-lave-vaisselle-organisation-sourcing-et-creation/20260420-131824/data.csv",
+     "created_at": "2026-04-20T13:18:25.027000+00:00",
+     "last_modified": "2026-04-20T13:18:25.284000+00:00"
+    },
+    {
+     "id": "76e81567-77a3-4690-8b9c-d99a0a86027c",
+     "title": "CORRECTIF CSV IR LLVF47D code 8012097.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-lave-vaisselle-organisation-sourcing-et-creation/20260420-131417/data.csv",
+     "created_at": "2026-04-20T13:14:17.351000+00:00",
+     "last_modified": "2026-04-20T13:14:17.495000+00:00"
+    },
+    {
+     "id": "f71cf9b5-8ad7-4fc7-8b31-01b4f533b489",
+     "title": "csv IR ELVF40A code 8012090.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-lave-vaisselle-organisation-sourcing-et-creation/20260420-130845/data.csv",
+     "created_at": "2026-04-20T13:08:45.749000+00:00",
+     "last_modified": "2026-04-20T13:08:46.032000+00:00"
+    },
+    {
+     "id": "d9b7f6a7-07b8-4b94-a64b-b75aac66163e",
+     "title": "erratum LLVF47D code 8012097 .csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-lave-vaisselle-organisation-sourcing-et-creation/20260408-134423/data.csv",
+     "created_at": "2026-04-08T13:44:23.590000+00:00",
+     "last_modified": "2026-04-20T13:15:03.075000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6a0c100783f40547f9bb3002",
+   "slug": "indice-de-reparabilite-organisation-fnac-darty-participations-et-services-2",
+   "title": "Indice de réparabilité (organisation FNAC DARTY PARTICIPATIONS ET SERVICES)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-fnac-darty-participations-et-services-2",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-fnac-darty-participations-et-services-2/",
+   "license": "notspecified",
+   "created_at": "2026-05-19T07:23:50.880000+00:00",
+   "last_modified": "2026-05-19T07:23:52.071000+00:00",
+   "organization": {
+    "id": "6721d87b7c70912a3cec69a6",
+    "name": "FNAC DARTY PARTICIPATIONS ET SERVICES",
+    "slug": "fnac-darty-participations-et-services",
+    "page": "https://www.data.gouv.fr/organizations/fnac-darty-participations-et-services"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "e55e550f-f8da-4bfe-b912-39392b5853c3",
+     "title": "Monfichier",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-fnac-darty-participations-et-services-2/20260519-072351/data.csv",
+     "created_at": "2026-05-19T07:23:51.926000+00:00",
+     "last_modified": "2026-05-19T07:23:52.070000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6a903bc5cc8209edd8a8291e",
+   "slug": "indice-de-reparabilite-groupe-seb-france-new-2026-s2",
+   "title": "Indice de réparabilité (Groupe SEB France) (New 2026 S2)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-groupe-seb-france-new-2026-s2",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-groupe-seb-france-new-2026-s2/",
+   "license": "notspecified",
+   "created_at": "2026-08-27T13:29:41.565000+00:00",
+   "last_modified": "2026-08-27T13:29:52.241000+00:00",
+   "organization": {
+    "id": "68123393bfd0b04a2243cd52",
+    "name": "Groupe SEB France",
+    "slug": "groupe-seb-france",
+    "page": "https://www.data.gouv.fr/organizations/groupe-seb-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "5de021b3-5990-4fce-9c8f-68cb0a03a5d1",
+     "title": "Indice de réparabilité GSF (New 2026 S2)",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-groupe-seb-france-new-2026-s2/20260827-132942/indice-de-reparabilite-gsf-new-2026-s2-.csv",
+     "created_at": "2026-08-27T13:29:42.396000+00:00",
+     "last_modified": "2026-08-27T13:29:42.690000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6a0b414c27865ebaee42ceac",
+   "slug": "indice-de-reparabilite-organisation-fnac-darty-participations-et-services-1",
+   "title": "Indice de réparabilité (organisation FNAC DARTY PARTICIPATIONS ET SERVICES)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-fnac-darty-participations-et-services-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-organisation-fnac-darty-participations-et-services-1/",
+   "license": "notspecified",
+   "created_at": "2026-05-18T16:41:47.855000+00:00",
+   "last_modified": "2026-05-18T16:41:49.076000+00:00",
+   "organization": {
+    "id": "6721d87b7c70912a3cec69a6",
+    "name": "FNAC DARTY PARTICIPATIONS ET SERVICES",
+    "slug": "fnac-darty-participations-et-services",
+    "page": "https://www.data.gouv.fr/organizations/fnac-darty-participations-et-services"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "618bcef1-6943-4a64-86b9-fc0cd47d8b32",
+     "title": "Monfichier",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-organisation-fnac-darty-participations-et-services-1/20260518-164148/data.csv",
+     "created_at": "2026-05-18T16:41:48.892000+00:00",
+     "last_modified": "2026-05-18T16:41:49.075000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6a903cc9e7f8d64d9363bdd0",
+   "slug": "indice-de-reparabilite-seb-international-services-new-2026-s2",
+   "title": "Indice de réparabilité (SEB International Services) (New 2026 S2)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-seb-international-services-new-2026-s2",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-seb-international-services-new-2026-s2/",
+   "license": "notspecified",
+   "created_at": "2026-08-27T13:34:01.492000+00:00",
+   "last_modified": "2026-08-27T13:34:04.744000+00:00",
+   "organization": {
+    "id": "68402751510fa5ac9d98ce14",
+    "name": "SEB International Services",
+    "slug": "seb-international-services",
+    "page": "https://www.data.gouv.fr/organizations/seb-international-services"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "71db1c23-9b11-4467-a785-493f09b2eef5",
+     "title": "Indice de réparabilité SIS (New 2026 S2)",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-seb-international-services-new-2026-s2/20260827-133402/indice-de-reparabilite-sis-new-2026-s2-.csv",
+     "created_at": "2026-08-27T13:34:02.336000+00:00",
+     "last_modified": "2026-08-27T13:34:02.482000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6abd48543c63ac5a52cff720",
+   "slug": "indice-de-reparabilite-td-synnex-france-update-30-09-2026",
+   "title": "Indice de réparabilité (TD SYNNEX FRANCE) - update 30.09.2026",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-td-synnex-france-update-30-09-2026",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-td-synnex-france-update-30-09-2026/",
+   "license": "notspecified",
+   "created_at": "2026-09-30T17:35:16.421000+00:00",
+   "last_modified": "2026-09-30T17:35:23.788000+00:00",
+   "organization": {
+    "id": "651705c61f405f6f276f4df2",
+    "name": "TD SYNNEX FRANCE",
+    "slug": "td-synnex-france",
+    "page": "https://www.data.gouv.fr/organizations/td-synnex-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "792f0f87-d48a-42ff-9f2e-4668fb430139",
+     "title": "RI update 30-09-2026",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-td-synnex-france-update-30-09-2026/20260930-173516/ri-update-30-09-2026.csv",
+     "created_at": "2026-09-30T17:35:17.113000+00:00",
+     "last_modified": "2026-09-30T17:35:17.240000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ff748b818cfda0fad8201c",
+   "slug": "indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na4yf44aw-fr-1",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Vaisselle QW-NA4YF44AW-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na4yf44aw-fr-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na4yf44aw-fr-1/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T09:12:43.706000+00:00",
+   "last_modified": "2025-04-16T09:12:44.613000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "c1d415e9-2dee-43e0-819d-fb29dbe07178",
+     "title": "DW_QWNA4YF44AWFR-SHARP-2025-03-24.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na4yf44aw-fr-1/20250416-091244/data.csv",
+     "created_at": "2025-04-16T09:12:44.303000+00:00",
+     "last_modified": "2025-04-16T09:12:44.600000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ffada4c7736017747ef886",
+   "slug": "indice-de-reparabilite-vestel-france-lave-linge-es-nib714bwna-fr",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Linge ES-NIB714BWNA-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-nib714bwna-fr",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-nib714bwna-fr/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T13:16:20.793000+00:00",
+   "last_modified": "2025-04-16T13:26:07.077000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "d0ea4975-0fe3-4ead-b788-1d2db6ab6d83",
+     "title": "WM-ESNIB714BWNAFR-SHARP-2025-03-24.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-es-nib714bwna-fr/20250416-131621/data.csv",
+     "created_at": "2025-04-16T13:16:21.247000+00:00",
+     "last_modified": "2025-04-16T13:16:21.431000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ffa00f009338ecfc84d3d9",
+   "slug": "indice-de-reparabilite-vestel-france-lave-vaisselle-qw-ni1ei45ex-fr-1",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Vaisselle QW-NI1EI45EX-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-ni1ei45ex-fr-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-ni1ei45ex-fr-1/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T12:18:23.345000+00:00",
+   "last_modified": "2025-04-16T13:27:34.995000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "6b4f4616-452b-470a-bb09-e8160b16e598",
+     "title": "DW_QWNI1EI45EXFR-SHARP-2025-03-24.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-qw-ni1ei45ex-fr/20250416-121823/data.csv",
+     "created_at": "2025-04-16T12:18:23.775000+00:00",
+     "last_modified": "2025-04-16T12:18:24.013000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "697242f437471f0c58334369",
+   "slug": "indice-de-reparabilite-vestel-france-lave-linge-es-nfl014cwna-fr-1",
+   "title": "Indice de réparabilité (Vestel France) - Lave-linge ES-NFL014CWNA-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-nfl014cwna-fr-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-nfl014cwna-fr-1/",
+   "license": "notspecified",
+   "created_at": "2026-01-22T15:32:03.850000+00:00",
+   "last_modified": "2026-01-22T15:32:04.918000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "e97cd5a3-484e-448c-9a65-2f2b042929db",
+     "title": "WM-ESNFL014CWNAFR-SHARP-2025-04-04.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-linge-es-nfl014cwna-fr-1/20260122-153204/data.csv",
+     "created_at": "2026-01-22T15:32:04.768000+00:00",
+     "last_modified": "2026-01-22T15:32:04.918000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ff9ea00aff226e715e6ab3",
+   "slug": "indice-de-reparabilite-vestel-france-lave-vaisselle-qw-ni1ei45e8x-fr-1",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Vaisselle QW-NI1EI45E8X-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-ni1ei45e8x-fr-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-ni1ei45e8x-fr-1/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T12:12:16.213000+00:00",
+   "last_modified": "2025-04-16T12:12:16.794000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "c5c51259-e46e-4f71-b3da-3f2ac490c793",
+     "title": "DW_QWNI1EI45E8XFR-SHARP-2025-03-24.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-ni1ei45e8x-fr-1/20250416-121216/data.csv",
+     "created_at": "2025-04-16T12:12:16.557000+00:00",
+     "last_modified": "2025-04-16T12:12:16.785000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "68d168e29da5ba89f50d5e8c",
+   "slug": "indice-de-reparabilite-vestel-france-lave-linge-wm-fc2694w0a-fr",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Linge WM-FC2694W0A-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-linge-wm-fc2694w0a-fr",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-linge-wm-fc2694w0a-fr/",
+   "license": "notspecified",
+   "created_at": "2025-09-22T15:18:58.205000+00:00",
+   "last_modified": "2025-09-22T15:18:58.943000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "7cff1d30-81b3-498d-a221-7a1c0a38ae83",
+     "title": "WM-FC2694W0A-FR-DAEWOO-2025-09-22.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-linge-wm-fc2694w0a-fr/20250922-151858/data.csv",
+     "created_at": "2025-09-22T15:18:58.784000+00:00",
+     "last_modified": "2025-09-22T15:18:58.943000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ffbb4d705e4b12ed7ab0ab",
+   "slug": "indice-de-reparabilite-vestel-france-lave-linge-es-nfb214cwda-fr",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Linge ES-NFB214CWDA-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-nfb214cwda-fr",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-nfb214cwda-fr/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T14:14:37.499000+00:00",
+   "last_modified": "2025-04-16T14:14:38.234000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "4aa81210-381f-4427-8dbd-1be5bacf5481",
+     "title": "WM-ESNFB214CWDAFR-SHARP-2025-03-24.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-linge-es-nfb214cwda-fr/20250416-141437/data.csv",
+     "created_at": "2025-04-16T14:14:37.879000+00:00",
+     "last_modified": "2025-04-16T14:14:38.200000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ff99aee20ccae4d7db6a4d",
+   "slug": "indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na4yf44eaa-fr-1",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Vaisselle QW-NA4YF44EAA-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na4yf44eaa-fr-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na4yf44eaa-fr-1/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T11:51:10.386000+00:00",
+   "last_modified": "2025-04-16T11:51:10.951000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "851e3862-7ff3-4cb4-b1b8-8ebc2480a28d",
+     "title": "DW_QWNA4YF44EAAFR-SHARP-2025-03-24.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na4yf44eaa-fr-1/20250416-115110/data.csv",
+     "created_at": "2025-04-16T11:51:10.728000+00:00",
+     "last_modified": "2025-04-16T11:51:10.927000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "68d16953f1626aeb60307d21",
+   "slug": "indice-de-reparabilite-vestel-france-lave-linge-wm-fc9594w1a-fr",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Linge WM-FC9594W1A-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-linge-wm-fc9594w1a-fr",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-linge-wm-fc9594w1a-fr/",
+   "license": "notspecified",
+   "created_at": "2025-09-22T15:20:51.114000+00:00",
+   "last_modified": "2025-09-22T15:20:51.853000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "ccad7414-8694-40c0-ab81-5ef274da9f67",
+     "title": "WM-FC9594W1A-FR-DAEWOO-2025-09-22.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-linge-wm-fc9594w1a-fr/20250922-152051/data.csv",
+     "created_at": "2025-09-22T15:20:51.667000+00:00",
+     "last_modified": "2025-09-22T15:20:51.852000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6a1d89cba686399db7405b6b",
+   "slug": "indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na1ff47d3w-fr",
+   "title": "Indice de réparabilité (Vestel France) - Lave-vaisselle QW-NA1FF47D3W-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na1ff47d3w-fr",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na1ff47d3w-fr/",
+   "license": "notspecified",
+   "created_at": "2026-06-01T13:31:55.975000+00:00",
+   "last_modified": "2026-06-01T13:31:57.097000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "e49b4273-e061-4004-8528-6bdb00f5d5f0",
+     "title": "DW_QWNA1FF47D3WFR-SHARP-23012026.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na1ff47d3w-fr/20260601-133156/data.csv",
+     "created_at": "2026-06-01T13:31:56.784000+00:00",
+     "last_modified": "2026-06-01T13:31:57.097000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ffbcdc5b22ab8e336ebd79",
+   "slug": "indice-de-reparabilite-vestel-france-lave-linge-es-nfb014cwna-fr",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Linge ES-NFB014CWNA-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-nfb014cwna-fr",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-nfb014cwna-fr/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T14:21:16.604000+00:00",
+   "last_modified": "2025-04-16T14:21:19.350000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "c569a0e3-da26-4595-9924-d5905e6a48ad",
+     "title": "WM-ESNFB014CWNAFR-SHARP-2025-03-24.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-linge-es-nfb014cwna-fr/20250416-142118/data.csv",
+     "created_at": "2025-04-16T14:21:18.442000+00:00",
+     "last_modified": "2025-04-16T14:21:19.322000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ffac5a79383177a381157c",
+   "slug": "indice-de-reparabilite-vestel-france-lave-linge-es-nib814bwna-fr",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Linge ES-NIB814BWNA-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-nib814bwna-fr",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-nib814bwna-fr/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T13:10:50.588000+00:00",
+   "last_modified": "2025-04-16T13:10:51.098000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "98156800-a0ac-4cb0-9fa2-0f2c356825f8",
+     "title": "WM-ESNIB814BWNAFR-2025-03-24.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-linge-es-nib814bwna-fr/20250416-131050/data.csv",
+     "created_at": "2025-04-16T13:10:50.916000+00:00",
+     "last_modified": "2025-04-16T13:10:51.088000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ffb7dfb9624e70b6ba54ce",
+   "slug": "indice-de-reparabilite-vestel-france-lave-linge-es-nfb914awna-fr",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Linge ES-NFB914AWNA-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-nfb914awna-fr",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-nfb914awna-fr/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T13:59:59.245000+00:00",
+   "last_modified": "2025-04-16T13:59:59.948000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "e2b9aa87-88b4-4453-8f25-0c0f245dff1f",
+     "title": "WM-ESNFB914AWNAFR-SHARP-2025-03-24.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-linge-es-nfb914awna-fr/20250416-135959/data.csv",
+     "created_at": "2025-04-16T13:59:59.620000+00:00",
+     "last_modified": "2025-04-16T13:59:59.922000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6a213b9d0134baa81299f083",
+   "slug": "indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na1ff45d6w-fr",
+   "title": "Indice de réparabilité (Vestel France) - Lave-vaisselle QW-NA1FF45D6W-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na1ff45d6w-fr",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na1ff45d6w-fr/",
+   "license": "notspecified",
+   "created_at": "2026-06-04T08:47:25.674000+00:00",
+   "last_modified": "2026-06-04T08:47:27.115000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "482f5728-478b-4949-ab58-e0411575c2cc",
+     "title": "DW_QWNA1FF45D6WFR-SHARP-20032026.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na1ff45d6w-fr/20260604-084726/data.csv",
+     "created_at": "2026-06-04T08:47:26.927000+00:00",
+     "last_modified": "2026-06-04T08:47:27.114000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ffbea27c42b552c9a9f1bc",
+   "slug": "indice-de-reparabilite-vestel-france-lave-linge-es-nfa914bwna-fr",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Linge ES-NFA914BWNA-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-nfa914bwna-fr",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-nfa914bwna-fr/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T14:28:50.909000+00:00",
+   "last_modified": "2025-04-16T14:29:06.966000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "44edcbc5-6d69-4e08-82ef-e5cdd92ec1cd",
+     "title": "data.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-linge-es-nfa914bwna-fr/20250416-142906/data.csv",
+     "created_at": "2025-04-16T14:29:06.944000+00:00",
+     "last_modified": "2025-04-16T16:29:06.895000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ff9d00601d6fe81026b970",
+   "slug": "indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na4yf44eaw-fr-1",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Vaisselle QW-NA4YF44EAW-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na4yf44eaw-fr-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na4yf44eaw-fr-1/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T12:05:20.300000+00:00",
+   "last_modified": "2025-04-16T12:05:20.942000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "de4069af-7504-4b62-8439-2fd302590b85",
+     "title": "DW_QWNA4YF44EAWFR-SHARP-2025-03-24.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na4yf44eaw-fr-1/20250416-120520/data.csv",
+     "created_at": "2025-04-16T12:05:20.638000+00:00",
+     "last_modified": "2025-04-16T12:05:20.921000+00:00"
+    }
+   ]
+  }
+ ],
+ "next_page": "https://www.data.gouv.fr/api/1/datasets/?q=indice+de+reparabilite&page_size=100&page=2",
+ "page": 1,
+ "page_size": 100,
+ "previous_page": null,
+ "total": 125
+}

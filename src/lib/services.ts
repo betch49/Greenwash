@@ -10,6 +10,7 @@ import { RateLimiter } from "./fetch/rate-limiter";
 import { wikidataFixturePath } from "./wikidata/fixtures";
 import { WAYBACK_HOST, waybackIntervalMs } from "./wayback/cdx";
 import { waybackAwareTtl } from "./wayback/snapshot";
+import { frRepairAwareTtl } from "./registries/fr-repair";
 import type { LLMClient } from "./llm/client";
 import { selectLLM } from "./llm/select";
 
@@ -51,7 +52,7 @@ export function buildFetcher(db: Db, offline: boolean): Fetcher {
   }
   const ttlMs = Number(process.env.GR_CACHE_TTL_HOURS || 168) * HOUR_MS;
   // Archived snapshots never change: cached forever. CDX listings and live pages: the default TTL.
-  return new CachedFetcher(new RateLimitedFetcher(new UndiciFetcher(), buildRateLimiter()), new FetchCacheRepo(db), waybackAwareTtl(ttlMs));
+  return new CachedFetcher(new RateLimitedFetcher(new UndiciFetcher(), buildRateLimiter()), new FetchCacheRepo(db), frRepairAwareTtl(waybackAwareTtl(ttlMs)));
 }
 
 /**

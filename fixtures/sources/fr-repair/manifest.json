@@ -1,0 +1,39 @@
+{
+  "$comment": "Real captures by scripts/record-registries.ts fr-repair (fixtures/sources/fr-repair/README.md). URL ⇒ file (relative to this directory) and its capture time; trimmed API pages carry the original body's size and sha256.",
+  "cases": [
+    "Mammut",
+    "Fairphone",
+    "Electrolux",
+    "Bosch"
+  ],
+  "files": {
+    "https://www.data.gouv.fr/robots.txt": {
+      "file": "robots/www-data-gouv-fr.txt",
+      "capturedAt": "2026-10-21T07:41:48.190Z"
+    },
+    "https://www.data.gouv.fr/api/1/datasets/?q=indice%20de%20reparabilite&page_size=100": {
+      "file": "api/datasets-page-1.json",
+      "capturedAt": "2026-10-21T07:41:50.703Z",
+      "original": {
+        "bytes": 911515,
+        "sha256": "dface5d370e4e6acb4d90ce5038985172b6246f876fcc98ac91b43938b34d7f9"
+      }
+    },
+    "https://www.data.gouv.fr/api/1/datasets/?q=indice+de+reparabilite&page_size=100&page=2": {
+      "file": "api/datasets-page-2.json",
+      "capturedAt": "2026-10-21T07:41:51.874Z",
+      "original": {
+        "bytes": 145918,
+        "sha256": "96767396842f702ea3625ab5f46d42ee010ee6e26f8e0297ec0fc1b23c4be145"
+      }
+    },
+    "https://static.data.gouv.fr/robots.txt": {
+      "file": "robots/static-data-gouv-fr.txt",
+      "capturedAt": "2026-10-21T07:41:52.640Z"
+    },
+    "https://tabular-api.data.gouv.fr/api/resources/5207fe39-1c14-4a40-8301-c84dc9b9a839/data/csv/": {
+      "file": "csv/tabular-5207fe39-1c14-4a40-8301-c84dc9b9a839.csv",
+      "capturedAt": "2026-10-21T07:41:53.987Z"
+    }
+  }
+}

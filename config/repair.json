@@ -4,5 +4,24 @@
     "categoryUrl": "https://www.ifixit.com/api/2.0/wikis/CATEGORY/{title}",
     "maxDevices": 3,
     "maxGuideTitles": 5
+  },
+  "frIndex": {
+    "$comment": "French repairability index (Phase 12, ADR-027, docs/SOURCES.md). The data.gouv.fr dataset search API is paged (next_page, at most maxPages pages of pageSize). Only datasets whose licence id is in openLicences are read and scored; any other licence (in practice 'notspecified') is pointed to under 'What we could not check' and its CSV is never fetched. static.data.gouv.fr's robots.txt disallows /resources, so when a resource URL is disallowed the CSV is read from data.gouv.fr's tabular API export (tabularCsvUrl, no robots.txt restriction) instead (docs/CHALLENGES.md C-12.1). lowThreshold: mean note_ir (0-10) below which repair.fr_index_low is emitted (director's value).",
+    "apiUrl": "https://www.data.gouv.fr/api/1/datasets/?q=indice%20de%20reparabilite",
+    "pageSize": 100,
+    "maxPages": 3,
+    "ttlHours": 24,
+    "openLicences": [
+      "lov2",
+      "etalab-2.0",
+      "other-open",
+      "other-pd",
+      "cc-by",
+      "odc-odbl"
+    ],
+    "lowThreshold": 5.0,
+    "maxModelsInExcerpt": 5,
+    "maxDatasetUrlsInLine": 3,
+    "tabularCsvUrl": "https://tabular-api.data.gouv.fr/api/resources/{rid}/data/csv/"
   }
 }

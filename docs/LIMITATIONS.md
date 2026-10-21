@@ -77,6 +77,7 @@ These are properties of the container the app was built in, not of the app. They
 - Brand-page rules are English phrase lists on the fetched pages only. A warranty described differently ("two years of cover"), or only in a PDF, is not seen. A "guarantee" is counted as a warranty.
 - Food, drink and other consumables (by Wikidata industry) are "not applicable"; a brand with no industry on Wikidata is treated as durable, so a food brand without that property would get a `repair.no_repair_info_found` signal.
 - Anti-repair practices are not checked (`docs/LATER.md`).
+- **French repairability index (Phase 12, ADR-027).** French market only: a brand that publishes no *indice de réparabilité* dataset on data.gouv.fr (most non-French brands, and every brand outside the product categories the index covers) gets one "What we could not check" line and no signal. Most datasets carry no licence (`notspecified`, 41 of 45 inspected by the director): they are only linked under "What we could not check", never read or scored, so in practice only a handful of publishers (Fairphone, BSH, Groupe SEB, Vestel and a few others under Licence Ouverte 2.0 or public domain) can produce a signal. Matching is by publisher name: a dataset published by a distributor or a French subsidiary with a different name (e.g. "BSH ELECTROMENAGER" for Bosch appliances) is not attributed to the brand. The dataset search API's pages overlap (125 results reported, 115 distinct on the two pages recorded on 2026-10-21), so a dataset can be missed. `static.data.gouv.fr`'s robots.txt disallows `/resources`, so CSVs are read through data.gouv.fr's tabular API export; a resource the tabular API has not ingested cannot be read (`docs/CHALLENGES.md` C-12.1). The threshold (mean below 5.0/10) is a director's value set before measurement.
 
 ## Score and confidence (Phase 6)
 
@@ -176,3 +177,5 @@ The "Skipped steps" list gives the step-level `skipped: <reason>` lines. An axis
 | `skipped: <what>: no AI answer` | No answer, or no fixture for this input offline. |
 | `skipped: no fetched page to read` | The claim proposer had no page. |
 | `skipped: no removed claim to classify` | The diff classifier had nothing to classify. |
+| `skipped: data.gouv.fr unreachable (<cause>)` | The data.gouv.fr dataset list did not answer after the retries (Phase 12). |
+| `skipped: repairability dataset could not be parsed (<url>)` | The dataset list or the only readable repairability CSV is not in the expected format (Phase 12). |

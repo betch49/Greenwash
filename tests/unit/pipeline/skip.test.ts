@@ -82,6 +82,8 @@ describe("pipeline skips (2.4)", () => {
       { step: "Checking ASA (UK) rulings", status: "skipped", reason: "ASA unreachable (HTTP 404)" },
       { step: "Checking JDP (France) decisions", status: "skipped", reason: "JDP unreachable (HTTP 404)" },
       { step: "Checking repair information", status: "skipped", reason: "no fetched page to scan" },
+      // Phase 12: the French repairability index does not depend on the brand's pages.
+      { step: "Checking the French repairability index", status: "done" },
       { step: "Writing the plain-English summary (AI)", status: "skipped", reason: "LLM unavailable (no LLM client configured)" },
     ]);
     expect(out.could_not_check).toContain("No sustainability, impact or responsibility page could be fetched from example.com.");
@@ -149,6 +151,8 @@ describe("pipeline skips (2.4)", () => {
       { step: "Checking ASA (UK) rulings", status: "skipped", reason: "robots.txt unavailable for https://www.asa.org.uk (HTTP 503)" },
       { step: "Checking JDP (France) decisions", status: "skipped", reason: "robots.txt unavailable for https://www.jdp-pub.org (HTTP 503)" },
       { step: "Checking repair information", status: "skipped", reason: "no fetched page to scan" },
+      // Phase 12: the French repairability index does not depend on the brand's pages.
+      { step: "Checking the French repairability index", status: "skipped", reason: "robots.txt unavailable for https://www.data.gouv.fr (HTTP 503)" },
       { step: "Writing the plain-English summary (AI)", status: "skipped", reason: "LLM unavailable (no LLM client configured)" },
     ]);
     expect(skippedReason(out.progress[0].reason!)).toBe(`skipped: ${reason}`);

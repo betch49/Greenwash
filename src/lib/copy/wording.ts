@@ -78,6 +78,8 @@ export const steps = {
   llmExtract: "Proposing candidate claims (AI)",
   llmClassify: "Classifying archived changes (AI)",
   llmSummary: "Writing the plain-English summary (AI)",
+  // Phase 12: French repairability index (data.gouv.fr).
+  frRepair: "Checking the French repairability index",
 };
 
 /** Reasons recorded when a step or a page is skipped (shown as "skipped: <reason>"). */
@@ -108,6 +110,9 @@ export const reasons = {
   llmNoAnswer: (what: string) => `${what}: no AI answer`,
   llmNoPages: "no fetched page to read",
   llmNoCandidates: "no removed claim to classify",
+  // Phase 12: French repairability index (data.gouv.fr).
+  frRepairUnreachable: (cause: string) => `data.gouv.fr unreachable (${cause})`,
+  frRepairUnparsable: (url: string) => `repairability dataset could not be parsed (${url})`,
 };
 
 /** Every possible-match line starts with this (ADR-019); the report page lists those lines apart, as not scored. */
@@ -150,6 +155,16 @@ export const couldNotCheck = {
     `Repair and ownership: not applicable (Wikidata industry “${industry}”: products are consumed, not repaired); this axis is not scored.`,
   repairNoPages: "Repair information on the brand’s own pages: no page could be fetched, so none was checked.",
   ifixitSkipped: (reason: string) => `iFixit repair guides: not checked (${reason}).`,
+  // Phase 12: French repairability index (data.gouv.fr, ADR-027). A dataset whose licence is not open is pointed to, never read.
+  frRepairGated: (publisher: string, licence: string, urls: string[], more: number) =>
+    `French repairability index: ${urls.length + more === 1 ? "a dataset" : `${urls.length + more} datasets`} published on data.gouv.fr by “${publisher}” (${urls.join(", ")}${more > 0 ? ` and ${more} more` : ""}): ${licence === "notspecified" ? "licence not specified" : `licence “${licence}” is not an open licence`}, so ${urls.length + more === 1 ? "it is" : "they are"} linked here but not read or scored.`,
+  frRepairPossible: (publisher: string, url: string) =>
+    `${POSSIBLE_MATCH_PREFIX} French repairability dataset on data.gouv.fr published by “${publisher}” (${url}); the publisher’s name is not the brand’s name, so we do not attribute it.`,
+  frRepairNone: (n: number) =>
+    `French repairability index: none of the ${n} repairability datasets listed on data.gouv.fr is published under the brand’s name (the index covers products sold in France only).`,
+  frRepairSkipped: (reason: string) => `French repairability index: not checked (${reason}).`,
+  frRepairNoCsv: (url: string) => `French repairability index: the dataset ${url} has no CSV file we could read.`,
+  frRepairCsvNotRead: (url: string, reason: string) => `French repairability index: ${url} not read (${reason}).`,
   llmSkipped: (why: string) =>
     `AI-assisted steps (candidate claims, archived-change classification, summary): not run (${why}); the score uses the rule-based signals only.`,
 };
@@ -185,6 +200,10 @@ export const signalLabels = {
   ifixitDevices: (n: number, brand: string) => `iFixit lists ${n} device ${n === 1 ? "category" : "categories"} with repair information for ${brand}`,
   ifixitGuides: (device: string, n: number) => `iFixit has ${n} repair ${n === 1 ? "guide" : "guides"} for ${device}`,
   ifixitScore: (device: string, score: number) => `iFixit repairability score for ${device}: ${score}/10`,
+  // Phase 12: French repairability index (data.gouv.fr). The mean is computed by the pipeline from the published scores.
+  frIndexFound: (n: number, mean: string) => `French repairability index published for ${n} ${n === 1 ? "model" : "models"} (mean ${mean}/10, data.gouv.fr)`,
+  frIndexLow: (n: number, mean: string, threshold: string) =>
+    `Risk signal: mean French repairability index ${mean}/10 over ${n} ${n === 1 ? "model" : "models"}, below ${threshold}/10 (data.gouv.fr)`,
   claimRemoved: (from: number, to: number) =>
     `Claim removed between ${from} and ${to}: present in the ${from} archived copy of the page, absent from the ${to} copy`,
   /** ADR-017: newest archived copy vs the page as fetched now. */

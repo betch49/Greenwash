@@ -97,3 +97,15 @@ test("5.9 /analyse shows the ASA, JDP and repair steps, each ending in done or s
     }
   }
 });
+
+test("12.8 /analyse shows 'Checking the French repairability index': done for Fairphone, skipped (not applicable) for Oatly (offline)", async ({ page }) => {
+  const STEP = "Checking the French repairability index";
+  for (const query of ["fairphone", "oatly"]) {
+    await analyseBrand(page, query);
+    await expect(page.getByTestId("run-status")).toHaveAttribute("data-status", "done", { timeout: 30_000 });
+    const row = page.getByTestId("progress").locator(`[data-step="${STEP}"]`);
+    await expect(row, query).toHaveCount(1);
+    if (query === "fairphone") await expect(row).toHaveAttribute("data-status", "done");
+    else await expect(row).toContainText("skipped: not applicable");
+  }
+});

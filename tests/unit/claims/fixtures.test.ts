@@ -52,6 +52,8 @@ describe("pipeline wiring", () => {
       ["Checking ASA (UK) rulings", "done"],
       ["Checking JDP (France) decisions", "done"],
       ["Checking repair information", "done"],
+      // Phase 12: Fairphone's openly licensed dataset on data.gouv.fr.
+      ["Checking the French repairability index", "done"],
       ["Writing the plain-English summary (AI)", "skipped"],
     ]);
     expect(out.signals.filter((s) => s.axis === "claims").length).toBeGreaterThan(0);

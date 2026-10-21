@@ -8,6 +8,7 @@ import { receiptProblem } from "@/lib/pipeline/signal";
 import { discoverStep } from "@/lib/pipeline/steps/discover";
 import { fetchPagesStep } from "@/lib/pipeline/steps/fetch-pages";
 import { repairStep } from "@/lib/pipeline/steps/repair";
+import { frRepairStep } from "@/lib/pipeline/steps/fr-repair";
 import { repairApplicability } from "@/lib/repair/applicability";
 import { OfflineFetcher } from "../helpers/brands";
 import { tempDb } from "../helpers/db";
@@ -15,7 +16,8 @@ import { tempDb } from "../helpers/db";
 const NOW = () => new Date("2026-10-20T12:00:00Z");
 const REPAIR = "Checking repair information";
 const meta = (slug: string) => JSON.parse(readFileSync(join("fixtures", "brands", slug, "meta.json"), "utf8")) as { query: string; website: string; entity: { id: string; name: string; industry?: string } };
-const steps = [discoverStep, fetchPagesStep, repairStep];
+const steps = [discoverStep, fetchPagesStep, repairStep, frRepairStep];
+const FR_REPAIR = "Checking the French repairability index";
 
 describe("repair axis on the real fixture brands (5.8)", () => {
   let env: ReturnType<typeof tempDb>;
@@ -43,6 +45,9 @@ describe("repair axis on the real fixture brands (5.8)", () => {
     expect(lines).toEqual(["Repair and ownership: not applicable (Wikidata industry “beverage industry”: products are consumed, not repaired); this axis is not scored."]);
     expect(out.progress.find((p) => p.step === REPAIR)).toMatchObject({ status: "skipped", reason: expect.stringMatching(/^not applicable/) });
     expect(fetcher.calls.some((u) => u.includes("ifixit"))).toBe(false);
+    // Phase 12 (12.7): the French index step is skipped with the same reason; data.gouv.fr is not contacted.
+    expect(out.progress.find((p) => p.step === FR_REPAIR)).toMatchObject({ status: "skipped", reason: expect.stringMatching(/^not applicable/) });
+    expect(fetcher.calls.some((u) => u.includes("data.gouv.fr"))).toBe(false);
   });
 
   it("Fairphone (electronics) ⇒ receipted repair signals from its own pages and from iFixit", async () => {
@@ -57,6 +62,14 @@ describe("repair axis on the real fixture brands (5.8)", () => {
     expect(kinds).toEqual(expect.arrayContaining(["repair.manual_found", "repair.spare_parts_found", "repair.warranty_found", "repair.ifixit_guides"]));
     expect(kinds).not.toContain("repair.no_repair_info_found");
     expect(repair.find((s) => s.kind === "repair.warranty_found")!.label).toBe("5-year warranty stated on the brand’s site");
+    // Phase 12 (12.7): the French repairability index, with a data.gouv.fr receipt.
+    expect(out.progress.find((p) => p.step === FR_REPAIR)).toEqual({ step: FR_REPAIR, status: "done" });
+    const fr = repair.filter((s) => s.kind.startsWith("repair.fr_index"));
+    expect(fr.map((s) => s.kind)).toEqual(["repair.fr_index_found"]);
+    expect(new URL(fr[0].source_url).host).toMatch(/(^|\.)data\.gouv\.fr$/);
+    expect(fr[0].excerpt).toContain("Dataset: https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-fairphone-1");
+    expect(fr[0].excerpt).toContain("Licence: lov2");
+    expect(fr[0].llm_used).toBe(false);
   });
 
   it("Mammut (outdoor apparel, no Wikidata industry) ⇒ applicable; its 2-year guarantee is found; iFixit has no category (could-not-check line)", async () => {

@@ -42,6 +42,7 @@ const EXPECTED = {
       "repair:repair.ifixit_devices": 1,
       "repair:repair.ifixit_guides": 2,
       "repair:repair.ifixit_score": 2,
+      "repair:repair.fr_index_found": 1,
     },
     axes: { claims: "scored:10", evidence: "scored:0", track: "missing:0", repair: "scored:0" },
   },

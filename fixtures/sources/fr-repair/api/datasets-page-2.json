@@ -1,0 +1,701 @@
+{
+ "$comment": "Trimmed real capture of the data.gouv.fr datasets API (fields read by src/lib/registries/fr-repair.ts); original size and sha256 in manifest.json.",
+ "data": [
+  {
+   "id": "67ff9d00601d6fe81026b970",
+   "slug": "indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na4yf44eaw-fr-1",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Vaisselle QW-NA4YF44EAW-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na4yf44eaw-fr-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na4yf44eaw-fr-1/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T12:05:20.300000+00:00",
+   "last_modified": "2025-04-16T12:05:20.942000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "de4069af-7504-4b62-8439-2fd302590b85",
+     "title": "DW_QWNA4YF44EAWFR-SHARP-2025-03-24.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na4yf44eaw-fr-1/20250416-120520/data.csv",
+     "created_at": "2025-04-16T12:05:20.638000+00:00",
+     "last_modified": "2025-04-16T12:05:20.921000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ffc98cc7149936b6daa080",
+   "slug": "indice-de-reparabilite-vestel-france-lave-linge-es-nfl914awna-fr",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Linge ES-NFL914AWNA-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-nfl914awna-fr",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-nfl914awna-fr/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T15:15:24.365000+00:00",
+   "last_modified": "2025-04-16T15:15:24.851000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "807cd35b-4c78-4f98-99fd-9a82c909210b",
+     "title": "WM-ESNFL914AWNAFR-SHARP-2025-03-24.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-linge-es-nfl914awna-fr/20250416-151524/data.csv",
+     "created_at": "2025-04-16T15:15:24.693000+00:00",
+     "last_modified": "2025-04-16T15:15:24.841000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ffc4b14eefbcc33f122cab",
+   "slug": "indice-de-reparabilite-vestel-france-lave-linge-es-db114ewna-fr",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Linge ES-DB114EWNA-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-db114ewna-fr",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-db114ewna-fr/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T14:54:41.566000+00:00",
+   "last_modified": "2025-04-16T14:54:42.196000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "0129c8eb-9ce6-4be1-925d-72af7370591d",
+     "title": "WM-ESDB114EWNAFR-SHARP-2025-03-24.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-linge-es-db114ewna-fr/20250416-145441/data.csv",
+     "created_at": "2025-04-16T14:54:41.931000+00:00",
+     "last_modified": "2025-04-16T14:54:42.173000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ff6eb2c2dc93540a8127ce",
+   "slug": "indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na4yf42aw-fr-1",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Vaisselle QW-NA4YF42AW-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na4yf42aw-fr-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na4yf42aw-fr-1/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T08:47:46.043000+00:00",
+   "last_modified": "2025-04-16T08:47:46.550000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "5257be06-d81c-4b64-80f3-4d4533b5c0fc",
+     "title": "DW_QWNA4YF42AWFR-SHARP-2025-03-24.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na4yf42aw-fr-1/20250416-084746/data.csv",
+     "created_at": "2025-04-16T08:47:46.364000+00:00",
+     "last_modified": "2025-04-16T08:47:46.542000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "66e93c3609e8e1084058b1b4",
+   "slug": "fichiers-consolides-des-donnees-respectant-le-schema-indice-de-reparabilite",
+   "title": "Fichiers consolidés des données respectant le schéma \"Indice de réparabilité\"",
+   "page": "https://www.data.gouv.fr/datasets/fichiers-consolides-des-donnees-respectant-le-schema-indice-de-reparabilite",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/fichiers-consolides-des-donnees-respectant-le-schema-indice-de-reparabilite/",
+   "license": "lov2",
+   "created_at": "2024-09-17T08:22:14.966000+00:00",
+   "last_modified": "2026-10-19T07:28:50.643000+00:00",
+   "organization": {
+    "id": "646b7187b50b2a93b1ae3d45",
+    "name": "data.gouv.fr",
+    "slug": "data-gouv-fr",
+    "page": "https://www.data.gouv.fr/organizations/data-gouv-fr"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "c04b65e1-70e5-4eec-ac17-a1d963ef08ad",
+     "title": "Documentation sur la consolidation - 20261019",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/fichiers-consolides-des-donnees-respectant-le-schema-indice-de-reparabilite/20261019-072850/ref-table-etalab-schema-indice-reparabilite.csv",
+     "created_at": "2024-09-19T07:57:03.190000+00:00",
+     "last_modified": "2026-10-19T07:28:50.643000+00:00"
+    },
+    {
+     "id": "b0fddb1d-7032-4e30-a055-9d923e94ce59",
+     "title": "Consolidation de la dernière version à date du schéma (v0.1.2) - 20261019",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/fichiers-consolides-des-donnees-respectant-le-schema-indice-de-reparabilite/20261019-072154/consolidation-etalab-schema-indice-reparabilite-v-0.1.2-20261019.csv",
+     "created_at": "2024-09-17T08:22:20.061000+00:00",
+     "last_modified": "2026-10-19T07:21:54.764000+00:00"
+    },
+    {
+     "id": "60be0572-1ba9-4cad-95e0-bfb32fd20d70",
+     "title": "Consolidation de la v0.1.2 du schéma - 20261019",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/fichiers-consolides-des-donnees-respectant-le-schema-indice-de-reparabilite/20261019-072151/consolidation-etalab-schema-indice-reparabilite-v-0.1.2-20261019.csv",
+     "created_at": "2024-09-17T08:22:17.472000+00:00",
+     "last_modified": "2026-10-19T07:21:52.136000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6964cae4826e1e0c25013ed8",
+   "slug": "indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na1ef49d3w-fr",
+   "title": "Indice de réparabilité (Vestel France) - Lave-vaisselle QW-NA1EF49D3W-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na1ef49d3w-fr",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na1ef49d3w-fr/",
+   "license": "notspecified",
+   "created_at": "2026-01-12T10:20:20.044000+00:00",
+   "last_modified": "2026-01-12T10:20:21.547000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "a57569c1-21b2-447b-bc1c-e058e88dab9a",
+     "title": "DW_QW-NA1EF49D3W-FR-SHARP-2025-01-09.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na1ef49d3w-fr/20260112-102020/data.csv",
+     "created_at": "2026-01-12T10:20:21.428000+00:00",
+     "last_modified": "2026-01-12T10:20:21.546000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67fe5b5968ee0bb132c0b875",
+   "slug": "indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na3yf42aa-fr-1",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Vaisselle QW-NA3YF42AA-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na3yf42aa-fr-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na3yf42aa-fr-1/",
+   "license": "notspecified",
+   "created_at": "2025-04-15T13:12:57.447000+00:00",
+   "last_modified": "2025-04-15T13:12:58.357000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "74bb184e-bc0c-4743-96a0-b21abfc8a918",
+     "title": "DW_QWNA3YF42AAFR-SHARP-2025-03-24 - corr.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na3yf42aa-fr-1/20250415-131257/data.csv",
+     "created_at": "2025-04-15T13:12:57.971000+00:00",
+     "last_modified": "2025-04-15T13:12:58.338000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ff748b818cfda0fad8201c",
+   "slug": "indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na4yf44aw-fr-1",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Vaisselle QW-NA4YF44AW-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na4yf44aw-fr-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na4yf44aw-fr-1/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T09:12:43.706000+00:00",
+   "last_modified": "2025-04-16T09:12:44.613000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "c1d415e9-2dee-43e0-819d-fb29dbe07178",
+     "title": "DW_QWNA4YF44AWFR-SHARP-2025-03-24.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na4yf44aw-fr-1/20250416-091244/data.csv",
+     "created_at": "2025-04-16T09:12:44.303000+00:00",
+     "last_modified": "2025-04-16T09:12:44.600000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6a213a1469298bc3b92df307",
+   "slug": "indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na1ff45d6i-fr",
+   "title": "Indice de réparabilité (Vestel France) - Lave-vaisselle QW-NA1FF45D6I-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na1ff45d6i-fr",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na1ff45d6i-fr/",
+   "license": "notspecified",
+   "created_at": "2026-06-04T08:40:52.597000+00:00",
+   "last_modified": "2026-06-04T08:40:55.215000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "7ea7d2fa-863e-4040-97c0-9f9901588c90",
+     "title": "DW_QWNA1FF45D6IFR-SHARP-20032026.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na1ff45d6i-fr/20260604-084054/data.csv",
+     "created_at": "2026-06-04T08:40:55.060000+00:00",
+     "last_modified": "2026-06-04T08:40:55.215000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6859569d9977d77cff6a3e2d",
+   "slug": "indice-de-reparabilite-vestel-france-lave-linge-es-nfb814awna-fr",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Linge ES-NFB814AWNA-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-nfb814awna-fr",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-nfb814awna-fr/",
+   "license": "notspecified",
+   "created_at": "2025-06-23T13:29:01.660000+00:00",
+   "last_modified": "2025-06-23T13:29:02.364000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "44dd1334-a09f-4683-aec8-7976ad586a65",
+     "title": "WM-ESNFB814AWNAFR-SHARP-2025-06-16",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-linge-es-nfb814awna-fr/20250623-132901/data.csv",
+     "created_at": "2025-06-23T13:29:02.121000+00:00",
+     "last_modified": "2025-06-23T13:29:02.349000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ffbea27c42b552c9a9f1bc",
+   "slug": "indice-de-reparabilite-vestel-france-lave-linge-es-nfa914bwna-fr",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Linge ES-NFA914BWNA-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-nfa914bwna-fr",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-nfa914bwna-fr/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T14:28:50.909000+00:00",
+   "last_modified": "2025-04-16T14:29:06.966000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "44edcbc5-6d69-4e08-82ef-e5cdd92ec1cd",
+     "title": "data.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-linge-es-nfa914bwna-fr/20250416-142906/data.csv",
+     "created_at": "2025-04-16T14:29:06.944000+00:00",
+     "last_modified": "2025-04-16T16:29:06.895000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6800f39c624cc715f17efd18",
+   "slug": "indice-de-reparabilite-vestel-france-lave-linge-es-nfb814ewda-fr",
+   "title": "Indice de réparabilité (Vestel France) -Lave-Linge ES-NFB814EWDA-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-nfb814ewda-fr",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-nfb814ewda-fr/",
+   "license": "notspecified",
+   "created_at": "2025-04-17T12:27:08.199000+00:00",
+   "last_modified": "2025-04-17T12:27:08.777000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "95b814f7-24f0-4339-b865-7168cb3e3226",
+     "title": "WM-ESNFB814EWDAFR-SHARP-2025-04-03 - corr.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-linge-es-nfb814ewda-fr/20250417-122708/data.csv",
+     "created_at": "2025-04-17T12:27:08.563000+00:00",
+     "last_modified": "2025-04-17T12:27:08.766000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ffa00f009338ecfc84d3d9",
+   "slug": "indice-de-reparabilite-vestel-france-lave-vaisselle-qw-ni1ei45ex-fr-1",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Vaisselle QW-NI1EI45EX-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-ni1ei45ex-fr-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-ni1ei45ex-fr-1/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T12:18:23.345000+00:00",
+   "last_modified": "2025-04-16T13:27:34.995000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "6b4f4616-452b-470a-bb09-e8160b16e598",
+     "title": "DW_QWNI1EI45EXFR-SHARP-2025-03-24.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-qw-ni1ei45ex-fr/20250416-121823/data.csv",
+     "created_at": "2025-04-16T12:18:23.775000+00:00",
+     "last_modified": "2025-04-16T12:18:24.013000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ffac5a79383177a381157c",
+   "slug": "indice-de-reparabilite-vestel-france-lave-linge-es-nib814bwna-fr",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Linge ES-NIB814BWNA-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-nib814bwna-fr",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-nib814bwna-fr/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T13:10:50.588000+00:00",
+   "last_modified": "2025-04-16T13:10:51.098000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "98156800-a0ac-4cb0-9fa2-0f2c356825f8",
+     "title": "WM-ESNIB814BWNAFR-2025-03-24.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-linge-es-nib814bwna-fr/20250416-131050/data.csv",
+     "created_at": "2025-04-16T13:10:50.916000+00:00",
+     "last_modified": "2025-04-16T13:10:51.088000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ffaf06cf666990f29b3313",
+   "slug": "indice-de-reparabilite-vestel-france-lave-linge-wm-fc0634w1a-fr",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Linge WM-FC0634W1A-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-linge-wm-fc0634w1a-fr",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-linge-wm-fc0634w1a-fr/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T13:22:14.904000+00:00",
+   "last_modified": "2025-04-16T13:22:15.563000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "ba4e6f78-dfeb-459c-9b01-a2cb637894a4",
+     "title": "WM-FC0634W1A-FR_DAEWOO-2025-04-03 - corr.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-linge-wm-fc0634w1a-fr/20250416-132215/data.csv",
+     "created_at": "2025-04-16T13:22:15.269000+00:00",
+     "last_modified": "2025-04-16T13:22:15.541000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ff9ea00aff226e715e6ab3",
+   "slug": "indice-de-reparabilite-vestel-france-lave-vaisselle-qw-ni1ei45e8x-fr-1",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Vaisselle QW-NI1EI45E8X-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-ni1ei45e8x-fr-1",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-ni1ei45e8x-fr-1/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T12:12:16.213000+00:00",
+   "last_modified": "2025-04-16T12:12:16.794000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "c5c51259-e46e-4f71-b3da-3f2ac490c793",
+     "title": "DW_QWNI1EI45E8XFR-SHARP-2025-03-24.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-ni1ei45e8x-fr-1/20250416-121216/data.csv",
+     "created_at": "2025-04-16T12:12:16.557000+00:00",
+     "last_modified": "2025-04-16T12:12:16.785000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ffbcdc5b22ab8e336ebd79",
+   "slug": "indice-de-reparabilite-vestel-france-lave-linge-es-nfb014cwna-fr",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Linge ES-NFB014CWNA-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-nfb014cwna-fr",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-nfb014cwna-fr/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T14:21:16.604000+00:00",
+   "last_modified": "2025-04-16T14:21:19.350000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "c569a0e3-da26-4595-9924-d5905e6a48ad",
+     "title": "WM-ESNFB014CWNAFR-SHARP-2025-03-24.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-linge-es-nfb014cwna-fr/20250416-142118/data.csv",
+     "created_at": "2025-04-16T14:21:18.442000+00:00",
+     "last_modified": "2025-04-16T14:21:19.322000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6abd48543c63ac5a52cff720",
+   "slug": "indice-de-reparabilite-td-synnex-france-update-30-09-2026",
+   "title": "Indice de réparabilité (TD SYNNEX FRANCE) - update 30.09.2026",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-td-synnex-france-update-30-09-2026",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-td-synnex-france-update-30-09-2026/",
+   "license": "notspecified",
+   "created_at": "2026-09-30T17:35:16.421000+00:00",
+   "last_modified": "2026-09-30T17:35:23.788000+00:00",
+   "organization": {
+    "id": "651705c61f405f6f276f4df2",
+    "name": "TD SYNNEX FRANCE",
+    "slug": "td-synnex-france",
+    "page": "https://www.data.gouv.fr/organizations/td-synnex-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "792f0f87-d48a-42ff-9f2e-4668fb430139",
+     "title": "RI update 30-09-2026",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-td-synnex-france-update-30-09-2026/20260930-173516/ri-update-30-09-2026.csv",
+     "created_at": "2026-09-30T17:35:17.113000+00:00",
+     "last_modified": "2026-09-30T17:35:17.240000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ffc64cd3806a4cc4b00da1",
+   "slug": "indice-de-reparabilite-vestel-france-lave-linge-es-da214ewda-fr",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Linge ES-DA214EWDA-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-da214ewda-fr",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-linge-es-da214ewda-fr/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T15:01:32.051000+00:00",
+   "last_modified": "2025-04-16T15:01:33.378000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "fc319756-0b6d-4dce-9cf4-1de27433937e",
+     "title": "WM-ESDA214EWDAFR-SHARP-2025-03-24.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-linge-es-da214ewda-fr/20250416-150132/data.csv",
+     "created_at": "2025-04-16T15:01:33.162000+00:00",
+     "last_modified": "2025-04-16T15:01:33.370000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67ff70f54a41c1f615349c08",
+   "slug": "indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na4yf44ai-fr",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Vaisselle QW-NA4YF44AI-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na4yf44ai-fr",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na4yf44ai-fr/",
+   "license": "notspecified",
+   "created_at": "2025-04-16T08:57:25.975000+00:00",
+   "last_modified": "2025-04-16T11:35:47.122000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "159bc2ad-d0a0-4708-91e2-ce9439735172",
+     "title": "DW_QWNA4YF44AIFR-SHARP-2025-03-24.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na4yf33ai-fr/20250416-085726/data.csv",
+     "created_at": "2025-04-16T08:57:26.318000+00:00",
+     "last_modified": "2025-04-16T08:57:26.568000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "68d168e29da5ba89f50d5e8c",
+   "slug": "indice-de-reparabilite-vestel-france-lave-linge-wm-fc2694w0a-fr",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Linge WM-FC2694W0A-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-linge-wm-fc2694w0a-fr",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-linge-wm-fc2694w0a-fr/",
+   "license": "notspecified",
+   "created_at": "2025-09-22T15:18:58.205000+00:00",
+   "last_modified": "2025-09-22T15:18:58.943000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "7cff1d30-81b3-498d-a221-7a1c0a38ae83",
+     "title": "WM-FC2694W0A-FR-DAEWOO-2025-09-22.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-linge-wm-fc2694w0a-fr/20250922-151858/data.csv",
+     "created_at": "2025-09-22T15:18:58.784000+00:00",
+     "last_modified": "2025-09-22T15:18:58.943000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "6a213b9d0134baa81299f083",
+   "slug": "indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na1ff45d6w-fr",
+   "title": "Indice de réparabilité (Vestel France) - Lave-vaisselle QW-NA1FF45D6W-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na1ff45d6w-fr",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na1ff45d6w-fr/",
+   "license": "notspecified",
+   "created_at": "2026-06-04T08:47:25.674000+00:00",
+   "last_modified": "2026-06-04T08:47:27.115000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "482f5728-478b-4949-ab58-e0411575c2cc",
+     "title": "DW_QWNA1FF45D6WFR-SHARP-20032026.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-vaisselle-qw-na1ff45d6w-fr/20260604-084726/data.csv",
+     "created_at": "2026-06-04T08:47:26.927000+00:00",
+     "last_modified": "2026-06-04T08:47:27.114000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "677ceb73c60ff57fc9743aef",
+   "slug": "indice-de-reparabilite-lave-linge-front-organisation-european-appliances-france-sas",
+   "title": "Indice de réparabilité Lave Linge front  (organisation European Appliances France SAS)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-lave-linge-front-organisation-european-appliances-france-sas",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-lave-linge-front-organisation-european-appliances-france-sas/",
+   "license": "notspecified",
+   "created_at": "2025-01-07T08:53:07.132000+00:00",
+   "last_modified": "2026-01-21T15:07:06.163000+00:00",
+   "organization": {
+    "id": "67693ec5131d9d2aa5bf7a4b",
+    "name": "European Appliances France SAS",
+    "slug": "european-appliances-france-sas",
+    "page": "https://www.data.gouv.fr/organizations/european-appliances-france-sas"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "8b20d94b-08b9-404e-b6b8-ba933aeb03e4",
+     "title": "TEST_ffbs9479wvfr-859991697060.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-lave-linge-front-organisation-european-appliances-france-sas/20250107-090101/test-ffbs9479wvfr-859991697060.csv",
+     "created_at": "2025-01-07T09:01:01.743000+00:00",
+     "last_modified": "2025-01-07T09:36:55.820000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "67e553bb80cd128d0dcadfef",
+   "slug": "indice-de-reparabilite-vestel-france-lave-linge-hublot-es-nfb914ewda-fr",
+   "title": "Indice de réparabilité (Vestel France) - Lave-Linge hublot ES-NFB914EWDA-FR",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-vestel-france-lave-linge-hublot-es-nfb914ewda-fr",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-vestel-france-lave-linge-hublot-es-nfb914ewda-fr/",
+   "license": "lov2",
+   "created_at": "2025-03-27T13:33:47.804000+00:00",
+   "last_modified": "2025-03-27T13:34:30.257000+00:00",
+   "organization": {
+    "id": "6744a394306e4b43832e9097",
+    "name": "Vestel France",
+    "slug": "vestel-france",
+    "page": "https://www.data.gouv.fr/organizations/vestel-france"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "7e364e42-93af-40c7-b3c8-705bb01f7053",
+     "title": "WM-ESNFB914EWDAFR-SHARP-2025-03-24_SHARP.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-vestel-france-lave-linge-hublot-es-nfb914ewda-fr/20250327-133348/data.csv",
+     "created_at": "2025-03-27T13:33:48.440000+00:00",
+     "last_modified": "2025-03-27T13:33:48.998000+00:00"
+    }
+   ]
+  },
+  {
+   "id": "677cf4e34994ebdab82d285b",
+   "slug": "indice-de-reparabilite-lave-linge-top-organisation-european-appliances-france-sas",
+   "title": "Indice de réparabilité Lave Linge Top (organisation European Appliances France SAS)",
+   "page": "https://www.data.gouv.fr/datasets/indice-de-reparabilite-lave-linge-top-organisation-european-appliances-france-sas",
+   "uri": "https://www.data.gouv.fr/api/1/datasets/indice-de-reparabilite-lave-linge-top-organisation-european-appliances-france-sas/",
+   "license": "notspecified",
+   "created_at": "2025-01-07T09:33:23.791000+00:00",
+   "last_modified": "2025-05-22T13:51:09.490000+00:00",
+   "organization": {
+    "id": "67693ec5131d9d2aa5bf7a4b",
+    "name": "European Appliances France SAS",
+    "slug": "european-appliances-france-sas",
+    "page": "https://www.data.gouv.fr/organizations/european-appliances-france-sas"
+   },
+   "owner": null,
+   "resources": [
+    {
+     "id": "5980f6e9-0cbf-4fbb-a7ad-4ab02dbd247f",
+     "title": "TEST_tdlrs6261fr-859991698000.csv",
+     "format": "csv",
+     "url": "https://static.data.gouv.fr/resources/indice-de-reparabilite-lave-linge-topp-organisation-european-appliances-france-sas/20250107-093613/tdlrs6261fr-859991698000.csv",
+     "created_at": "2025-01-07T09:36:13.626000+00:00",
+     "last_modified": "2025-05-22T13:51:09.466000+00:00"
+    }
+   ]
+  }
+ ],
+ "next_page": null,
+ "page": 2,
+ "page_size": 100,
+ "previous_page": "https://www.data.gouv.fr/api/1/datasets/?q=indice+de+reparabilite&page_size=100&page=1",
+ "total": 125
+}

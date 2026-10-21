@@ -82,6 +82,8 @@ describe("regulator fixtures (5.4)", () => {
     for (const f of filesUnder(SOURCES)) {
       const rel = relative(SOURCES, f);
       if (rel === "manifest.json" || rel === "README.md") continue;
+      // v1.1 registry sources keep their own manifest in their sub-directory and their own guard test.
+      if (existsSync(join(SOURCES, rel.split(/[\\/]/)[0], "manifest.json"))) continue;
       expect(listed.has(rel), `${rel} is not in the manifest`).toBe(true);
     }
   });
