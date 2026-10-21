@@ -70,6 +70,15 @@ These are properties of the container the app was built in, not of the app. They
 - A ruling is attributed by name, not by legal identity: two unrelated companies with the same name after normalisation would be confused. The ruled entity is always shown verbatim, so a reader can see it.
 - The search query is the brand name; ASA's and JDP's own search engines decide what they return.
 
+## SBTi target status (Phase 11, ADR-026)
+
+- The SBTi companies export is a **snapshot**; SBTi publishes no history. A commitment that SBTi removed and later re-listed, or a row SBTi deleted, is not visible to a new report; a stored report keeps what the export said on its fetch date (the receipt's date).
+- "Commitment Removed" is reported as SBTi published it, with SBTi's own `status_reason`; it is not a verdict about the brand. Reasons that are not the brand walking back ("Target set at parent company level", "Company change") are a 0-point status note. A removal whose reasons mix a neutral and a non-neutral item is scored.
+- `date_updated` is the date SBTi last changed the row, used as the removal date for the recency multiplier; the export carries no separate removal date.
+- Matching is the strict name rule of METHODOLOGY 9.5 on `company_name`, plus ISIN/LEI equality with the Wikidata entity when Wikidata has those identifiers (few entities do). A brand listed under a group name ("Mammut Sports Group" for "Mammut", "INGKA Holding B.V. (IKEA Group)") is a possible match, shown and not scored; a brand listed under an unrelated parent name is not found.
+- Offline mode and the tests serve a **trimmed** recorded export (fixture and test-case brands plus 50 random rows; `fixtures/sources/sbti/README.md`), so an offline run of a brand outside that list finds nothing. Ground-truth brands are added by re-running `npm run record:registries -- sbti` once `fixtures/validation/ground-truth.json` exists.
+- SBTi's terms allow non-commercial use with credit; every SBTi receipt carries the attribution line. Commercial use would need SBTi's permission.
+
 ## Ownership and repair (differentiator E)
 
 - iFixit is read through its device-category endpoint, because its robots.txt disallows the search API (`docs/CHALLENGES.md` C-2). A brand whose iFixit category has a different name from the brand (or none) gets no iFixit signal; the report says "iFixit lists no device category named …".
@@ -176,3 +185,5 @@ The "Skipped steps" list gives the step-level `skipped: <reason>` lines. An axis
 | `skipped: <what>: no AI answer` | No answer, or no fixture for this input offline. |
 | `skipped: no fetched page to read` | The claim proposer had no page. |
 | `skipped: no removed claim to classify` | The diff classifier had nothing to classify. |
+| `skipped: SBTi export unreachable (<status>)` | The SBTi export did not answer 200 (network error, robots.txt, HTTP status). Template: `sbtiWording.unreachable`. |
+| `skipped: SBTi export could not be parsed` | The export is not a readable .xlsx with the expected columns. Template: `sbtiWording.unparsable`. |

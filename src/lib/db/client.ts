@@ -16,6 +16,10 @@ export function openDb(path: string): Db {
   sqlite.pragma("journal_mode = WAL");
   sqlite.pragma("busy_timeout = 5000");
   sqlite.exec(schema.BOOTSTRAP_SQL);
+  for (const add of schema.ADDED_COLUMNS) {
+    const cols = sqlite.prepare(`PRAGMA table_info(${add.table})`).all() as { name: string }[];
+    if (!cols.some((c) => c.name === add.column)) sqlite.exec(add.ddl);
+  }
   return drizzle(sqlite, { schema }) as Db;
 }
 

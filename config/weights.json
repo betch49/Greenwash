@@ -1,6 +1,6 @@
 {
   "$comment": "Single source of every scoring number (brief Section 4, PLAN Phase 6). Read by src/lib/score/weights.ts (validated with zod) and rendered on /methodology and in docs/METHODOLOGY.md Section 7. Points are risk points: every value is >= 0, so removing a signal can never raise a score (missing data never increases the score). Protective kinds (a report, a manual, a warranty …) carry 0 points: they are listed with their receipt and count as data for confidence, and they are the alternative to the risk kind that would otherwise appear (report_found vs no_report_found, repair findings vs no_repair_info_found).",
-  "version": 1,
+  "version": 2,
   "axes": {
     "claims": 0.25,
     "evidence": 0.25,
@@ -22,7 +22,11 @@
     },
     "track": {
       "claim.removed": 20,
-      "regulator.ruling": 25
+      "regulator.ruling": 25,
+      "sbti.commitment_removed": 15,
+      "sbti.targets_validated": 0,
+      "sbti.commitment_pending": 0,
+      "sbti.status_note": 0
     },
     "repair": {
       "repair.no_repair_info_found": 50,
@@ -53,6 +57,9 @@
     "recentYears": 3,
     "recentMultiplier": 1.5
   },
+  "sbti": {
+    "expiredMultiplier": 1
+  },
   "llmGuard": {
     "maxShare": 0.5
   },
@@ -67,7 +74,7 @@
     "axisSteps": {
       "claims": ["claims"],
       "evidence": ["evidence"],
-      "track": ["wayback", "asa-uk", "jdp-fr"],
+      "track": ["wayback", "asa-uk", "jdp-fr", "sbti"],
       "repair": ["repair"]
     },
     "timelineCountsAsData": ["track"]

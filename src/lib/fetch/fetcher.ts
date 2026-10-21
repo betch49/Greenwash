@@ -12,10 +12,14 @@ export interface FetchResult {
   /** ISO time of the original fetch (preserved when served from cache). */
   fetchedAt: string;
   source: FetchSource;
+  /** The raw body, set only when the request asked for `binary` (Phase 11: the SBTi .xlsx export); `body` is then "". */
+  bytes?: Buffer;
 }
 
 export interface FetchOptions {
   headers?: Record<string, string>;
+  /** Read the body as bytes (`FetchResult.bytes`) instead of text. Cached as base64 (Phase 11). */
+  binary?: boolean;
 }
 
 /** Every I/O module receives a Fetcher (ADR-006). */
@@ -101,7 +105,8 @@ export class UndiciFetcher implements Fetcher {
           headersTimeout: this.timeoutMs,
           bodyTimeout: this.timeoutMs,
         });
-        const body = await res.body.text();
+        const bytes = opts.binary ? Buffer.from(await res.body.arrayBuffer()) : undefined;
+        const body = bytes ? "" : await res.body.text();
         const header = (name: string) => {
           const v = res.headers[name];
           return Array.isArray(v) ? v[0] : v;
@@ -114,6 +119,7 @@ export class UndiciFetcher implements Fetcher {
             contentType: header("content-type") ?? "",
             fetchedAt: this.now().toISOString(),
             source: "network",
+            ...(bytes ? { bytes } : {}),
           };
         }
         lastStatus = res.statusCode;
@@ -166,10 +172,11 @@ export class CachedFetcher implements Fetcher {
     const fromCache = (h: NonNullable<typeof hit>): FetchResult => ({
       url,
       status: h.status,
-      body: h.body,
+      body: h.encoding === "base64" ? "" : h.body,
       contentType: h.contentType,
       fetchedAt: h.fetchedAt,
       source: "cache",
+      ...(h.encoding === "base64" ? { bytes: Buffer.from(h.body, "base64") } : {}),
     });
     if (hit && this.now().getTime() - Date.parse(hit.fetchedAt) <= ttl) return fromCache(hit);
     const stale = hit && this.staleOnError(url) ? hit : undefined;
@@ -186,10 +193,11 @@ export class CachedFetcher implements Fetcher {
       this.cache.put({
         url,
         status: res.status,
-        body: res.body,
+        body: res.bytes ? res.bytes.toString("base64") : res.body,
         contentType: res.contentType,
         fetchedAt: res.fetchedAt,
         source: res.source,
+        encoding: res.bytes ? "base64" : "utf8",
       });
     }
     return res;

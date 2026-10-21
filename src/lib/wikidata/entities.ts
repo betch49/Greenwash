@@ -43,6 +43,9 @@ export interface WikidataEntity {
   instanceOf: Ref[];
   /** P279 of each P31 class (one level up), keyed by class id. */
   classParents: Record<string, string[]>;
+  /** P946 ISIN and P1278 LEI (Phase 11: SBTi identifier matching); absent when the item has none. */
+  isins?: string[];
+  leis?: string[];
 }
 
 const CHUNK = 50;
@@ -96,6 +99,8 @@ function strings(e: RawEntity, prop: string): string[] {
 const label = (e: RawEntity | undefined, fallback: string) =>
   e?.labels?.en?.value ?? e?.labels?.mul?.value ?? fallback;
 
+const nonEmpty = <K extends string>(key: K, values: string[]): Partial<Record<K, string[]>> => (values.length ? ({ [key]: values } as Record<K, string[]>) : {});
+
 export function commonsFileUrl(fileName: string): string {
   return `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(fileName.replace(/ /g, "_"))}`;
 }
@@ -137,6 +142,8 @@ export async function resolveEntities(fetcher: Fetcher, ids: string[]): Promise<
         logo: logo ? commonsFileUrl(logo) : undefined,
         instanceOf: instanceOf.map((c) => ({ id: c, label: label(classes[c], c) })),
         classParents: Object.fromEntries(instanceOf.map((c) => [c, classes[c] ? itemIds(classes[c], "P279") : []])),
+        ...nonEmpty("isins", strings(e, "P946")),
+        ...nonEmpty("leis", strings(e, "P1278")),
       };
     });
 }

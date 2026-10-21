@@ -8,6 +8,8 @@ export const fetchCache = sqliteTable("fetch_cache", {
   contentType: text("content_type").notNull().default(""),
   fetchedAt: text("fetched_at").notNull(),
   source: text("source").notNull(),
+  /** "utf8" or "base64" (binary bodies such as the SBTi .xlsx export, Phase 11). */
+  encoding: text("encoding").notNull().default("utf8"),
 });
 
 /** One analysis run, created only after the user confirmed a brand (or pasted a URL). */
@@ -96,7 +98,8 @@ CREATE TABLE IF NOT EXISTS fetch_cache (
   body TEXT NOT NULL,
   content_type TEXT NOT NULL DEFAULT '',
   fetched_at TEXT NOT NULL,
-  source TEXT NOT NULL
+  source TEXT NOT NULL,
+  encoding TEXT NOT NULL DEFAULT 'utf8'
 );
 CREATE TABLE IF NOT EXISTS runs (
   id TEXT PRIMARY KEY,
@@ -155,3 +158,11 @@ CREATE INDEX IF NOT EXISTS signals_run_idx ON signals(run_id);
 CREATE INDEX IF NOT EXISTS reports_brand_idx ON reports(brand);
 CREATE INDEX IF NOT EXISTS reports_website_idx ON reports(website, created_at);
 `;
+
+/**
+ * Columns added after a table first shipped (Phase 11: fetch_cache.encoding). Applied by
+ * openDb after BOOTSTRAP_SQL, only when the column is missing, so older databases keep working.
+ */
+export const ADDED_COLUMNS: { table: string; column: string; ddl: string }[] = [
+  { table: "fetch_cache", column: "encoding", ddl: "ALTER TABLE fetch_cache ADD COLUMN encoding TEXT NOT NULL DEFAULT 'utf8'" },
+];

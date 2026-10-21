@@ -1,0 +1,11 @@
+{
+  "name": "summary",
+  "input_sha1": "29823b8e883273d5cf521f208237e0a1645ca1e5",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "summary": "Quillmoor Foods Ltd.: moderate signals (score 31, confidence 100%). Based on 5 verified signals from 1 source. One example: “Our oat drinks are carbon neutral” (unsupported claim, https://www.quillmoor-foods.example/sustainability). 5 things could not be checked; they are listed in the report.",
+    "cited_urls": [
+      "https://www.quillmoor-foods.example/sustainability"
+    ]
+  }
+}
