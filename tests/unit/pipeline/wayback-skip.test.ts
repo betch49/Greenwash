@@ -53,7 +53,7 @@ describe("Wayback step (4.6)", () => {
     ["429 after retries", async () => Promise.reject(new FetchError("HTTP 429 after 3 tries", "x", 429)), "Wayback unreachable (HTTP 429)"],
     ["a 429 response", status(429), "Wayback unreachable (HTTP 429)"],
     ["a 503 response", status(503), "Wayback unreachable (HTTP 503)"],
-    ["404 for every page", status(404), "Wayback unreachable (HTTP 404)"],
+    ["404 for every page", status(404), "Wayback Machine: no archived copies found"],
   ] as const)("%s ⇒ skipped with a reason naming Wayback; the run continues to the next step", async (_name, answer, reason) => {
     const run = northwind();
     const fetcher = withWayback(answer);
@@ -67,7 +67,7 @@ describe("Wayback step (4.6)", () => {
     expect(fetcher.calls.length).toBeLessThanOrEqual(3);
     // The last line is the summary written after scoring (Phase 7); the last step before it ran.
     expect(out.progress[out.progress.length - 2]).toEqual({ step: "Checking claim language", status: "done" });
-    expect(out.could_not_check.some((c) => c.includes("Wayback unreachable"))).toBe(true);
+    expect(out.could_not_check.some((c) => /Wayback (unreachable|Machine: no archived)/.test(c))).toBe(true);
     expect(out.signals.filter((s) => s.kind === "claim.removed")).toEqual([]);
   });
 

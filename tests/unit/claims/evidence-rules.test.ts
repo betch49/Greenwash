@@ -42,7 +42,7 @@ describe("evidence rules on the fixture brands (3.5)", () => {
       }
       expect(res.could_not_check).toHaveLength(res.labels_claimed.length);
       for (const l of res.labels_claimed) {
-        expect(res.could_not_check).toContain(`${l.name}: label claimed on page; not verified in v1 (${l.url}).`);
+        expect(res.could_not_check).toContain(`${l.name}: label claimed on page; the label itself was not checked against its issuer (${l.url}).`);
       }
     }
   });

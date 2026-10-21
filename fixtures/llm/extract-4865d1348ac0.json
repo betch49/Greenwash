@@ -1,0 +1,37 @@
+{
+  "name": "extract",
+  "input_sha1": "4865d1348ac0018a59f25990f9c3a7992745f6a9",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "claims": [
+      {
+        "sentence": "Methane Emissions: Innovation Serving Enhanced Monitoring",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "Recognizing the Oil & Gas sector’s critical role in global methane emissions, TotalEnergies has been committed to reducing them for many years.",
+        "kind_hint": "future_only"
+      },
+      {
+        "sentence": "Recognizing the Oil & Gas sector’s critical role in global methane emissions, TotalEnergies has been committed to reducing them for many years.",
+        "kind_hint": "future_only"
+      },
+      {
+        "sentence": "Rebuilt through one of Europe’s most ambitious offshore redevelopment projects, this vital infrastructure now combines advanced technology with greater efficiency and reliability - helping strengthen energy security in Denmark and across Europe while reducing its environmental footprint.",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "We provide the energy the world needs: ever more affordable, more sustainable, more reliable and accessible to as many people as possible.",
+        "kind_hint": "baseline_less_comparison"
+      },
+      {
+        "sentence": "Our objective of reducing Scope 1+2 emissions from our operated activities by 2030",
+        "kind_hint": "future_only"
+      },
+      {
+        "sentence": "Climate and sustainable energy",
+        "kind_hint": "vague"
+      }
+    ]
+  }
+}

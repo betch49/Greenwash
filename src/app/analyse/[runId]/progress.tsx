@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useFormStatus } from "react-dom";
 import { scoreWording, skippedReason, ui } from "@/lib/copy/wording";
 import type { RunView } from "@/lib/pipeline/view";
 import { startRun, startRunForm } from "./actions";
@@ -10,25 +12,65 @@ import { Timeline } from "@/app/_components/timeline";
 const POLL_MS = 800;
 const finished = (s: string) => s === "done" || s === "failed";
 
+function StartButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button type="submit" disabled={pending} aria-disabled={pending}>
+      {pending ? ui.pending : ui.analyseStart}
+    </button>
+  );
+}
+
+async function fetchView(id: string): Promise<RunView | null> {
+  const res = await fetch(`/api/runs/${id}`, { cache: "no-store" });
+  return res.ok ? ((await res.json()) as RunView) : null;
+}
+
 export function Progress({ initial }: { initial: RunView }) {
   const [view, setView] = useState<RunView>(initial);
   const started = useRef(false);
+  const router = useRouter();
 
   useEffect(() => {
-    // Explicit, idempotent start (POST); the GET render of this page never starts anything.
-    if (initial.status === "pending" && !started.current) {
-      started.current = true;
-      void startRun(initial.id);
-    }
-  }, [initial.id, initial.status]);
+    // QA fix round: a stale page (browser Back, client cache) may say "pending" for a
+    // finished run. Re-read the status first; a finished run goes to its report (replace).
+    let cancelled = false;
+    const sync = async (persisted: boolean) => {
+      try {
+        const fresh = await fetchView(initial.id);
+        if (cancelled || !fresh) return;
+        if (fresh.status === "done" && fresh.score && (persisted || initial.status !== "done")) {
+          router.replace(`/report/${fresh.score.report_id}`);
+          return;
+        }
+        setView(fresh);
+        if (fresh.status === "pending" && !started.current) {
+          // Explicit, idempotent start (POST); the GET render of this page never starts anything.
+          started.current = true;
+          void startRun(initial.id);
+        }
+      } catch {
+        // The poll below retries.
+      }
+    };
+    if (initial.status === "pending") void sync(false);
+    const onShow = (e: PageTransitionEvent) => {
+      if (e.persisted) void sync(true);
+    };
+    window.addEventListener("pageshow", onShow);
+    return () => {
+      cancelled = true;
+      window.removeEventListener("pageshow", onShow);
+    };
+  }, [initial.id, initial.status, router]);
 
   useEffect(() => {
     if (finished(view.status)) return;
     let cancelled = false;
     const timer = setTimeout(async () => {
       try {
-        const res = await fetch(`/api/runs/${view.id}`, { cache: "no-store" });
-        if (res.ok && !cancelled) setView((await res.json()) as RunView);
+        const fresh = await fetchView(view.id);
+        if (fresh && !cancelled) setView(fresh);
       } catch {
         // Retry on the next tick.
         if (!cancelled) setView((v) => ({ ...v }));
@@ -58,7 +100,7 @@ export function Progress({ initial }: { initial: RunView }) {
       {view.status === "pending" && (
         <form action={startRunForm}>
           <input type="hidden" name="runId" value={view.id} />
-          <button type="submit">{ui.analyseStart}</button>
+          <StartButton />
         </form>
       )}
       <section aria-labelledby="progress-heading">

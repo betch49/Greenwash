@@ -5,6 +5,8 @@ import { cachedReportFor } from "@/lib/report/serve";
 import { getServices } from "@/lib/services";
 import { disambiguate } from "@/lib/wikidata/disambiguate";
 import type { Candidate, RankResult } from "@/lib/wikidata/rank";
+import { SubmitButton } from "@/app/_components/submit-button";
+import { capQuery, looksLikeUrl, truncate } from "@/lib/website";
 import { confirmCandidate, startFromUrl } from "./actions";
 
 export const dynamic = "force-dynamic";
@@ -24,10 +26,13 @@ function rejectHref(q: string, rejected: string[], id: string): string {
 
 export default async function ConfirmPage({ searchParams }: { searchParams: SearchParams }) {
   const params = await searchParams;
-  const q = one(params.q).trim();
+  const q = capQuery(one(params.q));
   if (!q) redirect("/");
   const rejected = one(params.reject).split(",").filter(Boolean);
-  const forceUrl = one(params.mode) === "url";
+  // QA fix round: a website typed in the search box goes straight to URL mode, prefilled.
+  const typedUrl = looksLikeUrl(q);
+  const forceUrl = one(params.mode) === "url" || typedUrl;
+  const shownQ = truncate(q);
   const urlError = one(params.error) === "url";
 
   const { fetcher, runs } = getServices();
@@ -57,7 +62,7 @@ export default async function ConfirmPage({ searchParams }: { searchParams: Sear
     <>
       {remaining.length > 0 && (
         <section aria-labelledby="confirm-heading">
-          <h1 id="confirm-heading">{ui.confirmHeading(q)}</h1>
+          <h1 id="confirm-heading">{ui.confirmHeading(shownQ)}</h1>
           <ul className="cards">
             {remaining.map((cand) => (
               <li key={cand.id} className="card" data-candidate={cand.id}>
@@ -70,7 +75,7 @@ export default async function ConfirmPage({ searchParams }: { searchParams: Sear
                     <form action={confirmCandidate}>
                       <input type="hidden" name="q" value={q} />
                       <input type="hidden" name="id" value={cand.id} />
-                      <button type="submit">{ui.confirm}</button>
+                      <SubmitButton>{ui.confirm}</SubmitButton>
                     </form>
                   ) : null}
                   <Link className="button button-secondary" href={rejectHref(q, rejected, cand.id)} prefetch={false}>
@@ -85,7 +90,13 @@ export default async function ConfirmPage({ searchParams }: { searchParams: Sear
       {showUrl && (
         <section aria-labelledby="url-heading">
           <h1 id="url-heading">
-            {rejected.length > 0 && result.candidates.length > 0 ? ui.allRejectedHeading : ui.notFoundHeading(q)}
+            {lookupError
+              ? ui.lookupErrorHeading
+              : typedUrl
+                ? ui.allRejectedHeading
+                : rejected.length > 0 && result.candidates.length > 0
+                  ? ui.allRejectedHeading
+                  : ui.notFoundHeading(shownQ)}
           </h1>
           {lookupError && <p className="muted">{ui.lookupFailed(lookupError)}</p>}
           <form action={startFromUrl}>
@@ -98,11 +109,13 @@ export default async function ConfirmPage({ searchParams }: { searchParams: Sear
                 type="text"
                 inputMode="url"
                 required
+                maxLength={2048}
+                defaultValue={typedUrl ? q : undefined}
                 placeholder="https://example.com"
                 aria-invalid={urlError || undefined}
                 aria-describedby={urlError ? "url-error" : undefined}
               />
-              <button type="submit">{ui.urlButton}</button>
+              <SubmitButton>{ui.urlButton}</SubmitButton>
             </div>
             {urlError && (
               <p id="url-error" className="error" role="alert">

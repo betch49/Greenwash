@@ -1,0 +1,17 @@
+{
+  "name": "extract",
+  "input_sha1": "578423da25d23d80082821bdea410df40269f2a5",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "claims": [
+      {
+        "sentence": "We achieve greater impact by partnering with organizations that share our ambition to improve hygiene, health, and environmental sustainability.",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "Through these collaborations, we exchange knowledge and resources to tackle global challenges, raise hygiene standards, advance environmental initiatives, and improve well-being worldwide.",
+        "kind_hint": "other"
+      }
+    ]
+  }
+}

@@ -8,8 +8,9 @@ import { ReportsRepo } from "@/lib/db/reports-repo";
 import type { ReportV1 } from "@/lib/score/report";
 import { signalPoints } from "@/lib/score/scorer";
 import { WEIGHTS } from "@/lib/score/weights";
+import { displayStatus, fallbackSummary, MIN_CONFIDENCE_TO_LABEL, stripStepPrefix } from "@/lib/report/display";
 import { getServices } from "@/lib/services";
-import { displayHost } from "@/lib/website";
+import { displayHost, truncate } from "@/lib/website";
 import { rerunReport } from "./actions";
 
 export const dynamic = "force-dynamic";
@@ -100,6 +101,8 @@ export default async function ReportPage({ params }: { params: Params }) {
   const share = await shareUrl(id);
   const possible = report.could_not_check.filter((c) => c.startsWith(POSSIBLE_MATCH_PREFIX));
   const notChecked = report.could_not_check.filter((c) => !c.startsWith(POSSIBLE_MATCH_PREFIX));
+  const status = displayStatus(report);
+  const fallback = report.summary ? null : fallbackSummary(report);
 
   return (
     <article className="report" data-testid="report" data-report-id={id}>
@@ -109,7 +112,7 @@ export default async function ReportPage({ params }: { params: Params }) {
           <img className="logo" src={logo} alt={w.logoAlt(report.brand)} width={64} height={64} loading="lazy" />
         )}
         <div>
-          <h1>{w.heading(report.brand)}</h1>
+          <h1 title={report.brand}>{w.heading(truncate(report.brand))}</h1>
           <p className="muted">
             {w.website}:{" "}
             <a href={report.website} rel="noopener noreferrer" data-testid="website">
@@ -134,15 +137,27 @@ export default async function ReportPage({ params }: { params: Params }) {
         <h2 id="headline-heading" className="visually-hidden">
           {w.headlineHeading}
         </h2>
-        <p className="score-big">
-          <span data-testid="score">{report.score}</span>
-          <span className="score-of"> {w.scoreOutOf}</span>
-        </p>
-        <p className="score-label" data-testid="score-label" data-label={report.label}>
-          {report.label_text}
-        </p>
-        <p data-testid="score-basis">{report.basis}</p>
-        <p data-testid="score-line">{scoreWording.scoreLine(report.score, report.confidence)}</p>
+        {status === "insufficient_evidence" ? (
+          <>
+            <p className="score-label" data-testid="score-insufficient" data-display-status={status}>
+              <strong>{ui.insufficientEvidence}</strong>
+            </p>
+            <p className="muted">{ui.insufficientEvidenceNote(MIN_CONFIDENCE_TO_LABEL)}</p>
+            <p data-testid="score-line">{ui.confidenceLine(report.confidence)}</p>
+          </>
+        ) : (
+          <>
+            <p className="score-big" data-display-status={status}>
+              <span data-testid="score">{report.score}</span>
+              <span className="score-of"> {w.scoreOutOf}</span>
+            </p>
+            <p className="score-label" data-testid="score-label" data-label={report.label}>
+              {report.label_text}
+            </p>
+            <p data-testid="score-basis">{report.basis}</p>
+            <p data-testid="score-line">{ui.confidenceLine(report.confidence)}</p>
+          </>
+        )}
         <p data-testid="ai-share">{scoreWording.aiShare(pct(report.ai_share))}</p>
         <p>
           <Link href="/methodology">{scoreWording.methodologyLink}</Link>
@@ -158,11 +173,16 @@ export default async function ReportPage({ params }: { params: Params }) {
               {ui.summaryAiNote}
             </p>
           </>
-        ) : (
-          <p className="muted" data-testid="summary">
-            {ui.summaryUnavailable}
-          </p>
-        )}
+        ) : fallback ? (
+          <>
+            <p data-testid="summary" data-summary-kind="fallback">
+              {fallback.text}
+            </p>
+            <p className="muted" data-testid="summary-note">
+              {ui.summaryFallbackNote}
+            </p>
+          </>
+        ) : null}
       </section>
 
       <section aria-labelledby="axes-heading">
@@ -171,7 +191,7 @@ export default async function ReportPage({ params }: { params: Params }) {
           <section key={a.id} className="axis" data-axis={a.id} data-status={a.status} aria-labelledby={`axis-${a.id}`}>
             <h3 id={`axis-${a.id}`}>{scoreWording.axisNames[a.id]}</h3>
             <p className="axis-meta">
-              <strong data-testid={`subscore-${a.id}`}>{w.axisSubscore(a.subscore)}</strong> · {w.axisWeight(pct(a.weight), pct(a.effective_weight))} ·{" "}
+              <strong data-testid={`subscore-${a.id}`}>{a.status === "scored" ? w.axisSubscore(a.subscore) : ui.axisNoData}</strong> · {w.axisWeight(pct(a.weight), pct(a.effective_weight))} ·{" "}
               <span data-axis-status>{scoreWording.axisStatus[a.status]}</span> · {w.receiptsCount(a.signals.length)}
             </p>
             {a.signals.length === 0 ? (
@@ -219,7 +239,7 @@ export default async function ReportPage({ params }: { params: Params }) {
           <ul className="pages" data-testid="skipped">
             {report.skipped.map((s, i) => (
               <li key={`${i}-${s.step}`}>
-                <strong>{s.step}</strong>: {skippedReason(s.reason)}
+                <strong>{s.step}</strong>: {skippedReason(stripStepPrefix(s.step, s.reason))}
               </li>
             ))}
           </ul>

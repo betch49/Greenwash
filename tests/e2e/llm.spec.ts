@@ -21,5 +21,5 @@ test("7.6: Northwind's classified removals make the AI share visible (> 0, ≤ 5
   await expect(page.getByTestId("progress").locator('[data-step="Classifying archived changes (AI)"]')).toHaveAttribute("data-status", "done");
   await expect(page.getByTestId("ai-share")).toHaveText("AI contributed to 26% of this score");
   // Phase 8 (ADR-021): the URL-fallback input ("acme" + the Northwind website) has its own summary fixture.
-  await expect(page.getByTestId("summary")).toContainText("acme: moderate signals");
+  await expect(page.getByTestId("summary")).toContainText("Northwind Outdoor Clothing & Gear: moderate signals");
 });

@@ -1,0 +1,21 @@
+{
+  "name": "extract",
+  "input_sha1": "da99d06e4d0eff393c7f4cb27e3ecea4c8c75562",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "claims": [
+      {
+        "sentence": "We embed sustainability across our business to drive innovation, growth, and positive impact.",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "We support our customers with products, solutions, and partnerships that advance shared sustainability goals.",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "We reduce emissions across our operations and value chain in line with our science-based targets, and we develop lower-carbon solutions that support our customers' sustainability ambitions and contribute to a more sustainable future.",
+        "kind_hint": "baseline_less_comparison"
+      }
+    ]
+  }
+}

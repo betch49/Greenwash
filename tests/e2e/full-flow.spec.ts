@@ -24,11 +24,11 @@ for (const b of BRANDS) {
     expect(m, basis).not.toBeNull();
     expect(Number(m![1])).toBeGreaterThan(0);
     expect(Number(m![2])).toBeGreaterThan(0);
-    await expect(page.getByTestId("score-line")).toHaveText(new RegExp(`^Score ${score}, confidence \\d{1,3}%$`));
+    await expect(page.getByTestId("score-line")).toHaveText(/^Confidence \d{1,3}%$/);
     await expect(page.getByTestId("ai-share")).toHaveText(/^AI contributed to \d{1,2}% of this score$/);
     // Desktop: four axis sections, each with its sub-score (8.6, desktop half).
     await expect(page.locator("section[data-axis]")).toHaveCount(4);
-    for (const axis of ["claims", "evidence", "track", "repair"]) await expect(page.getByTestId(`subscore-${axis}`)).toHaveText(/^Sub-score \d{1,3}\/100$/);
+    for (const axis of ["claims", "evidence", "track", "repair"]) await expect(page.getByTestId(`subscore-${axis}`)).toHaveText(/^(Sub-score \d{1,3}\/100|—)$/);
     await expect(page.getByRole("link", { name: "How the score is computed" })).toHaveAttribute("href", "/methodology");
     await expect(page.getByTestId("share-link")).toHaveText(new RegExp(`/report/${id}$`));
     await expect(page.getByTestId("download-json")).toHaveAttribute("href", `/api/reports/${id}.json`);
@@ -42,7 +42,7 @@ test("8.1 Northwind via the URL fallback: summary with its AI note, AI-assisted 
   await analyseWebsite(page, "https://www.northwind-outdoor.example");
   await openReport(page);
   // ADR-021 carry-forward: the URL-fallback input has its own (stand-in) summary fixture.
-  await expect(page.getByTestId("summary")).toContainText("acme: moderate signals");
+  await expect(page.getByTestId("summary")).toContainText("Northwind Outdoor Clothing & Gear: moderate signals");
   await expect(page.getByTestId("summary-note")).toHaveText(/Written by an AI model/);
   await expect(page.getByTestId("ai-share")).toHaveText("AI contributed to 26% of this score");
   const llmRows = page.locator("[data-signal][data-llm]");

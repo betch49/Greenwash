@@ -1,0 +1,25 @@
+{
+  "name": "extract",
+  "input_sha1": "66885f2cc4923d64bd568266e61791448abfa54d",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "claims": [
+      {
+        "sentence": "TotalEnergies has placed sustainable development in all its dimensions at the heart of its strategy, projects and operations, in order to contribute to the well-being of the populations.",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "TotalEnergies has structured its sustainable development approach for conducting its activities so as to contribute to the achievement of the United Nations Sustainable Development Goals (SDGs), to which TotalEnergies committed its support in 2016.",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "Climate and Sustainable Energy",
+        "kind_hint": "vague"
+      },
+      {
+        "sentence": "More Energy, Less Emissions",
+        "kind_hint": "baseline_less_comparison"
+      }
+    ]
+  }
+}

@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { ui } from "@/lib/copy/wording";
 import { toRunView } from "@/lib/pipeline/view";
 import { getServices } from "@/lib/services";
-import { displayHost } from "@/lib/website";
+import { displayHost, truncate } from "@/lib/website";
 import { Progress } from "./progress";
 
 export const dynamic = "force-dynamic";
@@ -14,7 +14,7 @@ export default async function AnalysePage({ params }: { params: Promise<{ runId:
   if (!run) notFound();
   return (
     <>
-      <h1>{ui.analyseHeading(run.brand)}</h1>
+      <h1>{ui.analyseHeading(truncate(run.brand))}</h1>
       <dl className="facts">
         <dt>Brand</dt>
         <dd data-testid="brand">{run.brand}</dd>

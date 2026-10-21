@@ -31,7 +31,8 @@ test("1.7 'acme' shows the URL fallback; pasting https://example.com proceeds", 
   await url.press("Enter");
   await page.waitForURL(/\/analyse\/[0-9a-f-]{36}$/);
   await expect(page.getByTestId("website")).toHaveText("example.com");
-  await expect(page.getByTestId("brand")).toHaveText("acme");
+  // QA fix round: named after the fetched homepage, else the domain (example.com is not in the fixtures).
+  await expect(page.getByTestId("brand")).toHaveText("example.com");
   expect(await runCount(request)).toBe(before + 1);
 });
 

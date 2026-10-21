@@ -1,0 +1,21 @@
+{
+  "name": "extract",
+  "input_sha1": "dfe6e8890fbe08e01e2e7561f0ec11581df17dba",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "claims": [
+      {
+        "sentence": "Our innovations contribute to a safer, smarter more sustainable world.",
+        "kind_hint": "baseline_less_comparison"
+      },
+      {
+        "sentence": "Our lighting products, systems and services enable our customers to enjoy a unique quality of light and make people’s lives safer and comfortable; businesses and cities more energy efficient, productive and livable; and the world more sustainable.",
+        "kind_hint": "baseline_less_comparison"
+      },
+      {
+        "sentence": "Our innovations in lighting support the team’s ambition to become the world’s most sustainable in sport, serve the well-being and performance of drivers and team members, and deliver powerful experiences for fans, trackside and at home.",
+        "kind_hint": "absolute"
+      }
+    ]
+  }
+}
