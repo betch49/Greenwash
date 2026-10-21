@@ -62,7 +62,13 @@ export const reports = sqliteTable("reports", {
   createdAt: text("created_at").notNull(),
 });
 
-/** Receipted signals belonging to a run / report. */
+/**
+ * Reserved, currently unused (Phase 9 decision): PLAN Phase 1 names this table,
+ * but every signal is stored inside the report's `ReportV1` JSON (`reports.data`),
+ * which the report page, the JSON export and the cache read. Nothing writes or
+ * reads this table; it is kept so the Phase 1 schema stays as planned and a
+ * future per-signal query (docs/LATER.md) has a home. See docs/LIMITATIONS.md.
+ */
 export const signals = sqliteTable("signals", {
   id: text("id").primaryKey(),
   runId: text("run_id").notNull(),

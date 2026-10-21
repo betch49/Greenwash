@@ -15,7 +15,8 @@
     "record:brand": "tsx scripts/record-brand.ts",
     "record:sources": "tsx scripts/record-sources.ts",
     "author:llm": "tsx scripts/author-llm-fixtures.ts",
-    "lighthouse": "tsx scripts/lighthouse.ts"
+    "lighthouse": "tsx scripts/lighthouse.ts",
+    "e2e:real": "tsx scripts/e2e-real.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.137.0",
