@@ -62,6 +62,11 @@ export const steps = {
   evidence: "Checking published evidence",
   wayback: (from: number, to: number) => `Pulling ${from}–${to} snapshots`,
   fetchSnapshot: (url: string) => `Fetching snapshot ${url}`,
+  asa: "Checking ASA (UK) rulings",
+  jdp: "Checking JDP (France) decisions",
+  repair: "Checking repair information",
+  fetchRuling: (url: string) => `Fetching ruling ${url}`,
+  ifixit: "Looking up iFixit",
 };
 
 /** Reasons recorded when a step or a page is skipped (shown as "skipped: <reason>"). */
@@ -79,6 +84,11 @@ export const reasons = {
   noPagesToScan: "no fetched page to scan",
   waybackUnreachable: (cause: string) => `Wayback unreachable (${cause})`,
   noPagesForWayback: "no sustainability-type page to look up in the Wayback Machine",
+  regulatorUnreachable: (name: string, cause: string) => `${name} unreachable (${cause})`,
+  regulatorParse: (name: string, what: string) => `${name} ${what} could not be parsed`,
+  repairNotApplicable: (industry: string) => `not applicable: the brand’s industry on Wikidata is “${industry}”, whose products are consumed, not repaired`,
+  ifixitUnreachable: (cause: string) => `iFixit unreachable (${cause})`,
+  ifixitNotListed: (name: string) => `iFixit lists no device category named “${name}”`,
 };
 
 /** Entries for the report's "What we could not check" section. */
@@ -107,6 +117,17 @@ export const couldNotCheck = {
   waybackNoHistory: (url: string, status: number) => `Archived versions of ${url} (the Wayback Machine answered HTTP ${status}).`,
   waybackNoSnapshots: (url: string, from: number, to: number) => `${url}: no archived snapshot from ${from}–${to} in the Wayback Machine.`,
   waybackOneSnapshot: (url: string, year: number) => `${url}: only one archived snapshot (${year}), so no change over time could be checked.`,
+  /** ADR-003: every report says which regulators were searched. */
+  regulatorCoverage: "Regulator rulings: only the UK ASA and the French JDP were searched; rulings by other countries’ regulators were not checked.",
+  regulatorSkipped: (name: string, reason: string) => `${name} rulings: not checked (${reason}).`,
+  regulatorRulingSkipped: (url: string, reason: string) => `${url}: ruling page not read (${reason}).`,
+  /** A ruling naming an entity whose name only contains the brand: shown, never scored (ADR-003). */
+  regulatorPossible: (name: string, entity: string, url: string) =>
+    `Possible match, not scored: ${name} ruling naming “${entity}” (${url}); the ruled entity’s name is not the brand’s name, so we do not attribute it.`,
+  repairNotApplicable: (industry: string) =>
+    `Repair and ownership: not applicable (Wikidata industry “${industry}”: products are consumed, not repaired); this axis is not scored.`,
+  repairNoPages: "Repair information on the brand’s own pages: no page could be fetched, so none was checked.",
+  ifixitSkipped: (reason: string) => `iFixit repair guides: not checked (${reason}).`,
 };
 
 /** How each claim-language rule family is named in signal labels (rule ids: src/lib/claims/rules). */
@@ -129,6 +150,17 @@ export const signalLabels = {
   noReport: "Risk signal: no impact or sustainability report link found on the fetched pages",
   absoluteEmissions: "Absolute emissions figure (tonnes of CO2e) published on the page",
   supplierList: "Supplier or factory list linked",
+  /** ADR-008: "ruling found naming <entity verbatim>". The outcome words are the regulator's own. */
+  rulingFound: (entity: string, regulator: string, country: string, date: string, outcome: string) =>
+    `Ruling found naming ${entity} (${regulator}, ${country}, ${date}); outcome as published: ${outcome}`,
+  repairManual: "Repair guide or service manual offered on the brand’s site",
+  spareParts: "Spare or replacement parts offered on the brand’s site",
+  warranty: (years: number | "lifetime") => (years === "lifetime" ? "Lifetime warranty stated on the brand’s site" : `${years}-year warranty stated on the brand’s site`),
+  repairProgram: "Repair service or programme offered on the brand’s site",
+  noRepairInfo: "Risk signal: no repair guide, spare parts, warranty length or repair service found on the fetched pages",
+  ifixitDevices: (n: number, brand: string) => `iFixit lists ${n} device ${n === 1 ? "category" : "categories"} with repair information for ${brand}`,
+  ifixitGuides: (device: string, n: number) => `iFixit has ${n} repair ${n === 1 ? "guide" : "guides"} for ${device}`,
+  ifixitScore: (device: string, score: number) => `iFixit repairability score for ${device}: ${score}/10`,
   claimRemoved: (from: number, to: number) =>
     `Claim removed between ${from} and ${to}: present in the ${from} archived copy of the page, absent from the ${to} copy`,
 };
@@ -137,4 +169,5 @@ export const signalLabels = {
 export const excerpts = {
   link: (text: string, href: string) => (text ? `“${text}” (${href})` : href),
   pagesScanned: (titles: string[]) => `Pages scanned: ${titles.join("; ")}`,
+  pagesScannedWithUrls: (pages: { title: string; url: string }[]) => `Pages scanned: ${pages.map((p) => (p.title ? `${p.title} (${p.url})` : p.url)).join("; ")}`,
 };

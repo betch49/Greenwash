@@ -4,6 +4,7 @@ import { FetchCacheRepo } from "./db/fetch-cache-repo";
 import { RunsRepo } from "./db/runs-repo";
 import { CachedFetcher, RateLimitedFetcher, UndiciFetcher, type Fetcher } from "./fetch/fetcher";
 import { loadBrandFixtures } from "./fetch/brand-fixtures";
+import { loadSourceFixtures } from "./fetch/source-fixtures";
 import { FixtureFetcher, combineMaps } from "./fetch/fixture-fetcher";
 import { RateLimiter } from "./fetch/rate-limiter";
 import { wikidataFixturePath } from "./wikidata/fixtures";
@@ -37,7 +38,12 @@ export function buildFetcher(db: Db, offline: boolean): Fetcher {
   if (offline) {
     const root = process.env.GR_FIXTURES_DIR || join(process.cwd(), "fixtures");
     const brands = loadBrandFixtures(root);
-    return new FixtureFetcher(root, combineMaps(wikidataFixturePath, brands.map), (url) => brands.capturedAt(url) ?? new Date().toISOString());
+    const sources = loadSourceFixtures(root);
+    return new FixtureFetcher(
+      root,
+      combineMaps(wikidataFixturePath, brands.map, sources.map),
+      (url) => brands.capturedAt(url) ?? sources.capturedAt(url) ?? new Date().toISOString(),
+    );
   }
   const ttlMs = Number(process.env.GR_CACHE_TTL_HOURS || 168) * HOUR_MS;
   // Archived snapshots never change: cached forever. CDX listings and live pages: the default TTL.

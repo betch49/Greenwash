@@ -8,6 +8,9 @@ import type { EvidenceResult } from "../claims/evidence-rules";
 import type { Signal } from "./signal";
 import type { ArchiveNote } from "../copy/wording";
 import type { DiffCandidate, TimelineEntry } from "../wayback/retraction";
+import type { Ruling } from "../regulators/adapter";
+import type { PossibleMatch } from "../regulators/check";
+import type { RepairFinding } from "../repair/brand-pages";
 
 /** What every pipeline step returns (PLAN conventions). */
 export interface StepResult {
@@ -20,7 +23,8 @@ export interface StepResult {
 
 /** Shared, mutable state passed from step to step within one run. */
 export interface PipelineContext {
-  run: Pick<Run, "id" | "brand" | "website">;
+  /** `entity` is the confirmed Wikidata candidate (absent on the URL fallback); the repair step reads its industry. */
+  run: Pick<Run, "id" | "brand" | "website"> & { entity?: unknown };
   /** Robots-guarded fetcher: the only fetcher used for brand, regulator and repair pages (ADR-010). */
   pageFetcher: Fetcher;
   /**
@@ -47,6 +51,13 @@ export interface PipelineContext {
   diffCandidates: DiffCandidate[];
   /** What the Wayback step found for each robots-disallowed page (ADR-016), keyed by the page URL. */
   archiveOutcomes: Record<string, ArchiveOutcome>;
+  /** Rulings attributed to the brand (Phase 5); each is also a `regulator.ruling` signal. */
+  rulings: (Ruling & { regulator: string })[];
+  /** Rulings naming an entity that only contains the brand's name: shown, never scored (ADR-003). */
+  regulatorPossible: PossibleMatch[];
+  /** Repair axis applicability (Phase 5): "not_applicable" for food and drink brands. */
+  repairAxis?: "applicable" | "not_applicable";
+  repairFindings: RepairFinding[];
 }
 
 /** The archive's answer for a page we could not fetch live (type lives with its wording). */

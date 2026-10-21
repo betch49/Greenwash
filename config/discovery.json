@@ -1,5 +1,5 @@
 {
-  "$comment": "Page discovery (Phase 2). heuristicPaths are probed on the brand's origin; sitemap URLs are kept only when their path (locale prefix removed) contains one of sitemapKeywords. Higher keyword weight = fetched earlier. Limits bound the work done per brand. sustainabilityKeywords decide which pages count as sustainability-type pages. ranking: each path segment beyond the first costs depthPenalty points, and at most maxPerSection URLs are kept under one first path segment (e.g. /stories/...), so a blog cannot crowd out the brand's own policy pages.",
+  "$comment": "Page discovery (Phase 2). heuristicPaths are probed on the brand's origin; sitemap URLs are kept only when their path (locale prefix removed) contains one of sitemapKeywords. Higher keyword weight = fetched earlier. Limits bound the work done per brand. sustainabilityKeywords decide which pages count as sustainability-type pages. ranking: each path segment beyond the first costs depthPenalty points, and at most maxPerSection URLs are kept under one first path segment (e.g. /stories/...), so a blog cannot crowd out the brand's own policy pages. nonDurableIndustries (Phase 5, axis E): Wikidata P452 industry labels (lowercase, exact) of brands whose products are consumed rather than kept (food, drink); for them the repair axis is 'not applicable', not scored, and listed under 'What we could not check'. An unknown industry counts as durable, so repair information is looked for.",
   "heuristicPaths": [
     "/sustainability",
     "/impact",
@@ -45,5 +45,31 @@
   "ranking": {
     "depthPenalty": 4,
     "maxPerSection": 3
-  }
+  },
+  "nonDurableIndustries": [
+    "food industry",
+    "beverage industry",
+    "food and beverage industry",
+    "food processing",
+    "food manufacturing",
+    "drink industry",
+    "dairy industry",
+    "dairy",
+    "brewing",
+    "brewery",
+    "beer industry",
+    "wine industry",
+    "confectionery",
+    "bakery",
+    "meat industry",
+    "meat processing",
+    "agriculture",
+    "fast food",
+    "restaurant",
+    "restaurant industry",
+    "catering",
+    "tobacco industry",
+    "cosmetics industry",
+    "personal care"
+  ]
 }

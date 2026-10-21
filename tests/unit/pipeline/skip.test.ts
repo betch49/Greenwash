@@ -75,6 +75,10 @@ describe("pipeline skips (2.4)", () => {
       { step: "Pulling 2019–2026 snapshots", status: "skipped", reason: "no sustainability-type page to look up in the Wayback Machine" },
       { step: "Checking claim language", status: "skipped", reason: "no fetched page to scan" },
       { step: "Checking published evidence", status: "skipped", reason: "no fetched page to scan" },
+      // Phase 5: no regulator search is recorded for "acme", so offline both sites answer 404.
+      { step: "Checking ASA (UK) rulings", status: "skipped", reason: "ASA unreachable (HTTP 404)" },
+      { step: "Checking JDP (France) decisions", status: "skipped", reason: "JDP unreachable (HTTP 404)" },
+      { step: "Checking repair information", status: "skipped", reason: "no fetched page to scan" },
     ]);
     expect(out.could_not_check).toContain("No sustainability, impact or responsibility page could be fetched from example.com.");
   });
@@ -134,9 +138,14 @@ describe("pipeline skips (2.4)", () => {
       { step: "Pulling 2019–2026 snapshots", status: "skipped", reason: "no sustainability-type page to look up in the Wayback Machine" },
       { step: "Checking claim language", status: "skipped", reason: "no fetched page to scan" },
       { step: "Checking published evidence", status: "skipped", reason: "no fetched page to scan" },
+      // Every robots.txt answers 503 here, so the regulator sites are skipped the same way (ADR-012).
+      { step: "Checking ASA (UK) rulings", status: "skipped", reason: "robots.txt unavailable for https://www.asa.org.uk (HTTP 503)" },
+      { step: "Checking JDP (France) decisions", status: "skipped", reason: "robots.txt unavailable for https://www.jdp-pub.org (HTTP 503)" },
+      { step: "Checking repair information", status: "skipped", reason: "no fetched page to scan" },
     ]);
     expect(skippedReason(out.progress[0].reason!)).toBe(`skipped: ${reason}`);
-    expect(calls).toEqual(["https://www.northwind-outdoor.example/robots.txt"]);
+    // Nothing on the brand's site is requested (regulator and repair sources are other hosts).
+    expect(calls.filter((u) => new URL(u).host === "www.northwind-outdoor.example")).toEqual(["https://www.northwind-outdoor.example/robots.txt"]);
     expect(out.pages).toEqual([]);
     expect(out.could_not_check.some((c) => c.includes("robots.txt could not be read"))).toBe(true);
     expect(runs.get(run.id)!.progress).toEqual(out.progress);

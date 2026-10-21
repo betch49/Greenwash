@@ -45,6 +45,10 @@ describe("pipeline wiring", () => {
       ["Pulling 2019–2026 snapshots", "skipped"],
       ["Checking claim language", "done"],
       ["Checking published evidence", "done"],
+      // Phase 5: real recorded searches (no ruling for Fairphone) and the repair axis.
+      ["Checking ASA (UK) rulings", "done"],
+      ["Checking JDP (France) decisions", "done"],
+      ["Checking repair information", "done"],
     ]);
     expect(out.signals.filter((s) => s.axis === "claims").length).toBeGreaterThan(0);
     expect(out.signals.filter((s) => s.axis === "evidence").length).toBeGreaterThan(0);

@@ -12,6 +12,8 @@ export interface DiscoveryConfig {
     maxSitemaps: number;
     minWords: number;
   };
+  /** Wikidata P452 industry labels (lowercase) for which the repair axis is not applicable (Phase 5). */
+  nonDurableIndustries?: string[];
 }
 
 export const DISCOVERY_CONFIG: DiscoveryConfig = discovery;

@@ -3,7 +3,8 @@ import { join } from "node:path";
 import { visibleText, type PageLink } from "@/lib/discover/visible-text";
 import { loadBrandFixtures } from "@/lib/fetch/brand-fixtures";
 import type { FetchResult, Fetcher } from "@/lib/fetch/fetcher";
-import { FixtureFetcher } from "@/lib/fetch/fixture-fetcher";
+import { FixtureFetcher, combineMaps } from "@/lib/fetch/fixture-fetcher";
+import { loadSourceFixtures } from "@/lib/fetch/source-fixtures";
 
 /** The fictional, test-only fixture (ADR-011): hand-built edge cases on a reserved domain. */
 export const NORTHWIND = {
@@ -46,7 +47,8 @@ export class OfflineFetcher implements Fetcher {
 
   constructor(root = "fixtures") {
     const brands = loadBrandFixtures(root);
-    this.inner = new FixtureFetcher(root, brands.map, (url) => brands.capturedAt(url) ?? "1970-01-01T00:00:00.000Z");
+    const sources = loadSourceFixtures(root);
+    this.inner = new FixtureFetcher(root, combineMaps(brands.map, sources.map), (url) => brands.capturedAt(url) ?? sources.capturedAt(url) ?? "1970-01-01T00:00:00.000Z");
   }
 
   async get(url: string): Promise<FetchResult> {

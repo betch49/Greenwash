@@ -1,0 +1,8 @@
+{
+  "$comment": "Repair axis (Phase 5, differentiator E). iFixit: the device-category endpoint of the iFixit API (robots.txt allows /api/2.0/wikis*; it disallows /api/2.0/search, see docs/CHALLENGES.md C-2). The brand's category is looked up by name; at most maxDevices of its device sub-categories (the last ones listed, which on iFixit are the newest models of a numbered line) are read for guide counts and the repairability score.",
+  "ifixit": {
+    "categoryUrl": "https://www.ifixit.com/api/2.0/wikis/CATEGORY/{title}",
+    "maxDevices": 3,
+    "maxGuideTitles": 5
+  }
+}

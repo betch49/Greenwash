@@ -90,3 +90,32 @@ test("2.6 a GET of /analyse never starts the pipeline; only the explicit Start a
   ]);
   await context.close();
 });
+
+test("5.9 /analyse shows the ASA, JDP and repair steps, each ending in done or skipped: … (offline)", async ({ page }) => {
+  const NEW_STEPS = ["Checking ASA (UK) rulings", "Checking JDP (France) decisions", "Checking repair information"];
+  for (const query of ["fairphone", "oatly"]) {
+    await search(page, query);
+    await page.waitForURL(/\/(analyse|confirm)/);
+    if (page.url().includes("/confirm")) {
+      await page.locator("[data-candidate]").first().getByRole("button", { name: "Confirm" }).click();
+    }
+    await page.waitForURL(/\/analyse\/[0-9a-f-]{36}$/);
+    await expect(page.getByTestId("run-status")).toHaveAttribute("data-status", "done", { timeout: 30_000 });
+    const progress = page.getByTestId("progress");
+    for (const step of NEW_STEPS) {
+      const row = progress.locator(`[data-step="${step}"]`);
+      await expect(row, `${query}: ${step}`).toHaveCount(1);
+      expect(["done", "skipped"]).toContain(await row.getAttribute("data-status"));
+      if ((await row.getAttribute("data-status")) === "skipped") await expect(row).toContainText("skipped: ");
+    }
+    if (query === "fairphone") {
+      await expect(progress.locator(`[data-step="Checking repair information"]`)).toHaveAttribute("data-status", "done");
+    } else {
+      // Oatly: the real ASA ruling is found; the repair axis is not applicable to a drinks brand, and the report says so.
+      await expect(progress.locator(`[data-step="Checking ASA (UK) rulings"]`)).toHaveAttribute("data-status", "done");
+      await expect(progress.locator(`[data-step="Checking repair information"]`)).toContainText("skipped: not applicable");
+      await expect(page.getByTestId("could-not-check")).toContainText("Repair and ownership: not applicable");
+      await expect(page.getByTestId("could-not-check")).toContainText("Regulator rulings: only the UK ASA and the French JDP were searched");
+    }
+  }
+});

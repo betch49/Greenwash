@@ -13,11 +13,14 @@ import { discoverStep } from "./steps/discover";
 import { evidenceStep } from "./steps/evidence";
 import { fetchPagesStep } from "./steps/fetch-pages";
 import { waybackStep } from "./steps/wayback";
+import { asaStep, jdpStep } from "./steps/regulators";
+import { repairStep } from "./steps/repair";
+import type { PossibleMatch } from "../regulators/check";
 import type { DiffCandidate, TimelineEntry } from "../wayback/retraction";
 import type { PipelineContext, Step } from "./types";
 
-/** Brief Section 5 order: discover → fetch current pages → Wayback snapshots + diff → claim engine → evidence. */
-export const DEFAULT_STEPS: Step[] = [discoverStep, fetchPagesStep, waybackStep, claimsStep, evidenceStep];
+/** Brief Section 5 order: discover → fetch current pages → Wayback snapshots + diff → claim engine → evidence → regulator checks → repair checks. */
+export const DEFAULT_STEPS: Step[] = [discoverStep, fetchPagesStep, waybackStep, claimsStep, evidenceStep, asaStep, jdpStep, repairStep];
 
 export interface PipelineDeps {
   runs: RunsRepo;
@@ -43,6 +46,9 @@ export interface PipelineOutcome {
   claim_stats?: ClaimStats;
   timeline: TimelineEntry[];
   diff_candidates: DiffCandidate[];
+  /** Possible regulator matches (shown, not scored; never in `signals`). */
+  regulator_possible: PossibleMatch[];
+  repair_axis?: "applicable" | "not_applicable";
 }
 
 /** Every brand, regulator and repair page goes through this guard (ADR-010). */
@@ -68,7 +74,7 @@ const messageOf = (err: unknown) => (err instanceof Error ? err.message : String
  * continues with the next step; nothing is hidden. Signals without a receipt
  * are dropped (assertReceipt rule).
  */
-export async function runPipeline(run: Pick<Run, "id" | "brand" | "website">, deps: PipelineDeps): Promise<PipelineOutcome> {
+export async function runPipeline(run: Pick<Run, "id" | "brand" | "website"> & { entity?: unknown }, deps: PipelineDeps): Promise<PipelineOutcome> {
   const { pageFetcher, robots } = guardedPageFetcher(deps.fetcher);
   const ctx: PipelineContext = {
     run,
@@ -84,6 +90,9 @@ export async function runPipeline(run: Pick<Run, "id" | "brand" | "website">, de
     timeline: [],
     diffCandidates: [],
     archiveOutcomes: {},
+    rulings: [],
+    regulatorPossible: [],
+    repairFindings: [],
   };
   const progress: ProgressEntry[] = [];
   const signals: Signal[] = [];
@@ -111,7 +120,7 @@ export async function runPipeline(run: Pick<Run, "id" | "brand" | "website">, de
         }
         progress.push(...(res.progress ?? []));
         signals.push(...withReceipts(res.signals));
-        could_not_check.push(...res.could_not_check);
+        for (const line of res.could_not_check) if (!could_not_check.includes(line)) could_not_check.push(line);
       } catch (err) {
         entry.status = "skipped";
         entry.reason = messageOf(err);
@@ -122,7 +131,7 @@ export async function runPipeline(run: Pick<Run, "id" | "brand" | "website">, de
     addRobotsLines();
     deps.outputs?.replace(run.id, { timeline: ctx.timeline, could_not_check });
     deps.runs.setStatus(run.id, "done");
-    return { status: "done", progress, signals, could_not_check, pages: ctx.pages, claim_stats: ctx.claimStats, timeline: ctx.timeline, diff_candidates: ctx.diffCandidates };
+    return { status: "done", progress, signals, could_not_check, pages: ctx.pages, claim_stats: ctx.claimStats, timeline: ctx.timeline, diff_candidates: ctx.diffCandidates, regulator_possible: ctx.regulatorPossible, repair_axis: ctx.repairAxis };
   } catch (err) {
     addRobotsLines();
     progress.push({ step: steps.pipeline, status: "skipped", reason: messageOf(err) });
@@ -132,6 +141,6 @@ export async function runPipeline(run: Pick<Run, "id" | "brand" | "website">, de
     } catch {
       // The database itself failed; nothing more can be recorded.
     }
-    return { status: "failed", progress, signals, could_not_check, pages: ctx.pages, claim_stats: ctx.claimStats, timeline: ctx.timeline, diff_candidates: ctx.diffCandidates };
+    return { status: "failed", progress, signals, could_not_check, pages: ctx.pages, claim_stats: ctx.claimStats, timeline: ctx.timeline, diff_candidates: ctx.diffCandidates, regulator_possible: ctx.regulatorPossible, repair_axis: ctx.repairAxis };
   }
 }

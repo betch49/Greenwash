@@ -12,7 +12,8 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "record:wikidata": "tsx scripts/record-wikidata.ts",
-    "record:brand": "tsx scripts/record-brand.ts"
+    "record:brand": "tsx scripts/record-brand.ts",
+    "record:sources": "tsx scripts/record-sources.ts"
   },
   "dependencies": {
     "better-sqlite3": "^13.0.3",

@@ -1,0 +1,9 @@
+{
+  "$comment": "Scoring weights. Phase 5 adds only the regulator-ruling hint (PLAN Phase 5 deliverable 4: higher for upheld and for a ruling dated within recentYears of the run). Phase 6 adds axis weights, per-kind points, caps, the LLM guard and confidence rules to this file; the scorer reads every number from here.",
+  "regulatorRuling": {
+    "baseHint": 1,
+    "upheldMultiplier": 2,
+    "recentYears": 3,
+    "recentMultiplier": 1.5
+  }
+}

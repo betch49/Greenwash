@@ -148,7 +148,7 @@ If web.archive.org cannot be reached (network error, HTTP 429 or 5xx, or no CDX 
 
 ## 7. Weights
 
-Placeholder until Phase 6. Every Phase 3 signal carries `weight_hint: 1`; the points per kind, the axis weights (claims 25%, evidence 25%, track record 30%, ownership & repair 20%), caps and confidence rules will live in one file, `config/weights.json`, and this section will be generated from it and checked by `tests/unit/score/methodology-sync.test.ts`.
+Placeholder until Phase 6. Every Phase 3 signal carries `weight_hint: 1` (Phase 5 repair signals too); regulator rulings carry the hint of Section 9.6, already read from `config/weights.json`; the points per kind, the axis weights (claims 25%, evidence 25%, track record 30%, ownership & repair 20%), caps and confidence rules will live in one file, `config/weights.json`, and this section will be generated from it and checked by `tests/unit/score/methodology-sync.test.ts`.
 
 ## 8. Known limits of these rules
 
@@ -157,3 +157,34 @@ Placeholder until Phase 6. Every Phase 3 signal carries `weight_hint: 1`; the po
 - English only.
 - Pages that need JavaScript to show their text are not seen (Phase 2 skips them with a reason).
 - Archived claims: one snapshot per year, so a claim that appeared and vanished within one year is not seen; a claim that moved to another page counts as removed from this page; only up to three pages per brand are looked up.
+
+## 9. Regulator rulings (axis: track record)
+
+Differentiator C (ADR-003). Deterministic; no LLM (`llm_used: false`). Code: `src/lib/regulators/`; parameters: `config/regulators.json`, `config/weights.json` (`regulatorRuling`). Every regulator page goes through the robots.txt guard, at most one request per second per host.
+
+1. **Search.** The brand name without its legal suffix ("Oatly AB" ⇒ "Oatly") is searched on
+   - UK ASA: `https://www.asa.org.uk/search.html?q=<brand>`; only hits linking to `/rulings/…html` are kept (news and guidance pages are ignored);
+   - France JDP: `https://www.jdp-pub.org/avis/?search_avis=<brand>` (the search box of the decisions listing); hits link to `/avis/<slug>/`.
+2. **Which hits are read.** A hit whose listed name does not contain the brand as a whole word is never fetched (search engines also return full-text hits about other advertisers). Hits whose name matches are read first, then possible matches, at most `maxRulings` (5) ruling pages per regulator.
+3. **Ruling page.** ASA: advertiser = the text after "ASA Ruling on" in the page heading; outcome and date = the line under it. JDP: advertiser = the page heading (decisions are titled by advertiser); outcome = the heading that names one; date = "Avis publié le <date>". Excerpt = the first 300 characters of the ruling text (ASA from "Background"; JDP from "1. La plainte").
+4. **Outcome.** ASA "Upheld" ⇒ upheld; "Upheld in part" ⇒ upheld, with that note; "Not upheld" ⇒ not upheld; "Informally resolved" ⇒ informally resolved. JDP "partiellement fondée" ⇒ upheld, with that note; "non fondée" or "rejetée" ⇒ not upheld; "fondée" ⇒ upheld (checked in that order, so "Plainte fondée / Demande de révision rejetée" is upheld). The label always shows the outcome words as the regulator published them.
+5. **Matching (conservative).** Both names are normalised: lowercase, diacritics and punctuation removed, "&" ⇒ "and", trailing legal suffixes removed (Inc, Ltd, SA, GmbH, BV, AB, …) and trailing geographic or structural qualifiers removed (UK, Europe, France, International, Holdings, …). The advertiser is split on "t/a" / "trading as".
+   - **scored**: one of the advertiser's names equals the brand (spacing ignored: "TOTAL ENERGIES" ≡ "TotalEnergies"). Example: "Shell" and "Shell UK Ltd t/a Shell".
+   - **possible**: the brand is a whole word of the title or advertiser, but another word is part of the name: "Shell Energy UK", "Patagonia Provisions Ltd", "Acme Widgets". Shown under "What we could not check" with the entity verbatim; never a signal, never scored.
+   - **none**: not even a whole word ("Pata" in "Patagonia").
+6. **Signal.** Kind `regulator.ruling`, label "Ruling found naming <entity verbatim> (<regulator>, <country>, <date>); outcome as published: <words>", `entity_name` = the advertiser verbatim, receipt = the ruling page. `weight_hint` = `baseHint` × `upheldMultiplier` when upheld × `recentMultiplier` when the ruling is dated within `recentYears` of the run (values in `config/weights.json`; Phase 6 turns hints into points).
+7. **Coverage.** Every report says that only the UK ASA and the French JDP were searched. A site that is unreachable, disallows the page in robots.txt or serves a page we cannot parse ends its step as `skipped: <reason>` (for example `skipped: ASA unreachable (HTTP 500)`); the other regulator still runs.
+
+## 10. Ownership and repair (axis: ownership & repair)
+
+Differentiator E. Deterministic; no LLM. Code: `src/lib/repair/`; parameters: `config/repair.json`, `config/discovery.json` (`nonDurableIndustries`).
+
+1. **Applicability.** When the confirmed Wikidata entity's industry (P452) is in `nonDurableIndustries` (food, beverage, dairy, …), the axis is **not applicable**: no repair check runs, no signal is produced, the step reads `skipped: not applicable: …`, and "What we could not check" says the axis is not scored. A brand with no industry on record (or reached through the URL fallback) is treated as durable.
+2. **Brand pages.** The rules read every fetched page (the discovery heuristics already try `/repair`, `/warranty` and `/support`): each visible text line and each link text, navigation links included. One protective signal per rule, from the first page in fetch order where it matches:
+   - `repair_manual` ⇒ `repair.manual_found`: "repair guide(s)", "repair tutorial(s)", "service manual(s)", "repair manual(s)".
+   - `spare_parts` ⇒ `repair.spare_parts_found`: "spare part(s)", "replacement part(s)", "parts store", "parts shop".
+   - `repair_program` ⇒ `repair.program_found`: "repair program(me)", "repair service(s)", "we repair", "send it in for repair", "send it / your device (in) to our repair or service centre".
+   - `warranty_years` ⇒ `repair.warranty_found`, the longest warranty stated on any page: "<n>-year warranty" / "<n> year limited warranty" / "five-year warranty" (numbers in words up to thirty), "warranty of <n> years" / "guarantee period of up to <n> years", the same with "guarantee" for "warranty", and "lifetime warranty" (⇒ `lifetime`).
+3. **Nothing found.** If no rule matches on any fetched page of an applicable brand: one `repair.no_repair_info_found` risk signal; receipt = the first page; excerpt = every page scanned (title and URL).
+4. **iFixit.** The brand's device category is read from `https://www.ifixit.com/api/2.0/wikis/CATEGORY/<brand>` (iFixit's robots.txt allows `/api/2.0/wikis*` and disallows `/api/2.0/search`, so the search endpoint is not used; `docs/CHALLENGES.md` C-2). Its title must equal the brand's name after normalisation (Section 9.5), else nothing is attributed. Signals, all protective, receipt = the API response: `repair.ifixit_devices` (device categories listed, names in the excerpt), and for the last `maxDevices` (3) device categories listed: `repair.ifixit_guides` (guide count, first guide titles in the excerpt) and `repair.ifixit_score` when iFixit publishes a repairability score. No category ⇒ a "could not check" line; iFixit unreachable ⇒ a "could not check" line; the page rules still run.
+5. **Not covered in v1.** Anti-repair practices (serialised parts, warranty-void stickers, lawsuits) have no structured public source (`docs/LATER.md`).

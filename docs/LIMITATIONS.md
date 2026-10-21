@@ -16,3 +16,19 @@ Started in Phase 4; completed in Phase 9 (PLAN Phase 9 deliverable 2). Each entr
 - The Wayback API endpoints are not checked against robots.txt (ADR-010); brand pages always are.
 - The year window follows the server clock. In offline fixture mode only, `GR_FIXED_NOW` pins it (the Playwright run sets 2026-10-20, so the fixture histories always fall in 2019–2026); live runs ignore it.
 - Robots-disallowed pages (ADR-016): their archived copies are diffed for the timeline and removed-claim signals, but never scored on the claims axis as current wording. Their "What we could not check" line says whether archived copies were read (count, years), none were found, the archive was unreachable, or the page was not looked up.
+
+## Regulator rulings (differentiator C)
+
+- Only the UK ASA and the French JDP are searched (ADR-003); every report says so under "What we could not check". A brand that never advertised in the UK or France has no ruling to find.
+- Only the first page of each site's search results is read, and at most five ruling pages per regulator per run (`config/regulators.json`). ASA's search returned all 19 hits for "Shell" on one page; JDP's listing shows its first cards only.
+- Matching is deliberately strict (METHODOLOGY Section 9.5): a ruling against a subsidiary or sister company whose name carries extra words ("Shell Energy UK") is shown as a possible match and not scored. A ruling against a differently named legal entity of the brand (for example a parent company) is not found at all; that is the price of never attaching a ruling on a fuzzy match.
+- A ruling is attributed by name, not by legal identity: two unrelated companies with the same name after normalisation would be confused. The ruled entity is always shown verbatim, so a reader can see it.
+- The search query is the brand name; ASA's and JDP's own search engines decide what they return.
+
+## Ownership and repair (differentiator E)
+
+- iFixit is read through its device-category endpoint, because its robots.txt disallows the search API (`docs/CHALLENGES.md` C-2). A brand whose iFixit category has a different name from the brand (or none) gets no iFixit signal; the report says "iFixit lists no device category named …".
+- At most three device sub-categories (the last ones listed) are read; for a large brand they are not necessarily its newest or best-selling products.
+- Brand-page rules are English phrase lists on the fetched pages only. A warranty described differently ("two years of cover"), or only in a PDF, is not seen. A "guarantee" is counted as a warranty.
+- Food, drink and other consumables (by Wikidata industry) are "not applicable"; a brand with no industry on Wikidata is treated as durable, so a food brand without that property would get a `repair.no_repair_info_found` signal.
+- Anti-repair practices are not checked (`docs/LATER.md`).
