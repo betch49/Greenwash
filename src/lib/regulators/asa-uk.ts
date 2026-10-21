@@ -98,6 +98,7 @@ export function parseAsaRuling(html: string, url: string, fetchedAt: string): Ru
     outcomeText,
     ...(note ? { note } : {}),
     excerpt: firstChars(summary, RULING_EXCERPT_CHARS),
+    text: summary,
     fetchedAt,
   };
 }

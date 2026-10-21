@@ -5,36 +5,57 @@ Ground-truth labels are used for evaluation only and never enter the score. AUC 
 
 ## History
 
-| Date | Mode | Commit | Weights | Flagged ran | Well-rated ran | Ran / selected | AUC | Mean difference | Spearman words–score | File |
-|---|---|---|---|---|---|---|---|---|---|---|
-| 2026-10-21 | offline | `2e7dc22` | 1 | 3 | 2 | 5 / 48 | 0.67 | 5.8 | -0.10 | `results-2026-10-21-offline.json` |
-| 2026-10-21 | live | `2e7dc22` | 1 | 10 | 5 | 15 / 23 | 0.34 | 0.6 | -0.17 | `results-2026-10-21-live.json` |
+| Date | Mode | Commit | Weights | Claims formula | Flagged ran | Well-rated ran | Ran / selected | AUC | Mean difference | Spearman words–score | File |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 2026-10-21 | offline | `2e7dc22` | 1 | v1 | 3 | 2 | 5 / 48 | 0.67 | 5.8 | -0.10 | `results-2026-10-21-offline.json` |
+| 2026-10-21 | live | `2e7dc22` | 1 | v1 | 10 | 5 | 15 / 23 | 0.34 | 0.6 | -0.17 | `results-2026-10-21-live.json` |
+| 2026-10-21 | offline | `d53c43e` | 1 | v1 | 3 | 2 | 5 / 48 | 0.67 | 7.2 | -0.10 | `results-2026-10-21-offline-phase14-v1.json` |
+| 2026-10-21 | offline | `d53c43e` | 1 | v2 | 3 | 2 | 5 / 48 | 0.75 | 17.7 | 0.31 | `results-2026-10-21-offline-phase14-v2.json` |
+
+## Claims formula v1 vs v2 (Phase 14, ADR-030)
+
+### Claims formula v1 vs v2 (offline)
+
+v1 = risky-phrase density per 1,000 words; v2 = share of unsupported claim sentences, "insufficient_data" below the configured minimum (ADR-030). Same harness, same brands; the active formula is `claimsRate.version` in `config/weights.json`.
+
+| Measure | v1 | v2 |
+|---|---|---|
+| File | `results-2026-10-21-offline-phase14-v1.json` | `results-2026-10-21-offline-phase14-v2.json` |
+| Commit | `d53c43e` | `d53c43e` |
+| Reports (flagged / well-rated) | 3 / 2 | 3 / 2 |
+| AUC overall | 0.67 | 0.75 |
+| AUC claims axis (scored axes only) | 0.50 (3/2) | 0.17 (3/1) |
+| Spearman words scanned vs score | -0.10 | 0.31 |
+| Spearman claim matches vs score | 0.30 | 0.67 |
+| Mean difference (flagged − well-rated) | 7.2 | 17.7 |
+| Claims axis insufficient_data | 0 of 5 | 1 of 5 |
 
 ## Latest offline run
 
-### Offline run, 2026-10-21 (`results-2026-10-21-offline.json`)
+### Offline run, 2026-10-21 (`results-2026-10-21-offline-phase14-v2.json`)
 
-Commit `2e7dc22` (uncommitted changes present), weights version 1, LLM: MockLLM over recorded fixtures (fixtures/llm); a call with no fixture returns nothing.
+Commit `d53c43e` (uncommitted changes present), weights version 1, claims formula v2, LLM: MockLLM over recorded fixtures (fixtures/llm); a call with no fixture returns nothing.
 
 **Partial run: 5 of 48 brands produced a report.**
 
-- AUC (flagged vs well-rated, overall score): 0.67 (n flagged = 3, n well-rated = 2)
-- Mean score: flagged 34.3, well-rated 28.5; difference 5.8. Median difference 6.5.
-- Per-axis AUC (scored axes only): claims 0.50 (3/2); evidence 0.25 (3/2); track n/a (2/0); repair 0.50 (1/2).
-- "Saying less scores better" diagnostic (Spearman, n = 5): words scanned vs score -0.10; claim-rule matches vs score 0.30.
+- AUC (flagged vs well-rated, overall score): 0.75 (n flagged = 3, n well-rated = 2)
+- Mean score: flagged 43.7, well-rated 26.0; difference 17.7. Median difference 20.0.
+- Per-axis AUC (scored axes only): claims 0.17 (3/1); evidence 0.25 (3/2); track n/a (2/0); repair n/a (0/2).
+- "Saying less scores better" diagnostic (Spearman, n = 5): words scanned vs score 0.31; claim-rule matches vs score 0.67.
 - Leakage: 3 of 22 flagged entries are flagged only by sources the pipeline itself queries (ASA, JDP); 2 of the 3 flagged brands in this run.
 - Entries: 22 flagged, 20 well-rated, 6 contested (contested are run when possible but never in the statistics). Ran 5, failed 0, not run 43.
 - Offline: brands without a recorded brand fixture are not run; clock pinned to 2026-10-21T12:00:00Z.
+- Claims formula version 2 set by GR_CLAIMS_VERSION for this run (config/weights.json has version 1).
 - The Wayback step was skipped for 5 brand(s) (see the coverage table): their track-record axis has no archived-claim data.
 - Fewer than 5 reports in a group (flagged 3, well-rated 2): the separation figure is indicative only.
 
 | Brand | Group | Status | Score | Confidence | Pages | Words | Claim matches | Steps done / skipped | Reason or skipped steps |
 |---|---|---|---|---|---|---|---|---|---|
-| Oatly | flagged | ran | 35 | 100 | 9 | 24201 | 94 | 8 / 4 | Fetching https://www.oatly.com/: too little visible text at https://www.oatly.com/ (7 words); Pulling 2019–2026 snapshots: Wayback unreachable (HTTP 404); Classifying archived changes (AI): no removed claim to classify; Checking repair information: not applicable: the brand’s industry on Wikidata is “beverage industry”, whose products are consumed, not repaired |
+| Oatly | flagged | ran | 46 | 100 | 9 | 24201 | 94 | 7 / 5 | Fetching https://www.oatly.com/: too little visible text at https://www.oatly.com/ (7 words); Pulling 2019–2026 snapshots: Wayback unreachable (HTTP 404); Classifying archived changes (AI): no removed claim to classify; Checking repair information: not applicable: the brand’s industry on Wikidata is “beverage industry”, whose products are consumed, not repaired; Writing the plain-English summary … |
 | Shell | flagged | not_run | – | – | 0 | 0 | 0 | 0 / 0 | no offline fixture |
-| TotalEnergies | flagged | ran | 63 | 100 | 2 | 742 | 7 | 8 / 3 | Pulling 2019–2026 snapshots: Wayback unreachable (HTTP 404); Classifying archived changes (AI): no removed claim to classify; Writing the plain-English summary (AI): Writing the plain-English summary (AI): no AI answer |
+| TotalEnergies | flagged | ran | 65 | 100 | 2 | 742 | 7 | 7 / 4 | Pulling 2019–2026 snapshots: Wayback unreachable (HTTP 404); Classifying archived changes (AI): no removed claim to classify; Checking repair information: not applicable: the brand’s industry on Wikidata is “petroleum industry”, whose products are consumed, not repaired; Writing the plain-English summary (AI): Writing the plain-English summary (AI): no AI answer |
 | Amazon | flagged | not_run | – | – | 0 | 0 | 0 | 0 / 0 | no offline fixture |
-| innocent drinks | flagged | ran | 5 | 63 | 7 | 3892 | 6 | 7 / 4 | Pulling 2019–2026 snapshots: Wayback unreachable (HTTP 404); Classifying archived changes (AI): no removed claim to classify; Checking repair information: not applicable: the brand’s industry on Wikidata is “beverage industry”, whose products are consumed, not repaired; Writing the plain-English summary (AI): Writing the plain-English summary (AI): no AI answer |
+| innocent drinks | flagged | ran | 20 | 63 | 7 | 3892 | 6 | 7 / 4 | Pulling 2019–2026 snapshots: Wayback unreachable (HTTP 404); Classifying archived changes (AI): no removed claim to classify; Checking repair information: not applicable: the brand’s industry on Wikidata is “beverage industry”, whose products are consumed, not repaired; Writing the plain-English summary (AI): Writing the plain-English summary (AI): no AI answer |
 | JBS | flagged | not_run | – | – | 0 | 0 | 0 | 0 / 0 | no offline fixture |
 | Unilever | flagged | not_run | – | – | 0 | 0 | 0 | 0 / 0 | no offline fixture |
 | Asda | flagged | not_run | – | – | 0 | 0 | 0 | 0 / 0 | no offline fixture |
@@ -62,13 +83,13 @@ Commit `2e7dc22` (uncommitted changes present), weights version 1, LLM: MockLLM 
 | Iberdrola | well_rated | not_run | – | – | 0 | 0 | 0 | 0 / 0 | no offline fixture |
 | Telia Company | well_rated | not_run | – | – | 0 | 0 | 0 | 0 / 0 | no offline fixture |
 | Salesforce | well_rated | not_run | – | – | 0 | 0 | 0 | 0 / 0 | no offline fixture |
-| Signify | well_rated | ran | 31 | 70 | 1 | 415 | 3 | 8 / 3 | Pulling 2019–2026 snapshots: no sustainability-type page to look up in the Wayback Machine; Classifying archived changes (AI): no removed claim to classify; Writing the plain-English summary (AI): Writing the plain-English summary (AI): no AI answer |
+| Signify | well_rated | ran | 20 | 45 | 1 | 415 | 3 | 8 / 3 | Pulling 2019–2026 snapshots: no sustainability-type page to look up in the Wayback Machine; Classifying archived changes (AI): no removed claim to classify; Writing the plain-English summary (AI): Writing the plain-English summary (AI): no AI answer |
 | Barry Callebaut | well_rated | not_run | – | – | 0 | 0 | 0 | 0 / 0 | no offline fixture |
 | ASML | well_rated | not_run | – | – | 0 | 0 | 0 | 0 / 0 | no offline fixture |
 | Cisco | well_rated | not_run | – | – | 0 | 0 | 0 | 0 / 0 | no offline fixture |
 | Deutsche Telekom | well_rated | not_run | – | – | 0 | 0 | 0 | 0 / 0 | no offline fixture |
 | Ericsson | well_rated | not_run | – | – | 0 | 0 | 0 | 0 / 0 | no offline fixture |
-| Essity | well_rated | ran | 26 | 70 | 12 | 4449 | 21 | 8 / 3 | Pulling 2019–2026 snapshots: Wayback unreachable (HTTP 404); Classifying archived changes (AI): no removed claim to classify; Writing the plain-English summary (AI): Writing the plain-English summary (AI): no AI answer |
+| Essity | well_rated | ran | 32 | 70 | 12 | 4449 | 21 | 8 / 3 | Pulling 2019–2026 snapshots: Wayback unreachable (HTTP 404); Classifying archived changes (AI): no removed claim to classify; Writing the plain-English summary (AI): Writing the plain-English summary (AI): no AI answer |
 | Kingfisher | well_rated | not_run | – | – | 0 | 0 | 0 | 0 / 0 | no offline fixture |
 | Legrand | well_rated | not_run | – | – | 0 | 0 | 0 | 0 / 0 | no offline fixture |
 | Nokia | well_rated | not_run | – | – | 0 | 0 | 0 | 0 / 0 | no offline fixture |
@@ -83,7 +104,7 @@ Commit `2e7dc22` (uncommitted changes present), weights version 1, LLM: MockLLM 
 
 ### Live run, 2026-10-21 (`results-2026-10-21-live.json`)
 
-Commit `2e7dc22` (uncommitted changes present), weights version 1, LLM: none (no ANTHROPIC_API_KEY): the three AI steps are skipped, rule-based signals only.
+Commit `2e7dc22` (uncommitted changes present), weights version 1, claims formula v1, LLM: none (no ANTHROPIC_API_KEY): the three AI steps are skipped, rule-based signals only.
 
 **Partial run: 15 of 23 brands produced a report.**
 

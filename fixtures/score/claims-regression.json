@@ -1,0 +1,21 @@
+{
+  "$comment": "Phase 14 regression fixtures (PLAN deliverable 4; ADR-030). Two fictional .example brands as the scorer sees them after the claims step: ClaimStats (matches, unsupported, wordCount) plus the words scanned. Synthetic by construction (ADR-011: only fictional brands may be synthetic). Read by tests/unit/score/claims-regression.test.ts only.",
+  "brands": [
+    {
+      "slug": "silent.example",
+      "name": "Silent Goods (fictional)",
+      "website": "https://silent.example/",
+      "description": "A sustainability page of 1,500 visible words with no environmental claim sentence at all.",
+      "words_scanned": 1500,
+      "claim_stats": { "matches": 0, "unsupported": 0, "wordCount": 1500 }
+    },
+    {
+      "slug": "talkative.example",
+      "name": "Talkative Goods (fictional)",
+      "website": "https://talkative.example/",
+      "description": "A sustainability page with 20 environmental claim sentences, 18 of them substantiated on the same page (certificate, figure or link in the window), 2 unsupported.",
+      "words_scanned": 1500,
+      "claim_stats": { "matches": 20, "unsupported": 2, "wordCount": 1500 }
+    }
+  ]
+}

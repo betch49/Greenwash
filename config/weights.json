@@ -22,7 +22,9 @@
     },
     "track": {
       "claim.removed": 20,
-      "regulator.ruling": 25
+      "regulator.ruling": 25,
+      "regulator.ruling_other_topic": 0,
+      "regulator.ruling_not_upheld": 0
     },
     "repair": {
       "repair.no_repair_info_found": 50,
@@ -44,7 +46,12 @@
   "claimsRate": {
     "perWords": 1000,
     "minWords": 1000,
-    "subscorePerPointPer1000Words": 15
+    "subscorePerPointPer1000Words": 15,
+    "version": 1,
+    "v2": {
+      "minClaims": 5,
+      "insufficientDataStatus": "insufficient_data"
+    }
   },
   "defaultWeightHint": 1,
   "regulatorRuling": {

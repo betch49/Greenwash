@@ -6,6 +6,7 @@ import { ReportsRepo } from "../db/reports-repo";
 import { getServices, pipelineClock, type Services } from "../services";
 import { runPipeline, type PipelineOutcome } from "./run";
 import type { LLMClient } from "../llm/client";
+import type { Weights } from "../score/weights";
 
 const g = globalThis as unknown as { __grInflight?: Map<string, Promise<PipelineOutcome>> };
 const inflight = () => (g.__grInflight ??= new Map());
@@ -27,7 +28,7 @@ export function startAnalysis(runId: string): boolean {
 }
 
 /** What a run needs: the app's services, or injected ones (the validation harness, tests). */
-export type RunServices = Pick<Services, "db" | "runs" | "fetcher"> & { llm: LLMClient | null; now?: () => Date };
+export type RunServices = Pick<Services, "db" | "runs" | "fetcher"> & { llm: LLMClient | null; now?: () => Date; weights?: Weights };
 
 /**
  * The one path that executes a run: claims it (pending ⇒ running, at most once)
@@ -37,7 +38,7 @@ export type RunServices = Pick<Services, "db" | "runs" | "fetcher"> & { llm: LLM
 export function launchRun(services: RunServices, run: Run): Promise<PipelineOutcome> | null {
   const { runs, db, fetcher, llm } = services;
   if (!runs.claimStart(run.id)) return null;
-  return runPipeline(run, { runs, pages: new RunPagesRepo(db), outputs: new RunOutputsRepo(db), reports: new ReportsRepo(db), fetcher, llm, now: services.now ?? (() => new Date()) });
+  return runPipeline(run, { runs, pages: new RunPagesRepo(db), outputs: new RunOutputsRepo(db), reports: new ReportsRepo(db), fetcher, llm, now: services.now ?? (() => new Date()), ...(services.weights ? { weights: services.weights } : {}) });
 }
 
 /** The in-flight pipeline promise for a run, if this process is running it. */

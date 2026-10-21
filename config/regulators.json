@@ -1,8 +1,28 @@
 {
-  "$comment": "Regulator adapters (Phase 5, differentiator C). Matching (src/lib/regulators/match.ts): a ruling is scored only when one of the ruled entity's names (the advertiser field, split on 't/a' / 'trading as') equals the brand after normalisation, with legal suffixes (config/wikidata.json legalSuffixes) and the geographic or structural qualifiers below removed. A whole-word occurrence of the brand anywhere else in the title or advertiser is a 'possible' match: shown, never scored. maxRulings bounds the ruling pages fetched per adapter and run.",
+  "$comment": "Regulator adapters (Phase 5, differentiator C). Matching (src/lib/regulators/match.ts): a ruling is scored only when one of the ruled entity's names (the advertiser field, split on 't/a' / 'trading as') equals the brand after normalisation, with legal suffixes (config/wikidata.json legalSuffixes) and the geographic or structural qualifiers below removed. A whole-word occurrence of the brand anywhere else in the title or advertiser is a 'possible' match: shown, never scored. maxRulings bounds the ruling pages fetched per adapter and run. ADR-033 (Phase 14): a ruling naming the brand is scored as regulator.ruling only when its topic is environmental: the regulator's own topic line when published, else a whole-word match of environmentalTopic.terms (a trailing * matches any word ending; EN and FR) against the ruling title and fetched text (src/lib/regulators/topic.ts). Otherwise it is listed as regulator.ruling_other_topic (0 points).",
   "maxRulings": 5,
-  "nameQualifiers": ["uk", "gb", "united kingdom", "great britain", "britain", "ireland", "europe", "eu", "emea", "france", "international", "global", "worldwide", "holdings", "holding"],
-  "tradingAs": ["t/a", "trading as", "t / a"],
+  "nameQualifiers": [
+    "uk",
+    "gb",
+    "united kingdom",
+    "great britain",
+    "britain",
+    "ireland",
+    "europe",
+    "eu",
+    "emea",
+    "france",
+    "international",
+    "global",
+    "worldwide",
+    "holdings",
+    "holding"
+  ],
+  "tradingAs": [
+    "t/a",
+    "trading as",
+    "t / a"
+  ],
   "asa": {
     "searchUrl": "https://www.asa.org.uk/search.html?q={q}",
     "rulingPathPrefix": "/rulings/"
@@ -10,5 +30,27 @@
   "jdp": {
     "searchUrl": "https://www.jdp-pub.org/avis/?search_avis={q}",
     "decisionPathPrefix": "/avis/"
+  },
+  "environmentalTopic": {
+    "terms": [
+      "environment*",
+      "green",
+      "carbon",
+      "climate",
+      "sustainab*",
+      "recycl*",
+      "emission*",
+      "net zero",
+      "net-zero",
+      "plastic*",
+      "biodegrad*",
+      "eco-*",
+      "renewable*",
+      "développement durable",
+      "écolog*",
+      "environnement*",
+      "carbone",
+      "climat*"
+    ]
   }
 }

@@ -4,6 +4,7 @@ import type { RunOutputsRepo } from "../db/run-outputs-repo";
 import type { ReportsRepo } from "../db/reports-repo";
 import { buildReport, type ReportV1 } from "../score/report";
 import type { StepStatus } from "../score/confidence";
+import type { Weights } from "../score/weights";
 import type { FetchedPage } from "../discover/fetch-pages";
 import { DISCOVERY_CONFIG, type DiscoveryConfig } from "../discover/heuristics";
 import type { Fetcher } from "../fetch/fetcher";
@@ -49,6 +50,8 @@ export interface PipelineDeps {
   steps?: Step[];
   /** The LLM client (Phase 7: MockLLM or AnthropicLLM); absent ⇒ the LLM steps are skipped with a reason. */
   llm?: LLMClient | null;
+  /** Scoring weights override (Phase 14: the validation harness compares claims-formula versions); the app uses config/weights.json. */
+  weights?: Weights;
 }
 
 export interface PipelineOutcome {
@@ -170,7 +173,7 @@ export async function runPipeline(run: Pick<Run, "id" | "brand" | "website"> & {
     addRobotsLines();
     deps.outputs?.replace(run.id, { timeline: ctx.timeline, could_not_check });
     const base = { progress, signals, could_not_check, pages: ctx.pages, claim_stats: ctx.claimStats, timeline: ctx.timeline, diff_candidates: ctx.diffCandidates, regulator_possible: ctx.regulatorPossible, repair_axis: ctx.repairAxis, step_status };
-    const scored = buildReport(run, base, ctx.now());
+    const scored = buildReport(run, base, ctx.now(), deps.weights ? { weights: deps.weights } : {});
     // The summary is written after scoring, from the scored report; it never changes a number.
     const sum = await summaryStep(ctx.llm, scored, ctx.pages.map((p) => p.url), ctx.llmCalls);
     progress.push(sum.entry);

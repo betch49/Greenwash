@@ -56,6 +56,8 @@ export const ResultsSchema = z.object({
   commit: z.string(),
   commit_dirty: z.boolean(),
   weights_version: z.number(),
+  /** Phase 14: the claims formula the run was scored with (claimsRate.version); absent in Phase 10 files (= 1). */
+  claims_version: z.number().optional(),
   llm: z.string(),
   /** Labelled entries selected for this run (after --brands). */
   n_selected: z.number(),
@@ -101,6 +103,7 @@ export interface ResultsMeta {
   commit: string;
   commitDirty: boolean;
   weightsVersion: number;
+  claimsVersion?: number;
   llm: string;
   notes?: string[];
 }
@@ -156,6 +159,7 @@ export function summarise(gt: GroundTruth, selected: readonly Entry[], results: 
     commit: meta.commit,
     commit_dirty: meta.commitDirty,
     weights_version: meta.weightsVersion,
+    ...(meta.claimsVersion !== undefined ? { claims_version: meta.claimsVersion } : {}),
     llm: meta.llm,
     n_selected: nSelected,
     n_flagged: selected.filter((e) => e.group === "flagged").length,
@@ -204,7 +208,7 @@ const esc = (s: string) => s.replace(/\|/g, "\\|").replace(/\n/g, " ");
 export function renderRun(r: Results, file: string): string {
   const lines: string[] = [];
   lines.push(`### ${r.mode === "live" ? "Live" : "Offline"} run, ${r.generated_at.slice(0, 10)} (\`${file}\`)`, "");
-  lines.push(`Commit \`${r.commit}\`${r.commit_dirty ? " (uncommitted changes present)" : ""}, weights version ${r.weights_version}, LLM: ${r.llm}.`, "");
+  lines.push(`Commit \`${r.commit}\`${r.commit_dirty ? " (uncommitted changes present)" : ""}, weights version ${r.weights_version}, claims formula v${claimsVersionOf(r)}, LLM: ${r.llm}.`, "");
   if (r.partial) lines.push(`**${r.partial}**`, "");
   lines.push(`- ${aucLine(r)}`);
   lines.push(`- Mean score: flagged ${fmt(r.stats.mean_flagged, 1)}, well-rated ${fmt(r.stats.mean_well_rated, 1)}; difference ${fmt(r.stats.mean_difference, 1)}. Median difference ${fmt(r.stats.median_difference, 1)}.`);
@@ -232,6 +236,44 @@ export function renderRun(r: Results, file: string): string {
   return lines.join("\n");
 }
 
+/** The claims formula of a results file (Phase 10 files predate the field: v1). */
+export const claimsVersionOf = (r: Pick<Results, "claims_version">) => r.claims_version ?? 1;
+
+/** The claims-axis status that formula v2 gives below `minClaims` sentences. */
+const INSUFFICIENT = "insufficient_data";
+
+/**
+ * Phase 14 (criterion 14.5): "Claims formula v1 vs v2" — for each mode, the latest run
+ * with each formula version, side by side: overall AUC, claims-axis AUC, the Spearman
+ * diagnostic, and how many brands the claims axis was not scored for. Rendered only
+ * when at least one run of each version exists for a mode.
+ */
+export function renderClaimsComparison(files: { file: string; results: Results }[]): string[] {
+  const sorted = [...files].sort((a, b) => a.results.generated_at.localeCompare(b.results.generated_at));
+  const out: string[] = [];
+  for (const mode of ["offline", "live"] as const) {
+    const v1 = sorted.filter((x) => x.results.mode === mode && claimsVersionOf(x.results) === 1).at(-1);
+    const v2 = sorted.filter((x) => x.results.mode === mode && claimsVersionOf(x.results) === 2).at(-1);
+    if (!v1 || !v2) continue;
+    const row = (label: string, f: (r: Results) => string) => `| ${label} | ${f(v1.results)} | ${f(v2.results)} |`;
+    const insufficient = (r: Results) => r.brands.filter((b) => b.status === "ran" && b.axes?.some((a) => a.id === "claims" && a.status === INSUFFICIENT)).length;
+    out.push(`### Claims formula v1 vs v2 (${mode})`, "");
+    out.push(`v1 = risky-phrase density per 1,000 words; v2 = share of unsupported claim sentences, "${INSUFFICIENT}" below the configured minimum (ADR-030). Same harness, same brands; the active formula is \`claimsRate.version\` in \`config/weights.json\`.`, "");
+    out.push("| Measure | v1 | v2 |", "|---|---|---|");
+    out.push(row("File", (r) => `\`${r === v1.results ? v1.file : v2.file}\``));
+    out.push(row("Commit", (r) => `\`${r.commit}\``));
+    out.push(row("Reports (flagged / well-rated)", (r) => `${r.n_flagged_ran} / ${r.n_well_rated_ran}`));
+    out.push(row("AUC overall", (r) => fmt(r.stats.auc)));
+    out.push(row("AUC claims axis (scored axes only)", (r) => `${fmt(r.stats.per_axis.claims?.auc)} (${r.stats.per_axis.claims?.n_flagged ?? 0}/${r.stats.per_axis.claims?.n_well_rated ?? 0})`));
+    out.push(row("Spearman words scanned vs score", (r) => fmt(r.stats.spearman_words_score)));
+    out.push(row("Spearman claim matches vs score", (r) => fmt(r.stats.spearman_claims_score)));
+    out.push(row("Mean difference (flagged − well-rated)", (r) => fmt(r.stats.mean_difference, 1)));
+    out.push(row(`Claims axis ${INSUFFICIENT}`, (r) => `${insufficient(r)} of ${r.n_ran}`));
+    out.push("");
+  }
+  return out;
+}
+
 /** RESULTS.md from every results file: a history table, then the latest offline and live runs in detail. */
 export function renderResultsMd(files: { file: string; results: Results }[]): string {
   const sorted = [...files].sort((a, b) => a.results.generated_at.localeCompare(b.results.generated_at));
@@ -243,15 +285,17 @@ export function renderResultsMd(files: { file: string; results: Results }[]): st
     "",
     "## History",
     "",
-    "| Date | Mode | Commit | Weights | Flagged ran | Well-rated ran | Ran / selected | AUC | Mean difference | Spearman words–score | File |",
-    "|---|---|---|---|---|---|---|---|---|---|---|",
+    "| Date | Mode | Commit | Weights | Claims formula | Flagged ran | Well-rated ran | Ran / selected | AUC | Mean difference | Spearman words–score | File |",
+    "|---|---|---|---|---|---|---|---|---|---|---|---|",
   ];
   for (const { file, results: r } of sorted) {
     out.push(
-      `| ${r.generated_at.slice(0, 10)} | ${r.mode} | \`${r.commit}\` | ${r.weights_version} | ${r.n_flagged_ran} | ${r.n_well_rated_ran} | ${r.n_ran} / ${r.n_selected} | ${fmt(r.stats.auc)} | ${fmt(r.stats.mean_difference, 1)} | ${fmt(r.stats.spearman_words_score)} | \`${file}\` |`,
+      `| ${r.generated_at.slice(0, 10)} | ${r.mode} | \`${r.commit}\` | ${r.weights_version} | v${claimsVersionOf(r)} | ${r.n_flagged_ran} | ${r.n_well_rated_ran} | ${r.n_ran} / ${r.n_selected} | ${fmt(r.stats.auc)} | ${fmt(r.stats.mean_difference, 1)} | ${fmt(r.stats.spearman_words_score)} | \`${file}\` |`,
     );
   }
   out.push("");
+  const comparison = renderClaimsComparison(sorted);
+  if (comparison.length) out.push("## Claims formula v1 vs v2 (Phase 14, ADR-030)", "", ...comparison);
   for (const mode of ["offline", "live"] as const) {
     const latest = sorted.filter((x) => x.results.mode === mode).at(-1);
     out.push(`## Latest ${mode} run`, "");

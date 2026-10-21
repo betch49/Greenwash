@@ -6,7 +6,7 @@ import { join } from "node:path";
 import { afterAll, describe, expect, it } from "vitest";
 import type { Citation, Entry, GroundTruth } from "@/lib/validation/ground-truth";
 import type { BrandResult } from "@/lib/validation/harness";
-import { flaggedOnlyByPipeline, leakageLine, PIPELINE_SOURCES, renderResultsMd, summarise, writeResults } from "@/lib/validation/report";
+import { flaggedOnlyByPipeline, leakageLine, PIPELINE_SOURCES, renderClaimsComparison, renderResultsMd, summarise, writeResults } from "@/lib/validation/report";
 
 const cite = (source: Citation["source"], role: Citation["role"] = "flag"): Citation => ({ source, role, url: `https://${source}.test/x`, date: "2026-10-21", why: "w", verified_from_container: true });
 const entry = (slug: string, group: Entry["group"], citations: Citation[]): Entry => ({ slug, name: slug, website: `https://www.${slug}.com/`, group, citations, checks: [] });
@@ -88,5 +88,41 @@ describe("leakage line (10.6)", () => {
     expect(md.indexOf("results-2026-10-21-offline.json")).toBeLessThan(md.indexOf("results-2026-11-02-offline.json"));
     expect(md).toContain("| 2026-11-02 | offline | `def5678` | 2 |");
     expect(md).toContain("No live run recorded yet.");
+  });
+});
+
+// Phase 14 (criterion 14.5): the "Claims formula v1 vs v2" table with both AUC values and the Spearman diagnostic.
+describe("claims formula v1 vs v2 table (14.5)", () => {
+  const v1 = summarise(GT, ENTRIES, RESULTS, { ...meta, claimsVersion: 1 });
+  const v2Results = RESULTS.map((r) => (r.slug === "a" ? { ...r, score: 10, axes: [{ id: "claims", status: "insufficient_data", subscore: 0 }] } : r));
+  const v2 = summarise(GT, ENTRIES, v2Results, { ...meta, generatedAt: new Date("2026-10-21T13:00:00Z"), claimsVersion: 2 });
+
+  it("records claims_version; Phase 10 files without the field read as v1", () => {
+    expect(v1.claims_version).toBe(1);
+    expect(v2.claims_version).toBe(2);
+    expect(summarise(GT, ENTRIES, RESULTS, meta).claims_version).toBeUndefined();
+  });
+
+  it("renders both AUCs, the claims-axis AUC, both Spearman values and the insufficient_data count side by side", () => {
+    const md = renderResultsMd([
+      { file: "results-2026-10-21-offline-v1.json", results: v1 },
+      { file: "results-2026-10-21-offline-v2.json", results: v2 },
+    ]);
+    expect(md).toContain("## Claims formula v1 vs v2 (Phase 14, ADR-030)");
+    expect(md).toContain("### Claims formula v1 vs v2 (offline)");
+    expect(md).toContain(`| AUC overall | ${v1.stats.auc!.toFixed(2)} | ${v2.stats.auc!.toFixed(2)} |`);
+    expect(md).toContain(`| AUC claims axis (scored axes only) | ${v1.stats.per_axis.claims.auc!.toFixed(2)} (2/1) | ${v2.stats.per_axis.claims.auc!.toFixed(2)} (1/1) |`);
+    expect(md).toContain(`| Spearman claim matches vs score | ${v1.stats.spearman_claims_score!.toFixed(2)} | ${v2.stats.spearman_claims_score!.toFixed(2)} |`);
+    expect(md).toContain("| Spearman words scanned vs score |");
+    expect(md).toContain("| Claims axis insufficient_data | 0 of 3 | 1 of 3 |");
+    // Hand values: v1 scores a=50, c=20 vs d=30 ⇒ AUC 0.5; v2 a=10, c=20 vs d=30 ⇒ 0.
+    expect(v1.stats.auc).toBe(0.5);
+    expect(v2.stats.auc).toBe(0);
+    expect(md).toMatch(/\| 2026-10-21 \| offline \| `abc1234` \| 1 \| v2 \|/);
+  });
+
+  it("is omitted when only one version was run", () => {
+    expect(renderClaimsComparison([{ file: "x.json", results: v1 }])).toEqual([]);
+    expect(renderResultsMd([{ file: "x.json", results: v1 }])).not.toContain("Claims formula v1 vs v2");
   });
 });

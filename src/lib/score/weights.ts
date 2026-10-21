@@ -8,6 +8,10 @@ import type { Axis } from "../pipeline/signal";
 
 export const AXES = ["claims", "evidence", "track", "repair"] as const satisfies readonly Axis[];
 
+/** Phase 14 (ADR-030): claimsRate.version 1 = density per 1,000 words, 2 = share of unsupported claim sentences. */
+export const CLAIMS_FORMULA_DENSITY = 1 as const;
+export const CLAIMS_FORMULA_SHARE = 2 as const;
+
 /** Brief Section 4: AI may contribute at most half of a score. The config may be stricter, never looser. */
 export const BRIEF_MAX_AI_SHARE = 0.5;
 const WEIGHT_SUM_TOLERANCE = 1e-9;
@@ -21,7 +25,15 @@ export const WeightsSchema = z
     axes: perAxis(z.number().min(0).max(1)),
     points: perAxis(points),
     caps: perAxis(z.number().min(0).max(100)),
-    claimsRate: z.object({ perWords: z.number().positive(), minWords: z.number().positive(), subscorePerPointPer1000Words: z.number().min(0) }),
+    claimsRate: z.object({
+      perWords: z.number().positive(),
+      minWords: z.number().positive(),
+      subscorePerPointPer1000Words: z.number().min(0),
+      /** Phase 14 (ADR-030): 1 = density per 1,000 words; 2 = share of unsupported claim sentences. The director flips this (ADR-032). */
+      version: z.union([z.literal(CLAIMS_FORMULA_DENSITY), z.literal(CLAIMS_FORMULA_SHARE)]),
+      /** v2 parameters; `supportedWeight` is not duplicated here: it is `claim.supported` ÷ `claim.unsupported` points. */
+      v2: z.object({ minClaims: z.number().int().min(1), insufficientDataStatus: z.literal("insufficient_data") }),
+    }),
     defaultWeightHint: z.number().min(0),
     regulatorRuling: z.object({ baseHint: z.number().min(0), upheldMultiplier: z.number().min(0), recentYears: z.number().min(0), recentMultiplier: z.number().min(0) }),
     llmGuard: z.object({ maxShare: z.number().min(0).max(BRIEF_MAX_AI_SHARE) }),

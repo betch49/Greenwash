@@ -115,6 +115,8 @@ export const POSSIBLE_MATCH_PREFIX = "Possible match, not scored:";
 
 /** Entries for the report's "What we could not check" section. */
 export const couldNotCheck = {
+  /** Phase 14, claims formula v2: the axis is not scored below `claimsRate.v2.minClaims` claim sentences. */
+  claimsInsufficient: (minClaims: number) => `Fewer than ${minClaims} environmental claim sentences were found on the fetched pages; the claim-language axis was not scored.`,
   noSustainabilityPage: (host: string) => `No sustainability, impact or responsibility page could be fetched from ${host}.`,
   robotsUnavailable: (origin: string) => `${origin} (its robots.txt could not be read, so we did not fetch from it).`,
   /** Brief Section 8: a page robots.txt keeps us from fetching is read from the Wayback Machine, and we say so. */
@@ -177,6 +179,12 @@ export const signalLabels = {
   /** ADR-008: "ruling found naming <entity verbatim>". The outcome words are the regulator's own. */
   rulingFound: (entity: string, regulator: string, country: string, date: string, outcome: string) =>
     `Ruling found naming ${entity} (${regulator}, ${country}, ${date}); outcome as published: ${outcome}`,
+  /** QA-2 (Phase 14): a complaint the regulator did not uphold is listed as context, 0 points. */
+  rulingNotUpheld: (entity: string, regulator: string, country: string, date: string, outcome: string) =>
+    `Ruling found naming ${entity} (${regulator}, ${country}, ${date}); complaint not upheld (outcome as published: ${outcome})`,
+  /** ADR-033: a ruling naming the brand whose topic is not environmental is listed, 0 points. */
+  rulingOtherTopic: (entity: string, regulator: string, country: string, date: string, outcome: string, topic?: string) =>
+    `Ruling found naming ${entity} (${regulator}, ${country}, ${date}); outcome as published: ${outcome}; ruling on another topic (${topic ?? "topic not established as environmental"})`,
   repairManual: "Repair guide or service manual offered on the brand’s site",
   spareParts: "Spare or replacement parts offered on the brand’s site",
   warranty: (years: number | "lifetime") => (years === "lifetime" ? "Lifetime warranty stated on the brand’s site" : `${years}-year warranty stated on the brand’s site`),
@@ -207,7 +215,7 @@ export const scoreWording = {
   aiShare: (pct: number) => `AI contributed to ${pct}% of this score`,
   scoreHeading: "Greenwashing risk signals score",
   axisNames: { claims: "Claim language", evidence: "Evidence & certifications", track: "Track record", repair: "Ownership & repair" } as const,
-  axisStatus: { scored: "scored", missing: "no data (lowers confidence)", not_applicable: "not applicable (weight shared out)" } as const,
+  axisStatus: { scored: "scored", missing: "no data (lowers confidence)", not_applicable: "not applicable (weight shared out)", insufficient_data: "too few claim sentences to score (lowers confidence)" } as const,
   methodologyLink: "How the score is computed",
 };
 

@@ -175,6 +175,8 @@ Generated from `config/weights.json` (version 1) by `weightsMarkdown()` in `src/
 | `evidence` | `evidence.supplier_list_found` | 0 |
 | `track` | `claim.removed` | 20 |
 | `track` | `regulator.ruling` | 25 |
+| `track` | `regulator.ruling_other_topic` | 0 |
+| `track` | `regulator.ruling_not_upheld` | 0 |
 | `repair` | `repair.no_repair_info_found` | 50 |
 | `repair` | `repair.manual_found` | 0 |
 | `repair` | `repair.spare_parts_found` | 0 |
@@ -191,6 +193,9 @@ Generated from `config/weights.json` (version 1) by `weightsMarkdown()` in `src/
 | `claimsRate.perWords` | 1000 |
 | `claimsRate.minWords` | 1000 |
 | `claimsRate.subscorePerPointPer1000Words` | 15 |
+| `claimsRate.version` | 1 |
+| `claimsRate.v2.minClaims` | 5 |
+| `claimsRate.v2.insufficientDataStatus` | insufficient_data |
 | `defaultWeightHint` | 1 |
 | `regulatorRuling.baseHint` | 1 |
 | `regulatorRuling.upheldMultiplier` | 2 |
@@ -231,6 +236,10 @@ Differentiator C (ADR-003). Deterministic; no LLM (`llm_used: false`). Code: `sr
 6. **Signal.** Kind `regulator.ruling`, label "Ruling found naming <entity verbatim> (<regulator>, <country>, <date>); outcome as published: <words>", `entity_name` = the advertiser verbatim, receipt = the ruling page. `weight_hint` = `baseHint` × `upheldMultiplier` when upheld × `recentMultiplier` when the ruling is dated within `recentYears` of the run (values in `config/weights.json`). The ruling's points are the `regulator.ruling` points of Section 7 × this hint (Section 11).
 7. **Coverage.** Every report says that only the UK ASA and the French JDP were searched. A site that is unreachable, disallows the page in robots.txt or serves a page we cannot parse ends its step as `skipped: <reason>` (for example `skipped: ASA unreachable (HTTP 500)`); the other regulator still runs.
 
+9.7. **Topic gate (ADR-033, Phase 14).** A ruling whose ruled entity is the brand is scored as `regulator.ruling` only when its topic is environmental: the regulator's own topic line when the page publishes one (no v1.1 adapter reads one yet), else a whole-word match of the lexicon `environmentalTopic.terms` in `config/regulators.json` (EN and FR; a trailing `*` matches any word ending) against the ruling title and the fetched ruling text (`src/lib/regulators/topic.ts`). Otherwise the ruling is listed with its receipt as `regulator.ruling_other_topic`, 0 points, labelled "ruling on another topic (topic not established as environmental)". Possible matches are unchanged. Example: the JDP "Heures Eco" electricity-price decision naming TotalEnergies is listed, not scored.
+
+9.8. **Not upheld (QA-2, Phase 14; builder decision pending the director's ruling).** An environmental ruling whose outcome is not upheld ("Plainte rejetée", "Not upheld") is listed as `regulator.ruling_not_upheld`, 0 points, labelled "complaint not upheld (outcome as published: …)". The 9.6 weight hint applies to upheld rulings only.
+
 ## 10. Ownership and repair (axis: ownership & repair)
 
 Differentiator E. Deterministic; no LLM. Code: `src/lib/repair/`; parameters: `config/repair.json`, `config/discovery.json` (`nonDurableIndustries`).
@@ -253,6 +262,9 @@ Code: `src/lib/score/` (`weights.ts` reads and validates `config/weights.json`, 
 2. **Points.** A signal is worth the points of its kind (Section 7, "Points per signal kind") × its `weight_hint`. The hint is `defaultWeightHint` for every rule-based signal except rulings (Section 9.6). A kind with no entry is worth 0. All points are 0 or more.
 3. **Risk points only.** A protective signal (a report, an emissions figure, a supplier list, a repair manual, spare parts, a repair service, a warranty, iFixit guides or score) is worth 0 points: it is listed with its receipt and it is data for confidence. Protective findings lower a sub-score by taking the place of the risk signal that is emitted when nothing is found (`evidence.report_found` instead of `evidence.no_report_found`; any repair finding instead of `repair.no_repair_info_found`). This keeps the brief's rule exact: removing any signal can never raise a score.
 4. **Sub-scores (0–100).** For the evidence, track and repair axes, the sum of the axis's points, capped at the axis cap. For the claims axis the input is a rate built from the run's ClaimStats (Section 4; a repeated sentence counts every time it occurs): unsupported matches × the `claim.unsupported` points + the other (supported) matches × the `claim.supported` points, per `claimsRate.perWords` visible words of the fetched pages (at least `claimsRate.minWords` words are counted, so a short page cannot inflate the rate), × `claimsRate.subscorePerPointPer1000Words`, capped. `claim.supported` is worth less than `claim.unsupported` (ADR-015). Claim signals produced with an LLM (Phase 7) are not in ClaimStats; they are added to the rate by their own points and count as the axis's LLM part (item 10).
+   **Claims formula versions (Phase 14, ADR-030).** `claimsRate.version` selects the claims-axis formula; the value in Section 7 is the active one (the director flips it, ADR-032).
+   - **v1 (density, the formula above).** Risky-phrase points per `claimsRate.perWords` words. A page with no claim sentence scores 0 on the axis.
+   - **v2 (share).** Let `m` be the matched claim sentences (ClaimStats matches plus LLM-only claim signals), `u` the unsupported ones and `s` the supported ones. If `m` is below `claimsRate.v2.minClaims`, the axis status is `insufficient_data`: it contributes 0, lowers confidence like a skipped step, and the report says "Fewer than N environmental claim sentences were found on the fetched pages; the claim-language axis was not scored." Otherwise the sub-score is 100 × (`u` + `supportedWeight` × `s`) ÷ `m`, capped, where `supportedWeight` = `claim.supported` ÷ `claim.unsupported` points (0.25; read from the points, not duplicated). The LLM part is the share over every sentence minus the share over the rule-based sentences alone. Known property: in a share, a supported sentence is protective, so removing one can raise the sub-score (documented with its counter-example in `tests/unit/score/monotonic.test.ts` and `docs/phases/14.md`); v1 keeps the strict "removing a signal never raises the score" property.
 5. **Weighted sum.** Score = Σ axis weight × sub-score, rounded. Example: sub-scores 40, 20, 80, 10 with the weights 25%, 25%, 30%, 20% ⇒ 10 + 5 + 24 + 2 = 41.
 6. **Not applicable.** When the repair axis is not applicable (Section 10.1), its weight is shared out among the other axes in proportion to their weights (each weight ÷ the sum of the applicable weights), and confidence is not lowered.
 7. **Missing data.** An axis with no signal contributes 0. Missing data never adds points; it lowers confidence instead.
