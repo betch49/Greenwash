@@ -81,6 +81,8 @@ describe("pipeline skips (2.4)", () => {
       // Phase 5: no regulator search is recorded for "acme", so offline both sites answer 404.
       { step: "Checking ASA (UK) rulings", status: "skipped", reason: "ASA unreachable (HTTP 404)" },
       { step: "Checking JDP (France) decisions", status: "skipped", reason: "JDP unreachable (HTTP 404)" },
+      // Phase 13: the climate litigation pages are recorded (US listing + seed index); no case names "acme".
+      { step: "Checking the climate litigation database", status: "done" },
       // Phase 11: the recorded SBTi export is served offline; "acme" is not in it.
       { step: "Checking SBTi target status", status: "done" },
       { step: "Checking repair information", status: "skipped", reason: "no fetched page to scan" },
@@ -152,6 +154,7 @@ describe("pipeline skips (2.4)", () => {
       // Every robots.txt answers 503 here, so the regulator sites are skipped the same way (ADR-012).
       { step: "Checking ASA (UK) rulings", status: "skipped", reason: "robots.txt unavailable for https://www.asa.org.uk (HTTP 503)" },
       { step: "Checking JDP (France) decisions", status: "skipped", reason: "robots.txt unavailable for https://www.jdp-pub.org (HTTP 503)" },
+      { step: "Checking the climate litigation database", status: "skipped", reason: "robots.txt unavailable for https://www.climatecasechart.com (HTTP 503)" },
       { step: "Checking SBTi target status", status: "skipped", reason: "SBTi export unreachable (robots.txt unavailable for https://files.sciencebasedtargets.org (HTTP 503))" },
       { step: "Checking repair information", status: "skipped", reason: "no fetched page to scan" },
       // Phase 12: the French repairability index does not depend on the brand's pages.

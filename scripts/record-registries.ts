@@ -9,6 +9,10 @@ import { recordSbti } from "./registries/sbti";
 const RECORDERS: Record<string, () => Promise<void>> = {
   sbti: recordSbti,
   "fr-repair": recordFrRepair,
+  // Phase 13: scripts/record-sabin.ts records on import (top-level await); `npm run record:sabin` is an alias.
+  sabin: async () => {
+    await import("./record-sabin");
+  },
 };
 
 const wanted = process.argv.slice(2).filter((a) => !a.startsWith("-"));

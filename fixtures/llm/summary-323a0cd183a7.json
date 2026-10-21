@@ -1,0 +1,11 @@
+{
+  "name": "summary",
+  "input_sha1": "323a0cd183a7a6a9b334ee68358a022875e9786e",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "summary": "Mammut: low signals (score 12, confidence 70%). Based on 12 verified signals from 1 source. One example: “Balancing a long-term outlook with decisive action, we’re dedicated to ever-more conscious exploration.” (unsupported claim, https://www.mammut.com/us/en/responsibility). 7 things could not be checked; they are listed in the report.",
+    "cited_urls": [
+      "https://www.mammut.com/us/en/responsibility"
+    ]
+  }
+}

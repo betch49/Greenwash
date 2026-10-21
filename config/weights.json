@@ -26,7 +26,8 @@
       "sbti.commitment_removed": 15,
       "sbti.targets_validated": 0,
       "sbti.commitment_pending": 0,
-      "sbti.status_note": 0
+      "sbti.status_note": 0,
+      "litigation.case": 10
     },
     "repair": {
       "repair.no_repair_info_found": 50,
@@ -62,6 +63,16 @@
   "sbti": {
     "expiredMultiplier": 1
   },
+  "litigation": {
+    "$comment": "Phase 13 (ADR-028): litigation.case weight_hint = baseHint × the multiplier of the first rule whose keyword is a whole word of the case status as published (else of the last event; else unknownMultiplier) × regulatorRuling.recentMultiplier when filed within regulatorRuling.recentYears. A filed case is not a ruling: its points stay below regulator.ruling.",
+    "baseHint": 1,
+    "statusMultipliers": [
+      { "keywords": ["dismissed", "withdrawn", "struck out"], "multiplier": 0 },
+      { "keywords": ["pending", "filed", "ongoing"], "multiplier": 1 },
+      { "keywords": ["decided", "judgment"], "multiplier": 1 }
+    ],
+    "unknownMultiplier": 1
+  },
   "llmGuard": {
     "maxShare": 0.5
   },
@@ -76,7 +87,7 @@
     "axisSteps": {
       "claims": ["claims"],
       "evidence": ["evidence"],
-      "track": ["wayback", "asa-uk", "jdp-fr", "sbti"],
+      "track": ["wayback", "asa-uk", "jdp-fr", "sabin", "sbti"],
       "repair": ["repair", "fr-repair"]
     },
     "timelineCountsAsData": ["track"]

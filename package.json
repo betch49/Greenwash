@@ -15,6 +15,7 @@
     "record:brand": "tsx scripts/record-brand.ts",
     "record:sources": "tsx scripts/record-sources.ts",
     "record:registries": "tsx scripts/record-registries.ts",
+    "record:sabin": "tsx scripts/record-registries.ts sabin",
     "author:llm": "tsx scripts/author-llm-fixtures.ts",
     "lighthouse": "tsx scripts/lighthouse.ts",
     "e2e:real": "tsx scripts/e2e-real.ts"

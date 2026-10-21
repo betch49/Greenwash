@@ -1,10 +1,36 @@
 {
-  "$comment": "Registry sources (v1.1). sbti (Phase 11, ADR-026): the SBTi Target Dashboard companies export, read through the cached fetcher (ttlHours) and matched with the ADR-019 equality rule on company_name, or by ISIN/LEI equality with the Wikidata entity. A 'Commitment Removed' status whose status_reason items are all in neutralReasons is a status note (0 points), not the brand walking back. maxPossible bounds the 'possible match' lines per run. Points and multipliers live in config/weights.json, never here.",
+  "$comment": "Registry sources (v1.1). sbti (Phase 11, ADR-026): the SBTi Target Dashboard companies export, read through the cached fetcher (ttlHours) and matched with the ADR-019 equality rule on company_name, or by ISIN/LEI equality with the Wikidata entity. A 'Commitment Removed' status whose status_reason items are all in neutralReasons is a status note (0 points), not the brand walking back. maxPossible bounds the 'possible match' lines per run. Points and multipliers live in config/weights.json, never here. sabin (Phase 13, ADR-028): the Sabin Center Climate Litigation Database on www.climatecasechart.com. The adapter reads only server-rendered /document/<slug> and /geographies/<slug> pages (never /_search, never the app's private API). countrySlugs maps the Wikidata P17 country label to the site's geography slug; the US page is always read as well. maxCases bounds the case pages read per run (seed index entries first, then geography listings whose title names the brand).",
   "sbti": {
     "exportUrl": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
     "dashboardUrl": "https://sciencebasedtargets.org/target-dashboard",
     "ttlHours": 168,
-    "neutralReasons": ["Target set at parent company level", "Company change"],
+    "neutralReasons": [
+      "Target set at parent company level",
+      "Company change"
+    ],
     "maxPossible": 5
+  },
+  "sabin": {
+    "origin": "https://www.climatecasechart.com",
+    "documentPath": "/document/",
+    "geographyPath": "/geographies/",
+    "usSlug": "united-states-of-america",
+    "usLabel": "the United States",
+    "maxCases": 12,
+    "$partyLegalSuffixes": "Legal forms common in case titles but absent from config/wikidata.json legalSuffixes (which the v1 adapters' search queries also use): stripped from the end of a party name before the ADR-019 comparison. SE = Societas Europaea ('TotalEnergies SE').",
+    "partyLegalSuffixes": [
+      "se"
+    ],
+    "countrySlugs": {
+      "France": "france",
+      "United Kingdom": "united-kingdom",
+      "Netherlands": "netherlands",
+      "Kingdom of the Netherlands": "netherlands",
+      "Switzerland": "switzerland",
+      "Sweden": "sweden",
+      "Germany": "germany",
+      "United States": "united-states-of-america",
+      "United States of America": "united-states-of-america"
+    }
   }
 }

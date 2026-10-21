@@ -1,0 +1,49 @@
+{
+  "$comment": "Real captures by scripts/record-sabin.ts (fixtures/sources/sabin/README.md). URL ⇒ file (relative to this directory) and its capture time.",
+  "files": {
+    "https://www.climatecasechart.com/robots.txt": {
+      "file": "robots-www-climatecasechart-com.txt",
+      "capturedAt": "2026-10-21T07:41:38.799Z"
+    },
+    "https://www.climatecasechart.com/geographies/switzerland": {
+      "file": "geographies-switzerland.html",
+      "capturedAt": "2026-10-21T07:41:39.519Z"
+    },
+    "https://www.climatecasechart.com/geographies/netherlands": {
+      "file": "geographies-netherlands.html",
+      "capturedAt": "2026-10-21T07:41:40.775Z"
+    },
+    "https://www.climatecasechart.com/geographies/sweden": {
+      "file": "geographies-sweden.html",
+      "capturedAt": "2026-10-21T07:41:41.562Z"
+    },
+    "https://www.climatecasechart.com/geographies/france": {
+      "file": "geographies-france.html",
+      "capturedAt": "2026-10-21T07:41:42.310Z"
+    },
+    "https://www.climatecasechart.com/geographies/united-kingdom": {
+      "file": "geographies-united-kingdom.html",
+      "capturedAt": "2026-10-21T07:41:43.551Z"
+    },
+    "https://www.climatecasechart.com/geographies/united-states-of-america": {
+      "file": "geographies-united-states-of-america.html",
+      "capturedAt": "2026-10-21T07:41:44.578Z"
+    },
+    "https://www.climatecasechart.com/document/greenpeace-france-and-others-v-totalenergies-se-and-totalenergies-electricite-et-gaz-france_3e1f": {
+      "file": "document-greenpeace-france-and-others-v-totalenergies-se-and-totalenergies-electricite-et-gaz-france-3e1f.html",
+      "capturedAt": "2026-10-21T07:41:45.891Z"
+    },
+    "https://www.climatecasechart.com/document/clientearth-v-blackrock_51f1": {
+      "file": "document-clientearth-v-blackrock-51f1.html",
+      "capturedAt": "2026-10-21T07:41:46.866Z"
+    },
+    "https://www.climatecasechart.com/document/milieudefensie-et-al-v-royal-dutch-shell-plc_c3e4": {
+      "file": "document-milieudefensie-et-al-v-royal-dutch-shell-plc-c3e4.html",
+      "capturedAt": "2026-10-21T07:41:47.931Z"
+    },
+    "https://www.climatecasechart.com/document/clientearth-v-shells-board-of-directors_9377": {
+      "file": "document-clientearth-v-shells-board-of-directors-9377.html",
+      "capturedAt": "2026-10-21T07:41:48.471Z"
+    }
+  }
+}

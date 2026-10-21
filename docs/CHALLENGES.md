@@ -71,3 +71,11 @@
 **What I did.** The module still asks for the resource URL first, through the robots guard (so if data.gouv.fr ever lifts the rule, the original file is used); on `RobotsDisallowedError` it reads the tabular-API export instead (`config/repair.json` `frIndex.tabularCsvUrl`), and the receipt's `source_url` is the URL actually fetched (`tabular-api.data.gouv.fr`); the excerpt carries the dataset page URL on `www.data.gouv.fr` and the licence id. The 12.2 test pins the real count (6). The 12.8 e2e check accepts `tabular-api.data.gouv.fr` as well as the two hosts named in the plan. The licence gate is unchanged: a gated dataset's CSV is fetched by neither route.
 
 **Asked of the director.** Confirm the tabular-API route (or rule that the robots rule on a static file host does not bind, which I did not assume), and the 6-row count.
+
+## C-13a (Phase 13) — "SE" is missing from the ADR-019 legal suffixes
+
+**Observation.** The real TotalEnergies case names "TotalEnergies SE" (Societas Europaea). `config/wikidata.json` `legalSuffixes` has no `se`, so the ADR-019 rule would make it a possible match only, and criterion 13.3 could not be met by the real capture the plan names. Adding `se` to that shared list changes the v1 JDP search query ("TotalEnergies SE" ⇒ "TotalEnergies"), which `tests/unit/regulators/jdp-fr.test.ts` pins.
+
+**What I did.** Kept `config/wikidata.json` unchanged and added `sabin.partyLegalSuffixes: ["se"]` in `config/registries.json`, stripped from the end of a party before the unchanged ADR-019 comparison (Sabin only).
+
+**Option for the director.** Add `se` to `legalSuffixes` globally (Phase 11's SBTi rows also carry "SE" names) and update the JDP search-URL pin, then drop `partyLegalSuffixes`.

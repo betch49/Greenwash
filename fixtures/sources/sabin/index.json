@@ -1,0 +1,25 @@
+{
+  "$comment": "Seed index of case document URLs (ADR-028). Discovery only: every entry is re-fetched and re-matched on the title of its page; nothing here is a label.",
+  "entries": [
+    {
+      "url": "https://www.climatecasechart.com/document/greenpeace-france-and-others-v-totalenergies-se-and-totalenergies-electricite-et-gaz-france_3e1f",
+      "recorded_at": "2026-10-21T07:41:38.213Z",
+      "recorded_from": "301 redirect of https://www.climatecasechart.com/non-us-case/greenpeace-france-and-others-v-totalenergies-se-and-totalenergies-electricite-et-gaz-france/"
+    },
+    {
+      "url": "https://www.climatecasechart.com/document/clientearth-v-blackrock_51f1",
+      "recorded_at": "2026-10-21T07:41:38.213Z",
+      "recorded_from": "https://www.climatecasechart.com/geographies/france (listing of 2026-10-21)"
+    },
+    {
+      "url": "https://www.climatecasechart.com/document/milieudefensie-et-al-v-royal-dutch-shell-plc_c3e4",
+      "recorded_at": "2026-10-21T07:41:38.213Z",
+      "recorded_from": "301 redirect of https://www.climatecasechart.com/non-us-case/milieudefensie-et-al-v-royal-dutch-shell-plc/"
+    },
+    {
+      "url": "https://www.climatecasechart.com/document/clientearth-v-shells-board-of-directors_9377",
+      "recorded_at": "2026-10-21T07:41:38.213Z",
+      "recorded_from": "301 redirect of https://www.climatecasechart.com/non-us-case/clientearth-v-shells-board-of-directors/"
+    }
+  ]
+}

@@ -30,7 +30,7 @@ export function loadSourceFixtures(root: string): SourceFixtures {
     }
   }
   // Registry sources (v1.1) keep their own manifest in a sub-directory, e.g.
-  // fixtures/sources/fr-repair/manifest.json, with files relative to that directory.
+  // fixtures/sources/{sbti,fr-repair,sabin}/manifest.json, with files relative to that directory.
   const base = join(root, SOURCES_DIR);
   if (existsSync(base)) {
     for (const dir of readdirSync(base, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
