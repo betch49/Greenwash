@@ -2,8 +2,8 @@
   "version": 1,
   "label_use": "evaluation_only",
   "mode": "offline",
-  "generated_at": "2026-10-21T08:14:54.301Z",
-  "commit": "d53c43e",
+  "generated_at": "2026-10-21T08:21:06.240Z",
+  "commit": "2a5dfd5",
   "commit_dirty": true,
   "weights_version": 1,
   "claims_version": 1,
@@ -21,11 +21,11 @@
   "stats": {
     "auc": 0.6666666666666666,
     "mean_flagged": 35.666666666666664,
-    "mean_well_rated": 28.5,
-    "mean_difference": 7.166666666666664,
+    "mean_well_rated": 23.5,
+    "mean_difference": 12.166666666666664,
     "median_flagged": 35,
-    "median_well_rated": 28.5,
-    "median_difference": 6.5,
+    "median_well_rated": 23.5,
+    "median_difference": 11.5,
     "per_axis": {
       "claims": {
         "auc": 0.5,
@@ -33,9 +33,9 @@
         "n_well_rated": 2
       },
       "evidence": {
-        "auc": 0.25,
+        "auc": 0.5,
         "n_flagged": 3,
-        "n_well_rated": 2
+        "n_well_rated": 1
       },
       "track": {
         "auc": null,
@@ -48,8 +48,8 @@
         "n_well_rated": 2
       }
     },
-    "spearman_words_score": -0.1,
-    "spearman_claims_score": 0.3,
+    "spearman_words_score": 0.2,
+    "spearman_claims_score": 0.6,
     "n_spearman": 5
   },
   "leakage": {
@@ -164,7 +164,7 @@
       ],
       "steps_done": 8,
       "steps_skipped": 4,
-      "duration_ms": 1196
+      "duration_ms": 2836
     },
     {
       "slug": "shell",
@@ -271,7 +271,7 @@
       ],
       "steps_done": 7,
       "steps_skipped": 4,
-      "duration_ms": 294
+      "duration_ms": 485
     },
     {
       "slug": "amazon",
@@ -378,7 +378,7 @@
       ],
       "steps_done": 7,
       "steps_skipped": 4,
-      "duration_ms": 221
+      "duration_ms": 690
     },
     {
       "slug": "jbs",
@@ -767,9 +767,9 @@
       "brand": "Signify",
       "website": "https://www.signify.com/",
       "wikidata_id": "Q2336380",
-      "score": 31,
-      "label": "moderate",
-      "confidence": 70,
+      "score": 21,
+      "label": "low",
+      "confidence": 45,
       "ai_share": 0,
       "axes": [
         {
@@ -779,8 +779,8 @@
         },
         {
           "id": "evidence",
-          "status": "scored",
-          "subscore": 40
+          "status": "missing",
+          "subscore": 0
         },
         {
           "id": "track",
@@ -796,7 +796,7 @@
       "pages": 1,
       "words_scanned": 415,
       "claim_matches": 3,
-      "signals_count": 5,
+      "signals_count": 4,
       "steps": [
         {
           "step": "Discovering pages",
@@ -826,7 +826,8 @@
         },
         {
           "step": "Checking published evidence",
-          "status": "done"
+          "status": "skipped",
+          "reason": "no sustainability-type page was fetched, so published evidence was not checked"
         },
         {
           "step": "Checking ASA (UK) rulings",
@@ -846,9 +847,9 @@
           "reason": "Writing the plain-English summary (AI): no AI answer"
         }
       ],
-      "steps_done": 8,
-      "steps_skipped": 3,
-      "duration_ms": 137
+      "steps_done": 7,
+      "steps_skipped": 4,
+      "duration_ms": 268
     },
     {
       "slug": "barry-callebaut",
@@ -1010,7 +1011,7 @@
       ],
       "steps_done": 8,
       "steps_skipped": 3,
-      "duration_ms": 495
+      "duration_ms": 1182
     },
     {
       "slug": "kingfisher",

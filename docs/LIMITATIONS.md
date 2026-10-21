@@ -163,6 +163,7 @@ The "Skipped steps" list gives the step-level `skipped: <reason>` lines. An axis
 | `skipped: analysis interrupted (server restarted); search again to retry` | The server restarted during the run (ADR-013). |
 | `skipped: internal error (<message>)` | Defined but not emitted in v1: a step that throws unexpectedly shows the error's own message as `skipped: <message>` (`src/lib/pipeline/run.ts`), and the run goes on with the other steps. |
 | `skipped: no fetched page to scan` | The claim, evidence or repair step had no page. |
+| `skipped: no sustainability-type page was fetched, so published evidence was not checked` | QA-3 (Phase 14): none of the fetched pages matched the sustainability/impact/responsibility heuristics and nothing protective was found, so the "no impact report found" signal is not emitted; the evidence axis is "no data" (0 points, lower confidence). |
 | `skipped: Wayback unreachable (<cause>)` | The Wayback Machine did not answer (always the case from the build environment). |
 | `skipped: no sustainability-type page to look up in the Wayback Machine` | No page qualified for a history lookup. |
 | `skipped: <name> unreachable (<cause>)` | ASA or JDP did not answer. |

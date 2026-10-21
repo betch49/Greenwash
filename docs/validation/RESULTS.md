@@ -9,8 +9,8 @@ Ground-truth labels are used for evaluation only and never enter the score. AUC 
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 2026-10-21 | offline | `2e7dc22` | 1 | v1 | 3 | 2 | 5 / 48 | 0.67 | 5.8 | -0.10 | `results-2026-10-21-offline.json` |
 | 2026-10-21 | live | `2e7dc22` | 1 | v1 | 10 | 5 | 15 / 23 | 0.34 | 0.6 | -0.17 | `results-2026-10-21-live.json` |
-| 2026-10-21 | offline | `d53c43e` | 1 | v1 | 3 | 2 | 5 / 48 | 0.67 | 7.2 | -0.10 | `results-2026-10-21-offline-phase14-v1.json` |
-| 2026-10-21 | offline | `d53c43e` | 1 | v2 | 3 | 2 | 5 / 48 | 0.75 | 17.7 | 0.31 | `results-2026-10-21-offline-phase14-v2.json` |
+| 2026-10-21 | offline | `2a5dfd5` | 1 | v1 | 3 | 2 | 5 / 48 | 0.67 | 12.2 | 0.20 | `results-2026-10-21-offline-phase14-v1.json` |
+| 2026-10-21 | offline | `2a5dfd5` | 1 | v2 | 3 | 2 | 5 / 48 | 0.83 | 22.7 | 0.40 | `results-2026-10-21-offline-phase14-v2.json` |
 
 ## Claims formula v1 vs v2 (Phase 14, ADR-030)
 
@@ -21,27 +21,27 @@ v1 = risky-phrase density per 1,000 words; v2 = share of unsupported claim sente
 | Measure | v1 | v2 |
 |---|---|---|
 | File | `results-2026-10-21-offline-phase14-v1.json` | `results-2026-10-21-offline-phase14-v2.json` |
-| Commit | `d53c43e` | `d53c43e` |
+| Commit | `2a5dfd5` | `2a5dfd5` |
 | Reports (flagged / well-rated) | 3 / 2 | 3 / 2 |
-| AUC overall | 0.67 | 0.75 |
+| AUC overall | 0.67 | 0.83 |
 | AUC claims axis (scored axes only) | 0.50 (3/2) | 0.17 (3/1) |
-| Spearman words scanned vs score | -0.10 | 0.31 |
-| Spearman claim matches vs score | 0.30 | 0.67 |
-| Mean difference (flagged − well-rated) | 7.2 | 17.7 |
+| Spearman words scanned vs score | 0.20 | 0.40 |
+| Spearman claim matches vs score | 0.60 | 0.70 |
+| Mean difference (flagged − well-rated) | 12.2 | 22.7 |
 | Claims axis insufficient_data | 0 of 5 | 1 of 5 |
 
 ## Latest offline run
 
 ### Offline run, 2026-10-21 (`results-2026-10-21-offline-phase14-v2.json`)
 
-Commit `d53c43e` (uncommitted changes present), weights version 1, claims formula v2, LLM: MockLLM over recorded fixtures (fixtures/llm); a call with no fixture returns nothing.
+Commit `2a5dfd5` (uncommitted changes present), weights version 1, claims formula v2, LLM: MockLLM over recorded fixtures (fixtures/llm); a call with no fixture returns nothing.
 
 **Partial run: 5 of 48 brands produced a report.**
 
-- AUC (flagged vs well-rated, overall score): 0.75 (n flagged = 3, n well-rated = 2)
-- Mean score: flagged 43.7, well-rated 26.0; difference 17.7. Median difference 20.0.
-- Per-axis AUC (scored axes only): claims 0.17 (3/1); evidence 0.25 (3/2); track n/a (2/0); repair n/a (0/2).
-- "Saying less scores better" diagnostic (Spearman, n = 5): words scanned vs score 0.31; claim-rule matches vs score 0.67.
+- AUC (flagged vs well-rated, overall score): 0.83 (n flagged = 3, n well-rated = 2)
+- Mean score: flagged 43.7, well-rated 21.0; difference 22.7. Median difference 25.0.
+- Per-axis AUC (scored axes only): claims 0.17 (3/1); evidence 0.50 (3/1); track n/a (2/0); repair n/a (0/2).
+- "Saying less scores better" diagnostic (Spearman, n = 5): words scanned vs score 0.40; claim-rule matches vs score 0.70.
 - Leakage: 3 of 22 flagged entries are flagged only by sources the pipeline itself queries (ASA, JDP); 2 of the 3 flagged brands in this run.
 - Entries: 22 flagged, 20 well-rated, 6 contested (contested are run when possible but never in the statistics). Ran 5, failed 0, not run 43.
 - Offline: brands without a recorded brand fixture are not run; clock pinned to 2026-10-21T12:00:00Z.
@@ -83,7 +83,7 @@ Commit `d53c43e` (uncommitted changes present), weights version 1, claims formul
 | Iberdrola | well_rated | not_run | – | – | 0 | 0 | 0 | 0 / 0 | no offline fixture |
 | Telia Company | well_rated | not_run | – | – | 0 | 0 | 0 | 0 / 0 | no offline fixture |
 | Salesforce | well_rated | not_run | – | – | 0 | 0 | 0 | 0 / 0 | no offline fixture |
-| Signify | well_rated | ran | 20 | 45 | 1 | 415 | 3 | 8 / 3 | Pulling 2019–2026 snapshots: no sustainability-type page to look up in the Wayback Machine; Classifying archived changes (AI): no removed claim to classify; Writing the plain-English summary (AI): Writing the plain-English summary (AI): no AI answer |
+| Signify | well_rated | ran | 10 | 20 | 1 | 415 | 3 | 7 / 4 | Pulling 2019–2026 snapshots: no sustainability-type page to look up in the Wayback Machine; Classifying archived changes (AI): no removed claim to classify; Checking published evidence: no sustainability-type page was fetched, so published evidence was not checked; Writing the plain-English summary (AI): Writing the plain-English summary (AI): no AI answer |
 | Barry Callebaut | well_rated | not_run | – | – | 0 | 0 | 0 | 0 / 0 | no offline fixture |
 | ASML | well_rated | not_run | – | – | 0 | 0 | 0 | 0 / 0 | no offline fixture |
 | Cisco | well_rated | not_run | – | – | 0 | 0 | 0 | 0 / 0 | no offline fixture |

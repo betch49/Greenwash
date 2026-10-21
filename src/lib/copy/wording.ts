@@ -93,6 +93,8 @@ export const reasons = {
   interrupted: "analysis interrupted (server restarted); search again to retry",
   stepError: (message: string) => `internal error (${message})`,
   noPagesToScan: "no fetched page to scan",
+  /** QA-3 (Phase 14): our own fetch gap is not a brand fault; the evidence axis is "no data". */
+  noSustainabilityPageForEvidence: "no sustainability-type page was fetched, so published evidence was not checked",
   waybackUnreachable: (cause: string) => `Wayback unreachable (${cause})`,
   noPagesForWayback: "no sustainability-type page to look up in the Wayback Machine",
   regulatorUnreachable: (name: string, cause: string) => `${name} unreachable (${cause})`,
@@ -118,6 +120,8 @@ export const couldNotCheck = {
   /** Phase 14, claims formula v2: the axis is not scored below `claimsRate.v2.minClaims` claim sentences. */
   claimsInsufficient: (minClaims: number) => `Fewer than ${minClaims} environmental claim sentences were found on the fetched pages; the claim-language axis was not scored.`,
   noSustainabilityPage: (host: string) => `No sustainability, impact or responsibility page could be fetched from ${host}.`,
+  /** QA-3 (Phase 14): the evidence absence signals are not emitted without a sustainability-type page. */
+  evidenceNotChecked: "No sustainability page could be fetched, so published evidence was not checked.",
   robotsUnavailable: (origin: string) => `${origin} (its robots.txt could not be read, so we did not fetch from it).`,
   /** Brief Section 8: a page robots.txt keeps us from fetching is read from the Wayback Machine, and we say so. */
   robotsDisallowed: (url: string, archive?: ArchiveNote) => {
