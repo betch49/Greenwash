@@ -187,6 +187,8 @@ Generated from `config/weights.json` (version 2) by `weightsMarkdown()` in `src/
 | `repair` | `repair.ifixit_devices` | 0 |
 | `repair` | `repair.ifixit_guides` | 0 |
 | `repair` | `repair.ifixit_score` | 0 |
+| `repair` | `repair.fr_index_found` | 0 |
+| `repair` | `repair.fr_index_low` | 30 |
 
 ### Other parameters
 
@@ -208,7 +210,7 @@ Generated from `config/weights.json` (version 2) by `weightsMarkdown()` in `src/
 | `confidence.axisSteps.claims` | claims |
 | `confidence.axisSteps.evidence` | evidence |
 | `confidence.axisSteps.track` | wayback, asa-uk, jdp-fr, sbti |
-| `confidence.axisSteps.repair` | repair |
+| `confidence.axisSteps.repair` | repair, fr-repair |
 | `confidence.timelineCountsAsData` | track |
 
 ## 8. Known limits of these rules
@@ -264,6 +266,14 @@ Differentiator E. Deterministic; no LLM. Code: `src/lib/repair/`; parameters: `c
 3. **Nothing found.** If no rule matches on any fetched page of an applicable brand: one `repair.no_repair_info_found` risk signal; receipt = the first page; excerpt = every page scanned (title and URL).
 4. **iFixit.** The brand's device category is read from `https://www.ifixit.com/api/2.0/wikis/CATEGORY/<brand>` (iFixit's robots.txt allows `/api/2.0/wikis*` and disallows `/api/2.0/search`, so the search endpoint is not used; `docs/CHALLENGES.md` C-2). Its title must equal the brand's name after normalisation (Section 9.5), else nothing is attributed. Signals, all protective, receipt = the API response: `repair.ifixit_devices` (device categories listed, names in the excerpt), and for the last `maxDevices` (3) device categories listed: `repair.ifixit_guides` (guide count, first guide titles in the excerpt) and `repair.ifixit_score` when iFixit publishes a repairability score. No category ⇒ a "could not check" line; iFixit unreachable ⇒ a "could not check" line; the page rules still run.
 5. **Not covered in v1.** Anti-repair practices (serialised parts, warranty-void stickers, lawsuits) have no structured public source (`docs/LATER.md`).
+6. **French repairability index (Phase 12, ADR-027).** Step `fr-repair` ("Checking the French repairability index"), after the repair step; code `src/lib/registries/fr-repair.ts`, parameters `config/repair.json` `frIndex`. Deterministic; no LLM; every signal `llm_used: false`.
+   - *What it is.* The *indice de réparabilité* is a 0–10 score that manufacturers and sellers must publish for products sold in France (Code de l'environnement art. L541-9-2; décret 2020-1757). Many publishers put their scores on data.gouv.fr as CSV files following the Etalab schema `schema-indice-reparabilite` (`nom_modele`, `categorie_produit`, `nom_metteur_sur_le_marche`, `id_modele`, `date_calcul`, `note_ir`, …). The scores are the publishers' own; we only read them.
+   - *Listing.* `GET https://www.data.gouv.fr/api/1/datasets/?q=indice%20de%20reparabilite&page_size=100`, then the API's `next_page`, at most `maxPages` (3) pages, de-duplicated by dataset id; cached `ttlHours` (24). Connection resets are retried with the v1 policy (3 tries, exponential backoff, `Retry-After` honoured); if the list still cannot be read the step reads `skipped: data.gouv.fr unreachable (<cause>)` and the run goes on.
+   - *Matching (ADR-019).* A dataset is the brand's when its publisher (organisation name, or owner's name) equals the brand after normalisation ("ELECTROLUX FRANCE" ≡ "Electrolux": "France", "SAS" and the other suffixes and qualifiers are dropped). A publisher name or dataset title that only contains the brand as a whole word ("Robert Bosch France SAS" for "Bosch") is a possible match: only rows whose `nom_metteur_sur_le_marche` equals the brand may count; with none, it is listed as "Possible match, not scored" and nothing is attributed.
+   - *Licence gate.* Only datasets whose licence id is in `openLicences` (`lov2`, `etalab-2.0`, `other-open`, `other-pd`, `cc-by`, `odc-odbl`) are read. Any other dataset (in practice `notspecified`, most of them) is linked under "What we could not check" with its page URL and "licence not specified"; its CSV is never fetched, excerpted or scored.
+   - *Reading.* The newest CSV resource of an open dataset is fetched (UTF-8 with or without BOM, `;` or `,` detected from the header). `static.data.gouv.fr`'s robots.txt disallows `/resources`, so when the resource URL is disallowed the same file is read from data.gouv.fr's tabular API export (`https://tabular-api.data.gouv.fr/api/resources/<id>/data/csv/`, no robots.txt restriction), and that URL is the receipt (`docs/CHALLENGES.md` C-12.1). The newest `date_calcul` row per `id_modele` is kept. A file without the `nom_modele`, `date_calcul` and `note_ir` columns, or with no numeric score, reads `skipped: repairability dataset could not be parsed (<url>)` when no other dataset gave a signal.
+   - *Signals (one per dataset read).* Receipt = the CSV URL fetched, fetch date, excerpt = up to `maxModelsInExcerpt` (5) models as `nom_modele (categorie_produit) note_ir/10, calculated date_calcul`, the licence id and the dataset page URL. Mean `note_ir` of the kept rows below `lowThreshold` (5.0, director's value) ⇒ `repair.fr_index_low` (risk points in Section 7); otherwise `repair.fr_index_found` (0 points, protective, ADR-020). The mean is computed by the pipeline from the published scores. Either one replaces `repair.no_repair_info_found` for the run (the step removes it), because a published index is repair information.
+   - *Coverage.* French market only; a brand without a dataset gets one "What we could not check" line; non-durable brands: the step is skipped with the repair axis's not-applicable reason.
 
 ## 11. From signals to a score
 

@@ -48,3 +48,14 @@ test("11.7 Fairphone's report shows the SBTi signal row with the attribution lin
   await expect(row.locator("[data-excerpt]")).toContainText("Source: Science Based Targets initiative, Target Dashboard export (");
   await expect(row).toContainText("entity named: Fairphone B.V");
 });
+
+test("12.8 Fairphone's French repairability index row links to data.gouv.fr and shows the dataset and licence", async ({ page }) => {
+  await reportFor(page, "fairphone");
+  const row = page.locator('section[data-axis="repair"] [data-signal][data-kind="repair.fr_index_found"]');
+  await expect(row).toHaveCount(1);
+  // static.data.gouv.fr disallows /resources in robots.txt, so the CSV is read through the tabular API (CHALLENGES C-12.1).
+  expect(await row.locator("a[data-source]").getAttribute("href")).toMatch(/^https:\/\/(static|www|tabular-api)\.data\.gouv\.fr\//);
+  await expect(row.locator("[data-excerpt]")).toContainText("Dataset: https://www.data.gouv.fr/datasets/indice-de-reparabilite-organisation-fairphone-1");
+  await expect(row.locator("[data-excerpt]")).toContainText("Licence: lov2");
+  await expect(row.locator("[data-points]")).toHaveText("0 points (protective: listed, counts as data)");
+});

@@ -1,4 +1,4 @@
-import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { fixtureKey } from "./brand-fixtures";
 import type { FixtureMap } from "./fixture-fetcher";
@@ -29,15 +29,18 @@ export function loadSourceFixtures(root: string): SourceFixtures {
       if (key && !map.has(key)) map.set(key, { rel: `${SOURCES_DIR}/${entry.file}`, capturedAt: entry.capturedAt });
     }
   }
-  // Per-source manifests (Phase 11+): `sources/<dir>/manifest.json`, file paths relative to `<dir>`.
-  const dir = join(root, SOURCES_DIR);
-  for (const sub of existsSync(dir) ? readdirSync(dir).sort() : []) {
-    const subFile = join(dir, sub, "manifest.json");
-    if (!statSync(join(dir, sub)).isDirectory() || !existsSync(subFile)) continue;
-    const manifest = JSON.parse(readFileSync(subFile, "utf8")) as SourceManifest;
-    for (const [url, entry] of Object.entries(manifest.files)) {
-      const key = fixtureKey(url);
-      if (key && !map.has(key)) map.set(key, { rel: `${SOURCES_DIR}/${sub}/${entry.file}`, capturedAt: entry.capturedAt });
+  // Registry sources (v1.1) keep their own manifest in a sub-directory, e.g.
+  // fixtures/sources/fr-repair/manifest.json, with files relative to that directory.
+  const base = join(root, SOURCES_DIR);
+  if (existsSync(base)) {
+    for (const dir of readdirSync(base, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
+      const sub = join(base, dir.name, "manifest.json");
+      if (!dir.isDirectory() || !existsSync(sub)) continue;
+      const manifest = JSON.parse(readFileSync(sub, "utf8")) as SourceManifest;
+      for (const [url, entry] of Object.entries(manifest.files ?? {})) {
+        const key = fixtureKey(url);
+        if (key && !map.has(key)) map.set(key, { rel: `${SOURCES_DIR}/${dir.name}/${entry.file}`, capturedAt: entry.capturedAt });
+      }
     }
   }
   const lookup = (url: string) => {

@@ -84,6 +84,8 @@ describe("pipeline skips (2.4)", () => {
       // Phase 11: the recorded SBTi export is served offline; "acme" is not in it.
       { step: "Checking SBTi target status", status: "done" },
       { step: "Checking repair information", status: "skipped", reason: "no fetched page to scan" },
+      // Phase 12: the French repairability index does not depend on the brand's pages.
+      { step: "Checking the French repairability index", status: "done" },
       { step: "Writing the plain-English summary (AI)", status: "skipped", reason: "LLM unavailable (no LLM client configured)" },
     ]);
     expect(out.could_not_check).toContain("No sustainability, impact or responsibility page could be fetched from example.com.");
@@ -152,6 +154,8 @@ describe("pipeline skips (2.4)", () => {
       { step: "Checking JDP (France) decisions", status: "skipped", reason: "robots.txt unavailable for https://www.jdp-pub.org (HTTP 503)" },
       { step: "Checking SBTi target status", status: "skipped", reason: "SBTi export unreachable (robots.txt unavailable for https://files.sciencebasedtargets.org (HTTP 503))" },
       { step: "Checking repair information", status: "skipped", reason: "no fetched page to scan" },
+      // Phase 12: the French repairability index does not depend on the brand's pages.
+      { step: "Checking the French repairability index", status: "skipped", reason: "robots.txt unavailable for https://www.data.gouv.fr (HTTP 503)" },
       { step: "Writing the plain-English summary (AI)", status: "skipped", reason: "LLM unavailable (no LLM client configured)" },
     ]);
     expect(skippedReason(out.progress[0].reason!)).toBe(`skipped: ${reason}`);
