@@ -1,6 +1,8 @@
 import type { ProgressEntry, Run } from "../db/runs-repo";
 import { RunPagesRepo } from "../db/run-pages-repo";
 import { RunOutputsRepo } from "../db/run-outputs-repo";
+import { ReportsRepo } from "../db/reports-repo";
+import type { ReportV1 } from "../score/report";
 import type { TimelineEntry } from "../wayback/retraction";
 import { getServices } from "../services";
 import { settleInterrupted } from "./start";
@@ -18,6 +20,22 @@ export interface RunView {
   timeline: TimelineEntry[];
   /** "What we could not check" lines of a finished run. */
   could_not_check: string[];
+  /** Score summary of a finished run (Phase 6); the full report UI is Phase 8. */
+  score?: ScoreSummary;
+}
+
+export interface ScoreSummary {
+  report_id: string;
+  score: number;
+  confidence: number;
+  label_text: string;
+  /** ai_share as a whole percentage. */
+  ai_share_pct: number;
+  basis: string;
+}
+
+export function scoreSummary(id: string, r: ReportV1): ScoreSummary {
+  return { report_id: id, score: r.score, confidence: r.confidence, label_text: r.label_text, ai_share_pct: Math.round(r.ai_share * 100), basis: r.basis };
 }
 
 export function toRunView(stored: Run): RunView {
@@ -33,5 +51,8 @@ export function toRunView(stored: Run): RunView {
     progress: run.progress,
     pages,
     ...new RunOutputsRepo(db).get(run.id),
+    ...scoreOf(new ReportsRepo(db).getByRun(run.id)),
   };
 }
+
+const scoreOf = (found: { id: string; report: ReportV1 } | undefined) => (found ? { score: scoreSummary(found.id, found.report) } : {});

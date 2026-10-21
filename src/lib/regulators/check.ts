@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import config from "../../../config/regulators.json";
-import weights from "../../../config/weights.json";
+import { WEIGHTS } from "../score/weights";
 import { couldNotCheck, signalLabels, steps } from "../copy/wording";
 import type { ProgressEntry } from "../db/runs-repo";
 import type { Fetcher } from "../fetch/fetcher";
@@ -34,7 +34,7 @@ const hash = (s: string) => createHash("sha1").update(s).digest("hex").slice(0, 
  * weight_hint for a ruling (PLAN Phase 5 deliverable 4, values in config/weights.json):
  * base × upheldMultiplier when upheld × recentMultiplier when dated within recentYears of `now`.
  */
-export function rulingWeightHint(ruling: Pick<Ruling, "outcome" | "date">, now: Date, w = weights.regulatorRuling): number {
+export function rulingWeightHint(ruling: Pick<Ruling, "outcome" | "date">, now: Date, w = WEIGHTS.regulatorRuling): number {
   const cutoff = new Date(now);
   cutoff.setUTCFullYear(cutoff.getUTCFullYear() - w.recentYears);
   const recent = Date.parse(`${ruling.date}T00:00:00Z`) >= cutoff.getTime();

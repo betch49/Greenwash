@@ -39,3 +39,9 @@ test("2.6 analyse page with progress and page list has no horizontal overflow on
   await expect(page.getByTestId("run-status")).toHaveAttribute("data-status", "done", { timeout: 30_000 });
   await noHorizontalOverflow(page);
 });
+
+test("6.7 /methodology has no horizontal overflow on a phone (wide tables scroll inside their box)", async ({ page }) => {
+  await page.goto("/methodology");
+  await expect(page.getByTestId("axis-weights")).toBeVisible();
+  await noHorizontalOverflow(page);
+});

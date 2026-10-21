@@ -2,6 +2,7 @@ import { reasons, steps } from "../copy/wording";
 import type { ProgressEntry, Run, RunsRepo } from "../db/runs-repo";
 import { RunPagesRepo } from "../db/run-pages-repo";
 import { RunOutputsRepo } from "../db/run-outputs-repo";
+import { ReportsRepo } from "../db/reports-repo";
 import { getServices, pipelineClock } from "../services";
 import { runPipeline, type PipelineOutcome } from "./run";
 
@@ -17,7 +18,7 @@ export function startAnalysis(runId: string): boolean {
   const { runs, db, fetcher } = getServices();
   const run = runs.get(runId);
   if (!run || !runs.claimStart(runId)) return false;
-  const p = runPipeline(run, { runs, pages: new RunPagesRepo(db), outputs: new RunOutputsRepo(db), fetcher, now: pipelineClock() }).finally(() => inflight().delete(runId));
+  const p = runPipeline(run, { runs, pages: new RunPagesRepo(db), outputs: new RunOutputsRepo(db), reports: new ReportsRepo(db), fetcher, now: pipelineClock() }).finally(() => inflight().delete(runId));
   inflight().set(runId, p);
   return true;
 }

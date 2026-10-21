@@ -1,8 +1,8 @@
 # Greenwash Radar — Methodology
 
-Version 1 (Phase 3). This document describes how Greenwash Radar turns fetched pages into greenwashing risk signals. A signal is a pointer to text a brand published, with a receipt: the page URL, the date we fetched it, and the excerpt. **Signals, not verdicts.** Nothing here decides whether a claim is true; the rules only say whether a sentence uses a known risky pattern and whether supporting detail appears next to it on the same page.
+Version 1 (Phase 3; scoring added in Phase 6). This document describes how Greenwash Radar turns fetched pages into greenwashing risk signals. A signal is a pointer to text a brand published, with a receipt: the page URL, the date we fetched it, and the excerpt. **Signals, not verdicts.** Nothing here decides whether a claim is true; the rules only say whether a sentence uses a known risky pattern and whether supporting detail appears next to it on the same page.
 
-Everything in this document is deterministic. No language model is involved in any rule below, and every signal they produce has `llm_used: false`.
+Everything in this document is deterministic. No language model is involved in any rule below, and every signal they produce has `llm_used: false`. The score (Section 11) is computed from these signals with the numbers of `config/weights.json` (Section 7); no language model output is ever a number in it.
 
 Code: `src/lib/claims/` (rules, lexicon, substantiation, engine, evidence rules). The phrase lists are data in `src/lib/claims/lexicon.ts`. Tests: `tests/unit/claims/`. A test reads this file and checks that every rule id the engine exports is listed here and that every example below classifies as stated (`tests/unit/claims/methodology-sync.test.ts`).
 
@@ -94,7 +94,7 @@ Substantiation is limited to the same page: a figure published elsewhere (a PDF 
 `scanPage(text, page)` (`src/lib/claims/engine.ts`) returns:
 
 - **Signals**, one per distinct sentence and rule on a page: axis `claims`, kind `claim.unsupported` or `claim.supported`, excerpt = the matched sentence (cut to 300 characters around the matched phrase if longer), `source_url` and `fetched_at` = the page record, `llm_used: false`. The same sentence on several pages of a run gives one signal, from the first page.
-- **ClaimStats**: per rule, the number of matches and of unsupported matches, and both per 1,000 words (`matches × 1000 / words`). Repeated sentences count every time they occur, so a page duplicated three times has the same rates as the page once. A run's stats are the sums over its pages, with rates recomputed over the total word count. These rates are the claims-axis input of the score (brief Section 4); the scorer arrives in Phase 6.
+- **ClaimStats**: per rule, the number of matches and of unsupported matches, and both per 1,000 words (`matches × 1000 / words`). Repeated sentences count every time they occur, so a page duplicated three times has the same rates as the page once. A run's stats are the sums over its pages, with rates recomputed over the total word count. These counts are the claims-axis input of the score (brief Section 4, ADR-015; Section 11.4).
 
 ## 5. Evidence rules (axis: evidence)
 
@@ -148,7 +148,60 @@ If web.archive.org cannot be reached (network error, HTTP 429 or 5xx, or no CDX 
 
 ## 7. Weights
 
-Placeholder until Phase 6. Every Phase 3 signal carries `weight_hint: 1` (Phase 5 repair signals too); regulator rulings carry the hint of Section 9.6, already read from `config/weights.json`; the points per kind, the axis weights (claims 25%, evidence 25%, track record 30%, ownership & repair 20%), caps and confidence rules will live in one file, `config/weights.json`, and this section will be generated from it and checked by `tests/unit/score/methodology-sync.test.ts`.
+Generated from `config/weights.json` (version 1) by `weightsMarkdown()` in `src/lib/score/methodology.ts`; `tests/unit/score/methodology-sync.test.ts` fails if this section and the file differ. The /methodology page renders the same tables from the same file.
+
+### Axis weights
+
+| Axis | Weight | Cap |
+|---|---|---|
+| `claims` (Claim language) | 25% | 100 |
+| `evidence` (Evidence & certifications) | 25% | 100 |
+| `track` (Track record) | 30% | 100 |
+| `repair` (Ownership & repair) | 20% | 100 |
+
+### Points per signal kind
+
+| Axis | Kind | Points |
+|---|---|---|
+| `claims` | `claim.unsupported` | 1 |
+| `claims` | `claim.supported` | 0.25 |
+| `evidence` | `evidence.no_report_found` | 40 |
+| `evidence` | `evidence.stale_report` | 25 |
+| `evidence` | `evidence.report_found` | 0 |
+| `evidence` | `evidence.report_found_undated` | 0 |
+| `evidence` | `evidence.absolute_emissions_found` | 0 |
+| `evidence` | `evidence.supplier_list_found` | 0 |
+| `track` | `claim.removed` | 20 |
+| `track` | `regulator.ruling` | 25 |
+| `repair` | `repair.no_repair_info_found` | 50 |
+| `repair` | `repair.manual_found` | 0 |
+| `repair` | `repair.spare_parts_found` | 0 |
+| `repair` | `repair.program_found` | 0 |
+| `repair` | `repair.warranty_found` | 0 |
+| `repair` | `repair.ifixit_devices` | 0 |
+| `repair` | `repair.ifixit_guides` | 0 |
+| `repair` | `repair.ifixit_score` | 0 |
+
+### Other parameters
+
+| Parameter | Value |
+|---|---|
+| `claimsRate.perWords` | 1000 |
+| `claimsRate.minWords` | 1000 |
+| `claimsRate.subscorePerPointPer1000Words` | 15 |
+| `defaultWeightHint` | 1 |
+| `regulatorRuling.baseHint` | 1 |
+| `regulatorRuling.upheldMultiplier` | 2 |
+| `regulatorRuling.recentYears` | 3 |
+| `regulatorRuling.recentMultiplier` | 1.5 |
+| `llmGuard.maxShare` | 0.5 |
+| `labels.moderateFrom` | 25 |
+| `labels.highFrom` | 50 |
+| `confidence.axisSteps.claims` | claims |
+| `confidence.axisSteps.evidence` | evidence |
+| `confidence.axisSteps.track` | wayback, asa-uk, jdp-fr |
+| `confidence.axisSteps.repair` | repair |
+| `confidence.timelineCountsAsData` | track |
 
 ## 8. Known limits of these rules
 
@@ -172,7 +225,7 @@ Differentiator C (ADR-003). Deterministic; no LLM (`llm_used: false`). Code: `sr
    - **scored**: one of the advertiser's names equals the brand (spacing ignored: "TOTAL ENERGIES" ≡ "TotalEnergies"). Example: "Shell" and "Shell UK Ltd t/a Shell".
    - **possible**: the brand is a whole word of the title or advertiser, but another word is part of the name: "Shell Energy UK", "Patagonia Provisions Ltd", "Acme Widgets". Shown under "What we could not check" with the entity verbatim; never a signal, never scored.
    - **none**: not even a whole word ("Pata" in "Patagonia").
-6. **Signal.** Kind `regulator.ruling`, label "Ruling found naming <entity verbatim> (<regulator>, <country>, <date>); outcome as published: <words>", `entity_name` = the advertiser verbatim, receipt = the ruling page. `weight_hint` = `baseHint` × `upheldMultiplier` when upheld × `recentMultiplier` when the ruling is dated within `recentYears` of the run (values in `config/weights.json`; Phase 6 turns hints into points).
+6. **Signal.** Kind `regulator.ruling`, label "Ruling found naming <entity verbatim> (<regulator>, <country>, <date>); outcome as published: <words>", `entity_name` = the advertiser verbatim, receipt = the ruling page. `weight_hint` = `baseHint` × `upheldMultiplier` when upheld × `recentMultiplier` when the ruling is dated within `recentYears` of the run (values in `config/weights.json`). The ruling's points are the `regulator.ruling` points of Section 7 × this hint (Section 11).
 7. **Coverage.** Every report says that only the UK ASA and the French JDP were searched. A site that is unreachable, disallows the page in robots.txt or serves a page we cannot parse ends its step as `skipped: <reason>` (for example `skipped: ASA unreachable (HTTP 500)`); the other regulator still runs.
 
 ## 10. Ownership and repair (axis: ownership & repair)
@@ -188,3 +241,19 @@ Differentiator E. Deterministic; no LLM. Code: `src/lib/repair/`; parameters: `c
 3. **Nothing found.** If no rule matches on any fetched page of an applicable brand: one `repair.no_repair_info_found` risk signal; receipt = the first page; excerpt = every page scanned (title and URL).
 4. **iFixit.** The brand's device category is read from `https://www.ifixit.com/api/2.0/wikis/CATEGORY/<brand>` (iFixit's robots.txt allows `/api/2.0/wikis*` and disallows `/api/2.0/search`, so the search endpoint is not used; `docs/CHALLENGES.md` C-2). Its title must equal the brand's name after normalisation (Section 9.5), else nothing is attributed. Signals, all protective, receipt = the API response: `repair.ifixit_devices` (device categories listed, names in the excerpt), and for the last `maxDevices` (3) device categories listed: `repair.ifixit_guides` (guide count, first guide titles in the excerpt) and `repair.ifixit_score` when iFixit publishes a repairability score. No category ⇒ a "could not check" line; iFixit unreachable ⇒ a "could not check" line; the page rules still run.
 5. **Not covered in v1.** Anti-repair practices (serialised parts, warranty-void stickers, lawsuits) have no structured public source (`docs/LATER.md`).
+
+## 11. From signals to a score
+
+Code: `src/lib/score/` (`weights.ts` reads and validates `config/weights.json`, `scorer.ts`, `ai-share.ts`, `confidence.ts`, `report.ts`). Tests: `tests/unit/score/`. Every number used below is a parameter of Section 7, named here by its key; `tests/unit/score/no-magic-numbers.test.ts` fails if `scorer.ts`, `ai-share.ts` or `confidence.ts` contain a numeric literal other than 0, 1 or 100.
+
+1. **Receipts first.** A signal without a source URL, an ISO fetch date and a non-empty excerpt is rejected before scoring (in development the scorer throws; in production it drops and logs the signal). A rejected signal never appears in the report.
+2. **Points.** A signal is worth the points of its kind (Section 7, "Points per signal kind") × its `weight_hint`. The hint is `defaultWeightHint` for every rule-based signal except rulings (Section 9.6). A kind with no entry is worth 0. All points are 0 or more.
+3. **Risk points only.** A protective signal (a report, an emissions figure, a supplier list, a repair manual, spare parts, a repair service, a warranty, iFixit guides or score) is worth 0 points: it is listed with its receipt and it is data for confidence. Protective findings lower a sub-score by taking the place of the risk signal that is emitted when nothing is found (`evidence.report_found` instead of `evidence.no_report_found`; any repair finding instead of `repair.no_repair_info_found`). This keeps the brief's rule exact: removing any signal can never raise a score.
+4. **Sub-scores (0–100).** For the evidence, track and repair axes, the sum of the axis's points, capped at the axis cap. For the claims axis the input is a rate built from the run's ClaimStats (Section 4; a repeated sentence counts every time it occurs): unsupported matches × the `claim.unsupported` points + the other (supported) matches × the `claim.supported` points, per `claimsRate.perWords` visible words of the fetched pages (at least `claimsRate.minWords` words are counted, so a short page cannot inflate the rate), × `claimsRate.subscorePerPointPer1000Words`, capped. `claim.supported` is worth less than `claim.unsupported` (ADR-015). Claim signals produced with an LLM (Phase 7) are not in ClaimStats; they are added to the rate by their own points and count as the axis's LLM part (item 10).
+5. **Weighted sum.** Score = Σ axis weight × sub-score, rounded. Example: sub-scores 40, 20, 80, 10 with the weights 25%, 25%, 30%, 20% ⇒ 10 + 5 + 24 + 2 = 41.
+6. **Not applicable.** When the repair axis is not applicable (Section 10.1), its weight is shared out among the other axes in proportion to their weights (each weight ÷ the sum of the applicable weights), and confidence is not lowered.
+7. **Missing data.** An axis with no signal contributes 0. Missing data never adds points; it lowers confidence instead.
+8. **Confidence (0–100).** The share of (effective) axis weight whose axis has data: at least one of its steps (`confidence.axisSteps`) finished `done`, not skipped, and the axis produced at least one receipted signal (for the axes in `confidence.timelineCountsAsData`, an archived snapshot read for the timeline also counts). Shown as "Score 62, confidence 40%".
+9. **Label.** "Low signals" below `labels.moderateFrom`, "Moderate signals" from `labels.moderateFrom`, "High signals" from `labels.highFrom`. With it: "Based on N verified signals from M sources.", where M is the number of distinct hosts of the signals' source URLs.
+10. **AI share and its guard (ADR-007).** Each signal records whether an LLM call produced it (`llm_used`). Per axis, the non-LLM sub-score is computed from the non-LLM signals alone; what the LLM signals add on top of it is the axis's LLM part. `ai_share` = weighted LLM points ÷ score. If LLM points would exceed `llmGuard.maxShare` of the score, they are scaled down until they are exactly that share (with 50%: equal to the non-LLM points); with no non-LLM points, LLM signals add nothing and `ai_share` is 0. Formally, score = min(Σ weight × sub-score, non-LLM points ÷ (1 − `llmGuard.maxShare`)). The config cannot set `maxShare` above the brief's 50% (schema check), and a property test over 1,000 random signal sets fails if `ai_share` ever exceeds 0.5. The report lists `llm_signal_ids`. In v1 up to Phase 6 no step uses an LLM, so `ai_share` is 0 on every report.
+11. **Report.** The result is stored as `ReportV1` (`src/lib/score/report.ts`, zod): brand, website, score, label, confidence, `ai_share`, `llm_signal_ids`, the four axes with weight, effective weight, status (`scored`, `missing`, `not_applicable`), sub-score and signals, the timeline, "What we could not check", the skipped steps, the generation time and the signal and source counts.

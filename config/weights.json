@@ -1,9 +1,72 @@
 {
-  "$comment": "Scoring weights. Phase 5 adds only the regulator-ruling hint (PLAN Phase 5 deliverable 4: higher for upheld and for a ruling dated within recentYears of the run). Phase 6 adds axis weights, per-kind points, caps, the LLM guard and confidence rules to this file; the scorer reads every number from here.",
+  "$comment": "Single source of every scoring number (brief Section 4, PLAN Phase 6). Read by src/lib/score/weights.ts (validated with zod) and rendered on /methodology and in docs/METHODOLOGY.md Section 7. Points are risk points: every value is >= 0, so removing a signal can never raise a score (missing data never increases the score). Protective kinds (a report, a manual, a warranty …) carry 0 points: they are listed with their receipt and count as data for confidence, and they are the alternative to the risk kind that would otherwise appear (report_found vs no_report_found, repair findings vs no_repair_info_found).",
+  "version": 1,
+  "axes": {
+    "claims": 0.25,
+    "evidence": 0.25,
+    "track": 0.3,
+    "repair": 0.2
+  },
+  "points": {
+    "claims": {
+      "claim.unsupported": 1,
+      "claim.supported": 0.25
+    },
+    "evidence": {
+      "evidence.no_report_found": 40,
+      "evidence.stale_report": 25,
+      "evidence.report_found": 0,
+      "evidence.report_found_undated": 0,
+      "evidence.absolute_emissions_found": 0,
+      "evidence.supplier_list_found": 0
+    },
+    "track": {
+      "claim.removed": 20,
+      "regulator.ruling": 25
+    },
+    "repair": {
+      "repair.no_repair_info_found": 50,
+      "repair.manual_found": 0,
+      "repair.spare_parts_found": 0,
+      "repair.program_found": 0,
+      "repair.warranty_found": 0,
+      "repair.ifixit_devices": 0,
+      "repair.ifixit_guides": 0,
+      "repair.ifixit_score": 0
+    }
+  },
+  "caps": {
+    "claims": 100,
+    "evidence": 100,
+    "track": 100,
+    "repair": 100
+  },
+  "claimsRate": {
+    "perWords": 1000,
+    "minWords": 1000,
+    "subscorePerPointPer1000Words": 15
+  },
+  "defaultWeightHint": 1,
   "regulatorRuling": {
     "baseHint": 1,
     "upheldMultiplier": 2,
     "recentYears": 3,
     "recentMultiplier": 1.5
+  },
+  "llmGuard": {
+    "maxShare": 0.5
+  },
+  "labels": {
+    "moderateFrom": 25,
+    "highFrom": 50
+  },
+  "confidence": {
+    "axisSteps": {
+      "claims": ["claims"],
+      "evidence": ["evidence"],
+      "track": ["wayback", "asa-uk", "jdp-fr"],
+      "repair": ["repair"]
+    },
+    "timelineCountsAsData": ["track"]
   }
 }

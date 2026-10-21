@@ -222,3 +222,57 @@ ul.timeline-removed {
   padding-left: 1.25rem;
   margin: 0.25rem 0 0.5rem;
 }
+
+.site-header {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  color: var(--fg);
+}
+
+.table-wrap {
+  overflow-x: auto;
+  margin: 0.75rem 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.95rem;
+}
+
+th,
+td {
+  border: 1px solid var(--border);
+  padding: 0.35rem 0.5rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+thead th {
+  background: var(--card);
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  overflow-wrap: anywhere;
+}
+
+pre {
+  background: var(--card);
+  padding: 0.75rem;
+  overflow-x: auto;
+}
+
+.md-nested {
+  margin-left: 1.25rem;
+}
+
+.score-line {
+  font-size: 1.25rem;
+}

@@ -3,6 +3,7 @@
 // so the brand is looked up through the device-category endpoint
 // /api/2.0/wikis/CATEGORY/<name> instead of /api/2.0/search (docs/CHALLENGES.md C-2).
 // Every request goes through the robots-guarded fetcher.
+import { WEIGHTS } from "../score/weights";
 import { createHash } from "node:crypto";
 import config from "../../../config/repair.json";
 import { couldNotCheck, reasons, signalLabels, steps } from "../copy/wording";
@@ -39,7 +40,8 @@ export interface IfixitResult {
 }
 
 const hash = (s: string) => createHash("sha1").update(s).digest("hex").slice(0, 12);
-const REPAIR_WEIGHT_HINT = 1;
+/** Neutral multiplier; the points of each repair kind live in config/weights.json (read by the scorer). */
+const REPAIR_WEIGHT_HINT = WEIGHTS.defaultWeightHint;
 
 function signal(kind: string, label: string, url: string, fetchedAt: string, excerpt: string): Signal {
   return { id: `repair-${kind.replace(/^repair\./, "")}-${hash(`${url} ${excerpt}`)}`, axis: "repair", kind, label, weight_hint: REPAIR_WEIGHT_HINT, source_url: url, fetched_at: fetchedAt, excerpt, llm_used: false };

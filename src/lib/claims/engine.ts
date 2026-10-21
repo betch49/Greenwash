@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { WEIGHTS } from "../score/weights";
 import { claimFamilyNames, signalLabels } from "../copy/wording";
 import { countWords, type PageLink } from "../discover/visible-text";
 import type { Signal } from "../pipeline/signal";
@@ -53,11 +54,11 @@ export interface ScanResult {
 }
 
 /**
- * Neutral placeholder: every Phase 3 signal carries weight_hint 1. Points per
- * kind come from config/weights.json in the scorer (Phase 6); no rule decides
- * a score here.
+ * Neutral multiplier on a signal's points (`defaultWeightHint` in
+ * config/weights.json). Points per kind come from the same file, read by the
+ * scorer (Phase 6); no rule decides a score here.
  */
-export const DEFAULT_WEIGHT_HINT = 1;
+export const DEFAULT_WEIGHT_HINT = WEIGHTS.defaultWeightHint;
 
 const PER = 1000;
 const rate = (n: number, words: number) => (words > 0 ? (n * PER) / words : 0);

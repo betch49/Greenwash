@@ -33,7 +33,7 @@ export const ui = {
   analyseStart: "Start analysis",
   analyseNotStarted: "The analysis has not started yet.",
   analyseRunning: "Analysis in progress…",
-  analyseDone: "Page collection finished. Scoring arrives in a later build phase.",
+  analyseDone: "Analysis finished. The full report view arrives in a later build phase.",
   analyseFailed: "The analysis stopped because of an error. Steps that ran are listed below.",
   progressHeading: "Progress",
   pagesHeading: (n: number) => `Pages fetched (${n})`,
@@ -170,4 +170,32 @@ export const excerpts = {
   link: (text: string, href: string) => (text ? `“${text}” (${href})` : href),
   pagesScanned: (titles: string[]) => `Pages scanned: ${titles.join("; ")}`,
   pagesScannedWithUrls: (pages: { title: string; url: string }[]) => `Pages scanned: ${pages.map((p) => (p.title ? `${p.title} (${p.url})` : p.url)).join("; ")}`,
+};
+
+/** Score lines (PLAN Phase 6; brief Section 4). */
+export const scoreWording = {
+  label: { low: "Low signals", moderate: "Moderate signals", high: "High signals" } as const,
+  scoreLine: (score: number, confidence: number) => `Score ${score}, confidence ${confidence}%`,
+  basis: (signals: number, sources: number) => `Based on ${signals} verified signal${signals === 1 ? "" : "s"} from ${sources} source${sources === 1 ? "" : "s"}.`,
+  aiShare: (pct: number) => `AI contributed to ${pct}% of this score`,
+  scoreHeading: "Greenwashing risk signals score",
+  axisNames: { claims: "Claim language", evidence: "Evidence & certifications", track: "Track record", repair: "Ownership & repair" } as const,
+  axisStatus: { scored: "scored", missing: "no data (lowers confidence)", not_applicable: "not applicable (weight shared out)" } as const,
+  methodologyLink: "How the score is computed",
+};
+
+/** The /methodology page (numbers come from config/weights.json, the rest from docs/METHODOLOGY.md). */
+export const methodologyPage = {
+  title: "Methodology",
+  intro: "How Greenwash Radar turns receipted signals into a score. Every number on this page is read from the weights file the scorer uses.",
+  weightsHeading: "Axis weights",
+  axisColumn: "Axis",
+  weightColumn: "Weight",
+  capColumn: "Cap",
+  pointsHeading: "Points per signal kind",
+  kindColumn: "Signal kind",
+  pointsColumn: "Points",
+  protective: "0 (protective: listed, counts as data)",
+  rulesHeading: "Other parameters",
+  documentHeading: "Full methodology",
 };

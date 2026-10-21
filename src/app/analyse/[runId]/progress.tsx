@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { skippedReason, ui } from "@/lib/copy/wording";
+import Link from "next/link";
+import { scoreWording, skippedReason, ui } from "@/lib/copy/wording";
 import type { RunView } from "@/lib/pipeline/view";
 import { startRun, startRunForm } from "./actions";
 import { Timeline } from "./timeline";
@@ -86,6 +87,18 @@ export function Progress({ initial }: { initial: RunView }) {
               ))}
             </ul>
           )}
+        </section>
+      )}
+      {view.status === "done" && view.score && (
+        <section aria-labelledby="score-heading" data-testid="score">
+          <h2 id="score-heading">{scoreWording.scoreHeading}</h2>
+          <p className="score-line">
+            <strong data-testid="score-line">{scoreWording.scoreLine(view.score.score, view.score.confidence)}</strong> · <span data-testid="score-label">{view.score.label_text}</span>
+          </p>
+          <p className="muted">
+            <span data-testid="ai-share">{scoreWording.aiShare(view.score.ai_share_pct)}</span>. <span data-testid="score-basis">{view.score.basis}</span>{" "}
+            <Link href="/methodology">{scoreWording.methodologyLink}</Link>
+          </p>
         </section>
       )}
       {finished(view.status) && <Timeline entries={view.timeline ?? []} />}

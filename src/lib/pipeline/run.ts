@@ -1,6 +1,9 @@
 import type { ProgressEntry, Run, RunsRepo } from "../db/runs-repo";
 import type { RunPagesRepo } from "../db/run-pages-repo";
 import type { RunOutputsRepo } from "../db/run-outputs-repo";
+import type { ReportsRepo } from "../db/reports-repo";
+import { buildReport, type ReportV1 } from "../score/report";
+import type { StepStatus } from "../score/confidence";
 import type { FetchedPage } from "../discover/fetch-pages";
 import { DISCOVERY_CONFIG, type DiscoveryConfig } from "../discover/heuristics";
 import type { Fetcher } from "../fetch/fetcher";
@@ -27,6 +30,8 @@ export interface PipelineDeps {
   pages: RunPagesRepo;
   /** Stores the timeline and could-not-check lines (Phase 4); optional so step-level tests can omit it. */
   outputs?: RunOutputsRepo;
+  /** Stores the scored ReportV1 of a finished run (Phase 6); optional so step-level tests can omit it. */
+  reports?: ReportsRepo;
   /**
    * The cached (+ rate-limited) fetcher, or the fixture fetcher offline. Wrapped in the robots guard
    * for brand pages; used as is only for the Wayback API endpoints (ADR-010).
@@ -49,6 +54,11 @@ export interface PipelineOutcome {
   /** Possible regulator matches (shown, not scored; never in `signals`). */
   regulator_possible: PossibleMatch[];
   repair_axis?: "applicable" | "not_applicable";
+  /** Final status of each step by step id (the confidence rule reads it). */
+  step_status: Record<string, StepStatus>;
+  /** The scored report (done runs only). */
+  report?: ReportV1;
+  report_id?: string;
 }
 
 /** Every brand, regulator and repair page goes through this guard (ADR-010). */
@@ -97,6 +107,7 @@ export async function runPipeline(run: Pick<Run, "id" | "brand" | "website"> & {
   const progress: ProgressEntry[] = [];
   const signals: Signal[] = [];
   const could_not_check: string[] = [];
+  const step_status: Record<string, StepStatus> = {};
   const save = () => deps.runs.setProgress(run.id, progress);
   let robotsAdded = false;
   const addRobotsLines = () => {
@@ -118,29 +129,40 @@ export async function runPipeline(run: Pick<Run, "id" | "brand" | "website"> & {
         } else {
           entry.status = "done";
         }
+        step_status[step.id] = entry.status;
         progress.push(...(res.progress ?? []));
         signals.push(...withReceipts(res.signals));
         for (const line of res.could_not_check) if (!could_not_check.includes(line)) could_not_check.push(line);
       } catch (err) {
         entry.status = "skipped";
         entry.reason = messageOf(err);
+        step_status[step.id] = "skipped";
       }
       save();
     }
     deps.pages.replace(run.id, ctx.pages);
     addRobotsLines();
     deps.outputs?.replace(run.id, { timeline: ctx.timeline, could_not_check });
+    const base = { progress, signals, could_not_check, pages: ctx.pages, claim_stats: ctx.claimStats, timeline: ctx.timeline, diff_candidates: ctx.diffCandidates, regulator_possible: ctx.regulatorPossible, repair_axis: ctx.repairAxis, step_status };
+    const report = buildReport(run, base, ctx.now());
+    const report_id = deps.reports?.save(report);
     deps.runs.setStatus(run.id, "done");
-    return { status: "done", progress, signals, could_not_check, pages: ctx.pages, claim_stats: ctx.claimStats, timeline: ctx.timeline, diff_candidates: ctx.diffCandidates, regulator_possible: ctx.regulatorPossible, repair_axis: ctx.repairAxis };
+    return { status: "done", ...base, report, report_id };
   } catch (err) {
     addRobotsLines();
     progress.push({ step: steps.pipeline, status: "skipped", reason: messageOf(err) });
+    try {
+      // A failed run still shows what could not be checked (Phase 4 review carry-forward).
+      deps.outputs?.replace(run.id, { timeline: ctx.timeline, could_not_check });
+    } catch {
+      // The database itself failed; the progress write below reports it if it can.
+    }
     try {
       save();
       deps.runs.setStatus(run.id, "failed");
     } catch {
       // The database itself failed; nothing more can be recorded.
     }
-    return { status: "failed", progress, signals, could_not_check, pages: ctx.pages, claim_stats: ctx.claimStats, timeline: ctx.timeline, diff_candidates: ctx.diffCandidates, regulator_possible: ctx.regulatorPossible, repair_axis: ctx.repairAxis };
+    return { status: "failed", progress, signals, could_not_check, pages: ctx.pages, claim_stats: ctx.claimStats, timeline: ctx.timeline, diff_candidates: ctx.diffCandidates, regulator_possible: ctx.regulatorPossible, repair_axis: ctx.repairAxis, step_status };
   }
 }

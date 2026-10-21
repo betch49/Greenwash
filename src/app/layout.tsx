@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
-import { ui } from "@/lib/copy/wording";
+import { methodologyPage, ui } from "@/lib/copy/wording";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -22,6 +22,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Link href="/" className="brand-link">
             {ui.appName}
           </Link>
+          <nav className="site-nav" aria-label="Site">
+            <Link href="/methodology">{methodologyPage.title}</Link>
+          </nav>
         </header>
         <main id="main">{children}</main>
       </body>

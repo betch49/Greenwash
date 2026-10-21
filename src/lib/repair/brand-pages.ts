@@ -2,6 +2,7 @@
 // reads the page's visible text lines and every link text (navigation links
 // included: a footer "Spare parts" link to the brand's parts shop is the brand
 // offering parts). Deterministic; docs/METHODOLOGY.md Section 9 lists every rule.
+import { WEIGHTS } from "../score/weights";
 import { createHash } from "node:crypto";
 import { excerpts, signalLabels } from "../copy/wording";
 import { excerptOf } from "../claims/engine";
@@ -11,8 +12,8 @@ import type { Signal } from "../pipeline/signal";
 export const REPAIR_RULE_IDS = ["repair_manual", "spare_parts", "warranty_years", "repair_program"] as const;
 export type RepairRuleId = (typeof REPAIR_RULE_IDS)[number];
 
-/** Placeholder hint until Phase 6 (per-kind points in config/weights.json decide what a repair signal is worth). */
-const REPAIR_WEIGHT_HINT = 1;
+/** Neutral multiplier; the points of each repair kind live in config/weights.json (read by the scorer). */
+const REPAIR_WEIGHT_HINT = WEIGHTS.defaultWeightHint;
 
 const NUMBER_WORDS: Record<string, number> = {
   one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, fifteen: 15, twenty: 20, "twenty-five": 25, thirty: 30,

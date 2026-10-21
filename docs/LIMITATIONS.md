@@ -32,3 +32,10 @@ Started in Phase 4; completed in Phase 9 (PLAN Phase 9 deliverable 2). Each entr
 - Brand-page rules are English phrase lists on the fetched pages only. A warranty described differently ("two years of cover"), or only in a PDF, is not seen. A "guarantee" is counted as a warranty.
 - Food, drink and other consumables (by Wikidata industry) are "not applicable"; a brand with no industry on Wikidata is treated as durable, so a food brand without that property would get a `repair.no_repair_info_found` signal.
 - Anti-repair practices are not checked (`docs/LATER.md`).
+
+## Score and confidence (Phase 6)
+
+- Points are risk points only (`docs/CHALLENGES.md` C-4): a protective finding (report, emissions figure, supplier list, manual, parts, warranty, iFixit) earns 0 points and lowers a sub-score only by replacing the risk signal that would otherwise appear. An absolute emissions figure or a supplier list therefore does not move the score; it is listed and counts as data for confidence.
+- Confidence is per axis and binary: an axis counts in full once one of its steps finished and it produced a signal (or, for track record, an archived snapshot). A track record built from regulator searches with no ruling and no archived history counts as missing (Mammut and Fairphone offline: confidence 70%), and a track record with a ruling but an unreachable Wayback Machine counts in full.
+- The claims axis is a rate over all fetched visible words. A brand whose site has many pages without claims gets a lower claims sub-score than one with a single sustainability page carrying the same sentences.
+- The numbers in `config/weights.json` (points, caps, label thresholds, the claims-rate multiplier) are design choices, not calibrated against an external dataset; they are all shown on /methodology.
