@@ -285,3 +285,193 @@ Differentiators (ADR-002): **A** claim retraction (Wayback), **C** regulator rul
 - Max 3 rework rounds per phase; max 2 re-plans in the run. On overflow the director cuts scope in this file and logs an ADR.
 - Pre-authorised scope cuts if a phase runs out of budget, in this order: Phase 5 JDP adapter (keep ASA; log), Phase 8 Lighthouse (axe fallback), Phase 7 summary (show "Summary unavailable"), Phase 2 sitemap parsing (heuristic paths only). F, A, C-ASA, E-iFixit, scorer and the `ai_share` guard are never cut.
 - No new dependencies that need accounts or paid services. No network in tests.
+
+---
+
+# v1.1 — Trusted external sources and validation (Phases 10–15)
+
+Written by the director 2026-10-21 after v1 merged (PR #1, `docs/FINAL-REVIEW.md`). Source triage, probes and licence notes are in `docs/SOURCES.md`; decisions in ADR-024 to ADR-031. Native `director`/`builder` agents are loaded for this run (ADR-024). Hard-limit counters restart for v1.1: max 3 rework rounds per phase, max 2 re-plans.
+
+## v1.1 conventions (in addition to the v1 conventions above)
+
+- **Order is binding:** Phase 10 (validation harness) before any new source; Phase 14 (claims formula) only after Phases 10–13, so the change is measured on the same harness before and after.
+- **Ground-truth isolation.** `fixtures/validation/ground-truth.json` is read only by `src/lib/validation/*`, `scripts/validate.ts` and tests. Nothing under `src/lib/pipeline`, `src/lib/score`, `src/lib/regulators`, `src/lib/repair`, `src/lib/registries` or `src/app` may import `src/lib/validation` or read the file (criterion 10.4). `docs/METHODOLOGY.md` gains a section saying labels are evaluation-only.
+- **New signals are deterministic.** Every signal from Phases 11–13 has `llm_used: false`; the 50% guard (6.3, 7.6) stays green with no change. New kinds and points live only in `config/weights.json` (version bumped to 2 in Phase 11; METHODOLOGY sync test 6.8 updated with it). `confidence.axisSteps` gains the new step ids.
+- **Fixtures (ADR-011 unchanged):** real recorded responses (dataset rows, export rows, document pages) for real brands, saved by a recorder script with capture date; synthetic cases only for the fictional `.example` brands. New fixture roots: `fixtures/sources/sbti/`, `fixtures/sources/fr-repair/`, `fixtures/sources/sabin/`, `fixtures/validation/`.
+- **Wording (ADR-008):** every new label is a template in `src/lib/copy/wording.ts`; the forbidden-word tests (3.6, 8.8) run unchanged. A litigation case is never called a ruling; an SBTi removal is "commitment removed (as published by SBTi)", not a verdict about the brand.
+- **Layout additions:**
+  ```
+  src/lib/validation/       ground-truth.ts (zod schema + loader), stats.ts (AUC, mean difference), harness.ts (run per brand, collect), report.ts (RESULTS.md + JSON)
+  src/lib/registries/       sbti.ts (xlsx reader + lookup), fr-repair.ts (data.gouv.fr API + CSV), sabin.ts (document-page parser + discovery)
+  src/lib/pipeline/steps/   sbti.ts, fr-repair.ts, sabin.ts
+  scripts/validate.ts       npm run validate
+  scripts/record-registries.ts  npm run record:registries (SBTi export, FR datasets, Sabin pages for the fixture brands)
+  docs/validation/          RESULTS.md (latest) + results-<YYYY-MM-DD>-<mode>.json (committed), one file per run
+  ```
+- **Every phase:** `npm run lint && npm run typecheck && npm test && npm run test:e2e` green offline; commit `phase <n>: <title>`; push; `docs/phases/<n>.md`.
+
+---
+
+## Phase 10 — Validation set and harness
+
+**Deliverables**
+1. `fixtures/validation/ground-truth.json` per the schema and rules in `docs/SOURCES.md` ("how an entry is made"): target 20 `flagged` and 20 `well_rated` (minimum 15 each), `contested` entries allowed, every citation with `url`, `date`, `why`, `verified_from_container`. Citations recorded by fetching (the recorder stores the cited page under `fixtures/validation/citations/<slug>-<n>.html` with the capture date; NewClimate and B Corp citations may be `verified_from_container: false`).
+2. `src/lib/validation/ground-truth.ts` (zod schema, loader, `label_use === "evaluation_only"` asserted), `stats.ts` (Mann–Whitney AUC with tie handling, mean and median difference, per-axis AUC, Spearman rank correlation between `words_scanned` and score and between claim-sentence count and score: the "saying less scores better" diagnostic), `harness.ts` (runs the pipeline for one brand through the existing `startRun` path with injected services; collects `ReportV1`, step statuses, skipped reasons), `report.ts` (writes `docs/validation/results-<date>-<mode>.json` and regenerates `docs/validation/RESULTS.md`).
+3. `scripts/validate.ts` → `npm run validate -- [--mode offline|live] [--brands a,b] [--out docs/validation]`. Offline mode uses `GR_OFFLINE_FIXTURES=1` services and runs only the ground-truth brands that have a fixture; live mode runs every brand through the live services with the v1 rate limits and caches, continues past failures, and records per-brand coverage (steps done / skipped and why). Both modes label the results file with `mode`, `n_flagged`, `n_well_rated`, `n_ran`, `n_failed`, commit hash, `weights.version`, and the sentence "Partial run: N of M brands produced a report" when applicable.
+4. Offline fixture subset: real captures (`npm run record:brand`, `record:sources`) for at least 2 `flagged` and 2 `well_rated` ground-truth brands in addition to the v1 fixture brands (Oatly already qualifies as flagged via its recorded ASA ruling). The fictional brands are never in the ground truth.
+5. A live run from the build container, recorded as `docs/validation/results-<date>-live.json` and summarised in `RESULTS.md`, honestly labelled partial where Wayback or a brand site was unreachable. If the live run cannot produce at least 5 reports per group, `RESULTS.md` says so and the offline result stands as the only separation figure.
+6. `docs/METHODOLOGY.md` Section 13 "Validation (evaluation only)": what the ground truth is, that labels never enter the score, what "well-rated" means (no credible flag found + two positive markers; weak by construction), how AUC is computed, and where results live.
+
+**Acceptance criteria and proofs**
+
+| # | Criterion | Test |
+|---|---|---|
+| 10.1 | `ground-truth.json` parses; every entry has ≥ 1 citation with `url` (http), `date` (ISO), non-empty `why`; `flagged` ≥ 15 and `well_rated` ≥ 15; no slug appears twice; no `.example` brand; `verified_from_container: false` only on `newclimate` or `bcorp` citations. | `tests/unit/validation/ground-truth.test.ts`. |
+| 10.2 | `auc()` on hand cases: perfect separation ⇒ 1.0; reversed ⇒ 0.0; identical scores ⇒ 0.5; ties handled (half credit); `meanDifference`, `spearman` on documented inputs. | `tests/unit/validation/stats.test.ts`. |
+| 10.3 | Offline harness runs end to end on the fixture subset (no network), writes a results JSON that parses against the results schema, and `RESULTS.md` contains the AUC line, the n per group, the coverage table and the partial-run sentence when n < entries. | `tests/unit/validation/harness.test.ts` (temp output dir). |
+| 10.4 | Isolation: no file under `src/` other than `src/lib/validation/**` imports `validation/ground-truth` or reads `fixtures/validation`; `src/lib/validation/**` is imported only from `scripts/validate.ts` and `tests/**` (import-graph scan). | `tests/unit/validation/isolation.test.ts`. |
+| 10.5 | A brand whose run throws is recorded as `failed` with the reason and the harness continues; the summary counts it in `n_failed`, never in the AUC sample. | `tests/unit/validation/harness.test.ts`, second case with a throwing fetcher. |
+| 10.6 | `RESULTS.md` reports the leakage line: how many `flagged` entries are flagged **only** by sources the pipeline itself queries (ASA, JDP, and from Phase 11–13 SBTi, Sabin), so the reader can discount that overlap. | `tests/unit/validation/report.test.ts` (string present, number equals a hand-computed value on a 4-entry fixture). |
+| 10.7 | `npm run validate -- --mode offline` exits 0 in CI and commits nothing outside `docs/validation/`. | director runs it; `docs/validation/results-<date>-offline.json` exists in the phase commit. |
+| 10.8 | METHODOLOGY Section 13 exists and contains the sentence "Ground-truth labels are used for evaluation only and never enter the score." | `tests/unit/docs/methodology-validation.test.ts`. |
+
+---
+
+## Phase 11 — SBTi commitment status (track-record axis)
+
+**Deliverables**
+1. `src/lib/registries/sbti.ts`: downloads `https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx` through `CachedFetcher` (TTL `config/registries.json` `sbti.ttlHours`, default 168; binary bodies supported by the fetcher and the cache), parses with `exceljs` (new dependency, MIT; ADR-026) into rows `{ company_name, isin, lei, location, sector, near_term_status, near_term_target_year, net_zero_status, net_zero_year, status_reason, date_updated (ISO from the Excel serial), full_target_language }`; `lookup(brand, rows)` using the ADR-019 normalisation: **scored** only when `company_name` equals the brand after normalisation (legal suffixes, qualifiers); whole-word ⇒ `possible` (could-not-check, entity verbatim). Also matches when the Wikidata entity's ISIN (P946) or LEI (P1278) equals the row's, if present.
+2. Signals (`llm_used: false`, receipt = export URL, fetch date, excerpt = the row's name, both statuses, `status_reason`, `date_updated`, plus the attribution line of SOURCES.md): `sbti.commitment_removed` when either status is "Commitment Removed" and `status_reason` is not in `config/registries.json` `sbti.neutralReasons` (`["Target set at parent company level", "Company change"]`, which yield `sbti.status_note`, 0 points, listed); `sbti.targets_validated` (0 points) when near-term is "Validated Targets"; `sbti.commitment_pending` (0 points) for "Commitment to Set Targets". `weight_hint`: removal within `recentYears` (reuse `regulatorRuling.recentYears`) × `recentMultiplier`; an "Expired commitment" reason × `sbti.expiredMultiplier` (default 1; the director sets the value in the review, not the builder).
+3. `config/weights.json` version 2: `track["sbti.commitment_removed"]` (director's value: 15), `sbti.targets_validated: 0`, `sbti.commitment_pending: 0`, `sbti.status_note: 0`; `confidence.axisSteps.track` gains `"sbti"`. METHODOLOGY Section 7 and 9b updated; test 6.8 green.
+4. Step `sbti` ("Checking SBTi target status") with `skipped: SBTi export unreachable (<status>)` and `skipped: SBTi export could not be parsed` paths; never partial silence; the step runs after the regulator steps.
+5. `scripts/record-registries.ts` (`npm run record:registries -- sbti`): saves the export as `fixtures/sources/sbti/companies-<date>.xlsx` **trimmed to the rows of the fixture and ground-truth brands plus 50 random rows** (the full 2.3 MB file is not committed; the trimming script records the full file's `last-modified`, row count and sha256 in `fixtures/sources/sbti/README.md`). Offline mode serves the trimmed file.
+6. Report UI: the signal renders in the track axis like a ruling, with the attribution line; `possible` matches under "What we could not check".
+
+**Acceptance criteria and proofs**
+
+| # | Criterion | Test |
+|---|---|---|
+| 11.1 | The recorded export parses into rows with the 12 listed fields; `date_updated` converts from the Excel serial to an ISO date; a row count equal to the README's trimmed count. | `tests/unit/registries/sbti-parse.test.ts`. |
+| 11.2 | Lookup: a fixture brand with "Commitment Removed" ⇒ exactly one `sbti.commitment_removed` with receipt and `entity_name` verbatim; a brand with "Validated Targets" ⇒ `sbti.targets_validated` with 0 points in the scorer; "Target set at parent company level" ⇒ `sbti.status_note`, 0 points; a whole-word-only name ⇒ `possible`, not a signal; ISIN match scores even when the name differs. | `tests/unit/registries/sbti-lookup.test.ts`. |
+| 11.3 | Export unreachable (5xx / throw) ⇒ `skipped: SBTi export unreachable (…)`; a corrupt xlsx ⇒ `skipped: SBTi export could not be parsed`; the next step runs. | `tests/unit/pipeline/sbti-skip.test.ts`. |
+| 11.4 | Points come only from `config/weights.json`; `scorer.ts` still has no numeric literals (6.5); removing the SBTi signal never raises the score (6.2 re-run); `ai_share` unchanged (7.6). | existing 6.2, 6.5, 7.6 plus `tests/unit/score/weights-v2.test.ts` (new kinds present, version 2). |
+| 11.5 | Receipt excerpt contains the attribution line and the `status_reason`; forbidden-word test green on the new wording. | `tests/unit/registries/sbti-wording.test.ts` + 3.6. |
+| 11.6 | Binary bodies round-trip through `CachedFetcher` (second fetch served from SQLite, bytes identical). | `tests/unit/fetch/cached-binary.test.ts`. |
+| 11.7 | E2E: `/analyse` shows "Checking SBTi target status" ending in done or skipped; the fixture brand's report shows the SBTi signal row with a link to the export URL. | extend `tests/e2e/analyse-progress.spec.ts`, `tests/e2e/receipts.spec.ts`. |
+| 11.8 | Validation before/after: `npm run validate -- --mode offline` re-run; `RESULTS.md` keeps the Phase 10 figure and adds the Phase 11 figure. | director compares the two committed results files. |
+
+---
+
+## Phase 12 — French repairability index (repair axis)
+
+**Deliverables**
+1. `src/lib/registries/fr-repair.ts`: `GET https://www.data.gouv.fr/api/1/datasets/?q=indice%20de%20reparabilite&page_size=100` (+ pages), cached (TTL `frRepair.ttlHours`), `Retry-After`/backoff for the resets seen from this egress (v1 retry policy); candidate datasets = those whose `organization.name` (or owner) equals the brand after normalisation **or** whose title contains the brand as a whole word (then verified by the CSV rows' `nom_metteur_sur_le_marche`). For each candidate: licence gate (`config/repair.json` `frIndex.openLicences`, see SOURCES.md); open ⇒ fetch the newest CSV resource (`static.data.gouv.fr`, cached), parse with the Etalab schema field names (`;` or `,` delimiter detection, UTF-8 with/without BOM), keep the newest `date_calcul` row per `id_modele`; not open ⇒ could-not-check line with the dataset URL and licence id, no excerpt.
+2. Signals (`llm_used: false`, receipt = CSV resource URL, fetch date, excerpt = `nom_modele`, `categorie_produit`, `note_ir`, `date_calcul`, licence id, dataset page URL): `repair.fr_index_found` (0 points; excerpt lists up to 5 models with their scores) when rows match; `repair.fr_index_low` (risk points) when the mean `note_ir` of the kept rows is below `frIndex.lowThreshold` (director's value: 5.0, the index is 0–10). Both replace `repair.no_repair_info_found` (ADR-020). Non-durable brands: axis stays not applicable, the step is skipped with the existing reason.
+3. `config/weights.json`: `repair["repair.fr_index_found"]: 0`, `repair["repair.fr_index_low"]` (director's value: 30); `confidence.axisSteps.repair` gains `"fr-repair"`. `config/repair.json` gains `frIndex: { apiUrl, pageSize, maxPages, ttlHours, openLicences, lowThreshold, maxModelsInExcerpt }`.
+4. Step `fr-repair` ("Checking the French repairability index") with `skipped: data.gouv.fr unreachable (<cause>)`, `skipped: repairability dataset could not be parsed (<url>)`.
+5. Recorder: `npm run record:registries -- fr-repair` saves the API pages and the CSVs for the fixture and ground-truth brands under `fixtures/sources/fr-repair/` with a manifest. Fairphone (Licence Ouverte 2.0, `note_ir` 9.3) is the open-licence case; a `notspecified` dataset of another real brand is the gated case.
+6. METHODOLOGY Section 10 gains the index (what it is, the licence gate, the threshold, the mandatory-disclosure basis) and LIMITATIONS the coverage note (French market only; most datasets carry no licence and are therefore only pointed to).
+
+**Acceptance criteria and proofs**
+
+| # | Criterion | Test |
+|---|---|---|
+| 12.1 | API fixture pages parse into datasets with slug, organisation, licence, resources; pagination follows `next_page` up to `maxPages`. | `tests/unit/registries/fr-repair-api.test.ts`. |
+| 12.2 | CSV parsing: Fairphone fixture ⇒ 5 rows, newest per `id_modele`, `note_ir` 9.3, `date_calcul` 2025-06-25; a `;`-delimited and a BOM-prefixed variant parse identically. | `tests/unit/registries/fr-repair-csv.test.ts`. |
+| 12.3 | Licence gate: lov2 dataset ⇒ `repair.fr_index_found` with receipt; `notspecified` dataset ⇒ no signal, one could-not-check entry containing the dataset URL and "licence not specified"; the CSV of a gated dataset is never fetched (fetcher call log). | `tests/unit/registries/fr-repair-gate.test.ts`. |
+| 12.4 | Threshold: a synthetic fictional-brand CSV (`.example`) with mean 3.2 ⇒ `repair.fr_index_low`; mean 5.0 ⇒ `fr_index_found` only; the threshold value is read from config (test changes it and observes). | `tests/unit/registries/fr-repair-threshold.test.ts`. |
+| 12.5 | Matching: organisation "ELECTROLUX FRANCE" vs brand "Electrolux" ⇒ scored (qualifier "france" stripped by ADR-019 lists); "Robert Bosch France SAS" vs "Bosch" ⇒ `possible`, not scored; "Fairphone" vs "Fairphone" ⇒ scored. | `tests/unit/registries/fr-repair-match.test.ts`. |
+| 12.6 | Connection reset on the API ⇒ retried per the v1 policy, then `skipped: data.gouv.fr unreachable (…)`; the repair step still runs. | `tests/unit/pipeline/fr-repair-skip.test.ts`. |
+| 12.7 | Fairphone fixture report: repair axis lists `repair.fr_index_found` with the data.gouv.fr receipt; Oatly (food) ⇒ step skipped as not applicable; 6.2 / 6.5 / 7.6 green. | `tests/unit/repair/fixtures.test.ts` extended; existing score tests. |
+| 12.8 | E2E: progress step shown; receipt row links to `static.data.gouv.fr` or `www.data.gouv.fr`. | extend `tests/e2e/analyse-progress.spec.ts`, `tests/e2e/receipts.spec.ts`. |
+| 12.9 | Validation re-run (offline) committed; RESULTS.md adds the Phase 12 figure. | director compares. |
+
+---
+
+## Phase 13 — Sabin Center climate litigation adapter (track-record axis)
+
+**Deliverables**
+1. `src/lib/registries/sabin.ts` implementing the Phase 5 `RegulatorAdapter` interface shape, under a distinct `CaseAdapter` type: `discover(brand, entity, fetcher) → CaseCandidate[]` and `fetchCase(url, fetcher) → Case { url, title, summary, filed_year, status, last_event, geographies, parties_from_title }`. Parsing reads the server-rendered `__NEXT_DATA__` of `/document/<slug>` (`family.title`, `summary`, `published_date`, `events`, `metadata`, `geographies`), never the private API, never `/_search` (ADR-028; a test pins that every requested URL is under `/document/` or `/geographies/`).
+2. Discovery = (a) the brand's country page `/geographies/<slug>` (slug from Wikidata P17 label via `config/registries.json` `sabin.countrySlugs`) and, when the brand's country is not the US, also `/geographies/united-states-of-america`; only the families server-rendered on those pages (4 each, as observed); (b) the recorded seed index `fixtures/sources/sabin/index.json` (`{ url, recorded_at, recorded_from }` entries saved by the recorder from pages the builder reached on the site); each entry is re-fetched live and matched on its parsed title, never trusted. Could-not-check always states the coverage: "litigation coverage: only the newest cases listed for <country> and a recorded index of <n> cases; the database's search is not available to automated clients".
+3. Matching: party names = the title split on " v. ", " v ", " vs ", " vs. ", " et al.", "," and " and "; **scored** only when a party equals the brand after the ADR-019 normalisation; whole-word ⇒ `possible`, shown with the title verbatim, never a signal; else none.
+4. Signals (`llm_used: false`, receipt = document URL, fetch date, excerpt = title + first 300 chars of the summary + status/last event as published, plus the attribution line): kind `litigation.case`; `weight_hint` from `config/weights.json` `litigation`: `statusMultipliers` keyed by a configurable keyword list over `status`/`last_event` (`dismissed|withdrawn|struck out` ⇒ 0; `pending|filed|ongoing` ⇒ 1; `decided|judgment` ⇒ 1; unknown ⇒ 1) and the `recentYears` multiplier. Points (director's value) `litigation.case: 10` — strictly below `regulator.ruling: 25` because a filed case is not a finding. Label template: "case found naming <party verbatim> (<status as published>, filed <year>) — a filed case is not a ruling".
+5. Step `sabin` ("Checking the climate litigation database") with `skipped: climatecasechart.com unreachable (<status>)`, `skipped: case page could not be parsed (<url>)`; runs after `jdp-fr`. `confidence.axisSteps.track` gains `"sabin"`.
+6. Recorder `npm run record:registries -- sabin`: geography pages for the fixture brands' countries and the US, plus the seed-index document pages (real captures with capture date), under `fixtures/sources/sabin/`. At least one real case page whose title names a real ground-truth brand exactly (candidate seen today: the TotalEnergies greenwashing case family on the France geography listing — verify on the document page) so criterion 13.3 is met by a real capture; the fictional brands cover the `possible`/dismissed paths with synthetic `.example` pages.
+7. METHODOLOGY Section 9c (litigation: what counts, wording, weight below rulings, coverage limit), LIMITATIONS (discovery limit, download-by-form not used, terms page unreadable from the container).
+
+**Acceptance criteria and proofs**
+
+| # | Criterion | Test |
+|---|---|---|
+| 13.1 | Document-page parser on the recorded page ⇒ non-empty `title`, `summary`, `filed_year`, `status` (or "unknown"), ≥ 1 geography. | `tests/unit/registries/sabin-parse.test.ts`. |
+| 13.2 | Geography-page parser ⇒ the 4 families with slug and title; the document URL is built as `/document/<family_slug>`. | `tests/unit/registries/sabin-geo.test.ts`. |
+| 13.3 | At least one real ground-truth brand yields a scored `litigation.case` with receipt, `entity_name` = the party verbatim, label containing "a filed case is not a ruling"; a `possible` title never enters `signals[]`. | `tests/unit/registries/sabin-fixtures.test.ts`. |
+| 13.4 | Status multipliers: "Dismissed" ⇒ `weight_hint` 0 (listed, 0 points); "Pending" ⇒ 1; keywords read from config. | `tests/unit/registries/sabin-weight.test.ts`. |
+| 13.5 | Every URL the adapter requests is under `/document/` or `/geographies/` on `www.climatecasechart.com`; `/_search` and `climatepolicyradar.org` are never requested (fetcher log). | `tests/unit/registries/sabin-urls.test.ts`. |
+| 13.6 | Site 5xx / throw ⇒ `skipped: climatecasechart.com unreachable (…)`; `sbti` and `repair` steps still run. | `tests/unit/pipeline/sabin-skip.test.ts`. |
+| 13.7 | Could-not-check always carries the coverage sentence; `litigation.case` points < `regulator.ruling` points pinned. | `tests/unit/score/weights-v2.test.ts` extended; `tests/unit/registries/sabin-fixtures.test.ts`. |
+| 13.8 | E2E: progress step and receipt row (link on `www.climatecasechart.com`); forbidden-word tests green with the new wording. | extend `tests/e2e/analyse-progress.spec.ts`, `tests/e2e/receipts.spec.ts`, 8.8. |
+| 13.9 | Validation re-run (offline, and live where the container reaches the sites) committed; RESULTS.md adds the Phase 13 figure. | director compares. |
+
+---
+
+## Phase 14 — Claims-axis formula: measure, then decide ("saying less scores better")
+
+**Context.** v1 scores the claims axis as risky-phrase density per 1,000 words (`claimsRate`), so a page with no environmental claims scores 0 and a page with many substantiated claims scores higher than one with few unsupported ones. Phase 10's Spearman diagnostic measures this. ADR-030 fixes the procedure: implement v2 behind a config switch, report the harness before and after, and the director chooses in the review.
+
+**Deliverables**
+1. `config/weights.json` `claimsRate.version: 1 | 2` and a `v2` block: `minClaims` (director's value: 5), `supportedWeight` (= `claim.supported` points / `claim.unsupported` points, i.e. 0.25, read from the points, not duplicated), `insufficientDataStatus: "insufficient_data"`.
+2. v2 formula in `scorer.ts` (no literals): let `m` = matched claim sentences (ClaimStats matches + LLM-only claim signals), `u` = unsupported, `s` = supported. If `m < minClaims` ⇒ claims axis status `insufficient_data`: contributes 0 to the score, lowers confidence like a skipped step, and adds the could-not-check line "fewer than <minClaims> environmental claim sentences were found on the fetched pages; the claim-language axis was not scored". Else `subscore = cap(100 × (u + supportedWeight × s) / m)`. Monotonicity (6.2) must still hold: removing a signal may only lower or keep the score — note that removing an unsupported signal lowers `u` and `m` together; the builder proves with the property test that the ratio never rises when a signal is removed **because the test removes signals and recomputes `m` from the remaining set** (document in the test why this holds: removing one unsupported hit lowers `u/m` or triggers `insufficient_data`; removing a supported hit lowers `(u + w s)/m` only if `w ≤ (u + w s)/m`, so the test must assert the implemented clamp: when `m` drops below `minClaims` the axis contributes 0). If the property fails for some input, the builder reports it in `docs/phases/14.md` with the counter-example and keeps v1 as default; the director rules.
+3. Both formulas reported: `npm run validate -- --mode offline` and the live subset with `claimsRate.version` 1 and 2 (env override `GR_CLAIMS_VERSION` for the harness only; the app reads the config). `RESULTS.md` gets a "Claims formula v1 vs v2" table: AUC overall, claims-axis AUC, the Spearman diagnostic, and the two regression cases below.
+4. Regression fixtures (fictional, `.example`): a "silent" brand (sustainability page with 0 claim sentences, 1,500 words) and a "talkative, substantiated" brand (20 claim sentences, 18 supported); v1 ranks silent < talkative; v2 must rank talkative ≤ silent or mark silent `insufficient_data`.
+5. METHODOLOGY Section 11 documents both formulas and which one is active; LIMITATIONS states the trade-off ("a brand that says nothing is not scored on this axis and its confidence is lower").
+
+**Acceptance criteria and proofs**
+
+| # | Criterion | Test |
+|---|---|---|
+| 14.1 | With `version: 2`, hand cases: `m=10, u=6, s=4` ⇒ `(6 + 0.25×4)/10 × 100 = 70`; `m=4` ⇒ `insufficient_data`, 0 contribution, confidence lower than with `m=5`; `m=20, u=0, s=20` ⇒ 25. | `tests/unit/score/claims-v2.test.ts`. |
+| 14.2 | Property (6.2) holds for v2 over 1,000 random signal sets, with `m` recomputed from the remaining signals. | `tests/unit/score/monotonic.test.ts` parametrised over versions. |
+| 14.3 | Regression fixtures: ordering as in deliverable 4 for v2; v1 ordering documented in the same test. | `tests/unit/score/claims-regression.test.ts`. |
+| 14.4 | `config/weights.json` is the only place the version and `minClaims` live; the methodology page renders the active version; 6.5 and 6.8 green. | existing tests + `tests/e2e/methodology.spec.ts` extended. |
+| 14.5 | `RESULTS.md` contains the v1-vs-v2 table with both AUC values and the Spearman diagnostic for both. | `tests/unit/validation/report.test.ts` extended; director reads the committed results files. |
+| 14.6 | Decision gate (director, in the review): v2 becomes the default only if overall AUC does not fall by more than 0.02 **and** the Spearman diagnostic moves toward 0 **and** 14.2 is green; otherwise v1 stays default and the ADR says why. The builder ships the config with `version: 1` and the director flips it (config only) when ruling PASS. | ADR-032 (to be written at the Phase 14 review). |
+
+---
+
+## Phase 15 — v1.1 docs sync and final review
+
+**Deliverables (builder)**
+1. `README.md`: new scripts (`validate`, `record:registries`), new env vars if any, the three new sources with their attribution and licence notes, how to add a registry adapter.
+2. `docs/LIMITATIONS.md`: v1.1 reachability facts (from SOURCES.md), the Sabin discovery limit, the data.gouv.fr licence gate, the SBTi snapshot nature (no history), the validation partial-run status, every new `skipped:` reason string (test 9.4 stays green).
+3. `docs/METHODOLOGY.md` sections 7, 9b, 9c, 10, 11, 13 consistent with `config/weights.json` v2 (6.8) and the rule registry (3.7).
+4. `docs/validation/RESULTS.md` final: Phase 10 baseline, after each source, and the formula comparison, with the leakage line and the partial-run sentences.
+
+**Deliverables (director)**
+5. `docs/FINAL-REVIEW-v1.1.md`: one row per Section 10 item re-verified on the final commit, plus one row per v1.1 goal (validation harness, SBTi, FR index, Sabin, claims formula decision), each with the command or test and the observed result; `ai_share` per fixture brand re-pinned.
+
+**Acceptance criteria and proofs**
+
+| # | Criterion | Test |
+|---|---|---|
+| 15.1 | Fresh clone: `npm ci && npm run build`; `npm run dev` serves `/` 200 within 30 s. | `scripts/smoke.sh` (director). |
+| 15.2 | `npm test`, `npm run test:e2e`, `npm run validate -- --mode offline` green with `GR_OFFLINE_FIXTURES=1`. | director runs all three. |
+| 15.3 | README commands run as written. | director executes each. |
+| 15.4 | LIMITATIONS lists every `reasons` template (9.4) including the v1.1 ones. | `tests/unit/docs/limitations-sync.test.ts`. |
+| 15.5 | `ai_share ≤ 0.5` on every fixture brand with the new signals present (all `llm_used: false`). | 6.3, 7.6. |
+
+## v1.1 Definition of Done mapping
+
+| Goal | Proved by |
+|---|---|
+| Ground truth with citations; harness; labels never feed the score | 10.1, 10.3, 10.4, 10.8 |
+| Separation reported, partial runs labelled honestly | 10.3, 10.6, 10.7, RESULTS.md |
+| SBTi removed-commitment signal with receipt and attribution | 11.2, 11.5, 11.7 |
+| French repairability index on the repair axis, licence-gated | 12.3, 12.4, 12.7 |
+| Sabin cases as signals-not-verdicts, conservative matching, robots-clean | 13.3, 13.4, 13.5, 13.7 |
+| Claims formula measured before and after; decision logged | 14.1–14.6, ADR-032 |
+| Brief Section 10 still met | Phase 15 |
+
+## v1.1 hard limits and pre-authorised cuts
+
+Max 3 rework rounds per phase, max 2 re-plans; counters restart at Phase 10. Pre-authorised cuts, in order, if a phase runs out of budget: Phase 13 seed index (keep the parser and the geography discovery); Phase 12 `possible`-match title search (keep organisation-name equality only); Phase 11 ISIN/LEI matching (keep name equality); Phase 10 live run (keep offline harness, state it); Phase 14 shipped with `version: 1` and the comparison table only. Never cut: ground-truth isolation (10.4), receipts, the licence gate (12.3), robots cleanliness (13.5), the 50% guard.

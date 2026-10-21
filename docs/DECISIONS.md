@@ -333,3 +333,119 @@ Separately, PLAN Phase 7 criterion 7.6 asked for `ai_share > 0` "for at least th
 5. (e) accepted as a documented limitation: the app renders no user-supplied CSS, the vulnerable code runs in the build toolchain, and a `next` 16 migration is a breaking change outside v1 scope. Logged in LATER.
 
 **Consequences.** Phase 9 passes with 0 rework rounds. FINAL-REVIEW lists the deferred item and the command that completes it. Totals for the run: rework rounds 3 (Phases 2, 3, 4, one each), re-plans 0 of 2.
+
+---
+
+# v1.1 decisions
+
+## ADR-024 — v1.1 run: native agents loaded, ADR-001 fallback ends; hard-limit counters restart
+
+**Date:** 2026-10-21
+**Status:** accepted; supersedes ADR-001 for this and later runs
+
+**Context.** v1 merged (PR #1). The session that starts v1.1 has the `director` and `builder` agent types loaded natively from `.claude/agents/`, so the ADR-001 fallback (built-in agent with pasted role content) no longer applies. The human asked for v1.1 ("trusted external greenwashing sources, implement everything") and will not answer questions.
+
+**Decision.** From this entry on, the orchestrator calls the native `director` (claude-fable-5-1, effort medium) and `builder` (claude-opus-5-5) agents; role boundaries unchanged (director writes only under `docs/`; builder never changes scope, weights or differentiators, and files `docs/CHALLENGES.md` to disagree). v1.1 is a new run under brief Section 0.4: counters restart (max 3 rework rounds per phase, max 2 re-plans). Phases 10–15 are appended to `docs/PLAN.md`; source triage lives in `docs/SOURCES.md`.
+
+**Consequences.** No product impact. `docs/FINAL-REVIEW-v1.1.md` (Phase 15) records the v1.1 counters.
+
+---
+
+## ADR-025 — Validation set first; ground-truth labels are evaluation-only and isolated from the score
+
+**Date:** 2026-10-21
+**Status:** accepted
+
+**Context.** The human asked for a ground-truth list of ~20 flagged and ~20 well-rated brands with a citation each, and a harness that reports whether scores separate the groups. The most important v1 weakness ("saying less scores better") can only be judged with such a harness. Risk: a label list in the repository could leak into the score (directly, or by tuning weights against it), which would turn an evidence-based score into a reputation lookup.
+
+**Decision.**
+1. Phase 10 ships before any new source. The harness (`npm run validate`) runs the real pipeline per brand and reports AUC (Mann–Whitney), mean/median difference, per-axis AUC and a Spearman diagnostic (score vs words scanned, score vs claim-sentence count). Offline mode runs the ground-truth brands that have fixtures in CI; live mode is run from the container where the network allows and committed as a dated results file, honestly labelled partial.
+2. `fixtures/validation/ground-truth.json` carries `label_use: "evaluation_only"`. It is read only by `src/lib/validation/**`, which is imported only by `scripts/validate.ts` and tests (criterion 10.4, import-graph test). METHODOLOGY says labels never enter the score. Weights are never fitted to the labels: any weight change in v1.1 is a director's value stated in PLAN before the measurement, and the harness result is reported, not optimised.
+3. "Well-rated" is defined as "no credible flag found after checking every flagged source, plus two positive markers" (SOURCES.md). It is a weak label and is documented as such. Brands with both a flag and strong positive markers go to `contested` and are excluded from the statistic.
+4. Overlap between ground-truth sources and pipeline sources (ASA, JDP, and later SBTi and Sabin) is allowed but measured: RESULTS.md reports how many flagged entries are flagged only by a source the pipeline queries (the leakage line, criterion 10.6).
+
+**Consequences.** Phases 11–13 each re-run the harness so the effect of each source is visible; Phase 14 uses it to decide the claims formula. The v1 fixture brands stay; Oatly already qualifies as flagged via its recorded ASA ruling. The fictional brands never enter the ground truth.
+
+---
+
+## ADR-026 — SBTi "Commitment Removed" is a scored track-record signal; targets set are protective (0 points); export parsed with `exceljs`
+
+**Date:** 2026-10-21
+**Status:** accepted
+
+**Context.** Probed today: the dashboard HTML is paginated (33 rows per htmx page), but `companies-excel.xlsx` is a public, complete export (15,816 rows, `last-modified` 2026-10-15) with explicit status fields and a `status_reason`. SBTi's terms allow storing and citing the data for non-commercial use with credit and a link. SBTi publishes no history, so a removed commitment is only visible while it is in the export. Reading `.xlsx` needs a parser; `exceljs` (MIT) is on the npm registry, no account.
+
+**Decision.** `sbti.commitment_removed` (track axis, director's points 15, below `regulator.ruling` 25 and below `claim.removed` 20: an expired commitment is weaker evidence than a removed claim or a ruling) when `near_term_status` or `net_zero_status` is "Commitment Removed", unless `status_reason` is "Target set at parent company level" or "Company change" (then `sbti.status_note`, 0 points, listed: those are not the brand walking back). "Validated Targets" ⇒ `sbti.targets_validated` (0 points, protective per ADR-020, listed and counted as data); "Commitment to Set Targets" ⇒ `sbti.commitment_pending` (0 points). Matching by the ADR-019 equality rule on `company_name`, plus ISIN/LEI equality with the Wikidata entity when available. Every SBTi receipt carries the attribution line of SOURCES.md. Recency uses the existing `regulatorRuling.recentYears`/`recentMultiplier`. The full export is cached in SQLite with a 168 h TTL and recorded as a trimmed fixture (rows of fixture and ground-truth brands plus 50 random rows; full-file hash in the fixture README) so the repository does not carry 2.3 MB per capture. `exceljs` is the one new dependency of v1.1.
+
+**Consequences.** `config/weights.json` becomes version 2 (Phase 11). METHODOLOGY 9b. LIMITATIONS: snapshot nature; a removal that SBTi later re-lists disappears from new reports but stays in stored ones with its fetch date.
+
+---
+
+## ADR-027 — French repairability index: scored on the repair axis only for openly licensed datasets; others are pointed to, never excerpted
+
+**Date:** 2026-10-21
+**Status:** accepted
+
+**Context.** data.gouv.fr's API is reachable with retries (intermittent resets from this egress). 125 datasets match "indice de réparabilité"; of the 45 inspected, 41 carry `license: notspecified`, 3 Licence Ouverte 2.0 (including Fairphone), 1 public domain. The index is a mandatory disclosure under French law, but a dataset page with no licence grants nothing explicit, and brief Section 1 requires that every excerpt we show be something we may show.
+
+**Decision.** Licence gate in `config/repair.json` (`frIndex.openLicences`: `lov2`, `etalab-2.0`, `other-open`, `other-pd`, `cc-by`, `odc-odbl`). Open ⇒ the newest CSV is fetched and the brand's rows (newest `date_calcul` per model) produce `repair.fr_index_found` (0 points, protective) or `repair.fr_index_low` (director's points 30; mean `note_ir` below 5.0 on the 0–10 scale) — both replace `repair.no_repair_info_found` (ADR-020). Not open ⇒ one "What we could not check" line with the dataset URL and "licence not specified", and the CSV is not fetched. Matching: organisation name or `nom_metteur_sur_le_marche` equals the brand after ADR-019 normalisation ("France", "SAS" etc. stripped by the existing lists). Non-durable brands: unchanged (not applicable).
+
+**Consequences.** Coverage is the French market and, in practice, a handful of publishers until more datasets carry a licence; LIMITATIONS says so. The threshold 5.0 is a director's value chosen before measurement (the index's own colour scale turns from orange to yellow between 4 and 6); Phase 12's validation re-run reports its effect, and changing it needs an ADR.
+
+---
+
+## ADR-028 — Sabin climate litigation: document-page adapter with narrow, honest discovery; no private API, no `/_search`, no download form; a filed case is not a ruling
+
+**Date:** 2026-10-21
+**Status:** accepted
+
+**Context.** climatecasechart.com is a Climate Policy Radar app. Observed: `/search?q=` renders results client-side from `app.climatepolicyradar.org/api/v1` using a token embedded in the page; `robots.txt` disallows `/_search`; geography pages server-render only the 4 newest families; document pages are fully server-rendered (`__NEXT_DATA__` with title, summary, dates, events, geographies); the full database is obtainable only by submitting a request form; the terms page is client-rendered and could not be read from the container; no open mirror exists. ADR-010 allows API use only for endpoints the brief itself mandates with published etiquette; using an app's embedded token is neither.
+
+**Decision.** The adapter reads only `/document/<slug>` and `/geographies/<slug>` pages on `www.climatecasechart.com` (test-pinned, criterion 13.5). Discovery is the brand's country page plus the US page (4 newest families each) and a recorded, dated seed index of document URLs that the adapter re-fetches and re-matches live (never trusted as a label). The could-not-check list always states this coverage limit. Matching is the ADR-019 equality rule on parties parsed from the title; whole-word ⇒ possible, never scored. Signal `litigation.case` (director's points 10, strictly below `regulator.ruling` 25) with status multipliers from config: dismissed/withdrawn ⇒ 0 (listed, 0 points); pending/filed/decided/unknown ⇒ 1. The label says "a filed case is not a ruling". Requesting API access or the database download needs a human and goes to `docs/LATER.md`.
+
+**Consequences.** Coverage is small and stated; the value of Phase 13 is a correct, receipted, status-aware case signal that grows the moment a sanctioned discovery path exists. Pre-authorised cut: the seed index (PLAN v1.1 hard limits).
+
+---
+
+## ADR-029 — Source triage for the remaining candidates
+
+**Date:** 2026-10-21
+**Status:** accepted
+
+**Context.** The orchestrator's research listed further sources; the director probed each (SOURCES.md table).
+
+**Decision.**
+- **Changing Markets / greenwash.com:** ground truth only. Reachable and server-rendered, but an advocacy publication is an opinion, not a receipt about what the brand said; the pipeline's receipts must stay primary (brand pages, archives, regulators, registries).
+- **NewClimate CCRM 2025:** ground truth only; 403 from the container, so citation-only with `verified_from_container: false`.
+- **InfluenceMap:** LATER. Lobbying alignment is a fifth claim type with no axis, its scores are analyst judgements, and no open licence was found.
+- **Fashion Transparency Index:** weak positive marker only; never a flag, never a signal (transparency is not truthfulness).
+- **Net Zero Tracker:** ground truth only (CC BY-NC 4.0); a signal only with written permission (LATER).
+- **Zero Greenwashing Alliance:** rejected (no structured data). **Truth in Advertising:** rejected as data; may support a citation's "why" when it links a primary action. **EU CPC 2021 sweep:** methodology support only (base rate, no brand names). **Good On You and commercial trackers:** rejected (opaque or paid). **B Corp:** unchanged (LATER; blocked).
+
+**Consequences.** Nothing in this list touches the score. SOURCES.md is the register; a new source needs a row there and an ADR before a builder touches it.
+
+---
+
+## ADR-030 — "Saying less scores better": implement a share-based claims formula behind a config switch, measure before and after, decide at the Phase 14 review
+
+**Date:** 2026-10-21
+**Status:** accepted (decision on adoption deferred to ADR-032 at the Phase 14 review)
+
+**Context.** The v1 claims axis is risky-phrase density per 1,000 words. A page with no environmental claims scores 0 on the axis ("Low signals" for silent brands) and a page with many substantiated claims can outscore one with a few unsupported claims. The brief's rule is "missing data never increases the score", which the density formula honours, but the inverse (silence rewarded) is a measurement blind spot. Changing a formula without a measurement would be guesswork.
+
+**Decision.** Phase 14, after the harness and the three sources: `claimsRate.version` in `config/weights.json`; v2 = share of unsupported claims among matched claim sentences (supported hits weighted by the existing points ratio), with an `insufficient_data` status when fewer than `minClaims` (director's value 5) claim sentences exist — the axis then contributes 0 and lowers confidence, with a could-not-check line. Both formulas are reported on the same harness (overall AUC, claims-axis AUC, Spearman diagnostic, two fictional regression fixtures). The builder ships `version: 1`; the director flips the config only if overall AUC does not fall by more than 0.02, the Spearman diagnostic moves toward 0, and the monotonicity property (6.2) holds for v2. The decision and the numbers are logged as ADR-032.
+
+**Consequences.** The claims axis remains deterministic and LLM-free; `ai_share` is unaffected. A silent brand under v2 gets a lower confidence and an explicit "not scored" line instead of a low score, which is the honest reading. METHODOLOGY Section 11 documents both formulas and the active one.
+
+---
+
+## ADR-031 — v1.1 phase sizing, fixture honesty for registries, and dependency policy
+
+**Date:** 2026-10-21
+**Status:** accepted
+
+**Context.** The human asked to "implement everything"; brief Section 0.4 caps rework and re-plans, and each phase must fit one builder session.
+
+**Decision.** Six phases (10 validation, 11 SBTi, 12 FR index, 13 Sabin, 14 claims formula, 15 docs and final review), each one session, ordered so that every source change is measured. Fixtures follow ADR-011: real recorded registry rows and pages for real brands (recorder script, capture date, trimmed where large, hashes recorded), synthetic cases only for `.example` brands. One new runtime dependency (`exceljs`, MIT); no dependency that needs an account or a key. Pre-authorised cuts are listed in PLAN.md ("v1.1 hard limits"); the ground-truth isolation test, receipts, the licence gate, robots cleanliness and the 50% guard are never cut.
+
+**Consequences.** If a phase exceeds 3 rework rounds, the director applies the listed cut and logs it; if two re-plans are used, remaining scope goes to `docs/LATER.md` with a HANDOFF note.
