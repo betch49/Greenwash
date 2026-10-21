@@ -236,7 +236,7 @@ export const reportWording = {
   aiAssisted: "AI-assisted",
   aiAssistedTitle: "An AI step proposed or classified this signal; the rule engine and the receipt decide it.",
   possibleHeading: "Possible matches (not scored)",
-  possibleIntro: "Regulator rulings naming an entity whose name contains the brand’s name but is not the brand’s name. They are listed for you to check and are not part of any axis.",
+  possibleIntro: "Regulator rulings and climate litigation cases naming an entity whose name contains the brand’s name but is not the brand’s name. They are listed for you to check and are not part of any axis.",
   skippedHeading: "Skipped steps",
   skippedNone: "No step was skipped.",
   llmCallsHeading: "AI calls in this report",
@@ -266,4 +266,29 @@ export const methodologyPage = {
   protective: "0 (protective: listed, counts as data)",
   rulesHeading: "Other parameters",
   documentHeading: "Full methodology",
+};
+
+/**
+ * Phase 13 (ADR-028): Sabin Center climate litigation wording. A case is never called
+ * a ruling: every case label says "a filed case is not a ruling".
+ */
+export const litigationWording = {
+  step: "Checking the climate litigation database",
+  fetchCase: (url: string) => `Fetching case page ${url}`,
+  unreachable: (cause: string) => `climatecasechart.com unreachable (${cause})`,
+  caseUnparsed: (url: string) => `case page could not be parsed (${url})`,
+  geographyUnparsed: (url: string) => `geography page could not be parsed (${url})`,
+  /** PLAN Phase 13 deliverable 4. Status and year are the database's own. */
+  caseFound: (party: string, status: string, year: number | null) =>
+    `Case found naming ${party} (${status}, filed ${year ?? "year not given"}) — a filed case is not a ruling`,
+  excerpt: (title: string, summary: string, status: string, lastEvent: string, url: string) =>
+    `${title}. ${summary} Status as published: ${status}; last event as published: ${lastEvent}. Source: Sabin Center for Climate Change Law, Climate Litigation Database, ${url}`,
+  /** Always in the could-not-check list (criterion 13.7). */
+  coverage: (countries: string, n: number) =>
+    `Climate litigation coverage: only the newest cases listed for ${countries} and a recorded index of ${n} case${n === 1 ? "" : "s"}; the database’s search is not available to automated clients, so other cases naming the brand were not checked.`,
+  noCountrySlug: (country: string) => `Climate litigation cases listed for ${country}: not checked (we know no country page of the database for it).`,
+  skipped: (reason: string) => `Climate litigation database: not checked (${reason}).`,
+  caseSkipped: (url: string, reason: string) => `${url}: case page not read (${reason}).`,
+  possible: (party: string, url: string) =>
+    `${POSSIBLE_MATCH_PREFIX} climate litigation case naming “${party}” (${url}); the party’s name is not the brand’s name, so we do not attribute it. A filed case is not a ruling.`,
 };

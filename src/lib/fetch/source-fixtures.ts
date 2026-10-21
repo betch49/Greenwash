@@ -14,6 +14,9 @@ export interface SourceManifest {
 
 export const SOURCES_DIR = "sources";
 
+/** Source directories with their own manifest.json (Phase 13: the Sabin litigation pages). */
+export const SUB_MANIFEST_DIRS = ["sabin"] as const;
+
 export interface SourceFixtures {
   map: FixtureMap;
   capturedAt: (url: string) => string | undefined;
@@ -27,6 +30,16 @@ export function loadSourceFixtures(root: string): SourceFixtures {
     for (const [url, entry] of Object.entries(manifest.files)) {
       const key = fixtureKey(url);
       if (key && !map.has(key)) map.set(key, { rel: `${SOURCES_DIR}/${entry.file}`, capturedAt: entry.capturedAt });
+    }
+  }
+  // v1.1 registries keep their own manifest (`fixtures/sources/<dir>/manifest.json`, paths relative to <dir>).
+  for (const dir of SUB_MANIFEST_DIRS) {
+    const sub = join(root, SOURCES_DIR, dir, "manifest.json");
+    if (!existsSync(sub)) continue;
+    const manifest = JSON.parse(readFileSync(sub, "utf8")) as SourceManifest;
+    for (const [url, entry] of Object.entries(manifest.files)) {
+      const key = fixtureKey(url);
+      if (key && !map.has(key)) map.set(key, { rel: `${SOURCES_DIR}/${dir}/${entry.file}`, capturedAt: entry.capturedAt });
     }
   }
   const lookup = (url: string) => {

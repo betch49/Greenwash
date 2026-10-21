@@ -51,6 +51,7 @@ describe("pipeline wiring", () => {
       // Phase 5: real recorded searches (no ruling for Fairphone) and the repair axis.
       ["Checking ASA (UK) rulings", "done"],
       ["Checking JDP (France) decisions", "done"],
+      ["Checking the climate litigation database", "done"],
       ["Checking repair information", "done"],
       ["Writing the plain-English summary (AI)", "skipped"],
     ]);

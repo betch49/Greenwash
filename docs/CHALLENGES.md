@@ -61,3 +61,11 @@
 **What I did.** The default model is `claude-sonnet-5-5` (`config/llm.json`, overridable with `GR_LLM_MODEL`). `temperature` (0) is sent only to models listed in `config/llm.json` `temperatureModels` (Haiku 4.5, Sonnet 4.6, Opus 4.6), so switching to one of them restores the brief's setting with no code change. Tool choice is automatic with `disable_parallel_tool_use`, the prompt names the tool, and the tool is `strict: true` with `additionalProperties: false`. Reproducibility comes from the strict schema, item-wise validation (invalid items dropped, invalid payloads rejected), the rule engine deciding every claim, and recorded fixtures for tests. Effort is `low`. Server-side refusal fallbacks are on (`fallbacks: "default"`), and a refusal that still comes back is shown as a skipped step.
 
 **Option for the director.** Pin a `temperatureModels` model as the default if exact temperature 0 matters more than using the current model.
+
+## C-13a (Phase 13) — "SE" is missing from the ADR-019 legal suffixes
+
+**Observation.** The real TotalEnergies case names "TotalEnergies SE" (Societas Europaea). `config/wikidata.json` `legalSuffixes` has no `se`, so the ADR-019 rule would make it a possible match only, and criterion 13.3 could not be met by the real capture the plan names. Adding `se` to that shared list changes the v1 JDP search query ("TotalEnergies SE" ⇒ "TotalEnergies"), which `tests/unit/regulators/jdp-fr.test.ts` pins.
+
+**What I did.** Kept `config/wikidata.json` unchanged and added `sabin.partyLegalSuffixes: ["se"]` in `config/registries.json`, stripped from the end of a party before the unchanged ADR-019 comparison (Sabin only).
+
+**Option for the director.** Add `se` to `legalSuffixes` globally (Phase 11's SBTi rows also carry "SE" names) and update the JDP search-URL pin, then drop `partyLegalSuffixes`.

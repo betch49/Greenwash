@@ -6,6 +6,7 @@ import { receiptProblem } from "@/lib/pipeline/signal";
 import { asaUk } from "@/lib/regulators/asa-uk";
 import { checkRegulator } from "@/lib/regulators/check";
 import { jdpFr } from "@/lib/regulators/jdp-fr";
+import { SUB_MANIFEST_DIRS } from "@/lib/fetch/source-fixtures";
 import { OfflineFetcher } from "../helpers/brands";
 import { SOURCES, sourceManifest } from "../helpers/sources";
 
@@ -82,6 +83,8 @@ describe("regulator fixtures (5.4)", () => {
     for (const f of filesUnder(SOURCES)) {
       const rel = relative(SOURCES, f);
       if (rel === "manifest.json" || rel === "README.md") continue;
+      // Directories with their own manifest have their own guard (Phase 13: tests/unit/registries/sabin-fixtures.test.ts).
+      if (SUB_MANIFEST_DIRS.some((d) => rel.startsWith(`${d}/`))) continue;
       expect(listed.has(rel), `${rel} is not in the manifest`).toBe(true);
     }
   });

@@ -18,6 +18,7 @@ import { fetchPagesStep } from "./steps/fetch-pages";
 import { waybackStep } from "./steps/wayback";
 import { asaStep, jdpStep } from "./steps/regulators";
 import { repairStep } from "./steps/repair";
+import { sabinStep } from "./steps/sabin";
 import { llmClassifyStep, llmExtractStep, summaryStep } from "./steps/llm";
 import type { LLMClient } from "../llm/client";
 import { ReportV1Schema } from "../score/report";
@@ -30,7 +31,7 @@ import type { PipelineContext, Step } from "./types";
  * LLM claim proposals + diff classification → evidence → regulator checks → repair checks; the LLM
  * summary runs after scoring.
  */
-export const DEFAULT_STEPS: Step[] = [discoverStep, fetchPagesStep, waybackStep, claimsStep, llmExtractStep, llmClassifyStep, evidenceStep, asaStep, jdpStep, repairStep];
+export const DEFAULT_STEPS: Step[] = [discoverStep, fetchPagesStep, waybackStep, claimsStep, llmExtractStep, llmClassifyStep, evidenceStep, asaStep, jdpStep, sabinStep, repairStep];
 
 export interface PipelineDeps {
   runs: RunsRepo;

@@ -75,7 +75,7 @@ test("2.6 a GET of /analyse never starts the pipeline; only the explicit Start a
 });
 
 test("5.9 /analyse shows the ASA, JDP and repair steps, each ending in done or skipped: … (offline)", async ({ page }) => {
-  const NEW_STEPS = ["Checking ASA (UK) rulings", "Checking JDP (France) decisions", "Checking repair information"];
+  const NEW_STEPS = ["Checking ASA (UK) rulings", "Checking JDP (France) decisions", "Checking the climate litigation database", "Checking repair information"];
   for (const query of ["fairphone", "oatly"]) {
     await analyseBrand(page, query);
     await expect(page.getByTestId("run-status")).toHaveAttribute("data-status", "done", { timeout: 30_000 });

@@ -35,6 +35,10 @@ export function paramRows(w: Weights = WEIGHTS): ParamRow[] {
   };
   const { claimsRate, defaultWeightHint, regulatorRuling, llmGuard, llm, labels, confidence } = w;
   walk("", { claimsRate, defaultWeightHint, regulatorRuling, llmGuard, llm, labels, confidence });
+  // Phase 13: litigation status multipliers (a list of keyword rules, shown one rule per row).
+  out.push({ key: "litigation.baseHint", value: String(w.litigation.baseHint) });
+  w.litigation.statusMultipliers.forEach((r, i) => out.push({ key: `litigation.statusMultipliers[${i}]`, value: `${r.keywords.join(", ")} ⇒ ${r.multiplier}` }));
+  out.push({ key: "litigation.unknownMultiplier", value: String(w.litigation.unknownMultiplier) });
   return out;
 }
 

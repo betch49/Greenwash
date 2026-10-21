@@ -175,6 +175,7 @@ Generated from `config/weights.json` (version 1) by `weightsMarkdown()` in `src/
 | `evidence` | `evidence.supplier_list_found` | 0 |
 | `track` | `claim.removed` | 20 |
 | `track` | `regulator.ruling` | 25 |
+| `track` | `litigation.case` | 10 |
 | `repair` | `repair.no_repair_info_found` | 50 |
 | `repair` | `repair.manual_found` | 0 |
 | `repair` | `repair.spare_parts_found` | 0 |
@@ -202,9 +203,14 @@ Generated from `config/weights.json` (version 1) by `weightsMarkdown()` in `src/
 | `labels.highFrom` | 50 |
 | `confidence.axisSteps.claims` | claims |
 | `confidence.axisSteps.evidence` | evidence |
-| `confidence.axisSteps.track` | wayback, asa-uk, jdp-fr |
+| `confidence.axisSteps.track` | wayback, asa-uk, jdp-fr, sabin |
 | `confidence.axisSteps.repair` | repair |
 | `confidence.timelineCountsAsData` | track |
+| `litigation.baseHint` | 1 |
+| `litigation.statusMultipliers[0]` | dismissed, withdrawn, struck out ⇒ 0 |
+| `litigation.statusMultipliers[1]` | pending, filed, ongoing ⇒ 1 |
+| `litigation.statusMultipliers[2]` | decided, judgment ⇒ 1 |
+| `litigation.unknownMultiplier` | 1 |
 
 ## 8. Known limits of these rules
 
@@ -230,6 +236,17 @@ Differentiator C (ADR-003). Deterministic; no LLM (`llm_used: false`). Code: `sr
    - **none**: not even a whole word ("Pata" in "Patagonia").
 6. **Signal.** Kind `regulator.ruling`, label "Ruling found naming <entity verbatim> (<regulator>, <country>, <date>); outcome as published: <words>", `entity_name` = the advertiser verbatim, receipt = the ruling page. `weight_hint` = `baseHint` × `upheldMultiplier` when upheld × `recentMultiplier` when the ruling is dated within `recentYears` of the run (values in `config/weights.json`). The ruling's points are the `regulator.ruling` points of Section 7 × this hint (Section 11).
 7. **Coverage.** Every report says that only the UK ASA and the French JDP were searched. A site that is unreachable, disallows the page in robots.txt or serves a page we cannot parse ends its step as `skipped: <reason>` (for example `skipped: ASA unreachable (HTTP 500)`); the other regulator still runs.
+
+## 9c. Climate litigation cases (axis: track record)
+
+Phase 13, ADR-028. Deterministic; no LLM (`llm_used: false`). Code: `src/lib/registries/sabin.ts`, step `sabin` ("Checking the climate litigation database", after the JDP step); parameters: `config/registries.json` (`sabin`), `config/weights.json` (`litigation`, and `regulatorRuling` for recency). Source: the Sabin Center for Climate Change Law's Climate Litigation Database on `www.climatecasechart.com`.
+
+1. **What is read.** Only server-rendered pages: `/geographies/<country>` (the 4 newest case families the page lists) and `/document/<slug>` (one case family: title, summary, filing date, status, events, geographies, from the page's `__NEXT_DATA__`). The site's search (client-side, over a private API) and `/_search` (disallowed by robots.txt) are never requested; nor is the database download, which is by request form.
+2. **Discovery.** The brand's country page (Wikidata P17 label ⇒ slug via `sabin.countrySlugs`), the US page, and a recorded seed index of case URLs (`fixtures/sources/sabin/index.json`). Listed families are read only when their title names the brand at least as a whole word; seed entries are always re-fetched, and the title on the case page decides, never the index. At most `sabin.maxCases` case pages per run. Every report carries the coverage sentence ("Climate litigation coverage: only the newest cases listed for <countries> and a recorded index of <n> cases; the database’s search is not available to automated clients …").
+3. **Matching.** Parties = the title without parenthesised nicknames, split on " v. ", " v ", " vs ", " vs. ", " et al.", "," and " and ". **Scored** only when a party equals the brand under the Section 9 normalisation (with the extra legal form `SE`, `sabin.partyLegalSuffixes`); **possible** when the brand is a whole word of the title but no party is the brand: shown under "What we could not check" with the party verbatim, never a signal; otherwise none.
+4. **Signal.** Kind `litigation.case`, label "Case found naming <party verbatim> (<status as published>, filed <year>) — a filed case is not a ruling". Receipt = the case page; excerpt = title, the first 300 characters of the summary, the status and last event as published, and "Source: Sabin Center for Climate Change Law, Climate Litigation Database, <url>". `weight_hint` = `litigation.baseHint` × the multiplier of the first `litigation.statusMultipliers` rule with a keyword that is a whole word of the status (else of the last event; else `unknownMultiplier`) × `regulatorRuling.recentMultiplier` when filed within `regulatorRuling.recentYears`. Dismissed, withdrawn or struck out ⇒ 0: the case is listed with 0 points.
+5. **Weight below rulings.** `litigation.case` carries 10 points against 25 for `regulator.ruling` (Section 7): a filed case is an allegation before a court or agency, not a finding.
+6. **Skips.** Site unreachable or a geography page that cannot be parsed ⇒ `skipped: climatecasechart.com unreachable (<cause>)` / `skipped: geography page could not be parsed (<url>)` for this step only. One case page failing ⇒ `skipped: case page could not be parsed (<url>)` on its own progress line; the other cases are still read.
 
 ## 10. Ownership and repair (axis: ownership & repair)
 

@@ -1,0 +1,24 @@
+{
+  "$comment": "Registry adapters (v1.1). sabin (Phase 13, ADR-028): the Sabin Center Climate Litigation Database on www.climatecasechart.com. The adapter reads only server-rendered /document/<slug> and /geographies/<slug> pages (never /_search, never the app's private API). countrySlugs maps the Wikidata P17 country label to the site's geography slug; the US page is always read as well. maxCases bounds the case pages read per run (seed index entries first, then geography listings whose title names the brand).",
+  "sabin": {
+    "origin": "https://www.climatecasechart.com",
+    "documentPath": "/document/",
+    "geographyPath": "/geographies/",
+    "usSlug": "united-states-of-america",
+    "usLabel": "the United States",
+    "maxCases": 12,
+    "$partyLegalSuffixes": "Legal forms common in case titles but absent from config/wikidata.json legalSuffixes (which the v1 adapters' search queries also use): stripped from the end of a party name before the ADR-019 comparison. SE = Societas Europaea ('TotalEnergies SE').",
+    "partyLegalSuffixes": ["se"],
+    "countrySlugs": {
+      "France": "france",
+      "United Kingdom": "united-kingdom",
+      "Netherlands": "netherlands",
+      "Kingdom of the Netherlands": "netherlands",
+      "Switzerland": "switzerland",
+      "Sweden": "sweden",
+      "Germany": "germany",
+      "United States": "united-states-of-america",
+      "United States of America": "united-states-of-america"
+    }
+  }
+}

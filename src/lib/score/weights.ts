@@ -24,6 +24,12 @@ export const WeightsSchema = z
     claimsRate: z.object({ perWords: z.number().positive(), minWords: z.number().positive(), subscorePerPointPer1000Words: z.number().min(0) }),
     defaultWeightHint: z.number().min(0),
     regulatorRuling: z.object({ baseHint: z.number().min(0), upheldMultiplier: z.number().min(0), recentYears: z.number().min(0), recentMultiplier: z.number().min(0) }),
+    /** Phase 13 (ADR-028): status multipliers for `litigation.case`; recency reuses `regulatorRuling`. */
+    litigation: z.object({
+      baseHint: z.number().min(0),
+      statusMultipliers: z.array(z.object({ keywords: z.array(z.string().min(1)).min(1), multiplier: z.number().min(0) })).min(1),
+      unknownMultiplier: z.number().min(0),
+    }),
     llmGuard: z.object({ maxShare: z.number().min(0).max(BRIEF_MAX_AI_SHARE) }),
     /** Phase 7: an "unsure" diff classification keeps the removal with its weight_hint × this (≤ 1: the LLM can only lower it). */
     llm: z.object({ unsureWeightMultiplier: z.number().min(0).max(1) }),
