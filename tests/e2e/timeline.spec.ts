@@ -47,6 +47,6 @@ test("4.5 the redesign fixture shows its archived copies and no removed claim", 
 
 test("a real fixture brand without recorded history shows the Wayback step as skipped, not hidden", async ({ page }) => {
   await analyseWebsite(page, "https://www.oatly.com/");
-  await expect(page.getByTestId("progress").locator('[data-step="Pulling 2019–2026 snapshots"]')).toContainText("skipped: Wayback unreachable");
+  await expect(page.getByTestId("progress").locator('[data-step="Pulling 2019–2026 snapshots"]')).toContainText("skipped: Wayback Machine: no archived copies found");
   await expect(page.getByTestId("timeline")).toContainText("No archived copies were compared.");
 });

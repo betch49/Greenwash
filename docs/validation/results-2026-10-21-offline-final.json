@@ -1,0 +1,1203 @@
+{
+  "version": 1,
+  "label_use": "evaluation_only",
+  "mode": "offline",
+  "generated_at": "2026-10-21T08:39:12.031Z",
+  "commit": "eedeb66",
+  "commit_dirty": true,
+  "weights_version": 2,
+  "claims_version": 1,
+  "llm": "MockLLM over recorded fixtures (fixtures/llm); a call with no fixture returns nothing",
+  "n_selected": 48,
+  "n_flagged": 22,
+  "n_well_rated": 20,
+  "n_contested": 6,
+  "n_ran": 5,
+  "n_failed": 0,
+  "n_not_run": 43,
+  "n_flagged_ran": 3,
+  "n_well_rated_ran": 2,
+  "partial": "Partial run: 5 of 48 brands produced a report.",
+  "stats": {
+    "auc": 0.6666666666666666,
+    "mean_flagged": 37.333333333333336,
+    "mean_well_rated": 23.5,
+    "mean_difference": 13.833333333333336,
+    "median_flagged": 35,
+    "median_well_rated": 23.5,
+    "median_difference": 11.5,
+    "per_axis": {
+      "claims": {
+        "auc": 0.5,
+        "n_flagged": 3,
+        "n_well_rated": 2
+      },
+      "evidence": {
+        "auc": 0.5,
+        "n_flagged": 3,
+        "n_well_rated": 1
+      },
+      "track": {
+        "auc": 1,
+        "n_flagged": 3,
+        "n_well_rated": 2
+      },
+      "repair": {
+        "auc": null,
+        "n_flagged": 0,
+        "n_well_rated": 2
+      }
+    },
+    "spearman_words_score": 0.2,
+    "spearman_claims_score": 0.6,
+    "n_spearman": 5
+  },
+  "leakage": {
+    "pipeline_sources": [
+      "asa",
+      "jdp",
+      "sbti",
+      "sabin"
+    ],
+    "flagged_total": 22,
+    "flagged_only_pipeline_sources": 3,
+    "flagged_ran": 3,
+    "flagged_ran_only_pipeline_sources": 2
+  },
+  "notes": [
+    "Offline: brands without a recorded brand fixture are not run; clock pinned to 2026-10-21T12:00:00Z.",
+    "The Wayback step was skipped for 5 brand(s) (see the coverage table): their track-record axis has no archived-claim data.",
+    "Fewer than 5 reports in a group (flagged 3, well-rated 2): the separation figure is indicative only."
+  ],
+  "brands": [
+    {
+      "slug": "oatly",
+      "name": "Oatly",
+      "group": "flagged",
+      "status": "ran",
+      "resolution": "fixture",
+      "brand": "Oatly AB",
+      "website": "https://www.oatly.com/",
+      "wikidata_id": "Q10605824",
+      "score": 35,
+      "label": "moderate",
+      "confidence": 100,
+      "ai_share": 0,
+      "axes": [
+        {
+          "id": "claims",
+          "status": "scored",
+          "subscore": 51
+        },
+        {
+          "id": "evidence",
+          "status": "scored",
+          "subscore": 0
+        },
+        {
+          "id": "track",
+          "status": "scored",
+          "subscore": 50
+        },
+        {
+          "id": "repair",
+          "status": "not_applicable",
+          "subscore": 0
+        }
+      ],
+      "pages": 9,
+      "words_scanned": 24201,
+      "claim_matches": 94,
+      "signals_count": 68,
+      "steps": [
+        {
+          "step": "Discovering pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching current pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching https://www.oatly.com/",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.oatly.com/ (7 words)"
+        },
+        {
+          "step": "Pulling 2019–2026 snapshots",
+          "status": "skipped",
+          "reason": "Wayback Machine: no archived copies found"
+        },
+        {
+          "step": "Checking claim language",
+          "status": "done"
+        },
+        {
+          "step": "Proposing candidate claims (AI)",
+          "status": "done"
+        },
+        {
+          "step": "Classifying archived changes (AI)",
+          "status": "skipped",
+          "reason": "no removed claim to classify"
+        },
+        {
+          "step": "Checking published evidence",
+          "status": "done"
+        },
+        {
+          "step": "Checking ASA (UK) rulings",
+          "status": "done"
+        },
+        {
+          "step": "Checking JDP (France) decisions",
+          "status": "done"
+        },
+        {
+          "step": "Checking the climate litigation database",
+          "status": "done"
+        },
+        {
+          "step": "Checking SBTi target status",
+          "status": "done"
+        },
+        {
+          "step": "Checking repair information",
+          "status": "skipped",
+          "reason": "not applicable: the brand’s industry on Wikidata is “beverage industry”, whose products are consumed, not repaired"
+        },
+        {
+          "step": "Checking the French repairability index",
+          "status": "skipped",
+          "reason": "not applicable: the brand’s industry on Wikidata is “beverage industry”, whose products are consumed, not repaired"
+        },
+        {
+          "step": "Writing the plain-English summary (AI)",
+          "status": "done"
+        }
+      ],
+      "steps_done": 10,
+      "steps_skipped": 5,
+      "duration_ms": 1514
+    },
+    {
+      "slug": "shell",
+      "name": "Shell",
+      "group": "flagged",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "totalenergies",
+      "name": "TotalEnergies",
+      "group": "flagged",
+      "status": "ran",
+      "resolution": "fixture",
+      "brand": "TotalEnergies",
+      "website": "https://www.totalenergies.com/",
+      "wikidata_id": "Q154037",
+      "score": 67,
+      "label": "high",
+      "confidence": 100,
+      "ai_share": 0,
+      "axes": [
+        {
+          "id": "claims",
+          "status": "scored",
+          "subscore": 94
+        },
+        {
+          "id": "evidence",
+          "status": "scored",
+          "subscore": 0
+        },
+        {
+          "id": "track",
+          "status": "scored",
+          "subscore": 100
+        },
+        {
+          "id": "repair",
+          "status": "not_applicable",
+          "subscore": 0
+        }
+      ],
+      "pages": 2,
+      "words_scanned": 742,
+      "claim_matches": 7,
+      "signals_count": 11,
+      "steps": [
+        {
+          "step": "Discovering pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching current pages",
+          "status": "done"
+        },
+        {
+          "step": "Pulling 2019–2026 snapshots",
+          "status": "skipped",
+          "reason": "Wayback Machine: no archived copies found"
+        },
+        {
+          "step": "Checking claim language",
+          "status": "done"
+        },
+        {
+          "step": "Proposing candidate claims (AI)",
+          "status": "done"
+        },
+        {
+          "step": "Classifying archived changes (AI)",
+          "status": "skipped",
+          "reason": "no removed claim to classify"
+        },
+        {
+          "step": "Checking published evidence",
+          "status": "done"
+        },
+        {
+          "step": "Checking ASA (UK) rulings",
+          "status": "done"
+        },
+        {
+          "step": "Checking JDP (France) decisions",
+          "status": "done"
+        },
+        {
+          "step": "Checking the climate litigation database",
+          "status": "done"
+        },
+        {
+          "step": "Checking SBTi target status",
+          "status": "done"
+        },
+        {
+          "step": "Checking repair information",
+          "status": "skipped",
+          "reason": "not applicable: the brand’s industry on Wikidata is “petroleum industry”, whose products are consumed, not repaired"
+        },
+        {
+          "step": "Checking the French repairability index",
+          "status": "skipped",
+          "reason": "not applicable: the brand’s industry on Wikidata is “petroleum industry”, whose products are consumed, not repaired"
+        },
+        {
+          "step": "Writing the plain-English summary (AI)",
+          "status": "done"
+        }
+      ],
+      "steps_done": 10,
+      "steps_skipped": 4,
+      "duration_ms": 258
+    },
+    {
+      "slug": "amazon",
+      "name": "Amazon",
+      "group": "flagged",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "innocent",
+      "name": "innocent drinks",
+      "group": "flagged",
+      "status": "ran",
+      "resolution": "fixture",
+      "brand": "Innocent Drinks",
+      "website": "https://www.innocentdrinks.co.uk/",
+      "wikidata_id": "Q1664118",
+      "score": 10,
+      "label": "low",
+      "confidence": 100,
+      "ai_share": 0,
+      "axes": [
+        {
+          "id": "claims",
+          "status": "scored",
+          "subscore": 14
+        },
+        {
+          "id": "evidence",
+          "status": "scored",
+          "subscore": 0
+        },
+        {
+          "id": "track",
+          "status": "scored",
+          "subscore": 15
+        },
+        {
+          "id": "repair",
+          "status": "not_applicable",
+          "subscore": 0
+        }
+      ],
+      "pages": 7,
+      "words_scanned": 3892,
+      "claim_matches": 6,
+      "signals_count": 8,
+      "steps": [
+        {
+          "step": "Discovering pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching current pages",
+          "status": "done"
+        },
+        {
+          "step": "Pulling 2019–2026 snapshots",
+          "status": "skipped",
+          "reason": "Wayback Machine: no archived copies found"
+        },
+        {
+          "step": "Checking claim language",
+          "status": "done"
+        },
+        {
+          "step": "Proposing candidate claims (AI)",
+          "status": "done"
+        },
+        {
+          "step": "Classifying archived changes (AI)",
+          "status": "skipped",
+          "reason": "no removed claim to classify"
+        },
+        {
+          "step": "Checking published evidence",
+          "status": "done"
+        },
+        {
+          "step": "Checking ASA (UK) rulings",
+          "status": "done"
+        },
+        {
+          "step": "Checking JDP (France) decisions",
+          "status": "done"
+        },
+        {
+          "step": "Checking the climate litigation database",
+          "status": "done"
+        },
+        {
+          "step": "Checking SBTi target status",
+          "status": "done"
+        },
+        {
+          "step": "Checking repair information",
+          "status": "skipped",
+          "reason": "not applicable: the brand’s industry on Wikidata is “beverage industry”, whose products are consumed, not repaired"
+        },
+        {
+          "step": "Checking the French repairability index",
+          "status": "skipped",
+          "reason": "not applicable: the brand’s industry on Wikidata is “beverage industry”, whose products are consumed, not repaired"
+        },
+        {
+          "step": "Writing the plain-English summary (AI)",
+          "status": "done"
+        }
+      ],
+      "steps_done": 10,
+      "steps_skipped": 4,
+      "duration_ms": 198
+    },
+    {
+      "slug": "jbs",
+      "name": "JBS",
+      "group": "flagged",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "unilever",
+      "name": "Unilever",
+      "group": "flagged",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "asda",
+      "name": "Asda",
+      "group": "flagged",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "hellofresh",
+      "name": "HelloFresh",
+      "group": "flagged",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "nike",
+      "name": "Nike",
+      "group": "flagged",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "puma",
+      "name": "Puma",
+      "group": "flagged",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "uniqlo",
+      "name": "Uniqlo",
+      "group": "flagged",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "shein",
+      "name": "Shein",
+      "group": "flagged",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "primark",
+      "name": "Primark",
+      "group": "flagged",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "boohoo",
+      "name": "boohoo",
+      "group": "flagged",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "h-and-m",
+      "name": "H&M",
+      "group": "flagged",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "asos",
+      "name": "ASOS",
+      "group": "flagged",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "hp",
+      "name": "HP Inc.",
+      "group": "flagged",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "burger-king",
+      "name": "Burger King",
+      "group": "flagged",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "lidl",
+      "name": "Lidl",
+      "group": "flagged",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "mango",
+      "name": "Mango",
+      "group": "flagged",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "coca-cola",
+      "name": "Coca-Cola",
+      "group": "flagged",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "adidas",
+      "name": "Adidas",
+      "group": "contested",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "ikea",
+      "name": "IKEA",
+      "group": "contested",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "nestle",
+      "name": "Nestlé",
+      "group": "contested",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "danone",
+      "name": "Danone",
+      "group": "contested",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "pepsico",
+      "name": "PepsiCo",
+      "group": "contested",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "mcdonalds",
+      "name": "McDonald's",
+      "group": "contested",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "schneider-electric",
+      "name": "Schneider Electric",
+      "group": "well_rated",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "iberdrola",
+      "name": "Iberdrola",
+      "group": "well_rated",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "telia",
+      "name": "Telia Company",
+      "group": "well_rated",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "salesforce",
+      "name": "Salesforce",
+      "group": "well_rated",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "signify",
+      "name": "Signify",
+      "group": "well_rated",
+      "status": "ran",
+      "resolution": "fixture",
+      "brand": "Signify",
+      "website": "https://www.signify.com/",
+      "wikidata_id": "Q2336380",
+      "score": 21,
+      "label": "low",
+      "confidence": 75,
+      "ai_share": 0,
+      "axes": [
+        {
+          "id": "claims",
+          "status": "scored",
+          "subscore": 45
+        },
+        {
+          "id": "evidence",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "track",
+          "status": "scored",
+          "subscore": 0
+        },
+        {
+          "id": "repair",
+          "status": "scored",
+          "subscore": 50
+        }
+      ],
+      "pages": 1,
+      "words_scanned": 415,
+      "claim_matches": 3,
+      "signals_count": 5,
+      "steps": [
+        {
+          "step": "Discovering pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching current pages",
+          "status": "done"
+        },
+        {
+          "step": "Pulling 2019–2026 snapshots",
+          "status": "skipped",
+          "reason": "no sustainability-type page to look up in the Wayback Machine"
+        },
+        {
+          "step": "Checking claim language",
+          "status": "done"
+        },
+        {
+          "step": "Proposing candidate claims (AI)",
+          "status": "done"
+        },
+        {
+          "step": "Classifying archived changes (AI)",
+          "status": "skipped",
+          "reason": "no removed claim to classify"
+        },
+        {
+          "step": "Checking published evidence",
+          "status": "skipped",
+          "reason": "no sustainability-type page was fetched, so published evidence was not checked"
+        },
+        {
+          "step": "Checking ASA (UK) rulings",
+          "status": "done"
+        },
+        {
+          "step": "Checking JDP (France) decisions",
+          "status": "done"
+        },
+        {
+          "step": "Checking the climate litigation database",
+          "status": "done"
+        },
+        {
+          "step": "Checking SBTi target status",
+          "status": "done"
+        },
+        {
+          "step": "Checking repair information",
+          "status": "done"
+        },
+        {
+          "step": "Checking the French repairability index",
+          "status": "done"
+        },
+        {
+          "step": "Writing the plain-English summary (AI)",
+          "status": "done"
+        }
+      ],
+      "steps_done": 11,
+      "steps_skipped": 3,
+      "duration_ms": 117
+    },
+    {
+      "slug": "barry-callebaut",
+      "name": "Barry Callebaut",
+      "group": "well_rated",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "asml",
+      "name": "ASML",
+      "group": "well_rated",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "cisco",
+      "name": "Cisco",
+      "group": "well_rated",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "deutsche-telekom",
+      "name": "Deutsche Telekom",
+      "group": "well_rated",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "ericsson",
+      "name": "Ericsson",
+      "group": "well_rated",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "essity",
+      "name": "Essity",
+      "group": "well_rated",
+      "status": "ran",
+      "resolution": "fixture",
+      "brand": "Essity",
+      "website": "https://www.essity.com",
+      "wikidata_id": "Q30938280",
+      "score": 26,
+      "label": "moderate",
+      "confidence": 100,
+      "ai_share": 0,
+      "axes": [
+        {
+          "id": "claims",
+          "status": "scored",
+          "subscore": 63
+        },
+        {
+          "id": "evidence",
+          "status": "scored",
+          "subscore": 0
+        },
+        {
+          "id": "track",
+          "status": "scored",
+          "subscore": 0
+        },
+        {
+          "id": "repair",
+          "status": "scored",
+          "subscore": 50
+        }
+      ],
+      "pages": 12,
+      "words_scanned": 4449,
+      "claim_matches": 21,
+      "signals_count": 24,
+      "steps": [
+        {
+          "step": "Discovering pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching current pages",
+          "status": "done"
+        },
+        {
+          "step": "Pulling 2019–2026 snapshots",
+          "status": "skipped",
+          "reason": "Wayback Machine: no archived copies found"
+        },
+        {
+          "step": "Checking claim language",
+          "status": "done"
+        },
+        {
+          "step": "Proposing candidate claims (AI)",
+          "status": "done"
+        },
+        {
+          "step": "Classifying archived changes (AI)",
+          "status": "skipped",
+          "reason": "no removed claim to classify"
+        },
+        {
+          "step": "Checking published evidence",
+          "status": "done"
+        },
+        {
+          "step": "Checking ASA (UK) rulings",
+          "status": "done"
+        },
+        {
+          "step": "Checking JDP (France) decisions",
+          "status": "done"
+        },
+        {
+          "step": "Checking the climate litigation database",
+          "status": "done"
+        },
+        {
+          "step": "Checking SBTi target status",
+          "status": "done"
+        },
+        {
+          "step": "Checking repair information",
+          "status": "done"
+        },
+        {
+          "step": "Checking the French repairability index",
+          "status": "done"
+        },
+        {
+          "step": "Writing the plain-English summary (AI)",
+          "status": "done"
+        }
+      ],
+      "steps_done": 12,
+      "steps_skipped": 2,
+      "duration_ms": 561
+    },
+    {
+      "slug": "kingfisher",
+      "name": "Kingfisher",
+      "group": "well_rated",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "legrand",
+      "name": "Legrand",
+      "group": "well_rated",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "nokia",
+      "name": "Nokia",
+      "group": "well_rated",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "novonesis",
+      "name": "Novonesis",
+      "group": "well_rated",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "siemens",
+      "name": "Siemens",
+      "group": "well_rated",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "swisscom",
+      "name": "Swisscom",
+      "group": "well_rated",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "telenor",
+      "name": "Telenor",
+      "group": "well_rated",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "hpe",
+      "name": "Hewlett Packard Enterprise",
+      "group": "well_rated",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    },
+    {
+      "slug": "novo-nordisk",
+      "name": "Novo Nordisk",
+      "group": "well_rated",
+      "status": "not_run",
+      "reason": "no offline fixture",
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "steps": [],
+      "steps_done": 0,
+      "steps_skipped": 0,
+      "duration_ms": 0
+    }
+  ]
+}

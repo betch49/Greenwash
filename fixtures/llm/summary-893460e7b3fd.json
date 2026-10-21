@@ -1,0 +1,11 @@
+{
+  "name": "summary",
+  "input_sha1": "893460e7b3fd5ebaf375a3e96fb39ff67198be9d",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "summary": "Signify: low signals (score 21, confidence 75%). Based on 5 verified signals from 2 sources. One example: “Our innovations contribute to a safer, smarter more sustainable world.” (unsupported claim, https://www.signify.com/). 7 things could not be checked; they are listed in the report.",
+    "cited_urls": [
+      "https://www.signify.com/"
+    ]
+  }
+}

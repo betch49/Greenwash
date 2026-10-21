@@ -1,0 +1,11 @@
+{
+  "name": "summary",
+  "input_sha1": "d762349e4fafd21374e6558b974c65762a6a7bea",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "summary": "Essity: moderate signals (score 26, confidence 100%). Based on 24 verified signals from 2 sources. One example: “We reduce emissions across our operations and value chain in line with our science-based targets, and we develop …” (unsupported claim, https://www.essity.com/sustainability/focus-areas). 7 things could not be checked; they are listed in the report.",
+    "cited_urls": [
+      "https://www.essity.com/sustainability/focus-areas"
+    ]
+  }
+}

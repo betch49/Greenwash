@@ -1,10 +1,6 @@
 {
   "name": "summary",
-<<<<<<<< HEAD:fixtures/llm/summary-323a0cd183a7.json
-  "input_sha1": "323a0cd183a7a6a9b334ee68358a022875e9786e",
-========
-  "input_sha1": "199e803789aa73a69cde7d6795286443a82b453e",
->>>>>>>> ux-fixes:fixtures/llm/summary-199e803789aa.json
+  "input_sha1": "57cbbbbfcf4c4a001511c975ca3ef3c6d735b80a",
   "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
   "output": {
     "summary": "Mammut: low signals (score 12, confidence 70%). Based on 12 verified signals from 1 source. One example: “Balancing a long-term outlook with decisive action, we’re dedicated to ever-more conscious exploration.” (unsupported claim, https://www.mammut.com/us/en/responsibility). 7 things could not be checked; they are listed in the report.",

@@ -29,7 +29,7 @@ test("8.5 a second visit is served from the stored report in < 1 s; searching th
   await expect(page.getByTestId("run-status")).toHaveAttribute("data-status", "done", { timeout: 30_000 });
 });
 
-test("8.5 the URL fallback re-serves a report for the same typed name and website; another name, or a confirmed entity, gets its own", async ({ page, request }) => {
+test("8.5 the URL fallback re-serves a report for the same website, whatever name was typed (the name comes from the site)", async ({ page, request }) => {
   const website = "https://www.quillmoor-foods.example";
   await analyseWebsite(page, website, "quillmoor");
   const id = await openReport(page);
@@ -40,10 +40,12 @@ test("8.5 the URL fallback re-serves a report for the same typed name and websit
   await page.waitForURL(REPORT);
   expect(new URL(page.url()).pathname).toBe(`/report/${id}`);
   expect(await runCount(request)).toBe(before);
-  // A different name for the same website is a different search: a new run, never someone else's report.
+  // QA fix round: the run is named from the fetched homepage, not the typed query, so another
+  // typed name for the same website resolves to the same brand and re-serves the same report.
   await search(page, "acme");
   await page.getByLabel("Brand website URL").fill(website);
   await page.getByRole("button", { name: "Continue with this website" }).click();
-  await page.waitForURL(/\/analyse\/[0-9a-f-]{36}$/);
-  expect(await runCount(request)).toBe(before + 1);
+  await page.waitForURL(REPORT);
+  expect(new URL(page.url()).pathname).toBe(`/report/${id}`);
+  expect(await runCount(request)).toBe(before);
 });

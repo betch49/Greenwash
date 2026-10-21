@@ -1,10 +1,6 @@
 {
   "name": "summary",
-<<<<<<<< HEAD:fixtures/llm/summary-3102b4dfabe3.json
-  "input_sha1": "3102b4dfabe36dee9c4c16683f8d34c912c6cb3c",
-========
-  "input_sha1": "318066eb3bc8c5df4ede14ce206e54f6c5af8357",
->>>>>>>> ux-fixes:fixtures/llm/summary-318066eb3bc8.json
+  "input_sha1": "f879d7655cd1e819726d966c18e1b93d7b779d51",
   "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
   "output": {
     "summary": "Northwind Outdoor Ltd.: moderate signals (score 34, confidence 100%). Based on 21 verified signals from 2 sources. One example: “Our jackets are made with eco-friendly materials and our products are better for the planet.” (unsupported claim, https://www.northwind-outdoor.example/). Claim removed between 2021 and 2024: “Every Northwind jacket is climate neutral, so you can wear it with a clear …”. 16 things could not be checked; they are listed in the report.",

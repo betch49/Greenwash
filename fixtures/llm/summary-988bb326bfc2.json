@@ -1,0 +1,11 @@
+{
+  "name": "summary",
+  "input_sha1": "988bb326bfc22770ab144b620aca50b7ab350954",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "summary": "TotalEnergies: high signals (score 67, confidence 100%). Based on 11 verified signals from 4 sources. One example: “Recognizing the Oil & Gas sector’s critical role in global methane emissions, TotalEnergies has been committed to reducing …” (unsupported claim, https://www.totalenergies.com/). 5 things could not be checked; they are listed in the report.",
+    "cited_urls": [
+      "https://www.totalenergies.com/"
+    ]
+  }
+}
