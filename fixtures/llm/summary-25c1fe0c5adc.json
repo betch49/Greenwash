@@ -1,0 +1,11 @@
+{
+  "name": "summary",
+  "input_sha1": "25c1fe0c5adc3165738baa0ef791df8d849fbd02",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "summary": "Innocent Drinks: low signals (score 5, confidence 63%). Based on 7 verified signals from 1 source. One example: “By making them lighter we’ll be saving 2500 tonnes of plastic by 2023, but the big ask is …” (unsupported claim, https://www.innocentdrinks.co.uk/climate). 5 things could not be checked; they are listed in the report.",
+    "cited_urls": [
+      "https://www.innocentdrinks.co.uk/climate"
+    ]
+  }
+}

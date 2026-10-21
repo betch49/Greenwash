@@ -1,4 +1,5 @@
 import { ui } from "@/lib/copy/wording";
+import { MAX_QUERY } from "@/lib/website";
 
 export default function SearchPage() {
   return (
@@ -8,7 +9,7 @@ export default function SearchPage() {
       <form action="/confirm" method="get" role="search">
         <label htmlFor="q">{ui.searchLabel}</label>
         <div className="field-row">
-          <input id="q" name="q" type="search" required autoComplete="off" autoFocus placeholder="e.g. Patagonia" />
+          <input id="q" name="q" type="search" required maxLength={MAX_QUERY} autoComplete="off" autoFocus placeholder="e.g. Patagonia" />
           <button type="submit">{ui.searchButton}</button>
         </div>
       </form>

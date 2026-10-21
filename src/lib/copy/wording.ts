@@ -58,6 +58,16 @@ export const ui = {
   summaryAiNote: "Written by an AI model from the receipts below; it may cite only pages this report fetched.",
   timelineArchivedCopy: "archived copy",
   couldNotCheckHeading: "What we could not check",
+  /** QA fix round. */
+  lookupErrorHeading: "We couldn’t look this brand up right now.",
+  insufficientEvidence: "Not enough evidence to score this brand",
+  insufficientEvidenceNote: (min: number) =>
+    `Too little was found to show a score: either no page of the website could be fetched or the confidence is below ${min}%. The receipts we did find are listed below.`,
+  confidenceLine: (confidence: number) => `Confidence ${confidence}%`,
+  axisNoData: "—",
+  summaryFallbackNote: "Automatic summary (no AI): built by fixed rules from the receipts below; it cites only pages this report fetched.",
+  analyseRedirecting: "Analysis finished. Opening the report…",
+  pending: "Please wait…",
 };
 
 /** Pipeline step names shown in the progress list. */
@@ -93,7 +103,7 @@ export const reasons = {
   interrupted: "analysis interrupted (server restarted); search again to retry",
   stepError: (message: string) => `internal error (${message})`,
   noPagesToScan: "no fetched page to scan",
-  waybackUnreachable: (cause: string) => `Wayback unreachable (${cause})`,
+  waybackUnreachable: (cause: string) => (/HTTP 404/.test(cause) ? "Wayback Machine: no archived copies found" : `Wayback unreachable (${cause})`),
   noPagesForWayback: "no sustainability-type page to look up in the Wayback Machine",
   regulatorUnreachable: (name: string, cause: string) => `${name} unreachable (${cause})`,
   regulatorParse: (name: string, what: string) => `${name} ${what} could not be parsed`,
@@ -134,7 +144,7 @@ export const couldNotCheck = {
         return `${base}; not looked up in the Wayback Machine: only sustainability-type pages, at most ${archive.maxPages} per brand).`;
     }
   },
-  labelClaimed: (name: string, url: string) => `${name}: label claimed on page; not verified in v1 (${url}).`,
+  labelClaimed: (name: string, url: string) => `${name}: label claimed on page; the label itself was not checked against its issuer (${url}).`,
   waybackUnreachable: (reason: string) => `Archived versions of the brand’s pages: ${reason}.`,
   waybackNoHistory: (url: string, status: number) => `Archived versions of ${url} (the Wayback Machine answered HTTP ${status}).`,
   waybackNoSnapshots: (url: string, from: number, to: number) => `${url}: no archived snapshot from ${from}–${to} in the Wayback Machine.`,
@@ -250,6 +260,15 @@ export const reportWording = {
   rerunNote: (date: string) => `This report was generated ${date} and is served from the stored copy. Re-running fetches every source again.`,
   newSearch: "Search for another brand",
   notFound: "Report not found",
+  /** The rule-based summary used when the AI summary is unavailable (QA fix round). */
+  fallback: {
+    insufficient: (brand: string) => `Too little evidence was found on ${brand}’s website to describe its risk signals.`,
+    opening: (brand: string, label: string, signals: number, sources: number) =>
+      `${brand}: ${label}, from ${signals} signal${signals === 1 ? "" : "s"} across ${sources} source${sources === 1 ? "" : "s"}.`,
+    axisExample: (axis: string, n: number, excerpt: string, url: string) => `${axis}: ${n} receipt${n === 1 ? "" : "s"}, for example “${excerpt}” (${url}).`,
+    missing: (axes: string[]) => `No data was found for: ${axes.join(", ")}.`,
+    couldNotCheck: (n: number) => `${n} item${n === 1 ? "" : "s"} could not be checked; see below.`,
+  },
 };
 
 /** The /methodology page (numbers come from config/weights.json, the rest from docs/METHODOLOGY.md). */

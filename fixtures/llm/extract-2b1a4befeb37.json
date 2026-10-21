@@ -1,0 +1,29 @@
+{
+  "name": "extract",
+  "input_sha1": "2b1a4befeb37ae4ef0a8f8a01c6ff1af7ed645ca",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "claims": [
+      {
+        "sentence": "how we're tackling our carbon emissions",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "Climate change is one of the biggest challenges facing us right now, and that's why we're doing everything we can to keep global warming below 1.5°C (basically, we don’t want the world’s temperature to rise more than that).",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "By making them lighter we’ll be saving 2500 tonnes of plastic by 2023, but the big ask is for 2030.",
+        "kind_hint": "future_only"
+      },
+      {
+        "sentence": "By then, we’re aiming to have none of our bottles made from fossil fuels, and instead from recycled or biobased material (as well as being recyclable).",
+        "kind_hint": "future_only"
+      },
+      {
+        "sentence": "if you have any more questions on carbon neutrality, offsetting, or whether bananas are berries, drop us an email at hello@innocentdrinks.co.uk",
+        "kind_hint": "offset"
+      }
+    ]
+  }
+}

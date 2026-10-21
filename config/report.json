@@ -1,0 +1,4 @@
+{
+  "$comment": "Report display thresholds (QA fix round). Display only: never changes a number in the score.",
+  "minConfidenceToLabel": 40
+}

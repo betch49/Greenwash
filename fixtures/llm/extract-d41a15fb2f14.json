@@ -1,0 +1,17 @@
+{
+  "name": "extract",
+  "input_sha1": "d41a15fb2f14549e9f5c53698342776ed3c4e72c",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "claims": [
+      {
+        "sentence": "And we put people and the planet at the heart of everything we do, like giving 10% of our profits to good causes and building our all-electric drinks factory, the Blender.",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "All our bottles are recyclable, and we work hard to make sure they're easy to recycle too.",
+        "kind_hint": "other"
+      }
+    ]
+  }
+}

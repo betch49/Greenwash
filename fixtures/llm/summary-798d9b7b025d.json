@@ -1,0 +1,11 @@
+{
+  "name": "summary",
+  "input_sha1": "798d9b7b025d9903890423e5f98c355de2789d35",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "summary": "Signify: moderate signals (score 31, confidence 70%). Based on 5 verified signals from 1 source. One example: “Our innovations contribute to a safer, smarter more sustainable world.” (unsupported claim, https://www.signify.com/). 3 things could not be checked; they are listed in the report.",
+    "cited_urls": [
+      "https://www.signify.com/"
+    ]
+  }
+}

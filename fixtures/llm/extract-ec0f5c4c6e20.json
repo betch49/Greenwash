@@ -1,0 +1,17 @@
+{
+  "name": "extract",
+  "input_sha1": "ec0f5c4c6e2082e267c4ef8dd228ec2e099f5d67",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "claims": [
+      {
+        "sentence": "By standing 'shoulder-to-shoulder' with fellow B Corps, we're part of a movement to make business more responsible and sustainable.",
+        "kind_hint": "vague"
+      },
+      {
+        "sentence": "We’ve built ourselves a factory over in Rotterdam that’s designed to be all-electric and powered by renewable energy.",
+        "kind_hint": "other"
+      }
+    ]
+  }
+}

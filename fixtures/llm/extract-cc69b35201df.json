@@ -1,0 +1,17 @@
+{
+  "name": "extract",
+  "input_sha1": "cc69b35201dfd2243b83062da1d5de493fa92828",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "claims": [
+      {
+        "sentence": "For us, sustainability and business success go hand in hand.",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "By aligning our sustainability priorities with value creation and growth, we strengthen resilience, enhance competitiveness, and create lasting value for consumers, customers and shareholders.",
+        "kind_hint": "other"
+      }
+    ]
+  }
+}

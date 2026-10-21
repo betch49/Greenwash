@@ -63,7 +63,7 @@ describe("pipeline wiring", () => {
     expect(new Set(out.signals.map((s) => s.id)).size).toBe(out.signals.length);
     expect(out.claim_stats?.wordCount).toBe(out.pages.reduce((n, p) => n + p.wordCount, 0));
     // Fairtrade is named on the site: listed under "could not check", never scored.
-    expect(out.could_not_check.some((c) => c.startsWith("Fairtrade: label claimed on page; not verified in v1"))).toBe(true);
+    expect(out.could_not_check.some((c) => c.startsWith("Fairtrade: label claimed on page; the label itself was not checked against its issuer"))).toBe(true);
   });
 
   it("a run with no fetched pages skips both steps with a reason", async () => {
