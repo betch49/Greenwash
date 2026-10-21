@@ -306,3 +306,14 @@ Separately, PLAN Phase 7 criterion 7.6 asked for `ai_share > 0` "for at least th
 3. LLM answers are not an external fetch in the sense of brief Section 1: they are not re-served, rate-limited or robots-guarded resources, and the < 1 s re-serve requirement is met by the stored report. An LLM answer cache stays in `docs/LATER.md`.
 
 **Consequences.** Phase 7 passes. Phase 8 must author or record the summary fixture for the Northwind URL-fallback input so the offline Playwright flow shows a summary on the report page. The final review lists the real-brand end-to-end check as "deferred: no API key" unless a key appears.
+
+## ADR-022 — A stored report is re-served only for the same website and the same Wikidata entity (or the same typed name for a pasted website) (Phase 8 review)
+
+**Date:** 2026-10-21 (Phase 8 review)
+**Status:** accepted
+
+**Context.** PLAN Phase 8 deliverable 2 says a new search "for a brand" with a report younger than `GR_REPORT_TTL_HOURS` is redirected to the existing report. The builder first keyed the cache on the website alone and found that a URL-fallback report made under the typed name "acme" was re-served to a Wikidata search for "oatly" on the same website, so the page would carry the wrong brand name and no entity. The builder narrowed the key: website (spellings with and without a trailing slash count as one) **and** the confirmed Wikidata entity; for a pasted website with no entity, website **and** the typed name (case-insensitive). `ReportsRepo.findFresh` joins `runs` for the entity; `tests/unit/db/report-cache.test.ts` and `tests/e2e/cache.spec.ts` pin both halves.
+
+**Decision.** Accepted as the reading of "a brand" the plan intended. The brief's requirement (Section 1: a known brand re-served from cache in under a second; Section 3.4: a cached shareable link) is about the same brand, and a report that names another brand is not that brand's report. The stricter key costs at most one extra pipeline run when the same website is reached under a different identity, which is the honest outcome. `docs/LIMITATIONS.md` states the rule. The `x-gr-served-from: cache` route header is accepted as truthful rather than measured: both routes only ever read the stored `ReportV1`; the sub-second re-serve is measured in tests (8.5) and by the director (prod, ~30 ms).
+
+**Consequences.** No change to PLAN.md. "Re-run the analysis" remains the only way to force a new run for an identity with a fresh report. E2E helpers press "Re-run" when a search is re-served, which mirrors a user and keeps the tests independent of run order.
