@@ -1,0 +1,159 @@
+{
+ "searchinfo": {
+  "search": "Telia Company"
+ },
+ "search": [
+  {
+   "id": "Q862303",
+   "title": "Q862303",
+   "pageid": 813765,
+   "concepturi": "http://www.wikidata.org/entity/Q862303",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q862303",
+   "display": {
+    "label": {
+     "value": "Telia Company",
+     "language": "en"
+    },
+    "description": {
+     "value": "Swedish multinational telecommunication provider",
+     "language": "en"
+    }
+   },
+   "label": "Telia Company",
+   "description": "Swedish multinational telecommunication provider",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Telia Company"
+   }
+  },
+  {
+   "id": "Q29123900",
+   "title": "Q29123900",
+   "pageid": 30782013,
+   "concepturi": "http://www.wikidata.org/entity/Q29123900",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q29123900",
+   "display": {
+    "label": {
+     "value": "TeliaSonera (Finland)",
+     "language": "en"
+    }
+   },
+   "label": "TeliaSonera (Finland)",
+   "match": {
+    "type": "alias",
+    "language": "en",
+    "text": "Telia Company AB"
+   },
+   "aliases": [
+    "Telia Company AB"
+   ]
+  },
+  {
+   "id": "Q100094013",
+   "title": "Q100094013",
+   "pageid": 97870984,
+   "concepturi": "http://www.wikidata.org/entity/Q100094013",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q100094013",
+   "display": {
+    "label": {
+     "value": "Telia Danmark",
+     "language": "en"
+    },
+    "description": {
+     "value": "Danish telecommunications company",
+     "language": "en"
+    }
+   },
+   "label": "Telia Danmark",
+   "description": "Danish telecommunications company",
+   "match": {
+    "type": "alias",
+    "language": "da",
+    "text": "Telia Company Danmark A/S"
+   },
+   "aliases": [
+    "Telia Company Danmark A/S"
+   ]
+  },
+  {
+   "id": "Q97708745",
+   "title": "Q97708745",
+   "pageid": 96091508,
+   "concepturi": "http://www.wikidata.org/entity/Q97708745",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q97708745",
+   "display": {
+    "label": {
+     "value": "Telia Company AB",
+     "language": "sv"
+    },
+    "description": {
+     "value": "motion by Charlotte Quensel et al.. 2018",
+     "language": "en"
+    }
+   },
+   "label": "Telia Company AB",
+   "description": "motion by Charlotte Quensel et al.. 2018",
+   "match": {
+    "type": "label",
+    "language": "sv",
+    "text": "Telia Company AB"
+   }
+  },
+  {
+   "id": "Q98746837",
+   "title": "Q98746837",
+   "pageid": 96943287,
+   "concepturi": "http://www.wikidata.org/entity/Q98746837",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q98746837",
+   "display": {
+    "label": {
+     "value": "Telia Company AB",
+     "language": "sv"
+    },
+    "description": {
+     "value": "motion by Mattias Bäckström Johansson et al. 2019",
+     "language": "en"
+    }
+   },
+   "label": "Telia Company AB",
+   "description": "motion by Mattias Bäckström Johansson et al. 2019",
+   "match": {
+    "type": "label",
+    "language": "sv",
+    "text": "Telia Company AB"
+   }
+  },
+  {
+   "id": "Q99769413",
+   "title": "Q99769413",
+   "pageid": 97663709,
+   "concepturi": "http://www.wikidata.org/entity/Q99769413",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q99769413",
+   "display": {
+    "label": {
+     "value": "Telia Company AB",
+     "language": "sv"
+    },
+    "description": {
+     "value": "motion by Mattias Bäckström Johansson et al. from 2020",
+     "language": "en"
+    }
+   },
+   "label": "Telia Company AB",
+   "description": "motion by Mattias Bäckström Johansson et al. from 2020",
+   "match": {
+    "type": "label",
+    "language": "sv",
+    "text": "Telia Company AB"
+   }
+  }
+ ],
+ "success": 1
+}

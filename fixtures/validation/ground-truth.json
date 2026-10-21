@@ -1,0 +1,1723 @@
+{
+  "version": 1,
+  "label_use": "evaluation_only",
+  "$comment": "Evaluation-only labels (ADR-025). Recorded by scripts/record-validation.ts on 2026-10-21 from fixtures/validation/candidates.json; every citation was fetched and stored under fixtures/validation/citations/. Never read by the pipeline or the scorer.",
+  "entries": [
+    {
+      "slug": "oatly",
+      "name": "Oatly",
+      "wikidata_id": "Q10605824",
+      "website": "https://www.oatly.com/",
+      "group": "flagged",
+      "citations": [
+        {
+          "source": "asa",
+          "role": "flag",
+          "url": "https://www.asa.org.uk/rulings/oatly-uk-ltd-g21-1096286-oatly-uk-ltd.html",
+          "date": "2026-10-21",
+          "why": "ASA Ruling on Oatly UK Ltd t/a Oatly (2022-01-26, Upheld in part): environmental claims (CO2e comparisons, climate footprint) in TV, press and social ads",
+          "verified_from_container": true,
+          "file": "citations/oatly-1.html"
+        }
+      ],
+      "checks": [],
+      "fixture": "oatly"
+    },
+    {
+      "slug": "shell",
+      "name": "Shell",
+      "website": "https://www.shell.com/",
+      "group": "flagged",
+      "citations": [
+        {
+          "source": "asa",
+          "role": "flag",
+          "url": "https://www.asa.org.uk/rulings/shell-uk-ltd-g22-1170842-shell-uk-ltd.html",
+          "date": "2026-10-21",
+          "why": "ASA Ruling on Shell UK Ltd t/a Shell (2023-06-07, Upheld in part): ads presenting Shell's 'cleaner energy' and renewable offers while omitting its fossil-fuel business",
+          "verified_from_container": true,
+          "file": "citations/shell-1.html"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "slug": "totalenergies",
+      "name": "TotalEnergies",
+      "wikidata_id": "Q154037",
+      "website": "https://www.totalenergies.com/",
+      "group": "flagged",
+      "citations": [
+        {
+          "source": "jdp",
+          "role": "flag",
+          "url": "https://www.jdp-pub.org/avis/totalenergies-internet/",
+          "date": "2026-10-21",
+          "why": "TOTALENERGIES (2024-12-11, Plainte fondée après révision): LinkedIn ad on 'sustainable mobility solutions'",
+          "verified_from_container": true,
+          "file": "citations/totalenergies-1.html"
+        },
+        {
+          "source": "jdp",
+          "role": "flag",
+          "url": "https://www.jdp-pub.org/avis/total-energies-internet/",
+          "date": "2026-10-21",
+          "why": "TOTAL ENERGIES (2023-03-15, Plaintes fondées): tweet calling a Qatar LNG project 'low carbon'",
+          "verified_from_container": true,
+          "file": "citations/totalenergies-2.html"
+        }
+      ],
+      "checks": [],
+      "fixture": "totalenergies"
+    },
+    {
+      "slug": "amazon",
+      "name": "Amazon",
+      "wikidata_id": "Q3884",
+      "website": "https://www.amazon.com/",
+      "group": "flagged",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/amazon",
+          "date": "2026-10-21",
+          "why": "Changing Markets' greenwash.com brand page for Amazon lists 2 case article(s) on its green claims: \"Jerking us around\"; \"Carrot and Turkey Stick approach\"",
+          "verified_from_container": true,
+          "file": "citations/amazon-1.html"
+        },
+        {
+          "source": "sbti",
+          "role": "flag",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"Amazon\": near-term \"Commitment Removed\", net-zero \"none\", status reason \"Expired commitment\", updated 2020-06-18",
+          "verified_from_container": true,
+          "file": "citations/amazon-2.json"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "slug": "innocent",
+      "name": "innocent drinks",
+      "query": "innocent drinks",
+      "wikidata_id": "Q1664118",
+      "website": "https://www.innocentdrinks.co.uk/",
+      "group": "flagged",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/innocent",
+          "date": "2026-10-21",
+          "why": "Changing Markets' greenwash.com brand page for innocent drinks lists 2 case article(s) on its green claims: \"Not so Innocent after all\"; \"Drinking the orange kool-aid\"",
+          "verified_from_container": true,
+          "file": "citations/innocent-1.html"
+        },
+        {
+          "source": "sbti",
+          "role": "flag",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"innocent drinks\": near-term \"Commitment Removed\", net-zero \"Commitment Removed\", status reason \"Withdrawn commitment\", updated 2020-11-01",
+          "verified_from_container": true,
+          "file": "citations/innocent-2.json"
+        }
+      ],
+      "checks": [],
+      "fixture": "innocent"
+    },
+    {
+      "slug": "jbs",
+      "name": "JBS",
+      "wikidata_id": "Q1676554",
+      "website": "http://www.jbs.com.br/",
+      "group": "flagged",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/jbs",
+          "date": "2026-10-21",
+          "why": "Changing Markets' greenwash.com brand page for JBS lists 1 case article(s) on its green claims: \"Putting the cart before the cow\"",
+          "verified_from_container": true,
+          "file": "citations/jbs-1.html"
+        },
+        {
+          "source": "sbti",
+          "role": "flag",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"JBS\": near-term \"Commitment Removed\", net-zero \"Commitment Removed\", status reason \"Expired commitment\", updated 2021-03-01",
+          "verified_from_container": true,
+          "file": "citations/jbs-2.json"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "slug": "unilever",
+      "name": "Unilever",
+      "wikidata_id": "Q157062",
+      "website": "https://unilever.com/",
+      "group": "flagged",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/unilever",
+          "date": "2026-10-21",
+          "why": "Changing Markets' greenwash.com brand page for Unilever lists 3 case article(s) on its green claims: \"Refill with the unrecyclable\"; \"A failure or just no successes yet?\"; \"Indulging in white (chocolate) lies\"",
+          "verified_from_container": true,
+          "file": "citations/unilever-1.html"
+        },
+        {
+          "source": "sbti",
+          "role": "flag",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"Unilever plc\": near-term \"Validated Targets\", net-zero \"Commitment Removed\", status reason \"Expired commitment\", updated 2024-04-25",
+          "verified_from_container": true,
+          "file": "citations/unilever-2.json"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/unilever-com-0098",
+          "date": "2026-10-21",
+          "why": "Net Zero Tracker: Net zero by 2039 (In corporate strategy); interim target: Emissions reduction target 2025; published plan: Yes (record updated 2026-04-20)",
+          "verified_from_container": true,
+          "file": "citations/unilever-3.html"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "slug": "asda",
+      "name": "Asda",
+      "wikidata_id": "Q297410",
+      "website": "https://www.asda.com/",
+      "group": "flagged",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/asda",
+          "date": "2026-10-21",
+          "why": "Changing Markets' greenwash.com brand page for Asda lists 2 case article(s) on its green claims: \"Inadequate Adapt range\"; \"Soft on plastic, heavy on greenwashing\"",
+          "verified_from_container": true,
+          "file": "citations/asda-1.html"
+        },
+        {
+          "source": "sbti",
+          "role": "flag",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"Asda Group Limited\": near-term \"Commitment Removed\", net-zero \"Commitment Removed\", status reason \"Expired commitment\", updated 2022-02-22",
+          "verified_from_container": true,
+          "file": "citations/asda-2.json"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "slug": "hellofresh",
+      "name": "HelloFresh",
+      "website": "https://www.hellofresh.com/",
+      "group": "flagged",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/hello-fresh",
+          "date": "2026-10-21",
+          "why": "Changing Markets' greenwash.com brand page for HelloFresh lists 1 case article(s) on its green claims: \"Greenwashing to your door\"",
+          "verified_from_container": true,
+          "file": "citations/hellofresh-1.html"
+        },
+        {
+          "source": "sbti",
+          "role": "flag",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"HelloFresh SE\": near-term \"Commitment Removed\", net-zero \"none\", status reason \"Expired commitment\", updated 2023-01-05",
+          "verified_from_container": true,
+          "file": "citations/hellofresh-2.json"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "slug": "nike",
+      "name": "Nike",
+      "website": "https://www.nike.com/",
+      "group": "flagged",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/nike",
+          "date": "2026-10-21",
+          "why": "Changing Markets' greenwash.com brand page for Nike lists 2 case article(s) on its green claims: \"Nike talks trash\"; \"Lost in space\"",
+          "verified_from_container": true,
+          "file": "citations/nike-1.html"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "slug": "puma",
+      "name": "Puma",
+      "website": "https://about.puma.com/",
+      "group": "flagged",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/puma",
+          "date": "2026-10-21",
+          "why": "Changing Markets' greenwash.com brand page for Puma lists 3 case article(s) on its green claims: \"Puma’s polyester pants\"; \"Short on sustainability\"; \"Puma’s poor description\"",
+          "verified_from_container": true,
+          "file": "citations/puma-1.html"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "slug": "uniqlo",
+      "name": "Uniqlo",
+      "website": "https://www.uniqlo.com/",
+      "group": "flagged",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/uniqlo",
+          "date": "2026-10-21",
+          "why": "Changing Markets' greenwash.com brand page for Uniqlo lists 2 case article(s) on its green claims: \"Burn, baby, burn\"; \"Fleeced\"",
+          "verified_from_container": true,
+          "file": "citations/uniqlo-1.html"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "slug": "shein",
+      "name": "Shein",
+      "website": "https://www.shein.com/",
+      "group": "flagged",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/shein",
+          "date": "2026-10-21",
+          "why": "Changing Markets' greenwash.com brand page for Shein lists 3 case article(s) on its green claims: \"Environmental destrucSHEIN?\"; \"Our products or our planet?\"; \"Shein’s Sustainability Collection\"",
+          "verified_from_container": true,
+          "file": "citations/shein-1.html"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "slug": "primark",
+      "name": "Primark",
+      "website": "https://www.primark.com/",
+      "group": "flagged",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/primark",
+          "date": "2026-10-21",
+          "why": "Changing Markets' greenwash.com brand page for Primark lists 4 case article(s) on its green claims: \"Does Primark Care?\"; \"Reprieve us of greenwashing\"; \"No such thing as away\"; …",
+          "verified_from_container": true,
+          "file": "citations/primark-1.html"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "slug": "boohoo",
+      "name": "boohoo",
+      "website": "https://www.boohoo.com/",
+      "group": "flagged",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/boohoo",
+          "date": "2026-10-21",
+          "why": "Changing Markets' greenwash.com brand page for boohoo lists 7 case article(s) on its green claims: \"Not fit for the future\"; \"reGain insanity\"; \"Puffed up promises\"; …",
+          "verified_from_container": true,
+          "file": "citations/boohoo-1.html"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "slug": "h-and-m",
+      "name": "H&M",
+      "website": "https://www.hm.com/",
+      "group": "flagged",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/h-and-m",
+          "date": "2026-10-21",
+          "why": "Changing Markets' greenwash.com brand page for H&M lists 4 case article(s) on its green claims: \"Co-opting climate activists\"; \"Out of sight, out of mind\"; \"Going loopy\"; …",
+          "verified_from_container": true,
+          "file": "citations/h-and-m-1.html"
+        },
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"H&M Group\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2022-09-22",
+          "verified_from_container": true,
+          "file": "citations/h-and-m-2.json"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "slug": "asos",
+      "name": "ASOS",
+      "website": "https://www.asos.com/",
+      "group": "flagged",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/asos",
+          "date": "2026-10-21",
+          "why": "Changing Markets' greenwash.com brand page for ASOS lists 5 case article(s) on its green claims: \"Approach with caution\"; \"100% unrecyclable\"; \"Circular suspicion\"; …",
+          "verified_from_container": true,
+          "file": "citations/asos-1.html"
+        },
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"ASOS\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2025-10-30",
+          "verified_from_container": true,
+          "file": "citations/asos-2.json"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "slug": "hp",
+      "name": "HP Inc.",
+      "website": "https://www.hp.com/",
+      "group": "flagged",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/hp",
+          "date": "2026-10-21",
+          "why": "Changing Markets' greenwash.com brand page for HP Inc. lists 2 case article(s) on its green claims: \"Trash bound plastic\"; \"The world’s first greenwashed laptop\"",
+          "verified_from_container": true,
+          "file": "citations/hp-1.html"
+        },
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"HP Inc.\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2024-12-12",
+          "verified_from_container": true,
+          "file": "citations/hp-2.json"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "slug": "burger-king",
+      "name": "Burger King",
+      "website": "https://www.bk.com/",
+      "group": "flagged",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/burger-king",
+          "date": "2026-10-21",
+          "why": "Changing Markets' greenwash.com brand page for Burger King lists 1 case article(s) on its green claims: \"Whopper of a claim\"",
+          "verified_from_container": true,
+          "file": "citations/burger-king-1.html"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "slug": "lidl",
+      "name": "Lidl",
+      "website": "https://www.lidl.com/",
+      "group": "flagged",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/lidl",
+          "date": "2026-10-21",
+          "why": "Changing Markets' greenwash.com brand page for Lidl lists 4 case article(s) on its green claims: \"Refill with more single-use plastic\"; \"Lifting the Lidl on Greenwashing\"; \"Soft on plastic, heavy on greenwashing\"; …",
+          "verified_from_container": true,
+          "file": "citations/lidl-1.html"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "slug": "mango",
+      "name": "Mango",
+      "website": "https://www.mango.com/",
+      "group": "flagged",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/mango",
+          "date": "2026-10-21",
+          "why": "Changing Markets' greenwash.com brand page for Mango lists 2 case article(s) on its green claims: \"High waisted plastic\"; \"Questionable committed collection\"",
+          "verified_from_container": true,
+          "file": "citations/mango-1.html"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "slug": "coca-cola",
+      "name": "Coca-Cola",
+      "website": "https://www.coca-colacompany.com/",
+      "group": "flagged",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/coca-cola",
+          "date": "2026-10-21",
+          "why": "Changing Markets' greenwash.com brand page for Coca-Cola lists 4 case article(s) on its green claims: \"Ocean to ocean, and back again\"; \"Another broken promise from Coca-Cola\"; \"Coca-Cola, we’re not buying it\"; …",
+          "verified_from_container": true,
+          "file": "citations/coca-cola-1.html"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/coca-cola-company-com-0513",
+          "date": "2026-10-21",
+          "why": "Net Zero Tracker: Net zero by 2050 (In corporate strategy); interim target: Emissions reduction target 2030; published plan: Yes (record updated 2026-06-21)",
+          "verified_from_container": true,
+          "file": "citations/coca-cola-2.html"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "slug": "adidas",
+      "name": "Adidas",
+      "website": "https://www.adidas-group.com/",
+      "group": "contested",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/adidas",
+          "date": "2026-10-21",
+          "why": "Changing Markets' greenwash.com brand page for Adidas lists 4 case article(s) on its green claims: \"Primeblue Plastic Tracksuit\"; \"Plastic performers\"; \"Synthetic Stan Smiths\"; …",
+          "verified_from_container": true,
+          "file": "citations/adidas-1.html"
+        },
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"Adidas AG\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2024-12-05",
+          "verified_from_container": true,
+          "file": "citations/adidas-2.json"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/adidas-ag-com-0080",
+          "date": "2026-10-21",
+          "why": "Net Zero Tracker: Net zero by 2050 (In corporate strategy); interim target: Emissions reduction target 2030; published plan: Yes (record updated 2026-08-31)",
+          "verified_from_container": true,
+          "file": "citations/adidas-3.html"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "slug": "ikea",
+      "name": "IKEA",
+      "website": "https://www.ikea.com/",
+      "group": "contested",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/ikea",
+          "date": "2026-10-21",
+          "why": "Changing Markets' greenwash.com brand page for IKEA lists 1 case article(s) on its green claims: \"Ocean bound distraction\"",
+          "verified_from_container": true,
+          "file": "citations/ikea-1.html"
+        },
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"IKEA\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2024-07-11",
+          "verified_from_container": true,
+          "file": "citations/ikea-2.json"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/ikea-com-2151",
+          "date": "2026-10-21",
+          "why": "Net Zero Tracker: Net zero by 2050 (In corporate strategy); interim target: Emissions reduction target 2030; published plan: Yes (record updated 2025-08-13)",
+          "verified_from_container": true,
+          "file": "citations/ikea-3.html"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "slug": "nestle",
+      "name": "Nestlé",
+      "website": "https://www.nestle.com/",
+      "group": "contested",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/nestle",
+          "date": "2026-10-21",
+          "why": "Changing Markets' greenwash.com brand page for Nestlé lists 7 case article(s) on its green claims: \"A failure or just no successes yet?\"; \"Actions that add up to zero\"; \"Give us a break\"; …",
+          "verified_from_container": true,
+          "file": "citations/nestle-1.html"
+        },
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"Nestlé\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2023-12-07",
+          "verified_from_container": true,
+          "file": "citations/nestle-2.json"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/nestle-com-0088",
+          "date": "2026-10-21",
+          "why": "Net Zero Tracker: Net zero by 2050 (In corporate strategy); interim target: Emissions reduction target 2030; published plan: Yes (record updated 2026-06-29)",
+          "verified_from_container": true,
+          "file": "citations/nestle-3.html"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "slug": "danone",
+      "name": "Danone",
+      "website": "https://www.danone.com/",
+      "group": "contested",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/danone",
+          "date": "2026-10-21",
+          "why": "Changing Markets' greenwash.com brand page for Danone lists 1 case article(s) on its green claims: \"Actively misleading\"",
+          "verified_from_container": true,
+          "file": "citations/danone-1.html"
+        },
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"Danone\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2024-05-02",
+          "verified_from_container": true,
+          "file": "citations/danone-2.json"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/danone-com-0123",
+          "date": "2026-10-21",
+          "why": "Net Zero Tracker: Net zero by 2050 (In corporate strategy); interim target: Emissions reduction target 2030; published plan: Yes (record updated 2026-05-11)",
+          "verified_from_container": true,
+          "file": "citations/danone-3.html"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "slug": "pepsico",
+      "name": "PepsiCo",
+      "website": "https://www.pepsico.com/",
+      "group": "contested",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/pepsico",
+          "date": "2026-10-21",
+          "why": "Changing Markets' greenwash.com brand page for PepsiCo lists 1 case article(s) on its green claims: \"A failure or just no successes yet?\"",
+          "verified_from_container": true,
+          "file": "citations/pepsico-1.html"
+        },
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"PepsiCo, Inc.\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2025-05-29",
+          "verified_from_container": true,
+          "file": "citations/pepsico-2.json"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/pepsico-com-0117",
+          "date": "2026-10-21",
+          "why": "Net Zero Tracker: Net zero by 2050 (In corporate strategy); interim target: Emissions reduction target 2030; published plan: Yes (record updated 2026-08-11)",
+          "verified_from_container": true,
+          "file": "citations/pepsico-3.html"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "slug": "mcdonalds",
+      "name": "McDonald's",
+      "website": "https://www.mcdonalds.com/",
+      "group": "contested",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/mcdonalds",
+          "date": "2026-10-21",
+          "why": "Changing Markets' greenwash.com brand page for McDonald's lists 1 case article(s) on its green claims: \"Plan for business-as-usual\"",
+          "verified_from_container": true,
+          "file": "citations/mcdonalds-1.html"
+        },
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"McDonald's Corporation\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2023-12-07",
+          "verified_from_container": true,
+          "file": "citations/mcdonalds-2.json"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/mcdonalds-com-0577",
+          "date": "2026-10-21",
+          "why": "Net Zero Tracker: Net zero by 2050 (In corporate strategy); interim target: Emissions reduction target 2030; published plan: Yes (record updated 2026-03-22)",
+          "verified_from_container": true,
+          "file": "citations/mcdonalds-3.html"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "slug": "schneider-electric",
+      "name": "Schneider Electric",
+      "website": "https://www.se.com/",
+      "group": "well_rated",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"Schneider Electric\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2022-08-25",
+          "verified_from_container": true,
+          "file": "citations/schneider-electric-1.json"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/schneider-electric-com-0097",
+          "date": "2026-10-21",
+          "why": "Net Zero Tracker: Net zero by 2050 (In corporate strategy); interim target: Net zero or similar 2030; published plan: Yes (record updated 2026-05-13)",
+          "verified_from_container": true,
+          "file": "citations/schneider-electric-2.html"
+        }
+      ],
+      "checks": [
+        {
+          "source": "changing_markets",
+          "url": "https://greenwash.com/wash-by-brand/",
+          "date": "2026-10-21",
+          "result": "not among the 113 brand pages of the index",
+          "file": "citations/index-greenwash-wash-by-brand.html"
+        },
+        {
+          "source": "asa",
+          "url": "https://www.asa.org.uk/search.html?q=Schneider%20Electric",
+          "date": "2026-10-21",
+          "result": "no ruling naming Schneider Electric (0 search result(s))",
+          "file": "citations/schneider-electric-check-asa.html"
+        },
+        {
+          "source": "jdp",
+          "url": "https://www.jdp-pub.org/avis/?search_avis=Schneider%20Electric",
+          "date": "2026-10-21",
+          "result": "no ruling naming Schneider Electric (0 search result(s))",
+          "file": "citations/schneider-electric-check-jdp.html"
+        }
+      ]
+    },
+    {
+      "slug": "iberdrola",
+      "name": "Iberdrola",
+      "website": "https://www.iberdrola.com/",
+      "group": "well_rated",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"Iberdrola SA\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2022-11-10",
+          "verified_from_container": true,
+          "file": "citations/iberdrola-1.json"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/iberdrola-com-0129",
+          "date": "2026-10-21",
+          "why": "Net Zero Tracker: Net zero by 2040 (In corporate strategy); interim target: Other 2028; published plan: Yes (record updated 2026-04-21)",
+          "verified_from_container": true,
+          "file": "citations/iberdrola-2.html"
+        }
+      ],
+      "checks": [
+        {
+          "source": "changing_markets",
+          "url": "https://greenwash.com/wash-by-brand/",
+          "date": "2026-10-21",
+          "result": "not among the 113 brand pages of the index",
+          "file": "citations/index-greenwash-wash-by-brand.html"
+        },
+        {
+          "source": "asa",
+          "url": "https://www.asa.org.uk/search.html?q=Iberdrola",
+          "date": "2026-10-21",
+          "result": "no ruling naming Iberdrola (0 search result(s))",
+          "file": "citations/iberdrola-check-asa.html"
+        },
+        {
+          "source": "jdp",
+          "url": "https://www.jdp-pub.org/avis/?search_avis=Iberdrola",
+          "date": "2026-10-21",
+          "result": "no ruling naming Iberdrola (0 search result(s))",
+          "file": "citations/iberdrola-check-jdp.html"
+        }
+      ]
+    },
+    {
+      "slug": "telia",
+      "name": "Telia Company",
+      "wikidata_id": "Q862303",
+      "website": "https://www.teliacompany.com/",
+      "group": "well_rated",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"Telia Company\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2026-07-09",
+          "verified_from_container": true,
+          "file": "citations/telia-1.json"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/telia-company-ab-com-0107",
+          "date": "2026-10-21",
+          "why": "Net Zero Tracker: Net zero by 2040 (In corporate strategy); interim target: Emissions reduction target 2028; published plan: Yes (record updated 2026-07-25)",
+          "verified_from_container": true,
+          "file": "citations/telia-2.html"
+        }
+      ],
+      "checks": [
+        {
+          "source": "changing_markets",
+          "url": "https://greenwash.com/wash-by-brand/",
+          "date": "2026-10-21",
+          "result": "not among the 113 brand pages of the index",
+          "file": "citations/index-greenwash-wash-by-brand.html"
+        },
+        {
+          "source": "asa",
+          "url": "https://www.asa.org.uk/search.html?q=Telia",
+          "date": "2026-10-21",
+          "result": "no ruling naming Telia Company (0 search result(s))",
+          "file": "citations/telia-check-asa.html"
+        },
+        {
+          "source": "jdp",
+          "url": "https://www.jdp-pub.org/avis/?search_avis=Telia",
+          "date": "2026-10-21",
+          "result": "no ruling naming Telia Company (0 search result(s))",
+          "file": "citations/telia-check-jdp.html"
+        }
+      ]
+    },
+    {
+      "slug": "salesforce",
+      "name": "Salesforce",
+      "website": "https://www.salesforce.com/",
+      "group": "well_rated",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"Salesforce.com, Inc.\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2025-04-17",
+          "verified_from_container": true,
+          "file": "citations/salesforce-1.json"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/salesforcecom-com-0298",
+          "date": "2026-10-21",
+          "why": "Net Zero Tracker: Net zero by 2050 (Achieved (externally validated)); interim target: Emissions reduction target 2031; published plan: Yes (record updated 2026-09-14)",
+          "verified_from_container": true,
+          "file": "citations/salesforce-2.html"
+        }
+      ],
+      "checks": [
+        {
+          "source": "changing_markets",
+          "url": "https://greenwash.com/wash-by-brand/",
+          "date": "2026-10-21",
+          "result": "not among the 113 brand pages of the index",
+          "file": "citations/index-greenwash-wash-by-brand.html"
+        },
+        {
+          "source": "asa",
+          "url": "https://www.asa.org.uk/search.html?q=Salesforce",
+          "date": "2026-10-21",
+          "result": "no ruling naming Salesforce (0 search result(s))",
+          "file": "citations/salesforce-check-asa.html"
+        },
+        {
+          "source": "jdp",
+          "url": "https://www.jdp-pub.org/avis/?search_avis=Salesforce",
+          "date": "2026-10-21",
+          "result": "no ruling naming Salesforce (0 search result(s))",
+          "file": "citations/salesforce-check-jdp.html"
+        }
+      ]
+    },
+    {
+      "slug": "signify",
+      "name": "Signify",
+      "wikidata_id": "Q2336380",
+      "website": "https://www.signify.com/",
+      "group": "well_rated",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"Signify\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2024-03-14",
+          "verified_from_container": true,
+          "file": "citations/signify-1.json"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/signify-com-0140",
+          "date": "2026-10-21",
+          "why": "Net Zero Tracker: Net zero by 2040 (In corporate strategy); interim target: Emissions reduction target 2030; published plan: Yes (record updated 2026-04-19)",
+          "verified_from_container": true,
+          "file": "citations/signify-2.html"
+        }
+      ],
+      "checks": [
+        {
+          "source": "changing_markets",
+          "url": "https://greenwash.com/wash-by-brand/",
+          "date": "2026-10-21",
+          "result": "not among the 113 brand pages of the index",
+          "file": "citations/index-greenwash-wash-by-brand.html"
+        },
+        {
+          "source": "asa",
+          "url": "https://www.asa.org.uk/search.html?q=Signify",
+          "date": "2026-10-21",
+          "result": "no ruling naming Signify (9 search result(s))",
+          "file": "citations/signify-check-asa.html"
+        },
+        {
+          "source": "jdp",
+          "url": "https://www.jdp-pub.org/avis/?search_avis=Signify",
+          "date": "2026-10-21",
+          "result": "no ruling naming Signify (0 search result(s))",
+          "file": "citations/signify-check-jdp.html"
+        }
+      ],
+      "fixture": "signify"
+    },
+    {
+      "slug": "barry-callebaut",
+      "name": "Barry Callebaut",
+      "website": "https://www.barry-callebaut.com/",
+      "group": "well_rated",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"Barry Callebaut\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2024-09-19",
+          "verified_from_container": true,
+          "file": "citations/barry-callebaut-1.json"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/barry-callebaut-com-0436",
+          "date": "2026-10-21",
+          "why": "Net Zero Tracker: Net zero by 2050 (Declaration / pledge); interim target: Emissions reduction target 2029; published plan: Yes (record updated 2026-05-05)",
+          "verified_from_container": true,
+          "file": "citations/barry-callebaut-2.html"
+        }
+      ],
+      "checks": [
+        {
+          "source": "changing_markets",
+          "url": "https://greenwash.com/wash-by-brand/",
+          "date": "2026-10-21",
+          "result": "not among the 113 brand pages of the index",
+          "file": "citations/index-greenwash-wash-by-brand.html"
+        },
+        {
+          "source": "asa",
+          "url": "https://www.asa.org.uk/search.html?q=Barry%20Callebaut",
+          "date": "2026-10-21",
+          "result": "no ruling naming Barry Callebaut (0 search result(s))",
+          "file": "citations/barry-callebaut-check-asa.html"
+        },
+        {
+          "source": "jdp",
+          "url": "https://www.jdp-pub.org/avis/?search_avis=Barry%20Callebaut",
+          "date": "2026-10-21",
+          "result": "no ruling naming Barry Callebaut (0 search result(s))",
+          "file": "citations/barry-callebaut-check-jdp.html"
+        }
+      ]
+    },
+    {
+      "slug": "asml",
+      "name": "ASML",
+      "website": "https://www.asml.com/",
+      "group": "well_rated",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"ASML Holdings\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2025-07-03",
+          "verified_from_container": true,
+          "file": "citations/asml-1.json"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/asml-holding-com-0257",
+          "date": "2026-10-21",
+          "why": "Net Zero Tracker: Net zero by 2040 (In corporate strategy); interim target: Net zero or similar 2025; published plan: Yes (record updated 2026-07-15)",
+          "verified_from_container": true,
+          "file": "citations/asml-2.html"
+        }
+      ],
+      "checks": [
+        {
+          "source": "changing_markets",
+          "url": "https://greenwash.com/wash-by-brand/",
+          "date": "2026-10-21",
+          "result": "not among the 113 brand pages of the index",
+          "file": "citations/index-greenwash-wash-by-brand.html"
+        },
+        {
+          "source": "asa",
+          "url": "https://www.asa.org.uk/search.html?q=ASML",
+          "date": "2026-10-21",
+          "result": "no ruling naming ASML (0 search result(s))",
+          "file": "citations/asml-check-asa.html"
+        },
+        {
+          "source": "jdp",
+          "url": "https://www.jdp-pub.org/avis/?search_avis=ASML",
+          "date": "2026-10-21",
+          "result": "no ruling naming ASML (0 search result(s))",
+          "file": "citations/asml-check-jdp.html"
+        }
+      ]
+    },
+    {
+      "slug": "cisco",
+      "name": "Cisco",
+      "website": "https://www.cisco.com/",
+      "group": "well_rated",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"Cisco Systems, Inc.\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2022-07-21",
+          "verified_from_container": true,
+          "file": "citations/cisco-1.json"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/cisco-systems-com-0505",
+          "date": "2026-10-21",
+          "why": "Net Zero Tracker: Net zero by 2040 (In corporate strategy); interim target: Net zero or similar 2025; published plan: Yes (record updated 2026-09-21)",
+          "verified_from_container": true,
+          "file": "citations/cisco-2.html"
+        }
+      ],
+      "checks": [
+        {
+          "source": "changing_markets",
+          "url": "https://greenwash.com/wash-by-brand/",
+          "date": "2026-10-21",
+          "result": "not among the 113 brand pages of the index",
+          "file": "citations/index-greenwash-wash-by-brand.html"
+        },
+        {
+          "source": "asa",
+          "url": "https://www.asa.org.uk/search.html?q=Cisco",
+          "date": "2026-10-21",
+          "result": "no ruling naming Cisco (0 search result(s))",
+          "file": "citations/cisco-check-asa.html"
+        },
+        {
+          "source": "jdp",
+          "url": "https://www.jdp-pub.org/avis/?search_avis=Cisco",
+          "date": "2026-10-21",
+          "result": "no ruling naming Cisco (0 search result(s))",
+          "file": "citations/cisco-check-jdp.html"
+        }
+      ]
+    },
+    {
+      "slug": "deutsche-telekom",
+      "name": "Deutsche Telekom",
+      "website": "https://www.telekom.com/",
+      "group": "well_rated",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"Deutsche Telekom AG\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2024-02-08",
+          "verified_from_container": true,
+          "file": "citations/deutsche-telekom-1.json"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/deutsche-telekom-ag-com-0125",
+          "date": "2026-10-21",
+          "why": "Net Zero Tracker: Net zero by 2040 (In corporate strategy); interim target: Emissions reduction target 2030; published plan: Yes (record updated 2026-10-05)",
+          "verified_from_container": true,
+          "file": "citations/deutsche-telekom-2.html"
+        }
+      ],
+      "checks": [
+        {
+          "source": "changing_markets",
+          "url": "https://greenwash.com/wash-by-brand/",
+          "date": "2026-10-21",
+          "result": "not among the 113 brand pages of the index",
+          "file": "citations/index-greenwash-wash-by-brand.html"
+        },
+        {
+          "source": "asa",
+          "url": "https://www.asa.org.uk/search.html?q=Deutsche%20Telekom",
+          "date": "2026-10-21",
+          "result": "no ruling naming Deutsche Telekom (0 search result(s))",
+          "file": "citations/deutsche-telekom-check-asa.html"
+        },
+        {
+          "source": "jdp",
+          "url": "https://www.jdp-pub.org/avis/?search_avis=Deutsche%20Telekom",
+          "date": "2026-10-21",
+          "result": "no ruling naming Deutsche Telekom (0 search result(s))",
+          "file": "citations/deutsche-telekom-check-jdp.html"
+        }
+      ]
+    },
+    {
+      "slug": "ericsson",
+      "name": "Ericsson",
+      "website": "https://www.ericsson.com/",
+      "group": "well_rated",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"Ericsson Group\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2024-01-25",
+          "verified_from_container": true,
+          "file": "citations/ericsson-1.json"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/ericsson-com-0157",
+          "date": "2026-10-21",
+          "why": "Net Zero Tracker: Net zero by 2040 (In corporate strategy); interim target: Emissions reduction target 2030; published plan: Yes (record updated 2026-03-21)",
+          "verified_from_container": true,
+          "file": "citations/ericsson-2.html"
+        }
+      ],
+      "checks": [
+        {
+          "source": "changing_markets",
+          "url": "https://greenwash.com/wash-by-brand/",
+          "date": "2026-10-21",
+          "result": "not among the 113 brand pages of the index",
+          "file": "citations/index-greenwash-wash-by-brand.html"
+        },
+        {
+          "source": "asa",
+          "url": "https://www.asa.org.uk/search.html?q=Ericsson",
+          "date": "2026-10-21",
+          "result": "no ruling naming Ericsson (0 search result(s))",
+          "file": "citations/ericsson-check-asa.html"
+        },
+        {
+          "source": "jdp",
+          "url": "https://www.jdp-pub.org/avis/?search_avis=Ericsson",
+          "date": "2026-10-21",
+          "result": "no ruling naming Ericsson (0 search result(s))",
+          "file": "citations/ericsson-check-jdp.html"
+        }
+      ]
+    },
+    {
+      "slug": "essity",
+      "name": "Essity",
+      "wikidata_id": "Q30938280",
+      "website": "https://www.essity.com/",
+      "group": "well_rated",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"Essity AB\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2024-08-15",
+          "verified_from_container": true,
+          "file": "citations/essity-1.json"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/essity-ab-com-0304",
+          "date": "2026-10-21",
+          "why": "Net Zero Tracker: Net zero by 2050 (In corporate strategy); interim target: Emissions reduction target 2030; published plan: Yes (record updated 2026-06-18)",
+          "verified_from_container": true,
+          "file": "citations/essity-2.html"
+        }
+      ],
+      "checks": [
+        {
+          "source": "changing_markets",
+          "url": "https://greenwash.com/wash-by-brand/",
+          "date": "2026-10-21",
+          "result": "not among the 113 brand pages of the index",
+          "file": "citations/index-greenwash-wash-by-brand.html"
+        },
+        {
+          "source": "asa",
+          "url": "https://www.asa.org.uk/search.html?q=Essity",
+          "date": "2026-10-21",
+          "result": "no ruling naming Essity (1 search result(s))",
+          "file": "citations/essity-check-asa.html"
+        },
+        {
+          "source": "jdp",
+          "url": "https://www.jdp-pub.org/avis/?search_avis=Essity",
+          "date": "2026-10-21",
+          "result": "no ruling naming Essity (0 search result(s))",
+          "file": "citations/essity-check-jdp.html"
+        }
+      ],
+      "fixture": "essity"
+    },
+    {
+      "slug": "kingfisher",
+      "name": "Kingfisher",
+      "website": "https://www.kingfisher.com/",
+      "group": "well_rated",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"Kingfisher plc\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2026-01-22",
+          "verified_from_container": true,
+          "file": "citations/kingfisher-1.json"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/kingfisher-com-0114",
+          "date": "2026-10-21",
+          "why": "Net Zero Tracker: Net zero by 2040 (In corporate strategy); interim target: Emissions reduction target 2025; published plan: Yes (record updated 2026-04-05)",
+          "verified_from_container": true,
+          "file": "citations/kingfisher-2.html"
+        }
+      ],
+      "checks": [
+        {
+          "source": "changing_markets",
+          "url": "https://greenwash.com/wash-by-brand/",
+          "date": "2026-10-21",
+          "result": "not among the 113 brand pages of the index",
+          "file": "citations/index-greenwash-wash-by-brand.html"
+        },
+        {
+          "source": "asa",
+          "url": "https://www.asa.org.uk/search.html?q=Kingfisher",
+          "date": "2026-10-21",
+          "result": "no ruling naming Kingfisher (0 search result(s))",
+          "file": "citations/kingfisher-check-asa.html"
+        },
+        {
+          "source": "jdp",
+          "url": "https://www.jdp-pub.org/avis/?search_avis=Kingfisher",
+          "date": "2026-10-21",
+          "result": "no ruling naming Kingfisher (0 search result(s))",
+          "file": "citations/kingfisher-check-jdp.html"
+        }
+      ]
+    },
+    {
+      "slug": "legrand",
+      "name": "Legrand",
+      "website": "https://www.legrandgroup.com/",
+      "group": "well_rated",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"Legrand\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2024-05-02",
+          "verified_from_container": true,
+          "file": "citations/legrand-1.json"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/legrand-com-0135",
+          "date": "2026-10-21",
+          "why": "Net Zero Tracker: Net zero by 2050 (In corporate strategy); interim target: Emissions reduction target 2030; published plan: Yes (record updated 2026-06-07)",
+          "verified_from_container": true,
+          "file": "citations/legrand-2.html"
+        }
+      ],
+      "checks": [
+        {
+          "source": "changing_markets",
+          "url": "https://greenwash.com/wash-by-brand/",
+          "date": "2026-10-21",
+          "result": "not among the 113 brand pages of the index",
+          "file": "citations/index-greenwash-wash-by-brand.html"
+        },
+        {
+          "source": "asa",
+          "url": "https://www.asa.org.uk/search.html?q=Legrand",
+          "date": "2026-10-21",
+          "result": "no ruling naming Legrand (0 search result(s))",
+          "file": "citations/legrand-check-asa.html"
+        },
+        {
+          "source": "jdp",
+          "url": "https://www.jdp-pub.org/avis/?search_avis=Legrand",
+          "date": "2026-10-21",
+          "result": "no ruling naming Legrand (1 search result(s))",
+          "file": "citations/legrand-check-jdp.html"
+        }
+      ]
+    },
+    {
+      "slug": "nokia",
+      "name": "Nokia",
+      "website": "https://www.nokia.com/",
+      "group": "well_rated",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"Nokia Group\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2025-02-20",
+          "verified_from_container": true,
+          "file": "citations/nokia-1.json"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/nokia-com-0163",
+          "date": "2026-10-21",
+          "why": "Net Zero Tracker: Net zero by 2040 (In corporate strategy); interim target: Emissions reduction target 2030; published plan: Yes (record updated 2026-03-09)",
+          "verified_from_container": true,
+          "file": "citations/nokia-2.html"
+        }
+      ],
+      "checks": [
+        {
+          "source": "changing_markets",
+          "url": "https://greenwash.com/wash-by-brand/",
+          "date": "2026-10-21",
+          "result": "not among the 113 brand pages of the index",
+          "file": "citations/index-greenwash-wash-by-brand.html"
+        },
+        {
+          "source": "asa",
+          "url": "https://www.asa.org.uk/search.html?q=Nokia",
+          "date": "2026-10-21",
+          "result": "no ruling naming Nokia (0 search result(s))",
+          "file": "citations/nokia-check-asa.html"
+        },
+        {
+          "source": "jdp",
+          "url": "https://www.jdp-pub.org/avis/?search_avis=Nokia",
+          "date": "2026-10-21",
+          "result": "no ruling naming Nokia (0 search result(s))",
+          "file": "citations/nokia-check-jdp.html"
+        }
+      ]
+    },
+    {
+      "slug": "novonesis",
+      "name": "Novonesis",
+      "website": "https://www.novonesis.com/",
+      "group": "well_rated",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"Novozymes A/S (part of the Novonesis group)\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2022-11-10",
+          "verified_from_container": true,
+          "file": "citations/novonesis-1.json"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/novozymes-com-0090",
+          "date": "2026-10-21",
+          "why": "Net Zero Tracker: Net zero by 2050 (In corporate strategy); interim target: Emissions reduction target 2030; published plan: Yes (record updated 2026-03-02)",
+          "verified_from_container": true,
+          "file": "citations/novonesis-2.html"
+        }
+      ],
+      "checks": [
+        {
+          "source": "changing_markets",
+          "url": "https://greenwash.com/wash-by-brand/",
+          "date": "2026-10-21",
+          "result": "not among the 113 brand pages of the index",
+          "file": "citations/index-greenwash-wash-by-brand.html"
+        },
+        {
+          "source": "asa",
+          "url": "https://www.asa.org.uk/search.html?q=Novonesis",
+          "date": "2026-10-21",
+          "result": "no ruling naming Novonesis (0 search result(s))",
+          "file": "citations/novonesis-check-asa.html"
+        },
+        {
+          "source": "jdp",
+          "url": "https://www.jdp-pub.org/avis/?search_avis=Novonesis",
+          "date": "2026-10-21",
+          "result": "no ruling naming Novonesis (0 search result(s))",
+          "file": "citations/novonesis-check-jdp.html"
+        }
+      ]
+    },
+    {
+      "slug": "siemens",
+      "name": "Siemens",
+      "website": "https://www.siemens.com/",
+      "group": "well_rated",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"Siemens AG\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2024-09-19",
+          "verified_from_container": true,
+          "file": "citations/siemens-1.json"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/siemens-ag-com-0071",
+          "date": "2026-10-21",
+          "why": "Net Zero Tracker: Net zero by 2050 (In corporate strategy); interim target: Emissions reduction target 2030; published plan: Yes (record updated 2026-07-10)",
+          "verified_from_container": true,
+          "file": "citations/siemens-2.html"
+        }
+      ],
+      "checks": [
+        {
+          "source": "changing_markets",
+          "url": "https://greenwash.com/wash-by-brand/",
+          "date": "2026-10-21",
+          "result": "not among the 113 brand pages of the index",
+          "file": "citations/index-greenwash-wash-by-brand.html"
+        },
+        {
+          "source": "asa",
+          "url": "https://www.asa.org.uk/search.html?q=Siemens",
+          "date": "2026-10-21",
+          "result": "no ruling naming Siemens (0 search result(s))",
+          "file": "citations/siemens-check-asa.html"
+        },
+        {
+          "source": "jdp",
+          "url": "https://www.jdp-pub.org/avis/?search_avis=Siemens",
+          "date": "2026-10-21",
+          "result": "no ruling naming Siemens (0 search result(s))",
+          "file": "citations/siemens-check-jdp.html"
+        }
+      ]
+    },
+    {
+      "slug": "swisscom",
+      "name": "Swisscom",
+      "website": "https://www.swisscom.ch/",
+      "group": "well_rated",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"Swisscom AG\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2024-02-08",
+          "verified_from_container": true,
+          "file": "citations/swisscom-1.json"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/swisscom-com-0145",
+          "date": "2026-10-21",
+          "why": "Net Zero Tracker: Net zero by 2035 (In corporate strategy); interim target: Emissions reduction target 2025; published plan: Yes (record updated 2026-06-19)",
+          "verified_from_container": true,
+          "file": "citations/swisscom-2.html"
+        }
+      ],
+      "checks": [
+        {
+          "source": "changing_markets",
+          "url": "https://greenwash.com/wash-by-brand/",
+          "date": "2026-10-21",
+          "result": "not among the 113 brand pages of the index",
+          "file": "citations/index-greenwash-wash-by-brand.html"
+        },
+        {
+          "source": "asa",
+          "url": "https://www.asa.org.uk/search.html?q=Swisscom",
+          "date": "2026-10-21",
+          "result": "no ruling naming Swisscom (0 search result(s))",
+          "file": "citations/swisscom-check-asa.html"
+        },
+        {
+          "source": "jdp",
+          "url": "https://www.jdp-pub.org/avis/?search_avis=Swisscom",
+          "date": "2026-10-21",
+          "result": "no ruling naming Swisscom (0 search result(s))",
+          "file": "citations/swisscom-check-jdp.html"
+        }
+      ]
+    },
+    {
+      "slug": "telenor",
+      "name": "Telenor",
+      "website": "https://www.telenor.com/",
+      "group": "well_rated",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"Telenor Group\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2025-10-09",
+          "verified_from_container": true,
+          "file": "citations/telenor-1.json"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/telenor-com-0028",
+          "date": "2026-10-21",
+          "why": "Net Zero Tracker: Net zero by 2045 (In corporate strategy); interim target: Emissions reduction target 2025; published plan: Yes (record updated 2026-04-07)",
+          "verified_from_container": true,
+          "file": "citations/telenor-2.html"
+        }
+      ],
+      "checks": [
+        {
+          "source": "changing_markets",
+          "url": "https://greenwash.com/wash-by-brand/",
+          "date": "2026-10-21",
+          "result": "not among the 113 brand pages of the index",
+          "file": "citations/index-greenwash-wash-by-brand.html"
+        },
+        {
+          "source": "asa",
+          "url": "https://www.asa.org.uk/search.html?q=Telenor",
+          "date": "2026-10-21",
+          "result": "no ruling naming Telenor (0 search result(s))",
+          "file": "citations/telenor-check-asa.html"
+        },
+        {
+          "source": "jdp",
+          "url": "https://www.jdp-pub.org/avis/?search_avis=Telenor",
+          "date": "2026-10-21",
+          "result": "no ruling naming Telenor (0 search result(s))",
+          "file": "citations/telenor-check-jdp.html"
+        }
+      ]
+    },
+    {
+      "slug": "hpe",
+      "name": "Hewlett Packard Enterprise",
+      "website": "https://www.hpe.com/",
+      "group": "well_rated",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"Hewlett Packard Enterprise Company\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2022-07-21",
+          "verified_from_container": true,
+          "file": "citations/hpe-1.json"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/hewlett-packard-enterprise-com-0039",
+          "date": "2026-10-21",
+          "why": "Net Zero Tracker: Net zero by 2040 (In corporate strategy); interim target: Emissions reduction target 2030; published plan: Yes (record updated 2026-03-30)",
+          "verified_from_container": true,
+          "file": "citations/hpe-2.html"
+        }
+      ],
+      "checks": [
+        {
+          "source": "changing_markets",
+          "url": "https://greenwash.com/wash-by-brand/",
+          "date": "2026-10-21",
+          "result": "not among the 113 brand pages of the index",
+          "file": "citations/index-greenwash-wash-by-brand.html"
+        },
+        {
+          "source": "asa",
+          "url": "https://www.asa.org.uk/search.html?q=Hewlett%20Packard%20Enterprise",
+          "date": "2026-10-21",
+          "result": "no ruling naming Hewlett Packard Enterprise (0 search result(s))",
+          "file": "citations/hpe-check-asa.html"
+        },
+        {
+          "source": "jdp",
+          "url": "https://www.jdp-pub.org/avis/?search_avis=Hewlett%20Packard%20Enterprise",
+          "date": "2026-10-21",
+          "result": "no ruling naming Hewlett Packard Enterprise (0 search result(s))",
+          "file": "citations/hpe-check-jdp.html"
+        }
+      ]
+    },
+    {
+      "slug": "novo-nordisk",
+      "name": "Novo Nordisk",
+      "website": "https://www.novonordisk.com/",
+      "group": "well_rated",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "date": "2026-10-21",
+          "why": "SBTi export row \"Novo Nordisk A/S\": near-term \"Validated Targets\", net-zero \"Validated Targets\", updated 2025-04-17",
+          "verified_from_container": true,
+          "file": "citations/novo-nordisk-1.json"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/novo-nordisk-com-0138",
+          "date": "2026-10-21",
+          "why": "Net Zero Tracker: Net zero by 2045 (In corporate strategy); interim target: Other 2030; published plan: Yes (record updated 2026-09-02)",
+          "verified_from_container": true,
+          "file": "citations/novo-nordisk-2.html"
+        }
+      ],
+      "checks": [
+        {
+          "source": "changing_markets",
+          "url": "https://greenwash.com/wash-by-brand/",
+          "date": "2026-10-21",
+          "result": "not among the 113 brand pages of the index",
+          "file": "citations/index-greenwash-wash-by-brand.html"
+        },
+        {
+          "source": "asa",
+          "url": "https://www.asa.org.uk/search.html?q=Novo%20Nordisk",
+          "date": "2026-10-21",
+          "result": "no ruling naming Novo Nordisk (0 search result(s))",
+          "file": "citations/novo-nordisk-check-asa.html"
+        },
+        {
+          "source": "jdp",
+          "url": "https://www.jdp-pub.org/avis/?search_avis=Novo%20Nordisk",
+          "date": "2026-10-21",
+          "result": "no ruling naming Novo Nordisk (0 search result(s))",
+          "file": "citations/novo-nordisk-check-jdp.html"
+        }
+      ]
+    }
+  ]
+}

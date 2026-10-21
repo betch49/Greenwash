@@ -1,0 +1,69 @@
+{
+ "entities": {
+  "Q2401742": {
+   "type": "item",
+   "id": "Q2401742",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "telecommunications industry"
+    }
+   }
+  },
+  "Q33": {
+   "type": "item",
+   "id": "Q33",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Finland"
+    }
+   }
+  },
+  "Q34": {
+   "type": "item",
+   "id": "Q34",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Sweden"
+    }
+   }
+  },
+  "Q35": {
+   "type": "item",
+   "id": "Q35",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Denmark"
+    }
+   }
+  },
+  "Q56598901": {
+   "type": "item",
+   "id": "Q56598901",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "mobile phone industry"
+    }
+   }
+  },
+  "Q862303": {
+   "type": "item",
+   "id": "Q862303",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Telia Company"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Telia Company"
+    }
+   }
+  }
+ },
+ "success": 1
+}

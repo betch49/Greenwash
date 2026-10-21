@@ -1,0 +1,20 @@
+{
+  "$comment": "Real capture: one row of the SBTi companies export, trimmed to these columns by scripts/record-validation.ts. Source: Science Based Targets initiative, Target Dashboard export, https://sciencebasedtargets.org/target-dashboard",
+  "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+  "last_modified": "Thu, 15 Oct 2026 15:22:15 GMT",
+  "fetched_at": "2026-10-21T07:15:56.266Z",
+  "row": {
+    "sbti_id": "4.0021798E7",
+    "company_name": "ASOS",
+    "isin": "GB0030927254",
+    "lei": "213800H8DBB8JSKDW630",
+    "location": "United Kingdom of Great Britain and Northern Ireland",
+    "sector": "Textiles, Apparel, Footwear and Luxury Goods",
+    "near_term_status": "Validated Targets",
+    "near_term_target_year": "FY2030",
+    "net_zero_status": "Validated Targets",
+    "net_zero_year": "FY2050",
+    "status_reason": "",
+    "date_updated": "2025-10-30"
+  }
+}

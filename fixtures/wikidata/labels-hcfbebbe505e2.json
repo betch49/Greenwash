@@ -1,0 +1,95 @@
+{
+ "entities": {
+  "Q112166038": {
+   "type": "item",
+   "id": "Q112166038",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "activities of head offices"
+    }
+   }
+  },
+  "Q12089268": {
+   "type": "item",
+   "id": "Q12089268",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "extraction of crude petroleum and natural gas"
+    }
+   }
+  },
+  "Q142": {
+   "type": "item",
+   "id": "Q142",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "France"
+    }
+   }
+  },
+  "Q154037": {
+   "type": "item",
+   "id": "Q154037",
+   "labels": {
+    "mul": {
+     "language": "mul",
+     "value": "TotalEnergies"
+    }
+   }
+  },
+  "Q213": {
+   "type": "item",
+   "id": "Q213",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Czech Republic"
+    }
+   }
+  },
+  "Q2151621": {
+   "type": "item",
+   "id": "Q2151621",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "energy industry"
+    }
+   }
+  },
+  "Q33946": {
+   "type": "item",
+   "id": "Q33946",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Czechoslovakia"
+    }
+   }
+  },
+  "Q601401": {
+   "type": "item",
+   "id": "Q601401",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "trade"
+    }
+   }
+  },
+  "Q862571": {
+   "type": "item",
+   "id": "Q862571",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "petroleum industry"
+    }
+   }
+  }
+ },
+ "success": 1
+}

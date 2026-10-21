@@ -1,0 +1,35 @@
+{
+ "entities": {
+  "Q210064": {
+   "type": "item",
+   "id": "Q210064",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "lighting"
+    }
+   }
+  },
+  "Q31": {
+   "type": "item",
+   "id": "Q31",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Belgium"
+    }
+   }
+  },
+  "Q55": {
+   "type": "item",
+   "id": "Q55",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Netherlands"
+    }
+   }
+  }
+ },
+ "success": 1
+}

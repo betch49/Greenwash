@@ -1,0 +1,21 @@
+{
+  "slug": "essity",
+  "query": "Essity",
+  "sector": "hygiene",
+  "website": "https://www.essity.com",
+  "capture": "real",
+  "capturedAt": "2026-10-21T07:14:39.803Z",
+  "userAgent": "GreenwashRadar/0.1 (+https://github.com/; evidence-based greenwashing risk signals; respects robots.txt)",
+  "entity": {
+    "id": "Q30938280",
+    "name": "Essity",
+    "description": "Swedish producer of tissue and hygiene products",
+    "website": "https://www.essity.com",
+    "websiteHost": "essity.com",
+    "industry": "health care industry",
+    "country": "Sweden",
+    "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Essity_Logo_neu.svg",
+    "exactName": true,
+    "score": 6
+  }
+}

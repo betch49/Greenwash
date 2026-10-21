@@ -16,5 +16,7 @@ Real responses from `https://www.wikidata.org/w/api.php`, recorded on 2026-10-20
 the first 12 hex characters of the SHA-1 of the `|`-joined sorted ids.
 
 Queries recorded: `patagonia`, `acme`, `continental`, `fairphone`, `oatly` (Phase 1), and `mammut`,
-`mammut sports group` (Phase 2 rework, 2026-10-20). Plain `mammut` returns the extinct genus and other
+`mammut sports group` (Phase 2 rework, 2026-10-20), and `innocent drinks`, `TotalEnergies`, `Signify`, `Essity`,
+`Telia Company` (Phase 10, 2026-10-21, for the validation brand fixtures; "Telia Company" has no confident match, so no
+brand fixture was recorded for it). Plain `mammut` returns the extinct genus and other
 non-companies (no confident match, no candidates), which is why the Mammut brand fixture uses `mammut sports group`.

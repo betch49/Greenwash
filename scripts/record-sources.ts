@@ -11,7 +11,12 @@
 // results the tests need: ASA "Shell" (exact and partial-name rulings, the
 // `possible` path) and JDP "TotalEnergies" (decision pages for the JDP parser).
 // Inline <script> bodies are removed from HTML, as for brand captures.
-import { readFileSync } from "node:fs";
+//
+// Adding brands (Phase 10, validation fixture subset): `npm run record:sources -- --add <slug> …`
+// records only those brand fixtures' cases into the existing manifest. Nothing is deleted, and a
+// URL that is already recorded is served from its file (never re-fetched), so earlier captures
+// stay byte-identical.
+import { existsSync, readFileSync } from "node:fs";
 import { mkdir, rm, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { RateLimitedFetcher, UndiciFetcher, type FetchOptions, type FetchResult, type Fetcher } from "../src/lib/fetch/fetcher";
@@ -37,14 +42,30 @@ function stripInlineScripts(html: string): string {
   });
 }
 
+const addIdx = process.argv.indexOf("--add");
+const addSlugs = addIdx >= 0 ? process.argv.slice(addIdx + 1).filter((a) => !a.startsWith("--")) : [];
+const adding = addIdx >= 0;
+if (adding && addSlugs.length === 0) {
+  console.error("usage: record-sources [--add <brand slug> …]");
+  process.exit(2);
+}
+const existing: Record<string, { file: string; capturedAt: string }> =
+  adding && existsSync(join(ROOT, "manifest.json")) ? (JSON.parse(readFileSync(join(ROOT, "manifest.json"), "utf8")) as { files: Record<string, { file: string; capturedAt: string }> }).files : {};
+
 class RecordingFetcher implements Fetcher {
-  readonly files: Record<string, { file: string; capturedAt: string }> = {};
+  readonly files: Record<string, { file: string; capturedAt: string }> = { ...existing };
   readonly log: string[] = [];
   /** Directory and file-name prefix for the case being recorded. */
   caseDir = "";
   private readonly inner = new RateLimitedFetcher(new UndiciFetcher(), new RateLimiter(1000));
 
   async get(url: string, opts?: FetchOptions): Promise<FetchResult> {
+    const kept = existing[url];
+    if (kept) {
+      this.log.push(`kept ${url}`);
+      const body = readFileSync(join(ROOT, kept.file), "utf8");
+      return { url, status: 200, body, contentType: /\.json$/.test(kept.file) ? "application/json" : /\.txt$/.test(kept.file) ? "text/plain" : "text/html", fetchedAt: kept.capturedAt, source: "fixture" };
+    }
     const res = await this.inner.get(url, opts);
     this.log.push(`${res.status} ${url}`);
     if (res.status < 200 || res.status >= 300 || this.files[url]) return res;
@@ -71,9 +92,9 @@ class RecordingFetcher implements Fetcher {
 }
 
 interface Meta { slug: string; entity: { name: string; industry?: string } }
-const brands = ["mammut", "fairphone", "oatly"].map((s) => JSON.parse(readFileSync(join("fixtures", "brands", s, "meta.json"), "utf8")) as Meta);
+const brands = (adding ? addSlugs : ["mammut", "fairphone", "oatly"]).map((s) => JSON.parse(readFileSync(join("fixtures", "brands", s, "meta.json"), "utf8")) as Meta);
 
-await rm(ROOT, { recursive: true, force: true });
+if (!adding) await rm(ROOT, { recursive: true, force: true });
 const rec = new RecordingFetcher();
 const { pageFetcher } = guardedPageFetcher(rec);
 const report: string[] = [];
@@ -99,8 +120,10 @@ for (const b of brands) {
     report.push(`iFixit ${b.entity.name}: ${r.signals.map((s) => s.kind).join(", ") || "none"} ${r.could_not_check.join(" ")}`);
   }
 }
-await regulator(asaUk, "Shell", "regulators/shell");
-await regulator(jdpFr, "TotalEnergies", "regulators/totalenergies");
+if (!adding) {
+  await regulator(asaUk, "Shell", "regulators/shell");
+  await regulator(jdpFr, "TotalEnergies", "regulators/totalenergies");
+}
 
 await writeFile(
   join(ROOT, "manifest.json"),

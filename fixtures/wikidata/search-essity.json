@@ -1,0 +1,179 @@
+{
+ "searchinfo": {
+  "search": "Essity"
+ },
+ "search": [
+  {
+   "id": "Q30938280",
+   "title": "Q30938280",
+   "pageid": 32547573,
+   "concepturi": "http://www.wikidata.org/entity/Q30938280",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q30938280",
+   "display": {
+    "label": {
+     "value": "Essity",
+     "language": "en"
+    },
+    "description": {
+     "value": "Swedish producer of tissue and hygiene products",
+     "language": "en"
+    }
+   },
+   "label": "Essity",
+   "description": "Swedish producer of tissue and hygiene products",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Essity"
+   }
+  },
+  {
+   "id": "Q2205290",
+   "title": "Q2205290",
+   "pageid": 2129405,
+   "concepturi": "http://www.wikidata.org/entity/Q2205290",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q2205290",
+   "display": {
+    "label": {
+     "value": "Essity Germany",
+     "language": "en"
+    },
+    "description": {
+     "value": "German subsidiary of Swedish company Essity",
+     "language": "en"
+    }
+   },
+   "label": "Essity Germany",
+   "description": "German subsidiary of Swedish company Essity",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Essity Germany"
+   }
+  },
+  {
+   "id": "Q107431990",
+   "title": "Q107431990",
+   "pageid": 102712428,
+   "concepturi": "http://www.wikidata.org/entity/Q107431990",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q107431990",
+   "display": {
+    "label": {
+     "value": "Essity Operations Manchester",
+     "language": "en"
+    },
+    "description": {
+     "value": "limited company in Bedfordshire",
+     "language": "en"
+    }
+   },
+   "label": "Essity Operations Manchester",
+   "description": "limited company in Bedfordshire",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Essity Operations Manchester"
+   }
+  },
+  {
+   "id": "Q118874441",
+   "title": "Q118874441",
+   "pageid": 113380501,
+   "concepturi": "http://www.wikidata.org/entity/Q118874441",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q118874441",
+   "display": {
+    "label": {
+     "value": "Essity Cuijk",
+     "language": "en"
+    },
+    "description": {
+     "value": "paper factory in Katwijk (NB), the Netherlands",
+     "language": "en"
+    }
+   },
+   "label": "Essity Cuijk",
+   "description": "paper factory in Katwijk (NB), the Netherlands",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Essity Cuijk"
+   }
+  },
+  {
+   "id": "Q102543478",
+   "title": "Q102543478",
+   "pageid": 99222558,
+   "concepturi": "http://www.wikidata.org/entity/Q102543478",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q102543478",
+   "display": {
+    "label": {
+     "value": "Essity Slovakia",
+     "language": "en"
+    },
+    "description": {
+     "value": "Slovak company",
+     "language": "en"
+    }
+   },
+   "label": "Essity Slovakia",
+   "description": "Slovak company",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Essity Slovakia"
+   }
+  },
+  {
+   "id": "Q58218525",
+   "title": "Q58218525",
+   "pageid": 58132579,
+   "concepturi": "http://www.wikidata.org/entity/Q58218525",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q58218525",
+   "display": {
+    "label": {
+     "value": "Essity Czech Republic",
+     "language": "en"
+    },
+    "description": {
+     "value": "Czech company",
+     "language": "en"
+    }
+   },
+   "label": "Essity Czech Republic",
+   "description": "Czech company",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Essity Czech Republic"
+   }
+  },
+  {
+   "id": "Q130587012",
+   "title": "Q130587012",
+   "pageid": 124528148,
+   "concepturi": "http://www.wikidata.org/entity/Q130587012",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q130587012",
+   "display": {
+    "label": {
+     "value": "Essity Pld France",
+     "language": "fr"
+    }
+   },
+   "label": "Essity Pld France",
+   "match": {
+    "type": "label",
+    "language": "fr",
+    "text": "Essity Pld France"
+   }
+  }
+ ],
+ "search-continue": 7,
+ "success": 1
+}

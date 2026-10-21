@@ -1,0 +1,39 @@
+{
+ "entities": {
+  "Q145": {
+   "type": "item",
+   "id": "Q145",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "United Kingdom"
+    }
+   }
+  },
+  "Q3295867": {
+   "type": "item",
+   "id": "Q3295867",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "The Coca-Cola Company"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "The Coca-Cola Company"
+    }
+   }
+  },
+  "Q4899370": {
+   "type": "item",
+   "id": "Q4899370",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "beverage industry"
+    }
+   }
+  }
+ },
+ "success": 1
+}

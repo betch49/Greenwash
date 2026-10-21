@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://www.innocentdrinks.co.uk/content/innocent.sitemap.gb-en-sitemap.xml

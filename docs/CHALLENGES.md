@@ -79,3 +79,11 @@
 **What I did.** Kept `config/wikidata.json` unchanged and added `sabin.partyLegalSuffixes: ["se"]` in `config/registries.json`, stripped from the end of a party before the unchanged ADR-019 comparison (Sabin only).
 
 **Option for the director.** Add `se` to `legalSuffixes` globally (Phase 11's SBTi rows also carry "SE" names) and update the JDP search-URL pin, then drop `partyLegalSuffixes`.
+
+## C-6 (Phase 10) — The regulator step scores rulings on any topic, not only environmental claims
+
+**Observation (not a Phase 10 change).** Recording the validation fixtures, `record:sources -- --add totalenergies` showed that the JDP step scores all three TotalEnergies decisions as `regulator.ruling`, including *TotalEnergies – presse* (complaint by the Médiateur National de l'Énergie about an electricity price promotion, "Heures Eco"), which is not an environmental claim. The ASA side is the same: for a brand with many ASA rulings (the Vodafone and BT Group searches recorded under `fixtures/validation/citations/`), every exact-name ruling would be scored on the track-record axis whatever its subject (pricing, gambling, health claims). The brief and METHODOLOGY Section 9 describe the axis as green-claim rulings.
+
+**Effect.** Over-counts track-record risk for brands with non-environmental rulings; on the validation set it can raise flagged and well-rated scores alike, and it inflates the leakage overlap. The ground truth itself is not affected (a ruling flags a brand only when its topic is environmental, and well-rated brands with any ruling were excluded).
+
+**Proposal (not implemented).** Score a ruling only when its ruling text matches an environmental-topic lexicon (ASA: the "Environmental claims" topic tag on the ruling page where present; JDP: the "Développement durable" recommendation cited in the decision); otherwise list it as "ruling on another topic", 0 points. Measured on the Phase 10 harness before and after, like ADR-030.

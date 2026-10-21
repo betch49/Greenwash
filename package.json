@@ -16,9 +16,11 @@
     "record:sources": "tsx scripts/record-sources.ts",
     "record:registries": "tsx scripts/record-registries.ts",
     "record:sabin": "tsx scripts/record-registries.ts sabin",
+    "record:validation": "tsx scripts/record-validation.ts",
     "author:llm": "tsx scripts/author-llm-fixtures.ts",
     "lighthouse": "tsx scripts/lighthouse.ts",
-    "e2e:real": "tsx scripts/e2e-real.ts"
+    "e2e:real": "tsx scripts/e2e-real.ts",
+    "validate": "tsx scripts/validate.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.137.0",

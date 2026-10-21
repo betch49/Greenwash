@@ -1,0 +1,179 @@
+{
+ "searchinfo": {
+  "search": "Signify"
+ },
+ "search": [
+  {
+   "id": "Q2336380",
+   "title": "Q2336380",
+   "pageid": 2257111,
+   "concepturi": "http://www.wikidata.org/entity/Q2336380",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q2336380",
+   "display": {
+    "label": {
+     "value": "Signify",
+     "language": "en"
+    },
+    "description": {
+     "value": "division of Philips manufacturing lights and related products",
+     "language": "en"
+    }
+   },
+   "label": "Signify",
+   "description": "division of Philips manufacturing lights and related products",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Signify"
+   }
+  },
+  {
+   "id": "Q126326772",
+   "title": "Q126326772",
+   "pageid": 120353640,
+   "concepturi": "http://www.wikidata.org/entity/Q126326772",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q126326772",
+   "display": {
+    "label": {
+     "value": "signify",
+     "language": "en"
+    },
+    "description": {
+     "value": "OpenBSD utility",
+     "language": "en"
+    }
+   },
+   "label": "signify",
+   "description": "OpenBSD utility",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "signify"
+   }
+  },
+  {
+   "id": "Q510362",
+   "title": "Q510362",
+   "pageid": 479954,
+   "concepturi": "http://www.wikidata.org/entity/Q510362",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q510362",
+   "display": {
+    "label": {
+     "value": "Signify",
+     "language": "en"
+    },
+    "description": {
+     "value": "1996 album by Porcupine Tree",
+     "language": "en"
+    }
+   },
+   "label": "Signify",
+   "description": "1996 album by Porcupine Tree",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Signify"
+   }
+  },
+  {
+   "id": "Q7512973",
+   "title": "Q7512973",
+   "pageid": 7427135,
+   "concepturi": "http://www.wikidata.org/entity/Q7512973",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q7512973",
+   "display": {
+    "label": {
+     "value": "Signifying Rappers: Rap and Race in the Urban Present",
+     "language": "en"
+    },
+    "description": {
+     "value": "book by Mark Costello and David Foster Wallace",
+     "language": "en"
+    }
+   },
+   "label": "Signifying Rappers: Rap and Race in the Urban Present",
+   "description": "book by Mark Costello and David Foster Wallace",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Signifying Rappers: Rap and Race in the Urban Present"
+   }
+  },
+  {
+   "id": "Q7512972",
+   "title": "Q7512972",
+   "pageid": 7427134,
+   "concepturi": "http://www.wikidata.org/entity/Q7512972",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q7512972",
+   "display": {
+    "label": {
+     "value": "Signifyin'",
+     "language": "en"
+    },
+    "description": {
+     "value": "album by Lou Donaldson",
+     "language": "en"
+    }
+   },
+   "label": "Signifyin'",
+   "description": "album by Lou Donaldson",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Signifyin'"
+   }
+  },
+  {
+   "id": "Q108573696",
+   "title": "Q108573696",
+   "pageid": 103808557,
+   "concepturi": "http://www.wikidata.org/entity/Q108573696",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q108573696",
+   "display": {
+    "label": {
+     "value": "Signifying Substance: A Cultural Analysis of Early Modernist Language Practice",
+     "language": "en"
+    }
+   },
+   "label": "Signifying Substance: A Cultural Analysis of Early Modernist Language Practice",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Signifying Substance: A Cultural Analysis of Early Modernist Language Practice"
+   }
+  },
+  {
+   "id": "Q7512970",
+   "title": "Q7512970",
+   "pageid": 7427132,
+   "concepturi": "http://www.wikidata.org/entity/Q7512970",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q7512970",
+   "display": {
+    "label": {
+     "value": "signifyin'",
+     "language": "en"
+    },
+    "description": {
+     "value": "wordplay in African-American culture",
+     "language": "en"
+    }
+   },
+   "label": "signifyin'",
+   "description": "wordplay in African-American culture",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "signifyin'"
+   }
+  }
+ ],
+ "search-continue": 7,
+ "success": 1
+}

@@ -1,0 +1,20 @@
+{
+  "$comment": "Real capture: one row of the SBTi companies export, trimmed to these columns by scripts/record-validation.ts. Source: Science Based Targets initiative, Target Dashboard export, https://sciencebasedtargets.org/target-dashboard",
+  "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+  "last_modified": "Thu, 15 Oct 2026 15:22:15 GMT",
+  "fetched_at": "2026-10-21T07:15:56.266Z",
+  "row": {
+    "sbti_id": "4.0017584E7",
+    "company_name": "BT Group",
+    "isin": "GB0030913577",
+    "lei": "213800LRO7NS5CYQMN21",
+    "location": "United Kingdom of Great Britain and Northern Ireland",
+    "sector": "Telecommunication Services",
+    "near_term_status": "Validated Targets",
+    "near_term_target_year": "FY2031",
+    "net_zero_status": "Validated Targets",
+    "net_zero_year": "FY2041",
+    "status_reason": "",
+    "date_updated": "2025-04-10"
+  }
+}

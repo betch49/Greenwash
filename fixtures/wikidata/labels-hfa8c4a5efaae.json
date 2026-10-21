@@ -1,0 +1,104 @@
+{
+ "entities": {
+  "Q112165244": {
+   "type": "item",
+   "id": "Q112165244",
+   "labels": {}
+  },
+  "Q142": {
+   "type": "item",
+   "id": "Q142",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "France"
+    }
+   }
+  },
+  "Q145": {
+   "type": "item",
+   "id": "Q145",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "United Kingdom"
+    }
+   }
+  },
+  "Q15067276": {
+   "type": "item",
+   "id": "Q15067276",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "health care industry"
+    }
+   }
+  },
+  "Q183": {
+   "type": "item",
+   "id": "Q183",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Germany"
+    }
+   }
+  },
+  "Q213": {
+   "type": "item",
+   "id": "Q213",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Czech Republic"
+    }
+   }
+  },
+  "Q214": {
+   "type": "item",
+   "id": "Q214",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Slovakia"
+    }
+   }
+  },
+  "Q30938280": {
+   "type": "item",
+   "id": "Q30938280",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Essity"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Essity"
+    }
+   }
+  },
+  "Q34": {
+   "type": "item",
+   "id": "Q34",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Sweden"
+    }
+   }
+  },
+  "Q55": {
+   "type": "item",
+   "id": "Q55",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Netherlands"
+    }
+   }
+  }
+ },
+ "success": 1
+}

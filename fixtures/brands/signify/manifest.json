@@ -1,0 +1,17 @@
+{
+  "capturedAt": "2026-10-21T07:14:16.964Z",
+  "files": {
+    "https://www.signify.com/robots.txt": "robots/www-signify-com.txt",
+    "https://www.signify.com/sitemap-signify-ar_AE-web-index.xml": "sitemaps/www-signify-com-sitemap-signify-ar-ae-web-index-xml.xml",
+    "https://www.signify.com/sitemap-signify-ar_EG-web-index.xml": "sitemaps/www-signify-com-sitemap-signify-ar-eg-web-index-xml.xml",
+    "https://www.signify.com/sitemap-signify-ar_SA-web-index.xml": "sitemaps/www-signify-com-sitemap-signify-ar-sa-web-index-xml.xml",
+    "https://www.signify.com/sitemap-signify-bg_BG-web-index.xml": "sitemaps/www-signify-com-sitemap-signify-bg-bg-web-index-xml.xml",
+    "https://www.signify.com/sitemap-signify-cs_CZ-web-index.xml": "sitemaps/www-signify-com-sitemap-signify-cs-cz-web-index-xml.xml",
+    "https://www.signify.com/sitemap-signify-da_DK-web-index.xml": "sitemaps/www-signify-com-sitemap-signify-da-dk-web-index-xml.xml",
+    "https://www.signify.com/sitemap-signify-de_AT-web-index.xml": "sitemaps/www-signify-com-sitemap-signify-de-at-web-index-xml.xml",
+    "https://www.signify.com/sitemap-signify-de_CH-web-index.xml": "sitemaps/www-signify-com-sitemap-signify-de-ch-web-index-xml.xml",
+    "https://www.signify.com/sitemap-signify-de_DE-web-index.xml": "sitemaps/www-signify-com-sitemap-signify-de-de-web-index-xml.xml",
+    "https://www.signify.com/sitemap-signify-el_GR-web-index.xml": "sitemaps/www-signify-com-sitemap-signify-el-gr-web-index-xml.xml",
+    "https://www.signify.com/": "pages/www-signify-com-home.html"
+  }
+}

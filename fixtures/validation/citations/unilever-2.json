@@ -1,0 +1,20 @@
+{
+  "$comment": "Real capture: one row of the SBTi companies export, trimmed to these columns by scripts/record-validation.ts. Source: Science Based Targets initiative, Target Dashboard export, https://sciencebasedtargets.org/target-dashboard",
+  "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+  "last_modified": "Thu, 15 Oct 2026 15:22:15 GMT",
+  "fetched_at": "2026-10-21T07:15:56.266Z",
+  "row": {
+    "sbti_id": "4.0008764E7",
+    "company_name": "Unilever plc",
+    "isin": "GB00B10RZP78",
+    "lei": "549300MKFYEKVRWML317",
+    "location": "United Kingdom of Great Britain and Northern Ireland",
+    "sector": "Consumer Durables, Household and Personal Products",
+    "near_term_status": "Validated Targets",
+    "near_term_target_year": "FY2030",
+    "net_zero_status": "Commitment Removed",
+    "net_zero_year": "",
+    "status_reason": "Expired commitment",
+    "date_updated": "2024-04-25"
+  }
+}
