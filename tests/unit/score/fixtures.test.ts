@@ -53,8 +53,10 @@ const EXPECTED = {
     axes: { claims: "scored:51", evidence: "scored:0", track: "scored:50", repair: "not_applicable:0" },
   },
   // Fictional, test-only (ADR-011): exercises claim.removed and the protective evidence kinds.
+  // Phase 7 (ADR-017): a second removal, 2025 archived copy → live page, so track 20 → 40 and score 31 → 37.
+  // This table is the rule-only baseline (no LLM client); tests/unit/llm/ai-share-fixtures.test.ts covers the LLM run.
   northwind: {
-    score: 31,
+    score: 37,
     label: "moderate",
     confidence: 100,
     kinds: {
@@ -63,13 +65,13 @@ const EXPECTED = {
       "evidence:evidence.report_found": 1,
       "evidence:evidence.absolute_emissions_found": 1,
       "evidence:evidence.supplier_list_found": 1,
-      "track:claim.removed": 1,
+      "track:claim.removed": 2,
       "repair:repair.manual_found": 1,
       "repair:repair.spare_parts_found": 1,
       "repair:repair.program_found": 1,
       "repair:repair.warranty_found": 1,
     },
-    axes: { claims: "scored:100", evidence: "scored:0", track: "scored:20", repair: "scored:0" },
+    axes: { claims: "scored:100", evidence: "scored:0", track: "scored:40", repair: "scored:0" },
   },
 };
 

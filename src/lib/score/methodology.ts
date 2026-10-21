@@ -33,8 +33,8 @@ export function paramRows(w: Weights = WEIGHTS): ParamRow[] {
     else if (v && typeof v === "object") for (const [k, x] of Object.entries(v)) walk(prefix ? `${prefix}.${k}` : k, x);
     else out.push({ key: prefix, value: String(v) });
   };
-  const { claimsRate, defaultWeightHint, regulatorRuling, llmGuard, labels, confidence } = w;
-  walk("", { claimsRate, defaultWeightHint, regulatorRuling, llmGuard, labels, confidence });
+  const { claimsRate, defaultWeightHint, regulatorRuling, llmGuard, llm, labels, confidence } = w;
+  walk("", { claimsRate, defaultWeightHint, regulatorRuling, llmGuard, llm, labels, confidence });
   return out;
 }
 

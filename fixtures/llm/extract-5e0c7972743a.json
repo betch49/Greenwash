@@ -1,0 +1,21 @@
+{
+  "name": "extract",
+  "input_sha1": "5e0c7972743a9ab7aa4038aaf5cbc309ca5bec3d",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "claims": [
+      {
+        "sentence": "Our oat drinks are carbon neutral",
+        "kind_hint": "offset"
+      },
+      {
+        "sentence": "Our packaging is eco-friendly and fully recyclable!",
+        "kind_hint": "vague"
+      },
+      {
+        "sentence": "We are committed to regenerative farming on every partner farm.",
+        "kind_hint": "future_only"
+      }
+    ]
+  }
+}

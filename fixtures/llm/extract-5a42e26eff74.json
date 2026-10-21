@@ -1,0 +1,17 @@
+{
+  "name": "extract",
+  "input_sha1": "5a42e26eff7458df19a92a91b0127def1dd24e90",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "claims": [
+      {
+        "sentence": "We do not own the factories that make our products, so we work with our suppliers to improve working conditions and environmental performance.",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "We are phasing out PFAS from our water-repellent finishes and our gear is safe and natural.",
+        "kind_hint": "vague"
+      }
+    ]
+  }
+}

@@ -26,16 +26,16 @@ export function Timeline({ entries }: { entries: TimelineEntry[] }) {
               </h3>
               <ol className="timeline">
                 {rows.map((r) => (
-                  <li key={r.snapshot_url} data-year={r.year}>
+                  <li key={r.snapshot_url} data-year={r.year} {...(r.live ? { "data-live": "" } : {})}>
                     <a href={r.snapshot_url} rel="noopener noreferrer">
-                      {ui.timelineSnapshot(r.year, r.snapshot_date)}
+                      {r.live ? ui.timelineLive(r.snapshot_date) : ui.timelineSnapshot(r.year, r.snapshot_date)}
                     </a>
                     <span className="muted"> — {ui.timelineClaimsPresent(r.claims_present.length)}</span>
                     {r.claims_removed.length > 0 && r.previous_year !== undefined && (
                       <ul className="timeline-removed">
                         {r.claims_removed.map((c) => (
                           <li key={c} data-removed>
-                            <strong>{ui.timelineRemoved(r.previous_year!, r.year)}</strong>: “{c}”
+                            <strong>{r.live ? ui.timelineRemovedLive(r.previous_year!) : ui.timelineRemoved(r.previous_year!, r.year)}</strong>: “{c}”
                           </li>
                         ))}
                       </ul>

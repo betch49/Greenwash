@@ -1,0 +1,17 @@
+{
+  "name": "extract",
+  "input_sha1": "1651bcda63fe98c137404bf79c042bacf6a3918e",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "claims": [
+      {
+        "sentence": "How sustainable is the Fairphone 3?",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "As with the Fairphone 2, we turned to the independent experts at the Fraunhofer Institute IZM to examine the phone’s lifelong environmental impact – from the mine to the factory to the store to your pocket to the product’s end of life and the recycling of its materials and parts.",
+        "kind_hint": "other"
+      }
+    ]
+  }
+}

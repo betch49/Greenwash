@@ -26,6 +26,14 @@ const TimelineEntrySchema = z.object({
   page_url: z.string(),
   snapshot_date: z.string(),
   previous_year: z.number().int().optional(),
+  live: z.boolean().optional(),
+});
+
+/** One logged LLM call (brief Section 4: log which sub-signals depended on an LLM call). */
+const LlmCallSchema = z.object({
+  name: z.enum(["extract", "classify-diff", "summary"]),
+  used_fixture: z.boolean(),
+  status: z.enum(["ok", "empty", "invalid", "error"]),
 });
 
 export const ReportV1Schema = z.object({
@@ -58,6 +66,10 @@ export const ReportV1Schema = z.object({
   generated_at: z.string().min(1),
   sources_count: z.number().int().min(0),
   signals_count: z.number().int().min(0),
+  /** Phase 7: the plain-English summary; absent ⇒ "Summary unavailable". Text only, never scored. */
+  summary: z.object({ text: z.string().min(1), cited_urls: z.array(z.string().url()) }).optional(),
+  /** Phase 7: every LLM call of the run. */
+  llm_calls: z.array(LlmCallSchema).default([]),
 });
 
 export type ReportV1 = z.infer<typeof ReportV1Schema>;
@@ -76,7 +88,8 @@ export function buildReport(run: ReportRun, outcome: Pick<PipelineOutcome, "sign
       words_scanned: outcome.pages.reduce((n, p) => n + p.wordCount, 0),
       repair_axis: outcome.repair_axis,
       step_status: outcome.step_status,
-      archived_snapshots: outcome.timeline.length,
+      // Archived copies only: the live page row of the timeline (ADR-017) is not an archived snapshot.
+      archived_snapshots: outcome.timeline.filter((t) => !t.live).length,
       claim_stats: outcome.claim_stats,
     },
     opts,

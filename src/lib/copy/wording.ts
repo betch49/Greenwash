@@ -48,6 +48,13 @@ export const ui = {
   timelineSnapshot: (year: number, date: string) => `${year} (archived ${date})`,
   timelineClaimsPresent: (n: number) => `${n} claim sentence${n === 1 ? "" : "s"} present`,
   timelineRemoved: (from: number, to: number) => `claim removed between ${from} and ${to}`,
+  /** ADR-017: the live page is the last element of a page's history. */
+  timelineRemovedLive: (from: number) => `claim removed between ${from} and the current page`,
+  timelineLive: (date: string) => `current page (fetched ${date})`,
+  timelineLiveCopy: "current page",
+  summaryHeading: "Summary",
+  summaryUnavailable: "Summary unavailable",
+  summaryAiNote: "Written by an AI model from the receipts below; it may cite only pages this report fetched.",
   timelineArchivedCopy: "archived copy",
   couldNotCheckHeading: "What we could not check",
 };
@@ -67,6 +74,9 @@ export const steps = {
   repair: "Checking repair information",
   fetchRuling: (url: string) => `Fetching ruling ${url}`,
   ifixit: "Looking up iFixit",
+  llmExtract: "Proposing candidate claims (AI)",
+  llmClassify: "Classifying archived changes (AI)",
+  llmSummary: "Writing the plain-English summary (AI)",
 };
 
 /** Reasons recorded when a step or a page is skipped (shown as "skipped: <reason>"). */
@@ -89,6 +99,14 @@ export const reasons = {
   repairNotApplicable: (industry: string) => `not applicable: the brand’s industry on Wikidata is “${industry}”, whose products are consumed, not repaired`,
   ifixitUnreachable: (cause: string) => `iFixit unreachable (${cause})`,
   ifixitNotListed: (name: string) => `iFixit lists no device category named “${name}”`,
+  noApiKey: "no API key",
+  noLlmClient: "no LLM client configured",
+  llmUnavailable: (why: string) => `LLM unavailable (${why})`,
+  llmInvalid: (what: string, why: string) => `${what}: AI output rejected (${why})`,
+  llmFailed: (what: string, why: string) => `${what}: AI call failed (${why})`,
+  llmNoAnswer: (what: string) => `${what}: no AI answer`,
+  llmNoPages: "no fetched page to read",
+  llmNoCandidates: "no removed claim to classify",
 };
 
 /** Entries for the report's "What we could not check" section. */
@@ -128,6 +146,8 @@ export const couldNotCheck = {
     `Repair and ownership: not applicable (Wikidata industry “${industry}”: products are consumed, not repaired); this axis is not scored.`,
   repairNoPages: "Repair information on the brand’s own pages: no page could be fetched, so none was checked.",
   ifixitSkipped: (reason: string) => `iFixit repair guides: not checked (${reason}).`,
+  llmSkipped: (why: string) =>
+    `AI-assisted steps (candidate claims, archived-change classification, summary): not run (${why}); the score uses the rule-based signals only.`,
 };
 
 /** How each claim-language rule family is named in signal labels (rule ids: src/lib/claims/rules). */
@@ -163,6 +183,9 @@ export const signalLabels = {
   ifixitScore: (device: string, score: number) => `iFixit repairability score for ${device}: ${score}/10`,
   claimRemoved: (from: number, to: number) =>
     `Claim removed between ${from} and ${to}: present in the ${from} archived copy of the page, absent from the ${to} copy`,
+  /** ADR-017: newest archived copy vs the page as fetched now. */
+  claimRemovedLive: (from: number, fetched: string) =>
+    `Claim removed between ${from} and the current page: present in the ${from} archived copy, absent from the page as fetched on ${fetched}`,
 };
 
 /** Excerpts that the engine writes itself (the receipt still points at the page). */

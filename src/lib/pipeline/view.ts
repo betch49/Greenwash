@@ -32,10 +32,12 @@ export interface ScoreSummary {
   /** ai_share as a whole percentage. */
   ai_share_pct: number;
   basis: string;
+  /** The AI summary (Phase 7), absent when unavailable or rejected. */
+  summary?: string;
 }
 
 export function scoreSummary(id: string, r: ReportV1): ScoreSummary {
-  return { report_id: id, score: r.score, confidence: r.confidence, label_text: r.label_text, ai_share_pct: Math.round(r.ai_share * 100), basis: r.basis };
+  return { report_id: id, score: r.score, confidence: r.confidence, label_text: r.label_text, ai_share_pct: Math.round(r.ai_share * 100), basis: r.basis, ...(r.summary ? { summary: r.summary.text } : {}) };
 }
 
 export function toRunView(stored: Run): RunView {

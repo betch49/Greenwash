@@ -99,6 +99,17 @@ export function Progress({ initial }: { initial: RunView }) {
             <span data-testid="ai-share">{scoreWording.aiShare(view.score.ai_share_pct)}</span>. <span data-testid="score-basis">{view.score.basis}</span>{" "}
             <Link href="/methodology">{scoreWording.methodologyLink}</Link>
           </p>
+          <h3>{ui.summaryHeading}</h3>
+          {view.score.summary ? (
+            <>
+              <p data-testid="summary">{view.score.summary}</p>
+              <p className="muted">{ui.summaryAiNote}</p>
+            </>
+          ) : (
+            <p className="muted" data-testid="summary">
+              {ui.summaryUnavailable}
+            </p>
+          )}
         </section>
       )}
       {finished(view.status) && <Timeline entries={view.timeline ?? []} />}

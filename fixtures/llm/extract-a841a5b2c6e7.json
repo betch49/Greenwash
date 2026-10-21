@@ -1,0 +1,33 @@
+{
+  "name": "extract",
+  "input_sha1": "a841a5b2c6e72d4a4073366e354e97f0ca272d9c",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "claims": [
+      {
+        "sentence": "Our climate is in crisis, our environment is changing, and we have a responsibility to act.",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "At Mammut, we’ve signed the Paris Agreement’s UN Fashion Industry Charter for Climate Action and will reach net zero by 2050 at the latest, to support the key objective of limiting global warming to 1.5°C above pre-industrial levels.",
+        "kind_hint": "future_only"
+      },
+      {
+        "sentence": "We want to protect our planet for future generations, but we know this can only be done by looking at every area of our business.",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "Increasing our use of lower impact materials and production processes",
+        "kind_hint": "baseline_less_comparison"
+      },
+      {
+        "sentence": "We recognise that our impact and influence goes beyond carbon neutrality—where emissions are off-set by buying carbon credits and business-as-usual continues.",
+        "kind_hint": "offset"
+      },
+      {
+        "sentence": "That’s why we’re working towards net zero; a thorough commitment to decarbonization that includes wider supply chain activities.",
+        "kind_hint": "future_only"
+      }
+    ]
+  }
+}

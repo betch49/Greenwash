@@ -46,6 +46,12 @@ export interface Snapshot {
   text: string;
   /** When we fetched the snapshot (served from cache: the original fetch time). */
   fetchedAt: string;
+  /**
+   * ADR-017: the page as fetched live, appended as the last element of its
+   * history (year = the run's year, snapshotUrl = the page URL). It is never a
+   * receipt for a removal: the receipt is always the archived copy before it.
+   */
+  live?: boolean;
 }
 
 export type SnapshotFetch = { ok: true; snapshot: Snapshot } | { ok: false; url: string; status: number };

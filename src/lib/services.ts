@@ -10,6 +10,8 @@ import { RateLimiter } from "./fetch/rate-limiter";
 import { wikidataFixturePath } from "./wikidata/fixtures";
 import { WAYBACK_HOST, waybackIntervalMs } from "./wayback/cdx";
 import { waybackAwareTtl } from "./wayback/snapshot";
+import type { LLMClient } from "./llm/client";
+import { selectLLM } from "./llm/select";
 
 export interface Services {
   offline: boolean;
@@ -17,6 +19,8 @@ export interface Services {
   runs: RunsRepo;
   /** General-purpose fetcher: cached + rate-limited (network) or fixtures (offline). */
   fetcher: Fetcher;
+  /** MockLLM offline or without a key (then marked unavailable), AnthropicLLM with a key (Phase 7, 7.7). */
+  llm: LLMClient;
 }
 
 export const isOffline = () => process.env.GR_OFFLINE_FIXTURES === "1";
@@ -69,7 +73,7 @@ export function getServices(): Services {
   if (!g.__grServices) {
     const db = getDb();
     const offline = isOffline();
-    g.__grServices = { offline, db, runs: new RunsRepo(db), fetcher: buildFetcher(db, offline) };
+    g.__grServices = { offline, db, runs: new RunsRepo(db), fetcher: buildFetcher(db, offline), llm: selectLLM() };
   }
   return g.__grServices;
 }

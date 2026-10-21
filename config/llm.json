@@ -1,0 +1,24 @@
+{
+  "$comment": "LLM layer settings (PLAN Phase 7). Read by src/lib/llm/config.ts. The model id can be overridden with GR_LLM_MODEL. The LLM never produces a number that enters the score: it proposes claim sentences (the rule engine decides), classifies archived diffs (keep / halve / drop a rule-found removal, never add one) and writes the summary text. temperature is sent only to models listed in temperatureModels: current models (Claude Sonnet 5.5, Haiku 5.5, Opus 5.5) reject non-default sampling parameters with HTTP 400, so for them determinism comes from strict tool schemas, item-wise validation and recorded fixtures (docs/CHALLENGES.md C-5).",
+  "version": 1,
+  "model": "claude-sonnet-5-5",
+  "maxTokens": 8000,
+  "effort": "low",
+  "temperature": 0,
+  "temperatureModels": ["claude-haiku-4-5", "claude-sonnet-4-6", "claude-opus-4-6"],
+  "fallbacks": "default",
+  "fallbackBeta": "server-side-fallback-2026-07-01",
+  "timeoutMs": 120000,
+  "fixturesDir": "fixtures/llm",
+  "extract": {
+    "maxPages": 3,
+    "maxChars": 30000,
+    "maxClaims": 40
+  },
+  "classify": {
+    "maxCandidates": 20
+  },
+  "summary": {
+    "maxWords": 120
+  }
+}

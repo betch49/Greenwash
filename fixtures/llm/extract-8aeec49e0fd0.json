@@ -1,0 +1,25 @@
+{
+  "name": "extract",
+  "input_sha1": "8aeec49e0fd0d7917cd63ea7f22692c421dca273",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "claims": [
+      {
+        "sentence": "Climate change is the biggest threat to the places we love.",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "This page lists our climate targets and how we are tracking against them.",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "Our products are climate neutral.",
+        "kind_hint": "offset"
+      },
+      {
+        "sentence": "Our new trail shoe has a lower impact.",
+        "kind_hint": "baseline_less_comparison"
+      }
+    ]
+  }
+}

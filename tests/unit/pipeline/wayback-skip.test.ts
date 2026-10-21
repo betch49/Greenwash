@@ -65,7 +65,8 @@ describe("Wayback step (4.6)", () => {
     expect(line!.reason).toContain("Wayback");
     // Stopped at the first failure instead of hammering the archive.
     expect(fetcher.calls.length).toBeLessThanOrEqual(3);
-    expect(out.progress[out.progress.length - 1]).toEqual({ step: "Checking claim language", status: "done" });
+    // The last line is the summary written after scoring (Phase 7); the last step before it ran.
+    expect(out.progress[out.progress.length - 2]).toEqual({ step: "Checking claim language", status: "done" });
     expect(out.could_not_check.some((c) => c.includes("Wayback unreachable"))).toBe(true);
     expect(out.signals.filter((s) => s.kind === "claim.removed")).toEqual([]);
   });
@@ -75,8 +76,9 @@ describe("Wayback step (4.6)", () => {
     const out = await runPipeline(run, { runs, pages, outputs, fetcher: new OfflineFetcher(), now: NOW });
     expect(out.progress.find((p) => p.step === STEP)).toEqual({ step: STEP, status: "done" });
     const removed = out.signals.filter((s) => s.kind === "claim.removed");
-    expect(removed).toHaveLength(1);
-    expect(out.diff_candidates).toHaveLength(1);
+    // 2021 → 2024, and (ADR-017, Phase 7) the newest archived copy (2025) → the live page.
+    expect(removed).toHaveLength(2);
+    expect(out.diff_candidates).toHaveLength(2);
     const stored = outputs.get(run.id).timeline;
     expect(stored).toEqual(out.timeline);
     expect(outputs.get(run.id).could_not_check).toEqual(out.could_not_check);

@@ -56,6 +56,9 @@
   "llmGuard": {
     "maxShare": 0.5
   },
+  "llm": {
+    "unsureWeightMultiplier": 0.5
+  },
   "labels": {
     "moderateFrom": 25,
     "highFrom": 50

@@ -15,10 +15,10 @@ const inflight = () => (g.__grInflight ??= new Map());
  * from a GET render. Returns false when the run was already started or is unknown.
  */
 export function startAnalysis(runId: string): boolean {
-  const { runs, db, fetcher } = getServices();
+  const { runs, db, fetcher, llm } = getServices();
   const run = runs.get(runId);
   if (!run || !runs.claimStart(runId)) return false;
-  const p = runPipeline(run, { runs, pages: new RunPagesRepo(db), outputs: new RunOutputsRepo(db), reports: new ReportsRepo(db), fetcher, now: pipelineClock() }).finally(() => inflight().delete(runId));
+  const p = runPipeline(run, { runs, pages: new RunPagesRepo(db), outputs: new RunOutputsRepo(db), reports: new ReportsRepo(db), fetcher, llm, now: pipelineClock() }).finally(() => inflight().delete(runId));
   inflight().set(runId, p);
   return true;
 }

@@ -26,6 +26,33 @@ export function waybackTargets(ctx: Pick<PipelineContext, "pages" | "robotsDisal
   return out;
 }
 
+/** `2026-10-20T22:45:00.000Z` ⇒ `20261020224500` (the Wayback timestamp format). */
+const toTimestamp = (iso: string) => iso.replace(/[^0-9]/g, "").slice(0, 14).padEnd(14, "0");
+
+/**
+ * ADR-017: the page as fetched live, as the last element of its history:
+ * year = the run's year, snapshotUrl = the page URL, marked live. Only for a
+ * page that was fetched live; a robots-disallowed page has no live text.
+ */
+export function livePageSnapshot(ctx: Pick<PipelineContext, "pages" | "robotsDisallowed">, pageUrl: string, now: Date): Snapshot | null {
+  const key = urlKey(pageUrl);
+  if (ctx.robotsDisallowed.some((u) => urlKey(u) === key)) return null;
+  const page = ctx.pages.find((p) => urlKey(p.url) === key);
+  if (!page) return null;
+  return {
+    pageUrl,
+    timestamp: toTimestamp(page.fetchedAt),
+    year: now.getUTCFullYear(),
+    date: page.fetchedAt.slice(0, 10),
+    snapshotUrl: page.url,
+    original: page.url,
+    title: page.title,
+    text: page.text,
+    fetchedAt: page.fetchedAt,
+    live: true,
+  };
+}
+
 /**
  * Wayback history and the claim retraction detector (differentiator A).
  * The archive unreachable (network error, 429, 5xx, or no CDX answer for any
@@ -89,8 +116,10 @@ export function makeWaybackStep(config: WaybackConfig = WAYBACK_CONFIG): Step {
           }
           if (snaps.length > 0) note(pageUrl, { kind: "read", count: snaps.length, from: snaps[0].year, to: snaps[snaps.length - 1].year });
           else note(pageUrl, { kind: "none", from, to });
-          if (snaps.length === 1) could_not_check.push(couldNotCheck.waybackOneSnapshot(pageUrl, snaps[0].year));
-          const det = detectRetractions(snaps, { brand: ctx.run.brand, config });
+          // ADR-017: the newest archived copy is compared with the live page too.
+          const live = snaps.length > 0 ? livePageSnapshot(ctx, pageUrl, now) : null;
+          if (snaps.length === 1 && !live) could_not_check.push(couldNotCheck.waybackOneSnapshot(pageUrl, snaps[0].year));
+          const det = detectRetractions(live ? [...snaps, live] : snaps, { brand: ctx.run.brand, config });
           signals.push(...det.signals);
           ctx.timeline.push(...det.timeline);
           ctx.diffCandidates.push(...det.candidates);

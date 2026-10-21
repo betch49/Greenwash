@@ -44,11 +44,15 @@ describe("pipeline wiring", () => {
       // No Wayback history is recorded for the real brands (web.archive.org was unreachable from the build container).
       ["Pulling 2019–2026 snapshots", "skipped"],
       ["Checking claim language", "done"],
+      // Phase 7: no LLM client in this test.
+      ["Proposing candidate claims (AI)", "skipped"],
+      ["Classifying archived changes (AI)", "skipped"],
       ["Checking published evidence", "done"],
       // Phase 5: real recorded searches (no ruling for Fairphone) and the repair axis.
       ["Checking ASA (UK) rulings", "done"],
       ["Checking JDP (France) decisions", "done"],
       ["Checking repair information", "done"],
+      ["Writing the plain-English summary (AI)", "skipped"],
     ]);
     expect(out.signals.filter((s) => s.axis === "claims").length).toBeGreaterThan(0);
     expect(out.signals.filter((s) => s.axis === "evidence").length).toBeGreaterThan(0);

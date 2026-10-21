@@ -26,6 +26,8 @@ export interface TimelineEntry {
   snapshot_date: string;
   /** Year of the previous snapshot of the same page, when there is one. */
   previous_year?: number;
+  /** ADR-017: this row is the page as fetched live (snapshot_url = the page URL, snapshot_date = the fetch date). */
+  live?: boolean;
 }
 
 /**
@@ -39,8 +41,9 @@ export interface DiffCandidate {
   sentence: string;
   ruleIds: RuleId[];
   from: { timestamp: string; snapshotUrl: string; before: string[]; after: string[] };
-  to: { timestamp: string; snapshotUrl: string; nearest: string | null; nearestSimilarity: number; context: string[] };
-  classification: "unclassified";
+  to: { timestamp: string; snapshotUrl: string; nearest: string | null; nearestSimilarity: number; context: string[]; live?: boolean };
+  /** "unclassified" until the Phase 7 classifier answers (it can only keep, halve or drop the removal). */
+  classification: "unclassified" | "claim_removed" | "redesign" | "moved" | "unsure";
 }
 
 export interface RetractionResult {
@@ -89,7 +92,8 @@ const uniqueExcerpts = (list: string[]) => {
  */
 export function detectRetractions(snapshots: Snapshot[], opts: { brand?: string; config?: WaybackConfig } = {}): RetractionResult {
   const config = opts.config ?? WAYBACK_CONFIG;
-  const sorted = [...snapshots].sort((a, b) => a.timestamp.localeCompare(b.timestamp));
+  // Time order; the live page (ADR-017) is always last, whatever its fetch time.
+  const sorted = [...snapshots].sort((a, b) => Number(a.live === true) - Number(b.live === true) || a.timestamp.localeCompare(b.timestamp));
   const split = sorted.map((s) => splitSentences(s.text));
   const claims = split.map((sentences) => claimSentences(sentences, opts.brand));
   const signals: Signal[] = [];
@@ -105,6 +109,7 @@ export function detectRetractions(snapshots: Snapshot[], opts: { brand?: string;
       claims_removed: [],
       page_url: snap.pageUrl,
       snapshot_date: snap.date,
+      ...(snap.live ? { live: true } : {}),
     };
     timeline.push(entry);
     if (i === 0) return;
@@ -142,7 +147,7 @@ export function detectRetractions(snapshots: Snapshot[], opts: { brand?: string;
         id,
         axis: "track",
         kind: "claim.removed",
-        label: signalLabels.claimRemoved(prev.year, snap.year),
+        label: snap.live ? signalLabels.claimRemovedLive(prev.year, snap.date) : signalLabels.claimRemoved(prev.year, snap.year),
         weight_hint: DEFAULT_WEIGHT_HINT,
         source_url: prev.snapshotUrl,
         fetched_at: prev.fetchedAt,
@@ -167,6 +172,7 @@ export function detectRetractions(snapshots: Snapshot[], opts: { brand?: string;
           nearest,
           nearestSimilarity: best,
           context: bestIndex >= 0 ? split[i].slice(Math.max(0, bestIndex - n), bestIndex + 1 + n) : [],
+          ...(snap.live ? { live: true } : {}),
         },
         classification: "unclassified",
       });

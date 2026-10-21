@@ -12,7 +12,7 @@ Started in Phase 4; completed in Phase 9 (PLAN Phase 9 deliverable 2). Each entr
 - At most three pages per brand get a history lookup (`config/wayback.json` `maxPages`), one snapshot per calendar year over the last eight years. A claim that appeared and vanished within one calendar year is not seen.
 - With `collapse=timestamp:4` the archive returns the first capture of each year, so "present in 2021" means present in the first 2021 capture.
 - A claim moved to a different page counts as removed from the page it left. Rewording at ≥ 0.8 similarity, moving within the page or putting it under a heading does not count.
-- The newest snapshot is not compared with the live page; a claim removed after the last archived copy is not reported.
+- The newest archived copy is compared with the live page (ADR-017), but only for pages fetched live; a robots-disallowed page's history ends with its newest archived copy.
 - The Wayback API endpoints are not checked against robots.txt (ADR-010); brand pages always are.
 - The year window follows the server clock. In offline fixture mode only, `GR_FIXED_NOW` pins it (the Playwright run sets 2026-10-20, so the fixture histories always fall in 2019–2026); live runs ignore it.
 - Robots-disallowed pages (ADR-016): their archived copies are diffed for the timeline and removed-claim signals, but never scored on the claims axis as current wording. Their "What we could not check" line says whether archived copies were read (count, years), none were found, the archive was unreachable, or the page was not looked up.
@@ -39,3 +39,12 @@ Started in Phase 4; completed in Phase 9 (PLAN Phase 9 deliverable 2). Each entr
 - Confidence is per axis and binary: an axis counts in full once one of its steps finished and it produced a signal (or, for track record, an archived snapshot). A track record built from regulator searches with no ruling and no archived history counts as missing (Mammut and Fairphone offline: confidence 70%), and a track record with a ruling but an unreachable Wayback Machine counts in full.
 - The claims axis is a rate over all fetched visible words. A brand whose site has many pages without claims gets a lower claims sub-score than one with a single sustainability page carrying the same sentences.
 - The numbers in `config/weights.json` (points, caps, label thresholds, the claims-rate multiplier) are design choices, not calibrated against an external dataset; they are all shown on /methodology.
+
+## AI-assisted steps (Phase 7)
+
+- **No API key in the build environment.** The real Anthropic client is wired and unit-tested with a stubbed SDK (request shape, tool-use parsing, refusal and error handling), but it has not been called against the real API. The offline LLM fixtures in `fixtures/llm/` are hand-authored stand-ins (`scripts/author-llm-fixtures.ts`), not model output; each file says so. They exercise the plumbing (validation, rule re-scan, keep/halve/drop, URL allow-list), not the model's judgement.
+- Fixture files are keyed by a hash of the exact input, so any change to a page fixture, to an input builder or to a report the summary reads needs `npm run author:llm` (or a recording run with a key). A run whose input has no file gets an empty answer: in the Playwright flow, a brand reached through the URL fallback has the typed query as its name, so its summary input differs from the recorded one and the page shows "Summary unavailable".
+- Without a key outside offline mode, the three AI-assisted steps are skipped with "LLM unavailable (no API key)" and the report uses the rule-based signals only.
+- Temperature 0 is not sent to the default model, which rejects sampling parameters (`docs/CHALLENGES.md` C-5); two runs of the real model can differ, but only within what the validation lets through.
+- LLM answers are not cached in SQLite; a re-run with a key calls the API again (reports themselves are stored).
+- At most three pages per run are read by the claim proposer, at most 30,000 characters each (`config/llm.json`), and at most 20 removals are classified.

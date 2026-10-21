@@ -11,6 +11,7 @@ import type { DiffCandidate, TimelineEntry } from "../wayback/retraction";
 import type { Ruling } from "../regulators/adapter";
 import type { PossibleMatch } from "../regulators/check";
 import type { RepairFinding } from "../repair/brand-pages";
+import type { LLMCallLog, LLMClient } from "../llm/client";
 
 /** What every pipeline step returns (PLAN conventions). */
 export interface StepResult {
@@ -19,6 +20,12 @@ export interface StepResult {
   could_not_check: string[];
   /** Extra progress lines, e.g. one "skipped: robots.txt disallows <url>" line per blocked page. */
   progress?: ProgressEntry[];
+  /**
+   * Changes to signals emitted by earlier steps (Phase 7 diff classifier only):
+   * `remove` drops signals by id, `replace` swaps a signal for one with the same id.
+   * A patch can never add a signal.
+   */
+  patch?: { remove?: string[]; replace?: Signal[] };
 }
 
 /** Shared, mutable state passed from step to step within one run. */
@@ -58,6 +65,12 @@ export interface PipelineContext {
   /** Repair axis applicability (Phase 5): "not_applicable" for food and drink brands. */
   repairAxis?: "applicable" | "not_applicable";
   repairFindings: RepairFinding[];
+  /** The LLM client (Phase 7); null ⇒ the LLM steps are skipped. */
+  llm: LLMClient | null;
+  /** Every LLM call made in the run (ReportV1.llm_calls). */
+  llmCalls: LLMCallLog[];
+  /** Receipted signals accumulated so far (read-only for steps; change them with `patch`). */
+  signals: readonly Signal[];
 }
 
 /** The archive's answer for a page we could not fetch live (type lives with its wording). */

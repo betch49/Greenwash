@@ -13,9 +13,11 @@
     "test:e2e": "playwright test",
     "record:wikidata": "tsx scripts/record-wikidata.ts",
     "record:brand": "tsx scripts/record-brand.ts",
-    "record:sources": "tsx scripts/record-sources.ts"
+    "record:sources": "tsx scripts/record-sources.ts",
+    "author:llm": "tsx scripts/author-llm-fixtures.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.137.0",
     "better-sqlite3": "^13.0.3",
     "cheerio": "^1.2.0",
     "diff": "^8.0.4",

@@ -18,12 +18,19 @@ import { fetchPagesStep } from "./steps/fetch-pages";
 import { waybackStep } from "./steps/wayback";
 import { asaStep, jdpStep } from "./steps/regulators";
 import { repairStep } from "./steps/repair";
+import { llmClassifyStep, llmExtractStep, summaryStep } from "./steps/llm";
+import type { LLMClient } from "../llm/client";
+import { ReportV1Schema } from "../score/report";
 import type { PossibleMatch } from "../regulators/check";
 import type { DiffCandidate, TimelineEntry } from "../wayback/retraction";
 import type { PipelineContext, Step } from "./types";
 
-/** Brief Section 5 order: discover → fetch current pages → Wayback snapshots + diff → claim engine → evidence → regulator checks → repair checks. */
-export const DEFAULT_STEPS: Step[] = [discoverStep, fetchPagesStep, waybackStep, claimsStep, evidenceStep, asaStep, jdpStep, repairStep];
+/**
+ * Brief Section 5 order: discover → fetch current pages → Wayback snapshots + diff → claim engine →
+ * LLM claim proposals + diff classification → evidence → regulator checks → repair checks; the LLM
+ * summary runs after scoring.
+ */
+export const DEFAULT_STEPS: Step[] = [discoverStep, fetchPagesStep, waybackStep, claimsStep, llmExtractStep, llmClassifyStep, evidenceStep, asaStep, jdpStep, repairStep];
 
 export interface PipelineDeps {
   runs: RunsRepo;
@@ -40,6 +47,8 @@ export interface PipelineDeps {
   now?: () => Date;
   config?: DiscoveryConfig;
   steps?: Step[];
+  /** The LLM client (Phase 7: MockLLM or AnthropicLLM); absent ⇒ the LLM steps are skipped with a reason. */
+  llm?: LLMClient | null;
 }
 
 export interface PipelineOutcome {
@@ -78,6 +87,18 @@ export function robotsLines(ctx: Pick<PipelineContext, "robotsDisallowed" | "arc
 
 const messageOf = (err: unknown) => (err instanceof Error ? err.message : String(err));
 
+const skippedOf = (progress: ProgressEntry[]) => progress.filter((p) => p.status === "skipped").map((p) => ({ step: p.step, reason: p.reason ?? "" }));
+
+/** Applies a step's patch: drop by id, replace by id (only receipted replacements). Never adds a signal. */
+function applyPatch(signals: Signal[], patch: NonNullable<Awaited<ReturnType<Step["run"]>>["patch"]>) {
+  const remove = new Set(patch.remove ?? []);
+  for (const r of withReceipts(patch.replace ?? [])) {
+    const i = signals.findIndex((s) => s.id === r.id);
+    if (i >= 0) signals[i] = r;
+  }
+  for (let i = signals.length - 1; i >= 0; i--) if (remove.has(signals[i].id)) signals.splice(i, 1);
+}
+
 /**
  * Runs the steps in order, persisting progress after every change. A step that
  * throws or reports `skipped` is shown as "skipped: <reason>" and the run
@@ -103,9 +124,13 @@ export async function runPipeline(run: Pick<Run, "id" | "brand" | "website"> & {
     rulings: [],
     regulatorPossible: [],
     repairFindings: [],
+    llm: deps.llm ?? null,
+    llmCalls: [],
+    signals: [],
   };
   const progress: ProgressEntry[] = [];
   const signals: Signal[] = [];
+  ctx.signals = signals;
   const could_not_check: string[] = [];
   const step_status: Record<string, StepStatus> = {};
   const save = () => deps.runs.setProgress(run.id, progress);
@@ -132,6 +157,7 @@ export async function runPipeline(run: Pick<Run, "id" | "brand" | "website"> & {
         step_status[step.id] = entry.status;
         progress.push(...(res.progress ?? []));
         signals.push(...withReceipts(res.signals));
+        if (res.patch) applyPatch(signals, res.patch);
         for (const line of res.could_not_check) if (!could_not_check.includes(line)) could_not_check.push(line);
       } catch (err) {
         entry.status = "skipped";
@@ -144,7 +170,17 @@ export async function runPipeline(run: Pick<Run, "id" | "brand" | "website"> & {
     addRobotsLines();
     deps.outputs?.replace(run.id, { timeline: ctx.timeline, could_not_check });
     const base = { progress, signals, could_not_check, pages: ctx.pages, claim_stats: ctx.claimStats, timeline: ctx.timeline, diff_candidates: ctx.diffCandidates, regulator_possible: ctx.regulatorPossible, repair_axis: ctx.repairAxis, step_status };
-    const report = buildReport(run, base, ctx.now());
+    const scored = buildReport(run, base, ctx.now());
+    // The summary is written after scoring, from the scored report; it never changes a number.
+    const sum = await summaryStep(ctx.llm, scored, ctx.pages.map((p) => p.url), ctx.llmCalls);
+    progress.push(sum.entry);
+    save();
+    const report = ReportV1Schema.parse({
+      ...scored,
+      ...(sum.summary ? { summary: sum.summary } : {}),
+      llm_calls: ctx.llmCalls,
+      skipped: skippedOf(progress),
+    });
     const report_id = deps.reports?.save(report);
     deps.runs.setStatus(run.id, "done");
     return { status: "done", ...base, report, report_id };

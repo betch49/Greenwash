@@ -1,0 +1,13 @@
+{
+  "name": "extract",
+  "input_sha1": "bf2b8e051fc69dced8fdb4b02da5915c3f9731a7",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "claims": [
+      {
+        "sentence": "Read how we make our products and where our oats come from on our sustainability page.",
+        "kind_hint": "other"
+      }
+    ]
+  }
+}

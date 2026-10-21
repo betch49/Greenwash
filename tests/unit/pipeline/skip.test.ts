@@ -74,11 +74,15 @@ describe("pipeline skips (2.4)", () => {
       { step: "Fetching current pages", status: "skipped", reason: "no page could be fetched from example.com" },
       { step: "Pulling 2019–2026 snapshots", status: "skipped", reason: "no sustainability-type page to look up in the Wayback Machine" },
       { step: "Checking claim language", status: "skipped", reason: "no fetched page to scan" },
+      // Phase 7: no LLM client in this test ⇒ the AI-assisted steps say so.
+      { step: "Proposing candidate claims (AI)", status: "skipped", reason: "LLM unavailable (no LLM client configured)" },
+      { step: "Classifying archived changes (AI)", status: "skipped", reason: "LLM unavailable (no LLM client configured)" },
       { step: "Checking published evidence", status: "skipped", reason: "no fetched page to scan" },
       // Phase 5: no regulator search is recorded for "acme", so offline both sites answer 404.
       { step: "Checking ASA (UK) rulings", status: "skipped", reason: "ASA unreachable (HTTP 404)" },
       { step: "Checking JDP (France) decisions", status: "skipped", reason: "JDP unreachable (HTTP 404)" },
       { step: "Checking repair information", status: "skipped", reason: "no fetched page to scan" },
+      { step: "Writing the plain-English summary (AI)", status: "skipped", reason: "LLM unavailable (no LLM client configured)" },
     ]);
     expect(out.could_not_check).toContain("No sustainability, impact or responsibility page could be fetched from example.com.");
   });
@@ -137,11 +141,15 @@ describe("pipeline skips (2.4)", () => {
       { step: "Fetching current pages", status: "skipped", reason: "no candidate pages were found" },
       { step: "Pulling 2019–2026 snapshots", status: "skipped", reason: "no sustainability-type page to look up in the Wayback Machine" },
       { step: "Checking claim language", status: "skipped", reason: "no fetched page to scan" },
+      // Phase 7: no LLM client in this test ⇒ the AI-assisted steps say so.
+      { step: "Proposing candidate claims (AI)", status: "skipped", reason: "LLM unavailable (no LLM client configured)" },
+      { step: "Classifying archived changes (AI)", status: "skipped", reason: "LLM unavailable (no LLM client configured)" },
       { step: "Checking published evidence", status: "skipped", reason: "no fetched page to scan" },
       // Every robots.txt answers 503 here, so the regulator sites are skipped the same way (ADR-012).
       { step: "Checking ASA (UK) rulings", status: "skipped", reason: "robots.txt unavailable for https://www.asa.org.uk (HTTP 503)" },
       { step: "Checking JDP (France) decisions", status: "skipped", reason: "robots.txt unavailable for https://www.jdp-pub.org (HTTP 503)" },
       { step: "Checking repair information", status: "skipped", reason: "no fetched page to scan" },
+      { step: "Writing the plain-English summary (AI)", status: "skipped", reason: "LLM unavailable (no LLM client configured)" },
     ]);
     expect(skippedReason(out.progress[0].reason!)).toBe(`skipped: ${reason}`);
     // Nothing on the brand's site is requested (regulator and repair sources are other hosts).

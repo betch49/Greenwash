@@ -25,6 +25,8 @@ export const WeightsSchema = z
     defaultWeightHint: z.number().min(0),
     regulatorRuling: z.object({ baseHint: z.number().min(0), upheldMultiplier: z.number().min(0), recentYears: z.number().min(0), recentMultiplier: z.number().min(0) }),
     llmGuard: z.object({ maxShare: z.number().min(0).max(BRIEF_MAX_AI_SHARE) }),
+    /** Phase 7: an "unsure" diff classification keeps the removal with its weight_hint × this (≤ 1: the LLM can only lower it). */
+    llm: z.object({ unsureWeightMultiplier: z.number().min(0).max(1) }),
     labels: z.object({ moderateFrom: z.number().min(0).max(100), highFrom: z.number().min(0).max(100) }),
     confidence: z.object({
       axisSteps: perAxis(z.array(z.string()).min(1)),
