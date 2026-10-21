@@ -39,8 +39,11 @@ const RESULTS = [result("a", "flagged", "ran", 50), result("b", "flagged", "fail
 const meta = { mode: "offline" as const, generatedAt: new Date("2026-10-21T12:00:00Z"), commit: "abc1234", commitDirty: false, weightsVersion: 1, llm: "MockLLM" };
 
 describe("leakage line (10.6)", () => {
-  it("pipeline sources are ASA and JDP in Phase 10", () => {
-    expect([...PIPELINE_SOURCES]).toEqual(["asa", "jdp"]);
+  it("pipeline sources are ASA, JDP, SBTi and Sabin after Phases 11 and 13", () => {
+    expect([...PIPELINE_SOURCES]).toEqual(["asa", "jdp", "sbti", "sabin"]);
+    // An entry flagged only by SBTi and Sabin citations is pipeline-only; greenwash.com breaks it.
+    expect(flaggedOnlyByPipeline(entry("e", "flagged", [cite("sbti"), cite("sabin")]))).toBe(true);
+    expect(flaggedOnlyByPipeline(entry("f", "flagged", [cite("sabin"), cite("changing_markets")]))).toBe(false);
     expect(ENTRIES.map((e) => flaggedOnlyByPipeline(e))).toEqual([true, false, true, false]);
   });
 
@@ -56,7 +59,7 @@ describe("leakage line (10.6)", () => {
     expect(s.leakage.flagged_ran_only_pipeline_sources).toBe(2);
     writeResults(dir, s);
     const md = readFileSync(join(dir, "RESULTS.md"), "utf8");
-    expect(md).toContain("Leakage: 2 of 3 flagged entries are flagged only by sources the pipeline itself queries (ASA, JDP)");
+    expect(md).toContain("Leakage: 2 of 3 flagged entries are flagged only by sources the pipeline itself queries (ASA, JDP, SBTI, SABIN)");
     expect(md).toContain(leakageLine(s));
   });
 

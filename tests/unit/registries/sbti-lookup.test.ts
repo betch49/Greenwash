@@ -66,6 +66,13 @@ describe("SBTi lookup and signals (11.2)", () => {
     expect(nestle.found.possible.map((r) => r.company_name)).toEqual(["Nestlé Nespresso"]);
   });
 
+  it("ADR-037: an “X SE” row is scored for brand X (SE is an ADR-019 legal suffix)", async () => {
+    const base: SbtiRow = { ...(await sbtiRows())[0], isin: "", lei: "" };
+    const found = lookupSbti("Quillwork Widgets", [{ ...base, company_name: "Quillwork Widgets SE" }]);
+    expect(found.scored.map((r) => r.company_name)).toEqual(["Quillwork Widgets SE"]);
+    expect(found.possible).toEqual([]);
+  });
+
   it("an ISIN (or LEI) match scores even when the name differs", async () => {
     expect((await signalsFor("Amazon.com, Inc.")).signals).toEqual([]);
     const byIsin = await signalsFor("Amazon.com, Inc.", { isins: ["US0231351067"], leis: [] });

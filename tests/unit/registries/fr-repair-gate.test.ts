@@ -31,6 +31,8 @@ describe("licence gate (12.3)", () => {
     // robots.txt was read for static.data.gouv.fr and the disallowed resource URL was not requested.
     expect(calls).toContain("https://static.data.gouv.fr/robots.txt");
     expect(calls).not.toContain(FAIRPHONE_STATIC);
+    // ADR-036 (a): no static.data.gouv.fr /resources URL at all is requested while robots.txt disallows it.
+    expect(calls.filter((u) => u.startsWith("https://static.data.gouv.fr/resources/"))).toEqual([]);
     expect(calls).toContain(FAIRPHONE_TABULAR);
     expect(res.could_not_check).toEqual([]);
     expect(passesWordingFilter(s.label)).toBe(true);

@@ -24,7 +24,7 @@
   "denyLabelWords": ["fictional"],
   "legalSuffixes": [
     "inc", "incorporated", "ltd", "limited", "llc", "plc", "corp", "corporation", "co", "company",
-    "ab", "sa", "sas", "sarl", "spa", "srl", "gmbh", "ag", "kg", "bv", "nv", "oy", "oyj", "as", "asa", "aps", "pty", "group"
+    "ab", "sa", "sas", "sarl", "spa", "srl", "gmbh", "ag", "kg", "bv", "nv", "oy", "oyj", "as", "asa", "aps", "pty", "se", "group"
   ],
   "score": { "exactName": 3, "website": 2, "companyClass": 1 }
 }

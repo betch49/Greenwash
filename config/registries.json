@@ -17,10 +17,6 @@
     "usSlug": "united-states-of-america",
     "usLabel": "the United States",
     "maxCases": 12,
-    "$partyLegalSuffixes": "Legal forms common in case titles but absent from config/wikidata.json legalSuffixes (which the v1 adapters' search queries also use): stripped from the end of a party name before the ADR-019 comparison. SE = Societas Europaea ('TotalEnergies SE').",
-    "partyLegalSuffixes": [
-      "se"
-    ],
     "countrySlugs": {
       "France": "france",
       "United Kingdom": "united-kingdom",

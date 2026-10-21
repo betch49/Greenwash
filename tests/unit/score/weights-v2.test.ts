@@ -49,3 +49,10 @@ describe("config/weights.json version 2 (11.4)", () => {
     expect(without.axes.find((a) => a.id === "track")!.status).toBe("missing");
   });
 });
+
+describe("track-axis ordering pins (Phase 13 rework, director)", () => {
+  it("litigation.case points (10) < regulator.ruling points (25): a filed case is not a ruling", () => {
+    expect(WEIGHTS.points.track["litigation.case"]).toBe(10);
+    expect(WEIGHTS.points.track["litigation.case"]).toBeLessThan(WEIGHTS.points.track["regulator.ruling"]);
+  });
+});

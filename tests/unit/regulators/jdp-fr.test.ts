@@ -11,7 +11,8 @@ const REJECTED = "https://www.jdp-pub.org/avis/totalenergies-presse/";
 
 describe("JDP (France) adapter on real recorded pages (5.2)", () => {
   it("builds the listing search URL", () => {
-    expect(jdpFr.searchUrl("TotalEnergies SE")).toBe(SEARCH.replace("TotalEnergies", "TotalEnergies%20SE"));
+    // ADR-037: "SE" is an ADR-019 legal suffix, stripped from the search query.
+    expect(jdpFr.searchUrl("TotalEnergies SE")).toBe(SEARCH);
     expect(jdpFr.searchUrl("Oatly AB")).toBe("https://www.jdp-pub.org/avis/?search_avis=Oatly");
   });
 

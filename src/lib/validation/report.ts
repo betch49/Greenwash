@@ -15,7 +15,7 @@ import { auc, mean, meanDifference, median, medianDifference, spearman } from ".
  * RESULTS.md reports how many there are (the leakage line, criterion 10.6).
  * Phase 11 adds "sbti", Phase 13 adds "sabin" when their adapters ship.
  */
-export const PIPELINE_SOURCES: readonly CitationSource[] = ["asa", "jdp"];
+export const PIPELINE_SOURCES: readonly CitationSource[] = ["asa", "jdp", "sbti", "sabin"];
 
 /** Below this many reports per group, the separation figure is indicative only (PLAN Phase 10 deliverable 5). */
 export const MIN_PER_GROUP = 5;

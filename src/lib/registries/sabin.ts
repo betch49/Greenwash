@@ -203,14 +203,6 @@ export function entityCountry(entity: unknown): string | undefined {
 }
 
 const SLUGS = SABIN.countrySlugs as Record<string, string>;
-const PARTY_SUFFIXES = new Set(SABIN.partyLegalSuffixes);
-
-/** "TotalEnergies SE" ⇒ "TotalEnergies" (config/registries.json sabin.partyLegalSuffixes); otherwise unchanged. */
-export function withoutPartySuffix(party: string): string {
-  const words = party.trim().split(/\s+/);
-  if (words.length > 1 && PARTY_SUFFIXES.has(tokens(words[words.length - 1]).join(""))) words.pop();
-  return words.join(" ");
-}
 
 /**
  * scored   — one party named in the title equals the brand after the ADR-019 normalisation;
@@ -219,7 +211,7 @@ export function withoutPartySuffix(party: string): string {
  */
 export function matchCase(brand: string, title: string): { kind: MatchKind; party?: string } {
   const parties = partiesFromTitle(title);
-  const scored = parties.find((p) => matchEntity(brand, { title: withoutPartySuffix(p) }) === "scored");
+  const scored = parties.find((p) => matchEntity(brand, { title: p }) === "scored");
   if (scored) return { kind: "scored", party: scored };
   const b = normaliseEntity(brand);
   const whole = (hay: string) => b.length > 0 && ` ${tokens(hay).join(" ")} `.includes(` ${b} `);
