@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { visibleText, type PageLink } from "@/lib/discover/visible-text";
 import { loadBrandFixtures } from "@/lib/fetch/brand-fixtures";
-import type { FetchResult, Fetcher } from "@/lib/fetch/fetcher";
+import type { FetchOptions, FetchResult, Fetcher } from "@/lib/fetch/fetcher";
 import { FixtureFetcher, combineMaps } from "@/lib/fetch/fixture-fetcher";
 import { loadSourceFixtures } from "@/lib/fetch/source-fixtures";
 
@@ -51,9 +51,9 @@ export class OfflineFetcher implements Fetcher {
     this.inner = new FixtureFetcher(root, combineMaps(brands.map, sources.map), (url) => brands.capturedAt(url) ?? sources.capturedAt(url) ?? "1970-01-01T00:00:00.000Z");
   }
 
-  async get(url: string): Promise<FetchResult> {
+  async get(url: string, opts?: FetchOptions): Promise<FetchResult> {
     this.calls.push(url);
-    const res = await this.inner.get(url);
+    const res = await this.inner.get(url, opts);
     if (res.source !== "fixture") throw new Error(`non-fixture fetch: ${url}`);
     return res;
   }

@@ -1,0 +1,10 @@
+{
+  "$comment": "Registry sources (v1.1). sbti (Phase 11, ADR-026): the SBTi Target Dashboard companies export, read through the cached fetcher (ttlHours) and matched with the ADR-019 equality rule on company_name, or by ISIN/LEI equality with the Wikidata entity. A 'Commitment Removed' status whose status_reason items are all in neutralReasons is a status note (0 points), not the brand walking back. maxPossible bounds the 'possible match' lines per run. Points and multipliers live in config/weights.json, never here.",
+  "sbti": {
+    "exportUrl": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+    "dashboardUrl": "https://sciencebasedtargets.org/target-dashboard",
+    "ttlHours": 168,
+    "neutralReasons": ["Target set at parent company level", "Company change"],
+    "maxPossible": 5
+  }
+}

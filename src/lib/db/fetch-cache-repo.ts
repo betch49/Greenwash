@@ -9,6 +9,8 @@ export interface CachedEntry {
   contentType: string;
   fetchedAt: string;
   source: string;
+  /** "utf8" (text body) or "base64" (binary body, Phase 11). */
+  encoding?: string;
 }
 
 export class FetchCacheRepo {
@@ -21,7 +23,7 @@ export class FetchCacheRepo {
   put(entry: CachedEntry): void {
     this.db
       .insert(fetchCache)
-      .values(entry)
+      .values({ ...entry, encoding: entry.encoding ?? "utf8" })
       .onConflictDoUpdate({
         target: fetchCache.url,
         set: {
@@ -30,6 +32,7 @@ export class FetchCacheRepo {
           contentType: entry.contentType,
           fetchedAt: entry.fetchedAt,
           source: entry.source,
+          encoding: entry.encoding ?? "utf8",
         },
       })
       .run();

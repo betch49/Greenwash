@@ -17,13 +17,15 @@ const points = z.record(z.string(), z.number().min(0));
 
 export const WeightsSchema = z
   .object({
-    version: z.literal(1),
+    version: z.literal(2),
     axes: perAxis(z.number().min(0).max(1)),
     points: perAxis(points),
     caps: perAxis(z.number().min(0).max(100)),
     claimsRate: z.object({ perWords: z.number().positive(), minWords: z.number().positive(), subscorePerPointPer1000Words: z.number().min(0) }),
     defaultWeightHint: z.number().min(0),
     regulatorRuling: z.object({ baseHint: z.number().min(0), upheldMultiplier: z.number().min(0), recentYears: z.number().min(0), recentMultiplier: z.number().min(0) }),
+    /** Phase 11 (ADR-026): an SBTi removal whose reason is "Expired commitment" × expiredMultiplier; recency reuses regulatorRuling. */
+    sbti: z.object({ expiredMultiplier: z.number().min(0) }),
     llmGuard: z.object({ maxShare: z.number().min(0).max(BRIEF_MAX_AI_SHARE) }),
     /** Phase 7: an "unsure" diff classification keeps the removal with its weight_hint × this (≤ 1: the LLM can only lower it). */
     llm: z.object({ unsureWeightMultiplier: z.number().min(0).max(1) }),

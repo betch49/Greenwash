@@ -1,0 +1,11 @@
+{
+  "name": "summary",
+  "input_sha1": "c0a5dc8f715ad28f7a225a61a1de38d4abf7248b",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "summary": "Fairphone: low signals (score 3, confidence 100%). Based on 25 verified signals from 3 sources. One example: “Let’s make a conscious choice together.” (unsupported claim, https://www.fairphone.com/). 4 things could not be checked; they are listed in the report.",
+    "cited_urls": [
+      "https://www.fairphone.com/"
+    ]
+  }
+}

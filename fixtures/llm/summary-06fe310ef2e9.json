@@ -1,0 +1,11 @@
+{
+  "name": "summary",
+  "input_sha1": "06fe310ef2e91fa7e9e7153a12c2a9e061ccc88c",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "summary": "Oatly AB: moderate signals (score 35, confidence 100%). Based on 68 verified signals from 2 sources. One example: “Our goal is 2.2 liters of water per liter of Oatly produced oat drink by 2030.” (unsupported claim, https://oatly.com/sustainability/). 4 things could not be checked; they are listed in the report.",
+    "cited_urls": [
+      "https://oatly.com/sustainability/"
+    ]
+  }
+}

@@ -27,10 +27,12 @@ const EXPECTED = {
     kinds: { "claims:claim.unsupported": 10, "evidence:evidence.report_found": 1, "repair:repair.warranty_found": 1 },
     axes: { claims: "scored:48", evidence: "scored:0", track: "missing:0", repair: "scored:0" },
   },
+  // Phase 11: the recorded SBTi export lists "Fairphone B.V" with validated targets (0 points, counts as data),
+  // so the track axis has data: confidence 70 → 100, score unchanged.
   fairphone: {
     score: 3,
     label: "low",
-    confidence: 70,
+    confidence: 100,
     kinds: {
       "claims:claim.unsupported": 9,
       "claims:claim.supported": 5,
@@ -42,8 +44,9 @@ const EXPECTED = {
       "repair:repair.ifixit_devices": 1,
       "repair:repair.ifixit_guides": 2,
       "repair:repair.ifixit_score": 2,
+      "track:sbti.targets_validated": 1,
     },
-    axes: { claims: "scored:10", evidence: "scored:0", track: "missing:0", repair: "scored:0" },
+    axes: { claims: "scored:10", evidence: "scored:0", track: "scored:0", repair: "scored:0" },
   },
   oatly: {
     score: 35,

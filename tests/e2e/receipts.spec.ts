@@ -39,3 +39,12 @@ test("ADR-020: protective signals are listed with 0 points (Fairphone's repair f
   expect(await protective.count()).toBeGreaterThan(0);
   await expect(protective.first()).toHaveText("0 points (protective: listed, counts as data)");
 });
+
+test("11.7 Fairphone's report shows the SBTi signal row with the attribution line and a link to the export", async ({ page }) => {
+  await reportFor(page, "fairphone");
+  const row = page.locator('section[data-axis="track"] [data-signal][data-kind="sbti.targets_validated"]');
+  await expect(row).toHaveCount(1);
+  await expect(row.locator("[data-source]")).toHaveAttribute("href", "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx");
+  await expect(row.locator("[data-excerpt]")).toContainText("Source: Science Based Targets initiative, Target Dashboard export (");
+  await expect(row).toContainText("entity named: Fairphone B.V");
+});

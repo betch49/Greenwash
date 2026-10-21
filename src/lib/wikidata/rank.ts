@@ -14,6 +14,9 @@ export interface Candidate {
   logo?: string;
   exactName: boolean;
   score: number;
+  /** ISIN (P946) / LEI (P1278), when Wikidata has them (Phase 11, SBTi matching). */
+  isins?: string[];
+  leis?: string[];
 }
 
 export interface RankResult {
@@ -78,6 +81,8 @@ export function toCandidate(query: string, e: WikidataEntity): Candidate {
     logo: e.logo,
     exactName,
     score: (exactName ? s.exactName : 0) + (e.website ? s.website : 0) + s.companyClass,
+    ...(e.isins ? { isins: e.isins } : {}),
+    ...(e.leis ? { leis: e.leis } : {}),
   };
 }
 

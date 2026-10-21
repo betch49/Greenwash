@@ -150,7 +150,7 @@ If web.archive.org cannot be reached (network error, HTTP 429 or 5xx, or no CDX 
 
 ## 7. Weights
 
-Generated from `config/weights.json` (version 1) by `weightsMarkdown()` in `src/lib/score/methodology.ts`; `tests/unit/score/methodology-sync.test.ts` fails if this section and the file differ. The /methodology page renders the same tables from the same file.
+Generated from `config/weights.json` (version 2) by `weightsMarkdown()` in `src/lib/score/methodology.ts`; `tests/unit/score/methodology-sync.test.ts` fails if this section and the file differ. The /methodology page renders the same tables from the same file.
 
 ### Axis weights
 
@@ -175,6 +175,10 @@ Generated from `config/weights.json` (version 1) by `weightsMarkdown()` in `src/
 | `evidence` | `evidence.supplier_list_found` | 0 |
 | `track` | `claim.removed` | 20 |
 | `track` | `regulator.ruling` | 25 |
+| `track` | `sbti.commitment_removed` | 15 |
+| `track` | `sbti.targets_validated` | 0 |
+| `track` | `sbti.commitment_pending` | 0 |
+| `track` | `sbti.status_note` | 0 |
 | `repair` | `repair.no_repair_info_found` | 50 |
 | `repair` | `repair.manual_found` | 0 |
 | `repair` | `repair.spare_parts_found` | 0 |
@@ -196,13 +200,14 @@ Generated from `config/weights.json` (version 1) by `weightsMarkdown()` in `src/
 | `regulatorRuling.upheldMultiplier` | 2 |
 | `regulatorRuling.recentYears` | 3 |
 | `regulatorRuling.recentMultiplier` | 1.5 |
+| `sbti.expiredMultiplier` | 1 |
 | `llmGuard.maxShare` | 0.5 |
 | `llm.unsureWeightMultiplier` | 0.5 |
 | `labels.moderateFrom` | 25 |
 | `labels.highFrom` | 50 |
 | `confidence.axisSteps.claims` | claims |
 | `confidence.axisSteps.evidence` | evidence |
-| `confidence.axisSteps.track` | wayback, asa-uk, jdp-fr |
+| `confidence.axisSteps.track` | wayback, asa-uk, jdp-fr, sbti |
 | `confidence.axisSteps.repair` | repair |
 | `confidence.timelineCountsAsData` | track |
 
@@ -230,6 +235,21 @@ Differentiator C (ADR-003). Deterministic; no LLM (`llm_used: false`). Code: `sr
    - **none**: not even a whole word ("Pata" in "Patagonia").
 6. **Signal.** Kind `regulator.ruling`, label "Ruling found naming <entity verbatim> (<regulator>, <country>, <date>); outcome as published: <words>", `entity_name` = the advertiser verbatim, receipt = the ruling page. `weight_hint` = `baseHint` × `upheldMultiplier` when upheld × `recentMultiplier` when the ruling is dated within `recentYears` of the run (values in `config/weights.json`). The ruling's points are the `regulator.ruling` points of Section 7 × this hint (Section 11).
 7. **Coverage.** Every report says that only the UK ASA and the French JDP were searched. A site that is unreachable, disallows the page in robots.txt or serves a page we cannot parse ends its step as `skipped: <reason>` (for example `skipped: ASA unreachable (HTTP 500)`); the other regulator still runs.
+
+## 9b. SBTi target status (axis: track record)
+
+Phase 11, ADR-026. Deterministic; no LLM (`llm_used: false`). Code: `src/lib/registries/sbti.ts`, step `src/lib/pipeline/steps/sbti.ts` ("Checking SBTi target status", after the regulator steps); parameters: `config/registries.json` (`sbti`), `config/weights.json` (`points.track`, `sbti.expiredMultiplier`, `regulatorRuling.recentYears` / `recentMultiplier`).
+
+1. **Source.** The Science Based Targets initiative's public companies export, `https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx` (linked from `https://sciencebasedtargets.org/target-dashboard`). Fetched through the robots.txt guard and the SQLite cache (TTL `sbti.ttlHours`, 168 h). The export is a snapshot: SBTi publishes no history.
+2. **Rows.** First worksheet, header row 1. Read fields: `company_name, isin, lei, location, sector, near_term_status, near_term_target_year, net_zero_status, net_zero_year, status_reason, date_updated, full_target_language`; `date_updated` is converted from the Excel date (serial days since 1899-12-30) to an ISO date.
+3. **Matching.** The Section 9.5 rule on `company_name`: **scored** when it equals the brand after normalisation ("Fairphone B.V" ≡ "Fairphone"); **possible** when the brand is only a whole word of it ("Mammut Sports Group" for "Mammut"), shown under "What we could not check" with the entity verbatim (at most `sbti.maxPossible` lines), never a signal. A row is also scored when its ISIN or LEI equals the confirmed Wikidata entity's ISIN (P946) or LEI (P1278).
+4. **Signals** (receipt = the export URL, its fetch date, excerpt = the row's name, both statuses, `status_reason`, `date_updated` and the attribution line "Source: Science Based Targets initiative, Target Dashboard export (<date>), https://sciencebasedtargets.org/target-dashboard"):
+   - `sbti.commitment_removed` (risk points, Section 7) when `near_term_status` or `net_zero_status` is "Commitment Removed", labelled "Commitment removed (as published by SBTi)". It reports what SBTi published, not a verdict about the brand.
+   - `sbti.status_note` (0 points, listed) instead, when every item of `status_reason` (split on ";") is in `sbti.neutralReasons` ("Target set at parent company level", "Company change"): those are not the brand walking back.
+   - `sbti.targets_validated` (0 points, protective, counts as data) when `near_term_status` is "Validated Targets".
+   - `sbti.commitment_pending` (0 points) when either status is "Commitment to Set Targets".
+5. **weight_hint** of a removal = `defaultWeightHint` × `regulatorRuling.recentMultiplier` when `date_updated` is within `regulatorRuling.recentYears` of the run × `sbti.expiredMultiplier` when a reason is "Expired commitment". Other SBTi kinds carry `defaultWeightHint` (their points are 0).
+6. **Skips.** Export unreachable (network error, robots.txt, non-200) ⇒ `skipped: SBTi export unreachable (<status>)`; not a readable export (not an .xlsx, missing columns) ⇒ `skipped: SBTi export could not be parsed`. Both add a "What we could not check" line; the next step runs. Every report carries the snapshot coverage line.
 
 ## 10. Ownership and repair (axis: ownership & repair)
 

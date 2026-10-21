@@ -51,6 +51,8 @@ describe("pipeline wiring", () => {
       // Phase 5: real recorded searches (no ruling for Fairphone) and the repair axis.
       ["Checking ASA (UK) rulings", "done"],
       ["Checking JDP (France) decisions", "done"],
+      // Phase 11: the recorded SBTi export lists "Fairphone B.V" (validated targets).
+      ["Checking SBTi target status", "done"],
       ["Checking repair information", "done"],
       ["Writing the plain-English summary (AI)", "skipped"],
     ]);

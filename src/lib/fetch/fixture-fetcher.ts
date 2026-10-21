@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { extname, join, resolve, sep } from "node:path";
-import type { FetchResult, Fetcher } from "./fetcher";
+import type { FetchOptions, FetchResult, Fetcher } from "./fetcher";
 
 /** Maps a URL to a fixture path relative to the fixture root, or null if unknown. */
 export type FixtureMap = (url: string) => string | null;
@@ -11,6 +11,7 @@ const CONTENT_TYPES: Record<string, string> = {
   ".htm": "text/html; charset=utf-8",
   ".xml": "application/xml",
   ".txt": "text/plain",
+  ".xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
 };
 
 /** Offline fetcher: resolves URLs to files under `rootDir`. Unknown or missing ⇒ 404, never network. */
@@ -26,7 +27,7 @@ export class FixtureFetcher implements Fetcher {
     this.root = resolve(rootDir);
   }
 
-  async get(url: string): Promise<FetchResult> {
+  async get(url: string, opts: FetchOptions = {}): Promise<FetchResult> {
     const rel = this.map(url);
     const notFound: FetchResult = {
       url,
@@ -40,11 +41,13 @@ export class FixtureFetcher implements Fetcher {
     const file = resolve(join(this.root, rel));
     if (!file.startsWith(this.root + sep)) return notFound;
     try {
-      const body = await readFile(file, "utf8");
+      const bytes = opts.binary ? await readFile(file) : undefined;
+      const body = bytes ? "" : await readFile(file, "utf8");
       return {
         url,
         status: 200,
         body,
+        ...(bytes ? { bytes } : {}),
         contentType: CONTENT_TYPES[extname(file).toLowerCase()] ?? "application/octet-stream",
         fetchedAt: this.fetchedAt(url),
         source: "fixture",

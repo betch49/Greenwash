@@ -82,6 +82,8 @@ describe("regulator fixtures (5.4)", () => {
     for (const f of filesUnder(SOURCES)) {
       const rel = relative(SOURCES, f);
       if (rel === "manifest.json" || rel === "README.md") continue;
+      // Per-source directories with their own manifest (Phase 11+: sbti/) have their own guard tests.
+      if (rel.includes("/") && existsSync(join(SOURCES, rel.split("/")[0], "manifest.json"))) continue;
       expect(listed.has(rel), `${rel} is not in the manifest`).toBe(true);
     }
   });

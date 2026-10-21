@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { fixtureKey } from "./brand-fixtures";
 import type { FixtureMap } from "./fixture-fetcher";
@@ -27,6 +27,17 @@ export function loadSourceFixtures(root: string): SourceFixtures {
     for (const [url, entry] of Object.entries(manifest.files)) {
       const key = fixtureKey(url);
       if (key && !map.has(key)) map.set(key, { rel: `${SOURCES_DIR}/${entry.file}`, capturedAt: entry.capturedAt });
+    }
+  }
+  // Per-source manifests (Phase 11+): `sources/<dir>/manifest.json`, file paths relative to `<dir>`.
+  const dir = join(root, SOURCES_DIR);
+  for (const sub of existsSync(dir) ? readdirSync(dir).sort() : []) {
+    const subFile = join(dir, sub, "manifest.json");
+    if (!statSync(join(dir, sub)).isDirectory() || !existsSync(subFile)) continue;
+    const manifest = JSON.parse(readFileSync(subFile, "utf8")) as SourceManifest;
+    for (const [url, entry] of Object.entries(manifest.files)) {
+      const key = fixtureKey(url);
+      if (key && !map.has(key)) map.set(key, { rel: `${SOURCES_DIR}/${sub}/${entry.file}`, capturedAt: entry.capturedAt });
     }
   }
   const lookup = (url: string) => {

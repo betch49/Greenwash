@@ -18,6 +18,8 @@ test("2.6 after confirm, /analyse lists 'Discovering pages' and 'Fetching curren
   // Phase 3: the rule-based claim and evidence steps run on the fetched pages.
   await expect(progress.locator('[data-step="Checking claim language"]')).toHaveAttribute("data-status", "done", { timeout: 30_000 });
   await expect(progress.locator('[data-step="Checking published evidence"]')).toHaveAttribute("data-status", "done", { timeout: 30_000 });
+  // Phase 11 (11.7): the SBTi step runs after the regulator steps and ends done or skipped, never silent.
+  await expect(progress.locator('[data-step="Checking SBTi target status"]')).toHaveAttribute("data-status", /^(done|skipped)$/, { timeout: 30_000 });
   await expect(page.getByTestId("run-status")).toHaveAttribute("data-status", "done");
 
   // Fetched pages are listed with their fetch date (the capture date).

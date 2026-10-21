@@ -12,6 +12,7 @@ import { WAYBACK_HOST, waybackIntervalMs } from "./wayback/cdx";
 import { waybackAwareTtl } from "./wayback/snapshot";
 import type { LLMClient } from "./llm/client";
 import { selectLLM } from "./llm/select";
+import { SBTI_CONFIG } from "./registries/sbti";
 
 export interface Services {
   offline: boolean;
@@ -51,7 +52,11 @@ export function buildFetcher(db: Db, offline: boolean): Fetcher {
   }
   const ttlMs = Number(process.env.GR_CACHE_TTL_HOURS || 168) * HOUR_MS;
   // Archived snapshots never change: cached forever. CDX listings and live pages: the default TTL.
-  return new CachedFetcher(new RateLimitedFetcher(new UndiciFetcher(), buildRateLimiter()), new FetchCacheRepo(db), waybackAwareTtl(ttlMs));
+  // The SBTi export (Phase 11): its own TTL, config/registries.json sbti.ttlHours.
+  const waybackTtl = waybackAwareTtl(ttlMs);
+  const sbtiTtlMs = SBTI_CONFIG.ttlHours * HOUR_MS;
+  const ttl = (url: string) => (url === SBTI_CONFIG.exportUrl ? sbtiTtlMs : waybackTtl(url));
+  return new CachedFetcher(new RateLimitedFetcher(new UndiciFetcher(), buildRateLimiter()), new FetchCacheRepo(db), ttl);
 }
 
 /**

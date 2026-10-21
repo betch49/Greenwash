@@ -236,7 +236,7 @@ export const reportWording = {
   aiAssisted: "AI-assisted",
   aiAssistedTitle: "An AI step proposed or classified this signal; the rule engine and the receipt decide it.",
   possibleHeading: "Possible matches (not scored)",
-  possibleIntro: "Regulator rulings naming an entity whose name contains the brand’s name but is not the brand’s name. They are listed for you to check and are not part of any axis.",
+  possibleIntro: "Regulator rulings and SBTi Target Dashboard entries naming an entity whose name contains the brand’s name but is not the brand’s name. They are listed for you to check and are not part of any axis.",
   skippedHeading: "Skipped steps",
   skippedNone: "No step was skipped.",
   llmCallsHeading: "AI calls in this report",
@@ -266,4 +266,27 @@ export const methodologyPage = {
   protective: "0 (protective: listed, counts as data)",
   rulesHeading: "Other parameters",
   documentHeading: "Full methodology",
+};
+
+/** Phase 11 (ADR-026, SOURCES.md): SBTi Target Dashboard wording. A removal is "commitment removed (as published by SBTi)", never a verdict. */
+export const sbtiWording = {
+  step: "Checking SBTi target status",
+  /** Binding attribution line (docs/SOURCES.md), carried by every SBTi receipt. */
+  attribution: (date: string) => `Source: Science Based Targets initiative, Target Dashboard export (${date}), https://sciencebasedtargets.org/target-dashboard`,
+  unreachable: (status: string) => `SBTi export unreachable (${status})`,
+  unparsable: "SBTi export could not be parsed",
+  excerpt: (r: { company_name: string; near_term_status: string; net_zero_status: string; status_reason: string; date_updated: string }, exportDate: string) =>
+    `${r.company_name}. Near-term status: ${r.near_term_status || "none listed"}; net-zero status: ${r.net_zero_status || "none listed"}; status reason: ${r.status_reason || "none given"}; updated ${r.date_updated || "(no date given)"}. ${sbtiWording.attribution(exportDate)}`,
+  commitmentRemoved: (entity: string, which: string, reason: string, updated: string) =>
+    `Commitment removed (as published by SBTi) for ${entity}: ${which} status “Commitment Removed”; reason as published: ${reason || "none given"} (updated ${updated || "no date given"})`,
+  statusNote: (entity: string, reason: string) =>
+    `SBTi status note for ${entity}: commitment removed with the reason “${reason}” (as published by SBTi); not counted as a risk signal`,
+  targetsValidated: (entity: string, year: string) => `SBTi lists validated near-term targets for ${entity}${year ? ` (target year ${year})` : ""}`,
+  commitmentPending: (entity: string, which: string) => `SBTi lists a commitment to set ${which} targets for ${entity} (no validated target yet)`,
+  coverage:
+    "SBTi target status: read from the SBTi Target Dashboard export, a current snapshot; SBTi publishes no history, so a commitment that was removed and later re-listed is not visible.",
+  skipped: (reason: string) => `SBTi target status: not checked (${reason}).`,
+  possible: (entity: string, status: string, url: string) =>
+    `${POSSIBLE_MATCH_PREFIX} SBTi Target Dashboard entry “${entity}” (${status}; ${url}); the listed company’s name is not the brand’s name, so we do not attribute it.`,
+  possibleMore: (n: number) => `SBTi Target Dashboard: ${n} more ${n === 1 ? "entry contains" : "entries contain"} the brand’s name as a word; not listed and not scored.`,
 };
