@@ -253,3 +253,29 @@ Separately, PLAN Phase 7 criterion 7.6 asked for `ai_share > 0` "for at least th
 **Decision.** PLAN Phase 7 gains deliverable 8 and criterion 7.8: for every page that was fetched live and has at least one archived snapshot, the live page is the final element of the sequence (its entry in the timeline is marked as the live page, year = current year, URL = the page URL); a claim present in the newest snapshot and absent from the live page yields `claim.removed` with the label "claim removed between <year> and the current page", receipt = the newest snapshot's `id_` URL, and a diff candidate for the classifier. Criterion 7.6 is reworded to "the three real fixture brands plus Northwind; > 0 for Northwind". These are edits to a phase that has not started, in the same class as the fixture-brand rename recorded under ADR-011; they are not a re-plan of a reviewed phase (re-plans used: 0/2).
 
 **Consequences.** Phase 7 is slightly larger. The Phase 4 rework does not touch this. `docs/LATER.md`'s "newest snapshot vs live page" row is to be removed by the Phase 7 builder; the "record real-brand histories" half of that row stays.
+
+---
+
+## ADR-018 — iFixit is read through the robots-allowed device-category endpoint, not the search API (ruling on CHALLENGES C-2)
+
+**Date:** 2026-10-21 (Phase 5 review)
+**Status:** accepted
+
+**Context.** PLAN Phase 5 deliverable 5 named `GET https://www.ifixit.com/api/2.0/search/<brand>?filter=device`. The recorded `https://www.ifixit.com/robots.txt` (`fixtures/sources/robots/www-ifixit-com.txt`, 2026-10-20) has `Disallow: /api/*` for `User-agent: *` with explicit `Allow` only for `/api/2.0/categories*`, `/api/2.0/guides*` and `/api/2.0/wikis*`. ADR-010 keeps every repair source under the robots guard and allows no exemption without a new ADR. As planned, the step would always end `skipped: robots.txt disallows …` and criterion 5.6 could not be met by a real capture. Brief Section 8: do not scrape what robots.txt forbids.
+
+**Decision.** The plan's intent (iFixit data, receipted, through the API) is kept and its endpoint is replaced: the brand's device category is read from `/api/2.0/wikis/CATEGORY/<brand>` and at most `maxDevices` of its device sub-categories (guide titles, repairability score), `config/repair.json`. The category title must equal the brand after the Section 9.5 normalisation, otherwise nothing is attributed. The search endpoint is never requested and a test pins that every `/api/` call is under `/api/2.0/wikis/CATEGORY/`. The ADR-010 exemption list is unchanged. PLAN deliverable 5 is corrected to this endpoint (wording only; criterion 5.6 untouched).
+
+**Consequences.** A brand whose iFixit category is named differently from the brand gets no iFixit signal and the report says so (`docs/LIMITATIONS.md`). A name lookup through the allowed `/api/2.0/categories` tree stays in `docs/LATER.md`. Phase 6 note: iFixit guides are community-written, so `repair.ifixit_guides` says that repair information exists for the product, not that the brand provides it; its points must stay below those of `repair.manual_found` / `repair.spare_parts_found`, and `repair.ifixit_score` (iFixit's own published score) carries the iFixit weight.
+
+---
+
+## ADR-019 — A ruling is scored only when the ruled entity's name equals the brand's after normalisation; a whole-word occurrence is "possible", never scored (ruling on CHALLENGES C-3)
+
+**Date:** 2026-10-21 (Phase 5 review)
+**Status:** accepted; refines ADR-003
+
+**Context.** PLAN Phase 5 deliverable 3 said `scored` when the normalised brand is a whole-word match in title or advertiser, else `possible`. Criterion 5.3 of the same phase requires "Patagonia" vs "Patagonia Provisions Ltd" ⇒ `possible` and "Pata" vs "Patagonia" ⇒ no match, which the deliverable's two-way rule cannot produce. ADR-003 said "appears in", which has the same looseness. The brief's rule is that no fact is stated about a brand without a receipt naming it; a ruling against "Shell Energy UK" is not a receipt about "Shell".
+
+**Decision.** The criterion wins. Three-way rule, as implemented in `src/lib/regulators/match.ts` and METHODOLOGY 9.5: **scored** = one of the advertiser's names (split on "t/a" / "trading as"; title when there is no advertiser field) equals the brand after normalisation (lowercase, diacritics, punctuation, "&", trailing legal suffixes from `config/wikidata.json`, trailing geographic/structural qualifiers from `config/regulators.json`; spacing ignored); **possible** = whole-word occurrence otherwise, shown under "What we could not check" with the entity verbatim, `scored: false`, never a signal; **none** = anything else. Documented outcome for the 5.3 open case: "Shell" vs "Shell Energy Retail" ⇒ `possible`. ADR-003's matching sentence is superseded by this one. PLAN deliverable 3 is corrected to this wording (criterion 5.3 untouched). The qualifier list is deliberately short; a subsidiary with extra words in its name is a possible match, and that is the documented price of never attaching a ruling on a fuzzy name (`docs/LIMITATIONS.md`).
+
+**Consequences.** Fewer rulings are scored than a looser rule would score; none is scored against the wrong entity. Phase 8 must render possible matches with the entity name verbatim and the "not scored" wording of `couldNotCheck.regulatorPossible`, never in the receipts list of the track axis. Not a re-plan: no criterion, scope or phase changed; two deliverable sentences now say what their criteria already required (same class as ADR-014).

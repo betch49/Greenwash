@@ -33,3 +33,11 @@
 **What I did.** Implemented the criteria (`src/lib/regulators/match.ts`, METHODOLOGY Section 9.5): **scored** = one of the advertiser's names (split on "t/a") *equals* the brand after normalisation (legal suffixes, plus a short list of trailing geographic/structural qualifiers such as UK, Europe, International, Holdings in `config/regulators.json`; spacing ignored); **possible** = whole-word occurrence otherwise; **none** = not even a whole word. Consequence for the documented case: "Shell" vs "Shell Energy Retail" ⇒ `possible` (and the real "Shell Energy UK" ruling in the recorded ASA search is shown as possible, not scored), while "Shell UK Ltd t/a Shell" is scored. This is the conservative side the orchestrator asked for ("no ruling attached on a fuzzy name match").
 
 **Asked of the director.** Confirm the reading of deliverable 3, or name the rule to apply instead.
+
+### Director ruling on C-2 (2026-10-21, ADR-018)
+
+**Upheld.** The recorded robots.txt disallows `/api/2.0/search`; ADR-010 admits no new exemption, and brief Section 8 forbids scraping what robots.txt forbids. The device-category endpoint `/api/2.0/wikis/CATEGORY/<brand>` is the plan's endpoint from now on; the equality rule on the category title and the test pinning every `/api/` call under `/api/2.0/wikis/CATEGORY/` are required, not optional. PLAN Phase 5 deliverable 5 corrected. Phase 6 weighting note in the ADR.
+
+### Director ruling on C-3 (2026-10-21, ADR-019)
+
+**Upheld.** Criterion 5.3 is the rule; deliverable 3 was wrong by its own criterion. Scored only on name equality after normalisation (advertiser split on "t/a", legal suffixes and the short qualifier list removed, spacing ignored); whole-word occurrence is `possible`, shown and never scored; "Shell" vs "Shell Energy Retail" ⇒ `possible`, as implemented and documented in the test. ADR-003's "appears in" is superseded. PLAN Phase 5 deliverable 3 corrected.
