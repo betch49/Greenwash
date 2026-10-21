@@ -1,0 +1,49 @@
+{
+  "name": "extract",
+  "input_sha1": "be4902d1c7eb402dcf0a1694590229812ac6698e",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "claims": [
+      {
+        "sentence": "As companies and governments across the globe are taking a step back, we choose to go in the opposite direction and update our sustainability plan to be, in many ways, even more ambitious.",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "You can't care about the planet without thinking about the climate, and you can't separate the climate from nature.",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "Here, you can read an overview of how we will work within the four areas of Climate, Nature, People, and Nutrition to help futureproof the food system.",
+        "kind_hint": "future_only"
+      },
+      {
+        "sentence": "Oatly is the first food and beverage company to become a qualified Climate Solutions Company, and we will continue to aspire to reduce our climate footprint per liter to ensure that we have climate solution products that help people avoid emissions when swapping from cow’s milk.",
+        "kind_hint": "future_only"
+      },
+      {
+        "sentence": "Here’s how we plan to continue to maximize our Spheres of Influence and focus on reducing our climate footprint per liter:",
+        "kind_hint": "future_only"
+      },
+      {
+        "sentence": "Our ambition is to invest in regenerative agriculture practices across the equivalent of a third of our oat supply acres by 2030.",
+        "kind_hint": "future_only"
+      },
+      {
+        "sentence": "Our goal is to use 100% renewable energy (electric + thermal) and sustainable ground transportation in Europe by 2030.",
+        "kind_hint": "vague"
+      },
+      {
+        "sentence": "We aspire to contribute to societal net zero by 2050.",
+        "kind_hint": "future_only"
+      },
+      {
+        "sentence": "Our goal is to reduce our climate footprint by 40% per liter of product by 2030, 70% by 2040 and 89% by 2050.",
+        "kind_hint": "future_only"
+      },
+      {
+        "sentence": "We will continue to advocate for climate policies that prioritize the role of plant-centric food systems as a crucial climate solution, including challenging subsidies and disrupting the influence of big dairy.",
+        "kind_hint": "future_only"
+      }
+    ]
+  }
+}

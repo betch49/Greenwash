@@ -1,0 +1,184 @@
+{
+ "searchinfo": {
+  "search": "patagonia"
+ },
+ "search": [
+  {
+   "id": "Q1507",
+   "title": "Q1507",
+   "pageid": 1962,
+   "concepturi": "http://www.wikidata.org/entity/Q1507",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q1507",
+   "display": {
+    "label": {
+     "value": "Patagonia",
+     "language": "en"
+    },
+    "description": {
+     "value": "region located at the southern end of South America",
+     "language": "en"
+    }
+   },
+   "label": "Patagonia",
+   "description": "region located at the southern end of South America",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Patagonia"
+   }
+  },
+  {
+   "id": "Q12901391",
+   "title": "Q12901391",
+   "pageid": 14351605,
+   "concepturi": "http://www.wikidata.org/entity/Q12901391",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q12901391",
+   "display": {
+    "label": {
+     "value": "Patagonia",
+     "language": "en"
+    },
+    "description": {
+     "value": "genus of mammals",
+     "language": "en"
+    }
+   },
+   "label": "Patagonia",
+   "description": "genus of mammals",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Patagonia"
+   }
+  },
+  {
+   "id": "Q140167469",
+   "title": "Q140167469",
+   "pageid": 133605904,
+   "concepturi": "http://www.wikidata.org/entity/Q140167469",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q140167469",
+   "display": {
+    "label": {
+     "value": "Patagonia",
+     "language": "en"
+    },
+    "description": {
+     "value": "genus of moths",
+     "language": "en"
+    }
+   },
+   "label": "Patagonia",
+   "description": "genus of moths",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Patagonia"
+   }
+  },
+  {
+   "id": "Q1024689",
+   "title": "Q1024689",
+   "pageid": 974011,
+   "concepturi": "http://www.wikidata.org/entity/Q1024689",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q1024689",
+   "display": {
+    "label": {
+     "value": "Patagonia",
+     "language": "en"
+    },
+    "description": {
+     "value": "town in Santa Cruz County, Arizona, United States",
+     "language": "en"
+    }
+   },
+   "label": "Patagonia",
+   "description": "town in Santa Cruz County, Arizona, United States",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Patagonia"
+   }
+  },
+  {
+   "id": "Q1660552",
+   "title": "Q1660552",
+   "pageid": 1594198,
+   "concepturi": "http://www.wikidata.org/entity/Q1660552",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q1660552",
+   "display": {
+    "label": {
+     "value": "Patagonia, Inc.",
+     "language": "en"
+    },
+    "description": {
+     "value": "American clothing company",
+     "language": "en"
+    }
+   },
+   "label": "Patagonia, Inc.",
+   "description": "American clothing company",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Patagonia, Inc."
+   }
+  },
+  {
+   "id": "Q6066209",
+   "title": "Q6066209",
+   "pageid": 5853538,
+   "concepturi": "http://www.wikidata.org/entity/Q6066209",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q6066209",
+   "display": {
+    "label": {
+     "value": "Patagonia",
+     "language": "en"
+    },
+    "description": {
+     "value": "region in Chile",
+     "language": "en"
+    }
+   },
+   "label": "Patagonia",
+   "description": "region in Chile",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Patagonia"
+   }
+  },
+  {
+   "id": "Q93491064",
+   "title": "Q93491064",
+   "pageid": 92588592,
+   "concepturi": "http://www.wikidata.org/entity/Q93491064",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q93491064",
+   "display": {
+    "label": {
+     "value": "Patagonia",
+     "language": "en"
+    },
+    "description": {
+     "value": "2019 audio track by Oral Bee",
+     "language": "en"
+    }
+   },
+   "label": "Patagonia",
+   "description": "2019 audio track by Oral Bee",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Patagonia"
+   }
+  }
+ ],
+ "search-continue": 7,
+ "success": 1
+}

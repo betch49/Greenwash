@@ -1,0 +1,37 @@
+{
+  "name": "extract",
+  "input_sha1": "97bf9d6a8a77596999ff18971efcf9325bc00334",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "claims": [
+      {
+        "sentence": "Is the Fairphone 5 the most sustainable phone in the world?",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "The Fairphone 5 is clearly the best thing we have designed, our most sustainable smartphone yet.",
+        "kind_hint": "absolute"
+      },
+      {
+        "sentence": "Is this the most sustainable phone in the world?",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "I think the Fairphone 5 is the most sustainable smartphone in the world right now.",
+        "kind_hint": "absolute"
+      },
+      {
+        "sentence": "It’s 100% e-waste neutral.",
+        "kind_hint": "offset"
+      },
+      {
+        "sentence": "Hopefully, one day, we will be able to recycle more than we create, making us the first 100% e-waste negative company in the world.",
+        "kind_hint": "future_only"
+      },
+      {
+        "sentence": "So yeah, I strongly believe the Fairphone 5 is the most sustainable phone in the world right now.",
+        "kind_hint": "absolute"
+      }
+    ]
+  }
+}

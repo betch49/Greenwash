@@ -1,0 +1,93 @@
+{
+  "$comment": "Real captures by scripts/record-sources.ts (fixtures/sources/README.md). URL ⇒ file and its capture time.",
+  "files": {
+    "https://www.asa.org.uk/robots.txt": {
+      "file": "robots/www-asa-org-uk.txt",
+      "capturedAt": "2026-10-21T00:09:27.806Z"
+    },
+    "https://www.asa.org.uk/search.html?q=Mammut": {
+      "file": "regulators/mammut/asa.html",
+      "capturedAt": "2026-10-21T00:09:28.585Z"
+    },
+    "https://www.jdp-pub.org/robots.txt": {
+      "file": "robots/www-jdp-pub-org.txt",
+      "capturedAt": "2026-10-21T00:09:29.289Z"
+    },
+    "https://www.jdp-pub.org/avis/?search_avis=Mammut": {
+      "file": "regulators/mammut/jdp.html",
+      "capturedAt": "2026-10-21T00:09:30.120Z"
+    },
+    "https://www.ifixit.com/robots.txt": {
+      "file": "robots/www-ifixit-com.txt",
+      "capturedAt": "2026-10-21T00:09:30.590Z"
+    },
+    "https://www.asa.org.uk/search.html?q=Fairphone": {
+      "file": "regulators/fairphone/asa.html",
+      "capturedAt": "2026-10-21T00:09:31.822Z"
+    },
+    "https://www.jdp-pub.org/avis/?search_avis=Fairphone": {
+      "file": "regulators/fairphone/jdp.html",
+      "capturedAt": "2026-10-21T00:09:32.316Z"
+    },
+    "https://www.ifixit.com/api/2.0/wikis/CATEGORY/Fairphone": {
+      "file": "repair/fairphone/ifixit-fairphone.json",
+      "capturedAt": "2026-10-21T00:09:32.414Z"
+    },
+    "https://www.ifixit.com/api/2.0/wikis/CATEGORY/Fairphone%205": {
+      "file": "repair/fairphone/ifixit-fairphone-5.json",
+      "capturedAt": "2026-10-21T00:09:33.463Z"
+    },
+    "https://www.ifixit.com/api/2.0/wikis/CATEGORY/Fairphone%206": {
+      "file": "repair/fairphone/ifixit-fairphone-6.json",
+      "capturedAt": "2026-10-21T00:09:34.488Z"
+    },
+    "https://www.ifixit.com/api/2.0/wikis/CATEGORY/Fairphone%206plus": {
+      "file": "repair/fairphone/ifixit-fairphone-6plus.json",
+      "capturedAt": "2026-10-21T00:09:35.465Z"
+    },
+    "https://www.asa.org.uk/search.html?q=Oatly": {
+      "file": "regulators/oatly/asa.html",
+      "capturedAt": "2026-10-21T00:09:36.293Z"
+    },
+    "https://www.asa.org.uk/rulings/oatly-uk-ltd-g21-1096286-oatly-uk-ltd.html": {
+      "file": "regulators/oatly/asa-ruling-oatly-uk-ltd-g21-1096286-oatly-uk-ltd.html",
+      "capturedAt": "2026-10-21T00:09:36.866Z"
+    },
+    "https://www.jdp-pub.org/avis/?search_avis=Oatly": {
+      "file": "regulators/oatly/jdp.html",
+      "capturedAt": "2026-10-21T00:09:37.864Z"
+    },
+    "https://www.asa.org.uk/search.html?q=Shell": {
+      "file": "regulators/shell/asa.html",
+      "capturedAt": "2026-10-21T00:09:38.859Z"
+    },
+    "https://www.asa.org.uk/rulings/shell-uk-ltd-g22-1170842-shell-uk-ltd.html": {
+      "file": "regulators/shell/asa-ruling-shell-uk-ltd-g22-1170842-shell-uk-ltd.html",
+      "capturedAt": "2026-10-21T00:09:39.252Z"
+    },
+    "https://www.asa.org.uk/rulings/shell-uk-ltd-g24-1248246-shell-uk-ltd.html": {
+      "file": "regulators/shell/asa-ruling-shell-uk-ltd-g24-1248246-shell-uk-ltd.html",
+      "capturedAt": "2026-10-21T00:09:40.265Z"
+    },
+    "https://www.asa.org.uk/rulings/shell-energy-uk-a25-1288971-shell-energy-uk-ltd.html": {
+      "file": "regulators/shell/asa-ruling-shell-energy-uk-a25-1288971-shell-energy-uk-ltd.html",
+      "capturedAt": "2026-10-21T00:09:41.239Z"
+    },
+    "https://www.jdp-pub.org/avis/?search_avis=TotalEnergies": {
+      "file": "regulators/totalenergies/jdp.html",
+      "capturedAt": "2026-10-21T00:09:41.851Z"
+    },
+    "https://www.jdp-pub.org/avis/totalenergies-internet/": {
+      "file": "regulators/totalenergies/jdp-avis-totalenergies-internet.html",
+      "capturedAt": "2026-10-21T00:09:42.677Z"
+    },
+    "https://www.jdp-pub.org/avis/totalenergies-presse/": {
+      "file": "regulators/totalenergies/jdp-avis-totalenergies-presse.html",
+      "capturedAt": "2026-10-21T00:09:43.627Z"
+    },
+    "https://www.jdp-pub.org/avis/total-energies-internet/": {
+      "file": "regulators/totalenergies/jdp-avis-total-energies-internet.html",
+      "capturedAt": "2026-10-21T00:09:44.779Z"
+    }
+  }
+}

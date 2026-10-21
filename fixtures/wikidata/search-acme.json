@@ -1,0 +1,187 @@
+{
+ "searchinfo": {
+  "search": "acme"
+ },
+ "search": [
+  {
+   "id": "Q20311482",
+   "title": "Q20311482",
+   "pageid": 22060464,
+   "concepturi": "http://www.wikidata.org/entity/Q20311482",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q20311482",
+   "display": {
+    "label": {
+     "value": "Automated Certificate Management Environment",
+     "language": "en"
+    },
+    "description": {
+     "value": "protocol for automating interactions between certificate authorities and web servers",
+     "language": "en"
+    }
+   },
+   "label": "Automated Certificate Management Environment",
+   "description": "protocol for automating interactions between certificate authorities and web servers",
+   "match": {
+    "type": "alias",
+    "language": "en",
+    "text": "ACME"
+   },
+   "aliases": [
+    "ACME"
+   ]
+  },
+  {
+   "id": "Q41150130",
+   "title": "Q41150130",
+   "pageid": 42476065,
+   "concepturi": "http://www.wikidata.org/entity/Q41150130",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q41150130",
+   "display": {
+    "label": {
+     "value": "Acme",
+     "language": "en"
+    },
+    "description": {
+     "value": "genus of molluscs",
+     "language": "en"
+    }
+   },
+   "label": "Acme",
+   "description": "genus of molluscs",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Acme"
+   }
+  },
+  {
+   "id": "Q7866966",
+   "title": "Q7866966",
+   "pageid": 7802847,
+   "concepturi": "http://www.wikidata.org/entity/Q7866966",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q7866966",
+   "display": {
+    "label": {
+     "value": "Acme",
+     "language": "en"
+    },
+    "description": {
+     "value": "1916 Design 1013 ship",
+     "language": "en"
+    }
+   },
+   "label": "Acme",
+   "description": "1916 Design 1013 ship",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Acme"
+   }
+  },
+  {
+   "id": "Q15753194",
+   "title": "Q15753194",
+   "pageid": 17386421,
+   "concepturi": "http://www.wikidata.org/entity/Q15753194",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q15753194",
+   "display": {
+    "label": {
+     "value": "ACME",
+     "language": "en"
+    },
+    "description": {
+     "value": "journal",
+     "language": "en"
+    }
+   },
+   "label": "ACME",
+   "description": "journal",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "ACME"
+   }
+  },
+  {
+   "id": "Q15766484",
+   "title": "Q15766484",
+   "pageid": 17399825,
+   "concepturi": "http://www.wikidata.org/entity/Q15766484",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q15766484",
+   "display": {
+    "label": {
+     "value": "Acme",
+     "language": "en"
+    },
+    "description": {
+     "value": "academic journal",
+     "language": "en"
+    }
+   },
+   "label": "Acme",
+   "description": "academic journal",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Acme"
+   }
+  },
+  {
+   "id": "Q2097498",
+   "title": "Q2097498",
+   "pageid": 2024147,
+   "concepturi": "http://www.wikidata.org/entity/Q2097498",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q2097498",
+   "display": {
+    "label": {
+     "value": "Acmella oleracea",
+     "language": "en"
+    },
+    "description": {
+     "value": "species of plant",
+     "language": "en"
+    }
+   },
+   "label": "Acmella oleracea",
+   "description": "species of plant",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Acmella oleracea"
+   }
+  },
+  {
+   "id": "Q2597964",
+   "title": "Q2597964",
+   "pageid": 2506357,
+   "concepturi": "http://www.wikidata.org/entity/Q2597964",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q2597964",
+   "display": {
+    "label": {
+     "value": "Acmella",
+     "language": "en"
+    },
+    "description": {
+     "value": "genus of flowering plants",
+     "language": "en"
+    }
+   },
+   "label": "Acmella",
+   "description": "genus of flowering plants",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Acmella"
+   }
+  }
+ ],
+ "search-continue": 7,
+ "success": 1
+}

@@ -1,0 +1,25 @@
+{
+ "entities": {
+  "Q1129539": {
+   "type": "item",
+   "id": "Q1129539",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Conzzeta"
+    }
+   }
+  },
+  "Q39": {
+   "type": "item",
+   "id": "Q39",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Switzerland"
+    }
+   }
+  }
+ },
+ "success": 1
+}

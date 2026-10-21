@@ -1,0 +1,109 @@
+{
+  "brand": "fairphone",
+  "website_arg": "https://www.fairphone.com",
+  "base": "http://127.0.0.1:3127",
+  "server": "next dev, live (GR_OFFLINE_FIXTURES unset)",
+  "llm": "none: no API key, AI steps skipped",
+  "run_at": "2026-10-21T01:46:17.043Z",
+  "run_id": "c28d3566-856b-4dd7-b54c-e537a3e81968",
+  "report_id": "c572e36b-cdf2-4460-a294-09121949ed2a",
+  "entry_ms": 28959,
+  "run_ms": 56362,
+  "report": {
+    "brand": "Fairphone",
+    "website": "https://www.fairphone.com/",
+    "score": 3,
+    "label": "low",
+    "confidence": 70,
+    "ai_share": 0,
+    "sources_count": 2,
+    "signals_count": 24,
+    "axes": [
+      {
+        "id": "claims",
+        "status": "scored",
+        "subscore": 10,
+        "signals": [
+          "claim.unsupported",
+          "claim.supported",
+          "claim.supported",
+          "claim.supported",
+          "claim.unsupported",
+          "claim.unsupported",
+          "claim.unsupported",
+          "claim.unsupported",
+          "claim.unsupported",
+          "claim.supported",
+          "claim.unsupported",
+          "claim.unsupported",
+          "claim.supported",
+          "claim.unsupported"
+        ]
+      },
+      {
+        "id": "evidence",
+        "status": "scored",
+        "subscore": 0,
+        "signals": [
+          "evidence.report_found"
+        ]
+      },
+      {
+        "id": "track",
+        "status": "missing",
+        "subscore": 0,
+        "signals": []
+      },
+      {
+        "id": "repair",
+        "status": "scored",
+        "subscore": 0,
+        "signals": [
+          "repair.manual_found",
+          "repair.spare_parts_found",
+          "repair.program_found",
+          "repair.warranty_found",
+          "repair.ifixit_devices",
+          "repair.ifixit_guides",
+          "repair.ifixit_score",
+          "repair.ifixit_guides",
+          "repair.ifixit_score"
+        ]
+      }
+    ],
+    "skipped": [
+      {
+        "step": "Pulling 2019–2026 snapshots",
+        "reason": "Wayback unreachable (Connect Timeout Error (attempted address: web.archive.org:443, timeout: 10000ms))"
+      },
+      {
+        "step": "Proposing candidate claims (AI)",
+        "reason": "LLM unavailable (no API key)"
+      },
+      {
+        "step": "Classifying archived changes (AI)",
+        "reason": "LLM unavailable (no API key)"
+      },
+      {
+        "step": "Writing the plain-English summary (AI)",
+        "reason": "LLM unavailable (no API key)"
+      }
+    ],
+    "could_not_check": [
+      "Archived versions of the brand’s pages: Wayback unreachable (Connect Timeout Error (attempted address: web.archive.org:443, timeout: 10000ms)).",
+      "AI-assisted steps (candidate claims, archived-change classification, summary): not run (no API key); the score uses the rule-based signals only.",
+      "Fairtrade: label claimed on page; not verified in v1 (https://www.fairphone.com/stories/is-the-fairphone-5-the-most-sustainable-phone-in-the-world).",
+      "Regulator rulings: only the UK ASA and the French JDP were searched; rulings by other countries’ regulators were not checked."
+    ]
+  },
+  "cache": {
+    "report_get_ms": [
+      467,
+      208,
+      164
+    ],
+    "x_gr_served_from": "cache",
+    "second_search_ms": 2151,
+    "second_search_reserved_same_id": true
+  }
+}

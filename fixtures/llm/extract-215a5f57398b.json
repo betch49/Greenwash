@@ -1,0 +1,41 @@
+{
+  "name": "extract",
+  "input_sha1": "215a5f57398bfcbf5bfdc824485ded8017e06ba1",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "claims": [
+      {
+        "sentence": "It’s the foundational power-crop in all our products, and we spend a lot of time researching, innovating and advancing the scientific understanding of the nutritional and sustainability potential of oats and oat drinks.",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "The shift will reduce the environmental footprint of the food system, while also providing significant health co-benefits",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "Our goal is 2.2 liters of water per liter of Oatly produced oat drink by 2030.",
+        "kind_hint": "future_only"
+      },
+      {
+        "sentence": "Humans generate 26.4 billion tons of waste each year and only about 11% is recycled..., and that’s not a sustainable use of material.",
+        "kind_hint": "vague"
+      },
+      {
+        "sentence": "By 2050, we will transition enough oat growers to regenerative agriculture to produce the equivalent of 100 percent of Oatly’s supply, reducing the net GHG emissions of oats used by us by 94 percent.",
+        "kind_hint": "future_only"
+      },
+      {
+        "sentence": "We’ll keep working on finding solutions that will improve our packaging.",
+        "kind_hint": "future_only"
+      },
+      {
+        "sentence": "This is the first meaningful update in around a decade, and a step towards fairer, future-ready food taxation, better reflecting the role of plant-based options in healthy diets and a more sustainable food system.",
+        "kind_hint": "baseline_less_comparison"
+      },
+      {
+        "sentence": "Together with great taste, nutrition is a major encouragement for people to make more sustainable food choices.",
+        "kind_hint": "baseline_less_comparison"
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "capturedAt": "2026-10-20T22:36:23.231Z",
+  "files": {
+    "https://www.oatly.com/robots.txt": "robots/www-oatly-com.txt",
+    "https://www.oatly.com/sitemap.xml": "sitemaps/www-oatly-com-sitemap-xml.xml",
+    "https://www.oatly.com/": "pages/www-oatly-com-home.html",
+    "https://oatly.com/robots.txt": "robots/oatly-com.txt",
+    "https://oatly.com/sustainability/": "pages/oatly-com-sustainability.html",
+    "https://oatly.com/oatly-who/sustainability-plan/": "pages/oatly-com-oatly-who-sustainability-plan.html",
+    "https://oatly.com/sustainability/sustainability_old": "pages/oatly-com-sustainability-sustainability-old.html",
+    "https://oatly.com/sustainability/climate-solutions-company": "pages/oatly-com-sustainability-climate-solutions-company.html",
+    "https://oatly.com/sustainability/influence-food-system-change": "pages/oatly-com-sustainability-influence-food-system-change.html",
+    "https://oatly.com/oatly-who/sustainability-plan/sustainability-report-2022": "pages/oatly-com-oatly-who-sustainability-plan-sustainability-report-2022.html",
+    "https://oatly.com/oatly-who/sustainability-plan/sustainability-report-2023": "pages/oatly-com-oatly-who-sustainability-plan-sustainability-report-2023.html",
+    "https://oatly.com/things-we-do/initiatives/pee-for-the-planet": "pages/oatly-com-things-we-do-initiatives-pee-for-the-planet.html",
+    "https://oatly.com/things-we-do/stories/je-ne-sais-quoi/james-cahill-bruno-lacey-climate-change-the-game": "pages/oatly-com-things-we-do-stories-je-ne-sais-quoi-james-cahill-bruno-lacey-climate-change-the-game.html"
+  }
+}

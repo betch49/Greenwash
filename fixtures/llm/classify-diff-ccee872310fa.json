@@ -1,0 +1,8 @@
+{
+  "name": "classify-diff",
+  "input_sha1": "ccee872310fab3e65ab6459481bcdcdd53ddfdae",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "classification": "unsure"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "extract",
+  "input_sha1": "75976b95d628a569b87a1db1d53033c68ea301ba",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "claims": [
+      {
+        "sentence": "“How do you make tech sustainable?”",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "More fair and recycled materials than ever",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "Our product range is 97% e-waste neutral",
+        "kind_hint": "offset"
+      },
+      {
+        "sentence": "Almost every Fairphone product we sell is 100% e-waste neutral, from phones to audio devices to accessories.",
+        "kind_hint": "offset"
+      },
+      {
+        "sentence": "Longer device lifespans are better for the planet",
+        "kind_hint": "baseline_less_comparison"
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+# robots.txt for https://www.asa.org.uk/
+
+User-agent: *
+ Disallow: */type/capcode/code_rule/*
+ Disallow: */type/bcapcode/code_rule/*
+ Disallow: */account/*
+
+User-agent: Slurp
+Crawl-delay: 120
+Allow: /
+
+User-agent: BLEXBot
+Crawl-delay: 60
+
+User-agent: MJ12bot
+Crawl-Delay: 60
+
+sitemap: https://www.asa.org.uk/sitemap.xml

@@ -1,0 +1,25 @@
+{
+  "name": "extract",
+  "input_sha1": "e9bed1a5abdd733d01d23f67f69f52b6d2bee060",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "claims": [
+      {
+        "sentence": "Less impact…",
+        "kind_hint": "baseline_less_comparison"
+      },
+      {
+        "sentence": "We are here to inspire change in the food system because the current one drains resources and fuels climate change.",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "For years, the misinformation lobby had people believing that you had to choose between less climate impact and nutrition or great taste.",
+        "kind_hint": "baseline_less_comparison"
+      },
+      {
+        "sentence": "Whether you're pouring oat drink in your morning coffee or rethinking your company's climate strategy, you are part of a movement that refuses to settle for business as usual.",
+        "kind_hint": "other"
+      }
+    ]
+  }
+}

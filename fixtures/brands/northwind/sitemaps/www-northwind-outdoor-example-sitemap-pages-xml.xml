@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- synthetic fixture (hand-built 2026-10-20) for the FICTIONAL brand Northwind Outdoor on a reserved .example domain (ADR-011). Test-only; no real company published this text. See fixtures/brands/README.md. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.northwind-outdoor.example/home/</loc></url>
+  <url><loc>https://www.northwind-outdoor.example/our-footprint/</loc></url>
+  <url><loc>https://www.northwind-outdoor.example/fr/our-footprint/</loc></url>
+  <url><loc>https://www.northwind-outdoor.example/our-responsibility/supply-chain/</loc></url>
+  <url><loc>https://www.northwind-outdoor.example/environmental-responsibility/climate-goals/</loc></url>
+  <url><loc>https://www.northwind-outdoor.example/about-us/</loc></url>
+  <url><loc>https://www.northwind-outdoor.example/gear-care/repairs/</loc></url>
+  <url><loc>https://www.northwind-outdoor.example/stories/archive/our-footprint-2019/</loc></url>
+  <url><loc>https://www.northwind-outdoor.example/stores/</loc></url>
+  <url><loc>https://www.northwind-outdoor.example/gift-cards/</loc></url>
+  <url><loc>https://www.northwind-outdoor.example/media/impact-report-2025.pdf</loc></url>
+</urlset>

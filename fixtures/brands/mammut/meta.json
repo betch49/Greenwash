@@ -1,0 +1,20 @@
+{
+  "slug": "mammut",
+  "query": "mammut sports group",
+  "sector": "outdoor apparel",
+  "website": "https://www.mammut.com/us/en/",
+  "capture": "real",
+  "capturedAt": "2026-10-20T22:56:47.628Z",
+  "userAgent": "GreenwashRadar/0.1 (+https://github.com/; evidence-based greenwashing risk signals; respects robots.txt)",
+  "entity": {
+    "id": "Q495318",
+    "name": "Mammut",
+    "description": "Swiss mountaineering, climbing, snow sports and trailrunning company",
+    "website": "https://www.mammut.com/us/en/",
+    "websiteHost": "mammut.com",
+    "country": "Switzerland",
+    "parent": "Conzzeta",
+    "exactName": true,
+    "score": 6
+  }
+}

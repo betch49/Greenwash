@@ -1,0 +1,37 @@
+{
+  "name": "extract",
+  "input_sha1": "269eba6735011ed8b8ca74a773581176ff409c9b",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "claims": [
+      {
+        "sentence": "From our home in the Swiss Alps, we see and feel the climate crisis in real time and are compelled to continuously analyze the way our design philosophy and manufacturing processes affect our social and environmental impact.",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "Balancing a long-term outlook with decisive action, we’re dedicated to ever-more conscious exploration.",
+        "kind_hint": "vague"
+      },
+      {
+        "sentence": "Our approach to a bright future is driven by three key ideas: A quality-first design philosophy, a production revolution and dedicated climate action.",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "At the heart of our design philosophy is the conviction to create innovative, low-impact gear that goes the distance in the outdoors and that is engineered for a more circular approach.",
+        "kind_hint": "vague"
+      },
+      {
+        "sentence": "Our goal is to make the gear that allows us to do what we do in the mountains, in a way that is cleaner and smarter.",
+        "kind_hint": "baseline_less_comparison"
+      },
+      {
+        "sentence": "Cleaner processes",
+        "kind_hint": "baseline_less_comparison"
+      },
+      {
+        "sentence": "Our reports outline our targets and policies for ever-more responsible production and operation.",
+        "kind_hint": "baseline_less_comparison"
+      }
+    ]
+  }
+}

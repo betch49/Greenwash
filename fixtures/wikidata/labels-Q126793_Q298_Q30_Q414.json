@@ -1,0 +1,45 @@
+{
+ "entities": {
+  "Q126793": {
+   "type": "item",
+   "id": "Q126793",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "retail"
+    }
+   }
+  },
+  "Q298": {
+   "type": "item",
+   "id": "Q298",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Chile"
+    }
+   }
+  },
+  "Q30": {
+   "type": "item",
+   "id": "Q30",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "United States"
+    }
+   }
+  },
+  "Q414": {
+   "type": "item",
+   "id": "Q414",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Argentina"
+    }
+   }
+  }
+ },
+ "success": 1
+}

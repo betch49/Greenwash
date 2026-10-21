@@ -1,0 +1,41 @@
+{
+  "name": "extract",
+  "input_sha1": "1fbe37832142ebf98c15c7310ab925d020fed909",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "claims": [
+      {
+        "sentence": "Everything we make has an impact on the planet.",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "This page explains where our emissions come from, what we have changed, and what we still have to do.",
+        "kind_hint": "other"
+      },
+      {
+        "sentence": "Our products are made from sustainable materials.",
+        "kind_hint": "vague"
+      },
+      {
+        "sentence": "Our new shell fabric is more sustainable and uses less water.",
+        "kind_hint": "baseline_less_comparison"
+      },
+      {
+        "sentence": "We are carbon neutral.",
+        "kind_hint": "offset"
+      },
+      {
+        "sentence": "We will be net zero across our entire business by 2040.",
+        "kind_hint": "future_only"
+      },
+      {
+        "sentence": "We aim to cut the emissions of our supply chain in half by 2030, measured against a 2019 baseline, and we report progress every year in our impact report.",
+        "kind_hint": "future_only"
+      },
+      {
+        "sentence": "Our packaging is 100% sustainable and completely natural.",
+        "kind_hint": "absolute"
+      }
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /wp-content/uploads/plaintes/
+Allow: /wp-includes/js/
+Allow: /wp-admin/admin-post.php

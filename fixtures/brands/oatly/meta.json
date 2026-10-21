@@ -1,0 +1,20 @@
+{
+  "slug": "oatly",
+  "query": "oatly",
+  "sector": "food",
+  "website": "https://www.oatly.com/",
+  "capture": "real",
+  "capturedAt": "2026-10-20T22:36:23.231Z",
+  "userAgent": "GreenwashRadar/0.1 (+https://github.com/; evidence-based greenwashing risk signals; respects robots.txt)",
+  "entity": {
+    "id": "Q10605824",
+    "name": "Oatly AB",
+    "description": "Business in Sweden, from 1994 from Malmö",
+    "website": "https://www.oatly.com/",
+    "websiteHost": "oatly.com",
+    "industry": "beverage industry",
+    "country": "Sweden",
+    "exactName": true,
+    "score": 6
+  }
+}

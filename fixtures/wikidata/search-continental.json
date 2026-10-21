@@ -1,0 +1,193 @@
+{
+ "searchinfo": {
+  "search": "continental"
+ },
+ "search": [
+  {
+   "id": "Q163241",
+   "title": "Q163241",
+   "pageid": 164023,
+   "concepturi": "http://www.wikidata.org/entity/Q163241",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q163241",
+   "display": {
+    "label": {
+     "value": "Continental AG",
+     "language": "en"
+    },
+    "description": {
+     "value": "German automotive supplier and rubber processing company founded in Hanover in 1871",
+     "language": "en"
+    }
+   },
+   "label": "Continental AG",
+   "description": "German automotive supplier and rubber processing company founded in Hanover in 1871",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Continental AG"
+   }
+  },
+  {
+   "id": "Q48",
+   "title": "Q48",
+   "pageid": 162,
+   "concepturi": "http://www.wikidata.org/entity/Q48",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q48",
+   "display": {
+    "label": {
+     "value": "Asia",
+     "language": "en"
+    },
+    "description": {
+     "value": "part of terrestrial continent, mainly in the northeastern quadrant",
+     "language": "en"
+    }
+   },
+   "label": "Asia",
+   "description": "part of terrestrial continent, mainly in the northeastern quadrant",
+   "match": {
+    "type": "alias",
+    "language": "en",
+    "text": "Continental Asia"
+   },
+   "aliases": [
+    "Continental Asia"
+   ]
+  },
+  {
+   "id": "Q54122",
+   "title": "Q54122",
+   "pageid": 56662,
+   "concepturi": "http://www.wikidata.org/entity/Q54122",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q54122",
+   "display": {
+    "label": {
+     "value": "Continental Army",
+     "language": "en"
+    },
+    "description": {
+     "value": "Army of the United States from 1775 to 1784",
+     "language": "en"
+    }
+   },
+   "label": "Continental Army",
+   "description": "Army of the United States from 1775 to 1784",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Continental Army"
+   }
+  },
+  {
+   "id": "Q216486",
+   "title": "Q216486",
+   "pageid": 211706,
+   "concepturi": "http://www.wikidata.org/entity/Q216486",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q216486",
+   "display": {
+    "label": {
+     "value": "Continental Airlines",
+     "language": "en"
+    },
+    "description": {
+     "value": "defunct airline of the United States (1934—2012)",
+     "language": "en"
+    }
+   },
+   "label": "Continental Airlines",
+   "description": "defunct airline of the United States (1934—2012)",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Continental Airlines"
+   }
+  },
+  {
+   "id": "Q174769",
+   "title": "Q174769",
+   "pageid": 174659,
+   "concepturi": "http://www.wikidata.org/entity/Q174769",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q174769",
+   "display": {
+    "label": {
+     "value": "United Airlines",
+     "language": "en"
+    },
+    "description": {
+     "value": "American airline",
+     "language": "en"
+    }
+   },
+   "label": "United Airlines",
+   "description": "American airline",
+   "match": {
+    "type": "alias",
+    "language": "en",
+    "text": "Continental"
+   },
+   "aliases": [
+    "Continental"
+   ]
+  },
+  {
+   "id": "Q54959639",
+   "title": "Q54959639",
+   "pageid": 55046677,
+   "concepturi": "http://www.wikidata.org/entity/Q54959639",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q54959639",
+   "display": {
+    "label": {
+     "value": "Continental Lake",
+     "language": "en"
+    },
+    "description": {
+     "value": "lake in Humboldt County, Nevada, United States",
+     "language": "en"
+    }
+   },
+   "label": "Continental Lake",
+   "description": "lake in Humboldt County, Nevada, United States",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Continental Lake"
+   }
+  },
+  {
+   "id": "Q1756006",
+   "title": "Q1756006",
+   "pageid": 1688660,
+   "concepturi": "http://www.wikidata.org/entity/Q1756006",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q1756006",
+   "display": {
+    "label": {
+     "value": "UCI Continental Team",
+     "language": "en"
+    },
+    "description": {
+     "value": "men's professional cycling team of the third highest UCI ranking (2005–)",
+     "language": "en"
+    }
+   },
+   "label": "UCI Continental Team",
+   "description": "men's professional cycling team of the third highest UCI ranking (2005–)",
+   "match": {
+    "type": "alias",
+    "language": "en",
+    "text": "continental team"
+   },
+   "aliases": [
+    "continental team"
+   ]
+  }
+ ],
+ "search-continue": 7,
+ "success": 1
+}

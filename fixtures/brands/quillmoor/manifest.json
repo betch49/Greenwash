@@ -1,0 +1,11 @@
+{
+  "capturedAt": "2026-10-20T23:30:00.000Z",
+  "files": {
+    "https://www.quillmoor-foods.example/robots.txt": "robots/www-quillmoor-foods-example.txt",
+    "https://www.quillmoor-foods.example/": "pages/www-quillmoor-foods-example-home.html",
+    "https://www.quillmoor-foods.example/sustainability": "pages/www-quillmoor-foods-example-sustainability.html"
+  },
+  "wayback": {
+    "https://www.quillmoor-foods.example/sustainability": "sustainability"
+  }
+}

@@ -1,0 +1,6 @@
+[
+["urlkey", "timestamp", "original", "mimetype", "statuscode", "digest", "length"],
+["example,quillmoor-foods)/sustainability", "20200807120000", "https://www.quillmoor-foods.example/sustainability/", "text/html", "200", "SYNTHETIC20200807120000", "4096"],
+["example,quillmoor-foods)/sustainability", "20220519101500", "https://www.quillmoor-foods.example/sustainability/", "text/html", "200", "SYNTHETIC20220519101500", "4096"],
+["example,quillmoor-foods)/sustainability", "20250128094500", "https://www.quillmoor-foods.example/sustainability/", "text/html", "200", "SYNTHETIC20250128094500", "4096"]
+]

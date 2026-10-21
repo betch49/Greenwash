@@ -1,0 +1,8 @@
+{
+  "name": "classify-diff",
+  "input_sha1": "3c7d62efdb1ada7f201c8b358d3f6399edc5d3c9",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "classification": "claim_removed"
+  }
+}

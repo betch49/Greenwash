@@ -1,0 +1,25 @@
+{
+ "entities": {
+  "Q16": {
+   "type": "item",
+   "id": "Q16",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Canada"
+    }
+   }
+  },
+  "Q38": {
+   "type": "item",
+   "id": "Q38",
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Italy"
+    }
+   }
+  }
+ },
+ "success": 1
+}

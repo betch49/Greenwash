@@ -1,0 +1,21 @@
+{
+  "capturedAt": "2026-10-20T22:36:07.082Z",
+  "files": {
+    "https://www.fairphone.com/robots.txt": "robots/www-fairphone-com.txt",
+    "https://www.fairphone.com/sitemap.xml": "sitemaps/www-fairphone-com-sitemap-xml.xml",
+    "https://www.fairphone.com/": "pages/www-fairphone-com-home.html",
+    "https://www.fairphone.com/impact-report": "pages/www-fairphone-com-impact-report.html",
+    "https://www.fairphone.com/repairs": "pages/www-fairphone-com-repairs.html",
+    "https://www.fairphone.com/professional-repairs": "pages/www-fairphone-com-professional-repairs.html",
+    "https://www.fairphone.com/recycle": "pages/www-fairphone-com-recycle.html",
+    "https://www.fairphone.com/stories/how-sustainable-is-the-fairphone-3": "pages/www-fairphone-com-stories-how-sustainable-is-the-fairphone-3.html",
+    "https://www.fairphone.com/stories/is-the-fairphone-5-the-most-sustainable-phone-in-the-world": "pages/www-fairphone-com-stories-is-the-fairphone-5-the-most-sustainable-phone-in-the-world.html",
+    "https://www.fairphone.com/about-us": "pages/www-fairphone-com-about-us.html",
+    "https://www.fairphone.com/stories/impact-is-where-the-work-begins": "pages/www-fairphone-com-stories-impact-is-where-the-work-begins.html",
+    "https://www.fairphone.com/warranty/you": "pages/www-fairphone-com-warranty-you.html",
+    "https://www.fairphone.com/warranty/start": "pages/www-fairphone-com-warranty-start.html",
+    "https://www.fairphone.com/warranty/device": "pages/www-fairphone-com-warranty-device.html",
+    "https://www.fairphone.com/legal/fairbuds-xl-warranty": "pages/www-fairphone-com-legal-fairbuds-xl-warranty.html",
+    "https://www.fairphone.com/legal/fairphone-warranties": "pages/www-fairphone-com-legal-fairphone-warranties.html"
+  }
+}

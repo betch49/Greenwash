@@ -1,0 +1,30 @@
+{
+  "$comment": "Classes that make a Wikidata item eligible as a brand/company/organisation for disambiguation (instance of one of these, or instance of a class that is a direct subclass of one of these). Classes in denyClassIds, or whose English label contains a denyLabelWord, exclude the item.",
+  "searchLimit": 7,
+  "maxCandidates": 3,
+  "companyClassIds": {
+    "Q431289": "brand",
+    "Q167270": "trademark",
+    "Q4830453": "business",
+    "Q783794": "company",
+    "Q6881511": "enterprise",
+    "Q43229": "organization",
+    "Q891723": "public company",
+    "Q1589009": "privately held company",
+    "Q167037": "corporation",
+    "Q658255": "subsidiary",
+    "Q13235160": "manufacturer",
+    "Q219577": "holding company",
+    "Q778575": "conglomerate",
+    "Q4539": "cooperative"
+  },
+  "denyClassIds": {
+    "Q14897293": "fictional entity"
+  },
+  "denyLabelWords": ["fictional"],
+  "legalSuffixes": [
+    "inc", "incorporated", "ltd", "limited", "llc", "plc", "corp", "corporation", "co", "company",
+    "ab", "sa", "sas", "sarl", "spa", "srl", "gmbh", "ag", "kg", "bv", "nv", "oy", "oyj", "as", "asa", "aps", "pty", "group"
+  ],
+  "score": { "exactName": 3, "website": 2, "companyClass": 1 }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "extract",
+  "input_sha1": "2593f1d3209c02a205e054eb6431accbd15179a9",
+  "source": "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts",
+  "output": {
+    "claims": [
+      {
+        "sentence": "In a bold move towards combating climate change, Mammut and partners have launched an innovative project focused on carbon dioxide (CO2) removal and its storage in concrete.",
+        "kind_hint": "other"
+      }
+    ]
+  }
+}
