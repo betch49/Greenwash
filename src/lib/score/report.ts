@@ -1,8 +1,9 @@
 // ReportV1 (PLAN Phase 6 deliverable 6): the stored, exported report model.
 import { z } from "zod";
 import type { PipelineOutcome } from "../pipeline/run";
+import { couldNotCheck } from "../copy/wording";
 import { score, type ScoreOptions } from "./scorer";
-import { AXES } from "./weights";
+import { AXES, WEIGHTS } from "./weights";
 
 const SignalSchema = z.object({
   id: z.string().min(1),
@@ -54,7 +55,7 @@ export const ReportV1Schema = z.object({
         id: z.enum(AXES),
         weight: z.number().min(0).max(1),
         effective_weight: z.number().min(0).max(1),
-        status: z.enum(["scored", "missing", "not_applicable"]),
+        status: z.enum(["scored", "missing", "not_applicable", "insufficient_data"]),
         subscore: z.number().min(0).max(100),
         signals: z.array(SignalSchema),
       }),
@@ -108,7 +109,10 @@ export function buildReport(run: ReportRun, outcome: Pick<PipelineOutcome, "sign
     basis: result.basis,
     axes: result.axes,
     timeline: outcome.timeline,
-    could_not_check: outcome.could_not_check,
+    // Phase 14: an insufficient-data claims axis says so in "What we could not check".
+    could_not_check: result.axes.some((a) => a.id === "claims" && a.status === "insufficient_data")
+      ? [...outcome.could_not_check, couldNotCheck.claimsInsufficient((opts.weights ?? WEIGHTS).claimsRate.v2.minClaims)]
+      : outcome.could_not_check,
     skipped: outcome.progress.filter((p) => p.status === "skipped").map((p) => ({ step: p.step, reason: p.reason ?? "" })),
     generated_at: generatedAt.toISOString(),
     sources_count: result.sources_count,

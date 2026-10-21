@@ -7,6 +7,7 @@ import type { Fetcher } from "../fetch/fetcher";
 import type { Signal } from "../pipeline/signal";
 import { RegulatorUnavailableError, type RegulatorAdapter, type Ruling, type RulingCandidate } from "./adapter";
 import { matchEntity } from "./match";
+import { rulingTopic } from "./topic";
 
 /** A ruling whose entity name contains the brand but is not the brand: shown, never scored, never a signal. */
 export interface PossibleMatch {
@@ -42,11 +43,23 @@ export function rulingWeightHint(ruling: Pick<Ruling, "outcome" | "date">, now: 
 }
 
 export function rulingSignal(adapter: Pick<RegulatorAdapter, "id" | "name" | "country">, ruling: Ruling, now: Date): Signal {
+  // ADR-033: scored only when the topic is environmental; otherwise listed with 0 points (config/weights.json).
+  // QA-2 (Phase 14): a complaint that was not upheld is context, 0 points (config/weights.json).
+  const topic = rulingTopic(ruling);
+  const outcome = ruling.outcomeText || ruling.outcome;
+  const upheld = ruling.outcome === "upheld";
+  const kind = !topic.environmental ? "regulator.ruling_other_topic" : upheld ? "regulator.ruling" : "regulator.ruling_not_upheld";
+  const label =
+    kind === "regulator.ruling"
+      ? signalLabels.rulingFound(ruling.advertiser, adapter.name, adapter.country, ruling.date, outcome)
+      : kind === "regulator.ruling_not_upheld"
+        ? signalLabels.rulingNotUpheld(ruling.advertiser, adapter.name, adapter.country, ruling.date, outcome)
+        : signalLabels.rulingOtherTopic(ruling.advertiser, adapter.name, adapter.country, ruling.date, outcome, ruling.topic);
   return {
     id: `regulator-${adapter.id}-${hash(ruling.url)}`,
     axis: "track",
-    kind: "regulator.ruling",
-    label: signalLabels.rulingFound(ruling.advertiser, adapter.name, adapter.country, ruling.date, ruling.outcomeText || ruling.outcome),
+    kind,
+    label,
     weight_hint: rulingWeightHint(ruling, now),
     source_url: ruling.url,
     fetched_at: ruling.fetchedAt,

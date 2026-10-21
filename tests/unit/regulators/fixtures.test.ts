@@ -66,6 +66,11 @@ describe("regulator fixtures (5.4)", () => {
     expect(byUrl["https://www.jdp-pub.org/avis/totalenergies-internet/"]).toBe(3); // upheld, 2024 (recent)
     expect(byUrl["https://www.jdp-pub.org/avis/totalenergies-presse/"]).toBe(1.5); // rejected, 2024 (recent)
     expect(byUrl["https://www.jdp-pub.org/avis/total-energies-internet/"]).toBe(2); // upheld, 2023-03 (older than 3 years)
+    // ADR-033 (Phase 14): the "Heures Eco" price decision (presse) is not environmental ⇒ listed with 0 points.
+    const kinds = Object.fromEntries(r.signals.map((s) => [s.source_url, s.kind]));
+    expect(kinds["https://www.jdp-pub.org/avis/totalenergies-presse/"]).toBe("regulator.ruling_other_topic");
+    expect(kinds["https://www.jdp-pub.org/avis/totalenergies-internet/"]).toBe("regulator.ruling");
+    expect(kinds["https://www.jdp-pub.org/avis/total-energies-internet/"]).toBe("regulator.ruling");
   });
 
   it("ADR-011: every recorded source file is a real capture listed in the manifest; no ruling is hand-built", () => {

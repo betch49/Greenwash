@@ -3,7 +3,8 @@ import type { Axis } from "../pipeline/signal";
 import type { Weights } from "./weights";
 
 export type StepStatus = "done" | "skipped" | "running";
-export type AxisStatus = "scored" | "missing" | "not_applicable";
+/** `insufficient_data` (Phase 14, claims formula v2): the step ran but fewer than `claimsRate.v2.minClaims` claim sentences were found; contributes 0, lowers confidence like a missing axis. */
+export type AxisStatus = "scored" | "missing" | "not_applicable" | "insufficient_data";
 
 export interface AxisDataInput {
   /** Status of each pipeline step by step id. */

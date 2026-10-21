@@ -113,6 +113,7 @@ export function parseJdpDecision(html: string, url: string, fetchedAt: string): 
     outcomeText,
     ...(note ? { note } : {}),
     excerpt: firstChars(summary, RULING_EXCERPT_CHARS),
+    text: summary,
     fetchedAt,
   };
 }

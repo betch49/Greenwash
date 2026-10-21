@@ -33,6 +33,10 @@ export interface Ruling {
   note?: string;
   /** First characters of the ruling summary (the receipt excerpt). */
   excerpt: string;
+  /** The fetched ruling text (ADR-033: the topic gate reads it; never stored in the signal). */
+  text?: string;
+  /** The regulator's own topic line when the page publishes one (ADR-033); none of the v1.1 adapters sets it yet. */
+  topic?: string;
   fetchedAt: string;
 }
 

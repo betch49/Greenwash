@@ -92,6 +92,8 @@ These are properties of the container the app was built in, not of the app. They
 
 - Points are risk points only (`docs/CHALLENGES.md` C-4): a protective finding (report, emissions figure, supplier list, manual, parts, warranty, iFixit) earns 0 points and lowers a sub-score only by replacing the risk signal that would otherwise appear. An absolute emissions figure or a supplier list therefore does not move the score; it is listed and counts as data for confidence.
 - Confidence is per axis and binary: an axis counts in full once one of its steps finished and it produced a signal (or, for track record, an archived snapshot). A track record built from regulator searches with no ruling and no archived history counts as missing (Mammut and Fairphone offline: confidence 70%), and a track record with a ruling but an unreachable Wayback Machine counts in full.
+- Claims formula v2 (Phase 14, behind `claimsRate.version`; v1 is active unless ADR-032 flips it): a brand that says nothing is not scored on this axis and its confidence is lower ("Fewer than N environmental claim sentences were found on the fetched pages; the claim-language axis was not scored."). A supported claim sentence is protective in a share, so a page that loses a supported sentence between runs can see its claims sub-score rise; v1 does not have this property.
+- Regulator rulings on another topic (pricing, health …) and complaints the regulator did not uphold are listed with 0 points (ADR-033, QA-2); the topic is decided by a word list in `config/regulators.json`, so a ruling about an environmental claim that uses none of those words is listed as "topic not established as environmental".
 - The claims axis is a rate over all fetched visible words. A brand whose site has many pages without claims gets a lower claims sub-score than one with a single sustainability page carrying the same sentences.
 - **The claims rate's denominator is the fetched word count.**
   - A page that fails to fetch, or is skipped, lowers the denominator, so the same claim sentences on the remaining pages give a higher claims rate.
@@ -171,6 +173,7 @@ The "Skipped steps" list gives the step-level `skipped: <reason>` lines. An axis
 | `skipped: analysis interrupted (server restarted); search again to retry` | The server restarted during the run (ADR-013). |
 | `skipped: internal error (<message>)` | Defined but not emitted in v1: a step that throws unexpectedly shows the error's own message as `skipped: <message>` (`src/lib/pipeline/run.ts`), and the run goes on with the other steps. |
 | `skipped: no fetched page to scan` | The claim, evidence or repair step had no page. |
+| `skipped: no sustainability-type page was fetched, so published evidence was not checked` | QA-3 (Phase 14): none of the fetched pages matched the sustainability/impact/responsibility heuristics and nothing protective was found, so the "no impact report found" signal is not emitted; the evidence axis is "no data" (0 points, lower confidence). |
 | `skipped: Wayback unreachable (<cause>)` | The Wayback Machine did not answer (always the case from the build environment). |
 | `skipped: no sustainability-type page to look up in the Wayback Machine` | No page qualified for a history lookup. |
 | `skipped: <name> unreachable (<cause>)` | ASA or JDP did not answer. |
