@@ -1,0 +1,14 @@
+{
+  "capturedAt": "2026-10-21T07:13:12.524Z",
+  "files": {
+    "https://www.innocentdrinks.co.uk/robots.txt": "robots/www-innocentdrinks-co-uk.txt",
+    "https://www.innocentdrinks.co.uk/content/innocent.sitemap.gb-en-sitemap.xml": "sitemaps/www-innocentdrinks-co-uk-content-innocent-sitemap-gb-en-sitemap-xml.xml",
+    "https://www.innocentdrinks.co.uk/": "pages/www-innocentdrinks-co-uk-home.html",
+    "https://www.innocentdrinks.co.uk/climate": "pages/www-innocentdrinks-co-uk-climate.html",
+    "https://www.innocentdrinks.co.uk/a-bit-about-us": "pages/www-innocentdrinks-co-uk-a-bit-about-us.html",
+    "https://www.innocentdrinks.co.uk/big-knit/about": "pages/www-innocentdrinks-co-uk-big-knit-about.html",
+    "https://www.innocentdrinks.co.uk/a-bit-about-us/bcorp": "pages/www-innocentdrinks-co-uk-a-bit-about-us-bcorp.html",
+    "https://www.innocentdrinks.co.uk/a-bit-about-us/nutrition": "pages/www-innocentdrinks-co-uk-a-bit-about-us-nutrition.html",
+    "https://www.innocentdrinks.co.uk/a-bit-about-us/sourcing-stories": "pages/www-innocentdrinks-co-uk-a-bit-about-us-sourcing-stories.html"
+  }
+}

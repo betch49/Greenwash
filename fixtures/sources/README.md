@@ -16,6 +16,13 @@ for "Mammut".
 | `regulators/shell/` | ASA search "Shell" + three ruling pages (*Shell UK Ltd t/a Shell*, *Shell UK Ltd*, *Shell Energy UK*) | regulator-only case: exact-name and partial-name rulings (the `possible` path, PLAN's `asa-ambiguous` fixture) |
 | `regulators/totalenergies/` | JDP search "TotalEnergies" + three decision pages (fondée après révision, rejetée, fondées) | regulator-only case: none of the fixture brands has a JDP decision; needed for criterion 5.2 |
 | `repair/fairphone/` | iFixit device categories *Fairphone*, *Fairphone 5*, *Fairphone 6*, *Fairphone 6plus* (JSON) | electronics fixture brand, criterion 5.6 |
+| `regulators/innocent/`, `regulators/signify/`, `regulators/essity/` | ASA and JDP searches, no result | Phase 10 validation brands (`record:sources -- --add …`) |
+| `regulators/totalenergies/asa*.html` | ASA search "TotalEnergies" + the ruling *TotalEnergies SE* (shown as a possible match) | Phase 10: the TotalEnergies brand fixture; its JDP pages were already recorded and were kept as they were |
 | `robots/` | robots.txt of www.asa.org.uk, www.jdp-pub.org, www.ifixit.com | the offline run checks them like the live one |
 
 Oatly is the food brand, so no iFixit lookup is made for it (repair axis not applicable).
+
+Phase 10 added the four validation brands with `npm run record:sources -- --add innocent totalenergies signify essity`.
+In `--add` mode nothing is deleted and a URL that is already in the manifest is served from its file instead of being
+fetched again, so every earlier capture is unchanged. iFixit answered 404 for TotalEnergies, Signify and Essity (no device
+category); innocent is a food brand (no iFixit lookup).

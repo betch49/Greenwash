@@ -12,8 +12,17 @@ for the heuristic paths they do not have.
 | `mammut` | outdoor apparel | Q495318 Mammut (query `mammut sports group`) | https://www.mammut.com/us/en/ | **real**, 2026-10-20T22:56Z | 12 |
 | `fairphone` | electronics | Q5019402 Fairphone | https://www.fairphone.com/ | **real**, 2026-10-20T22:36Z | 14 (12 kept, 2 dropped as duplicates) |
 | `oatly` | food | Q10605824 Oatly AB | https://www.oatly.com/ | **real**, 2026-10-20T22:36Z | 10 (9 kept; the home page has too little server-rendered text) |
+| `innocent` | food (validation, flagged) | Q1664118 Innocent Drinks (query `innocent drinks`) | https://www.innocentdrinks.co.uk/ | **real**, 2026-10-21T07:13Z | 7 |
+| `totalenergies` | energy (validation, flagged) | Q154037 TotalEnergies | https://www.totalenergies.com/ | **real**, 2026-10-21T07:13Z | 3 (2 kept, 1 duplicate) |
+| `signify` | lighting (validation, well-rated) | Q2336380 Signify | https://www.signify.com/ | **real**, 2026-10-21T07:14Z | 1 (the heuristic paths are 404 and no sitemap page matched) |
+| `essity` | hygiene (validation, well-rated) | Q30938280 Essity | https://www.essity.com | **real**, 2026-10-21T07:14Z | 12 |
 | `northwind` | fictional, test-only | none | https://www.northwind-outdoor.example | **synthetic**, hand-built 2026-10-20 | 7 (+ 4 Wayback snapshots) |
 | `quillmoor` | fictional, test-only (food) | none | https://www.quillmoor-foods.example | **synthetic**, hand-built 2026-10-20 | 2 (+ 3 Wayback snapshots) |
+
+The four brands recorded on 2026-10-21 (Phase 10) are the offline subset of the validation ground truth
+(`fixtures/validation/ground-truth.json`, PLAN Phase 10 deliverable 4): two flagged (innocent, TotalEnergies) and two
+well-rated (Signify, Essity) brands, recorded the same way as the v1 brands. They are not part of the v1 scorer pins
+(`tests/unit/score/fixtures.test.ts`); `npm run validate -- --mode offline` runs them.
 
 ## Layout of each brand directory
 
@@ -28,7 +37,7 @@ for the heuristic paths they do not have.
   only for the fictional brands (ADR-011); a real brand's history may only be a recorded CDX/`id_` response, and none
   could be recorded because web.archive.org resets connections from the build container (`docs/LIMITATIONS.md`).
 
-## Real captures (Mammut, Fairphone, Oatly)
+## Real captures (Mammut, Fairphone, Oatly; Phase 10: innocent, TotalEnergies, Signify, Essity)
 
 Recorded with `npm run record:brand -- <slug> <query> <sector>` (`scripts/record-brand.ts`). The script runs the
 pipeline's own discovery and page fetch steps against the live site: descriptive User-Agent

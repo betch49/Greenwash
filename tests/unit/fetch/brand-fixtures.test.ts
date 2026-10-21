@@ -46,8 +46,9 @@ describe("brand fixtures", () => {
 });
 
 describe("ADR-011: synthetic fixtures never impersonate a real brand", () => {
-  it("there are exactly three real brands, plus test-only synthetic ones", () => {
-    expect(slugs.filter((s) => meta(s).capture === "real")).toHaveLength(3);
+  it("the real brands are the three v1 brands plus the Phase 10 validation captures, plus test-only synthetic ones", () => {
+    // v1 fixture brands (PLAN conventions) + the ground-truth offline subset (PLAN Phase 10 deliverable 4).
+    expect(slugs.filter((s) => meta(s).capture === "real").sort()).toEqual(["essity", "fairphone", "innocent", "mammut", "oatly", "signify", "totalenergies"]);
     for (const s of slugs) expect(["real", "synthetic"]).toContain(meta(s).capture);
   });
 

@@ -1,0 +1,190 @@
+{
+ "searchinfo": {
+  "search": "TotalEnergies"
+ },
+ "search": [
+  {
+   "id": "Q195833",
+   "title": "Q195833",
+   "pageid": 193670,
+   "concepturi": "http://www.wikidata.org/entity/Q195833",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q195833",
+   "display": {
+    "label": {
+     "value": "TotalEnergies",
+     "language": "en"
+    },
+    "description": {
+     "value": "cycling team",
+     "language": "en"
+    }
+   },
+   "label": "TotalEnergies",
+   "description": "cycling team",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "TotalEnergies"
+   }
+  },
+  {
+   "id": "Q154037",
+   "title": "Q154037",
+   "pageid": 155392,
+   "concepturi": "http://www.wikidata.org/entity/Q154037",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q154037",
+   "display": {
+    "label": {
+     "value": "TotalEnergies",
+     "language": "mul"
+    },
+    "description": {
+     "value": "French multinational energy and petroleum company",
+     "language": "en"
+    }
+   },
+   "label": "TotalEnergies",
+   "description": "French multinational energy and petroleum company",
+   "match": {
+    "type": "label",
+    "language": "mul",
+    "text": "TotalEnergies"
+   }
+  },
+  {
+   "id": "Q83145",
+   "title": "Q83145",
+   "pageid": 85547,
+   "concepturi": "http://www.wikidata.org/entity/Q83145",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q83145",
+   "display": {
+    "label": {
+     "value": "Africa Cup of Nations",
+     "language": "en"
+    },
+    "description": {
+     "value": "African association football tournament for men's national teams",
+     "language": "en"
+    }
+   },
+   "label": "Africa Cup of Nations",
+   "description": "African association football tournament for men's national teams",
+   "match": {
+    "type": "alias",
+    "language": "en",
+    "text": "TotalEnergies Africa Cup of Nations"
+   },
+   "aliases": [
+    "TotalEnergies Africa Cup of Nations"
+   ]
+  },
+  {
+   "id": "Q41568124",
+   "title": "Q41568124",
+   "pageid": 42883228,
+   "concepturi": "http://www.wikidata.org/entity/Q41568124",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q41568124",
+   "display": {
+    "label": {
+     "value": "TotalEnergies Marketing Česká republika",
+     "language": "en"
+    },
+    "description": {
+     "value": "Czech company",
+     "language": "en"
+    }
+   },
+   "label": "TotalEnergies Marketing Česká republika",
+   "description": "Czech company",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "TotalEnergies Marketing Česká republika"
+   }
+  },
+  {
+   "id": "Q115573809",
+   "title": "Q115573809",
+   "pageid": 110139367,
+   "concepturi": "http://www.wikidata.org/entity/Q115573809",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q115573809",
+   "display": {
+    "label": {
+     "value": "2023 TotalEnergies",
+     "language": "en"
+    },
+    "description": {
+     "value": "cycling team season",
+     "language": "en"
+    }
+   },
+   "label": "2023 TotalEnergies",
+   "description": "cycling team season",
+   "match": {
+    "type": "alias",
+    "language": "en",
+    "text": "TotalEnergies 2023"
+   },
+   "aliases": [
+    "TotalEnergies 2023"
+   ]
+  },
+  {
+   "id": "Q124610909",
+   "title": "Q124610909",
+   "pageid": 118759985,
+   "concepturi": "http://www.wikidata.org/entity/Q124610909",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q124610909",
+   "display": {
+    "label": {
+     "value": "TotalEnergies Express",
+     "language": "en"
+    },
+    "description": {
+     "value": "petrol station chain",
+     "language": "en"
+    }
+   },
+   "label": "TotalEnergies Express",
+   "description": "petrol station chain",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "TotalEnergies Express"
+   }
+  },
+  {
+   "id": "Q37935436",
+   "title": "Q37935436",
+   "pageid": 39305531,
+   "concepturi": "http://www.wikidata.org/entity/Q37935436",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q37935436",
+   "display": {
+    "label": {
+     "value": "TotalEnergies Actionnariat France",
+     "language": "en"
+    },
+    "description": {
+     "value": "French investment fund",
+     "language": "en"
+    }
+   },
+   "label": "TotalEnergies Actionnariat France",
+   "description": "French investment fund",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "TotalEnergies Actionnariat France"
+   }
+  }
+ ],
+ "search-continue": 7,
+ "success": 1
+}

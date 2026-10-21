@@ -88,6 +88,38 @@
     "https://www.jdp-pub.org/avis/total-energies-internet/": {
       "file": "regulators/totalenergies/jdp-avis-total-energies-internet.html",
       "capturedAt": "2026-10-21T00:09:44.779Z"
+    },
+    "https://www.asa.org.uk/search.html?q=Innocent%20Drinks": {
+      "file": "regulators/innocent/asa.html",
+      "capturedAt": "2026-10-21T07:15:18.763Z"
+    },
+    "https://www.jdp-pub.org/avis/?search_avis=Innocent%20Drinks": {
+      "file": "regulators/innocent/jdp.html",
+      "capturedAt": "2026-10-21T07:15:20.002Z"
+    },
+    "https://www.asa.org.uk/search.html?q=TotalEnergies": {
+      "file": "regulators/totalenergies/asa.html",
+      "capturedAt": "2026-10-21T07:15:20.707Z"
+    },
+    "https://www.asa.org.uk/rulings/totalenergies-se-a24-1246357-totalenergies-se.html": {
+      "file": "regulators/totalenergies/asa-ruling-totalenergies-se-a24-1246357-totalenergies-se.html",
+      "capturedAt": "2026-10-21T07:15:21.420Z"
+    },
+    "https://www.asa.org.uk/search.html?q=Signify": {
+      "file": "regulators/signify/asa.html",
+      "capturedAt": "2026-10-21T07:15:22.695Z"
+    },
+    "https://www.jdp-pub.org/avis/?search_avis=Signify": {
+      "file": "regulators/signify/jdp.html",
+      "capturedAt": "2026-10-21T07:15:23.210Z"
+    },
+    "https://www.asa.org.uk/search.html?q=Essity": {
+      "file": "regulators/essity/asa.html",
+      "capturedAt": "2026-10-21T07:15:23.903Z"
+    },
+    "https://www.jdp-pub.org/avis/?search_avis=Essity": {
+      "file": "regulators/essity/jdp.html",
+      "capturedAt": "2026-10-21T07:15:24.471Z"
     }
   }
 }

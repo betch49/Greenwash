@@ -1,0 +1,20 @@
+{
+  "$comment": "Real capture: one row of the SBTi companies export, trimmed to these columns by scripts/record-validation.ts. Source: Science Based Targets initiative, Target Dashboard export, https://sciencebasedtargets.org/target-dashboard",
+  "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+  "last_modified": "Thu, 15 Oct 2026 15:22:15 GMT",
+  "fetched_at": "2026-10-21T07:15:56.266Z",
+  "row": {
+    "sbti_id": "4.0001598E7",
+    "company_name": "JBS",
+    "isin": "BRJBSSACNOR8",
+    "lei": "529900RM0MTMZL9O5050",
+    "location": "Brazil",
+    "sector": "Food and Beverage Processing",
+    "near_term_status": "Commitment Removed",
+    "near_term_target_year": "",
+    "net_zero_status": "Commitment Removed",
+    "net_zero_year": "",
+    "status_reason": "Expired commitment",
+    "date_updated": "2021-03-01"
+  }
+}

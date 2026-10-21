@@ -1,0 +1,6 @@
+
+
+User-agent: *
+Disallow: /gdpr/
+Disallow: /assets/
+Sitemap: https://www.essity.com/sitemap.xml

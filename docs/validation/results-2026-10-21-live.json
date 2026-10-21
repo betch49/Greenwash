@@ -1,0 +1,2763 @@
+{
+  "version": 1,
+  "label_use": "evaluation_only",
+  "mode": "live",
+  "generated_at": "2026-10-21T07:49:49.829Z",
+  "commit": "2e7dc22",
+  "commit_dirty": true,
+  "weights_version": 1,
+  "llm": "none (no ANTHROPIC_API_KEY): the three AI steps are skipped, rule-based signals only",
+  "n_selected": 23,
+  "n_flagged": 17,
+  "n_well_rated": 6,
+  "n_contested": 0,
+  "n_ran": 15,
+  "n_failed": 8,
+  "n_not_run": 0,
+  "n_flagged_ran": 10,
+  "n_well_rated_ran": 5,
+  "partial": "Partial run: 15 of 23 brands produced a report.",
+  "stats": {
+    "auc": 0.34,
+    "mean_flagged": 26.6,
+    "mean_well_rated": 26,
+    "mean_difference": 0.6000000000000014,
+    "median_flagged": 21,
+    "median_well_rated": 25,
+    "median_difference": -4,
+    "per_axis": {
+      "claims": {
+        "auc": 0.2,
+        "n_flagged": 7,
+        "n_well_rated": 5
+      },
+      "evidence": {
+        "auc": 0.6,
+        "n_flagged": 10,
+        "n_well_rated": 5
+      },
+      "track": {
+        "auc": null,
+        "n_flagged": 4,
+        "n_well_rated": 0
+      },
+      "repair": {
+        "auc": 0.6375,
+        "n_flagged": 8,
+        "n_well_rated": 5
+      }
+    },
+    "spearman_words_score": -0.16681782077519575,
+    "spearman_claims_score": 0.25585585585585585,
+    "n_spearman": 15
+  },
+  "leakage": {
+    "pipeline_sources": [
+      "asa",
+      "jdp"
+    ],
+    "flagged_total": 17,
+    "flagged_only_pipeline_sources": 3,
+    "flagged_ran": 10,
+    "flagged_ran_only_pipeline_sources": 2
+  },
+  "notes": [
+    "Selected 23 of 48 ground-truth entries with --brands; the other 25 were not run in this live run.",
+    "The Wayback step was skipped for 23 brand(s) (see the coverage table): their track-record axis has no archived-claim data."
+  ],
+  "brands": [
+    {
+      "slug": "oatly",
+      "name": "Oatly",
+      "group": "flagged",
+      "status": "ran",
+      "resolution": "wikidata",
+      "brand": "Oatly AB",
+      "website": "https://www.oatly.com/",
+      "wikidata_id": "Q10605824",
+      "score": 35,
+      "label": "moderate",
+      "confidence": 100,
+      "ai_share": 0,
+      "axes": [
+        {
+          "id": "claims",
+          "status": "scored",
+          "subscore": 53
+        },
+        {
+          "id": "evidence",
+          "status": "scored",
+          "subscore": 0
+        },
+        {
+          "id": "track",
+          "status": "scored",
+          "subscore": 50
+        },
+        {
+          "id": "repair",
+          "status": "not_applicable",
+          "subscore": 0
+        }
+      ],
+      "pages": 9,
+      "words_scanned": 24207,
+      "claim_matches": 96,
+      "signals_count": 70,
+      "steps": [
+        {
+          "step": "Discovering pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching current pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching https://www.oatly.com/",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.oatly.com/ (7 words)"
+        },
+        {
+          "step": "Pulling 2019–2026 snapshots",
+          "status": "skipped",
+          "reason": "Wayback unreachable (read ECONNRESET)"
+        },
+        {
+          "step": "Checking claim language",
+          "status": "done"
+        },
+        {
+          "step": "Proposing candidate claims (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Classifying archived changes (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Checking published evidence",
+          "status": "done"
+        },
+        {
+          "step": "Checking ASA (UK) rulings",
+          "status": "done"
+        },
+        {
+          "step": "Checking JDP (France) decisions",
+          "status": "done"
+        },
+        {
+          "step": "Checking repair information",
+          "status": "skipped",
+          "reason": "not applicable: the brand’s industry on Wikidata is “beverage industry”, whose products are consumed, not repaired"
+        },
+        {
+          "step": "Writing the plain-English summary (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        }
+      ],
+      "steps_done": 6,
+      "steps_skipped": 6,
+      "duration_ms": 29667
+    },
+    {
+      "slug": "shell",
+      "name": "Shell",
+      "group": "flagged",
+      "status": "failed",
+      "reason": "no page could be fetched (no page could be fetched from shell.com)",
+      "resolution": "wikidata",
+      "brand": "Shell",
+      "website": "https://www.shell.com/",
+      "wikidata_id": "Q154950",
+      "score": 26,
+      "label": "moderate",
+      "confidence": 30,
+      "ai_share": 0,
+      "axes": [
+        {
+          "id": "claims",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "evidence",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "track",
+          "status": "scored",
+          "subscore": 88
+        },
+        {
+          "id": "repair",
+          "status": "missing",
+          "subscore": 0
+        }
+      ],
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "signals_count": 2,
+      "steps": [
+        {
+          "step": "Discovering pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching current pages",
+          "status": "skipped",
+          "reason": "no page could be fetched from shell.com"
+        },
+        {
+          "step": "Fetching https://www.shell.com/",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.shell.com/ (0 words)"
+        },
+        {
+          "step": "Fetching https://www.shell.com/careers/hse-health-safety-environment.html",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.shell.com/careers/hse-health-safety-environment.html (0 words)"
+        },
+        {
+          "step": "Fetching https://www.shell.com/investors/environmental-social-and-governance.html",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.shell.com/investors/environmental-social-and-governance.html (0 words)"
+        },
+        {
+          "step": "Fetching https://www.shell.com/what-we-do/our-strategy/sustainability.html",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.shell.com/what-we-do/our-strategy/sustainability.html (0 words)"
+        },
+        {
+          "step": "Fetching https://www.shell.com/business-customers/chemicals/sustainability.html",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.shell.com/business-customers/chemicals/sustainability.html (0 words)"
+        },
+        {
+          "step": "Fetching https://www.shell.com/business-customers/shell-low-carbon-solutions/sustainable-biofuels.html",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.shell.com/business-customers/shell-low-carbon-solutions/sustainable-biofuels.html (0 words)"
+        },
+        {
+          "step": "Fetching https://www.shell.com/what-we-do/technology-and-innovation/technology-for-a-sustainable-energy-industry.html",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.shell.com/what-we-do/technology-and-innovation/technology-for-a-sustainable-energy-industry.html (0 words)"
+        },
+        {
+          "step": "Fetching https://www.shell.com/shellenergy/about.html",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.shell.com/shellenergy/about.html (0 words)"
+        },
+        {
+          "step": "Fetching https://www.shell.com/careers/about-careers-at-shell.html",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.shell.com/careers/about-careers-at-shell.html (0 words)"
+        },
+        {
+          "step": "Fetching https://www.shell.com/investors/environmental-social-and-governance/board-of-directors.html",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.shell.com/investors/environmental-social-and-governance/board-of-directors.html (0 words)"
+        },
+        {
+          "step": "Fetching https://www.shell.com/investors/environmental-social-and-governance/esg-information-hub.html",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.shell.com/investors/environmental-social-and-governance/esg-information-hub.html (0 words)"
+        },
+        {
+          "step": "Fetching https://www.shell.com/business-customers/commercial-fuels/health-safety-and-the-environment.html",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.shell.com/business-customers/commercial-fuels/health-safety-and-the-environment.html (0 words)"
+        },
+        {
+          "step": "Fetching https://www.shell.com/news-and-insights/shells-perspectives-on-key-topics/what-is-shells-view-on-climate-change.html",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.shell.com/news-and-insights/shells-perspectives-on-key-topics/what-is-shells-view-on-climate-change.html (0 words)"
+        },
+        {
+          "step": "Fetching https://www.shell.com/news-and-insights/shells-perspectives-on-key-topics/what-kind-of-climate-lawsuits-have-been-filed-against-shell.html",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.shell.com/news-and-insights/shells-perspectives-on-key-topics/what-kind-of-climate-lawsuits-have-been-filed-against-shell.html (0 words)"
+        },
+        {
+          "step": "Fetching https://www.shell.com/what-we-do/our-strategy/sustainability/people.html",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.shell.com/what-we-do/our-strategy/sustainability/people.html (0 words)"
+        },
+        {
+          "step": "Fetching https://www.shell.com/careers/about-careers-at-shell/early-careers.html",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.shell.com/careers/about-careers-at-shell/early-careers.html (0 words)"
+        },
+        {
+          "step": "Fetching https://www.shell.com/who-we-are/our-values/shell-global-helpline/responsible-disclosure-policy.html",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.shell.com/who-we-are/our-values/shell-global-helpline/responsible-disclosure-policy.html (0 words)"
+        },
+        {
+          "step": "Fetching https://www.shell.com/news-and-insights/scenarios/scenarios-where-you-live/new-sketch-a-climate-neutral-eu.html",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.shell.com/news-and-insights/scenarios/scenarios-where-you-live/new-sketch-a-climate-neutral-eu.html (0 words)"
+        },
+        {
+          "step": "Fetching https://www.shell.com/sustainability",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.shell.com/sustainability (0 words)"
+        },
+        {
+          "step": "Fetching https://www.shell.com/about",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.shell.com/about (0 words)"
+        },
+        {
+          "step": "Pulling 2019–2026 snapshots",
+          "status": "skipped",
+          "reason": "no sustainability-type page to look up in the Wayback Machine"
+        },
+        {
+          "step": "Checking claim language",
+          "status": "skipped",
+          "reason": "no fetched page to scan"
+        },
+        {
+          "step": "Proposing candidate claims (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Classifying archived changes (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Checking published evidence",
+          "status": "skipped",
+          "reason": "no fetched page to scan"
+        },
+        {
+          "step": "Checking ASA (UK) rulings",
+          "status": "done"
+        },
+        {
+          "step": "Checking JDP (France) decisions",
+          "status": "done"
+        },
+        {
+          "step": "Checking repair information",
+          "status": "skipped",
+          "reason": "no fetched page to scan"
+        },
+        {
+          "step": "Writing the plain-English summary (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        }
+      ],
+      "steps_done": 3,
+      "steps_skipped": 28,
+      "duration_ms": 261
+    },
+    {
+      "slug": "totalenergies",
+      "name": "TotalEnergies",
+      "group": "flagged",
+      "status": "ran",
+      "resolution": "wikidata",
+      "brand": "TotalEnergies",
+      "website": "https://www.totalenergies.com/",
+      "wikidata_id": "Q154037",
+      "score": 63,
+      "label": "high",
+      "confidence": 100,
+      "ai_share": 0,
+      "axes": [
+        {
+          "id": "claims",
+          "status": "scored",
+          "subscore": 94
+        },
+        {
+          "id": "evidence",
+          "status": "scored",
+          "subscore": 0
+        },
+        {
+          "id": "track",
+          "status": "scored",
+          "subscore": 100
+        },
+        {
+          "id": "repair",
+          "status": "scored",
+          "subscore": 50
+        }
+      ],
+      "pages": 2,
+      "words_scanned": 742,
+      "claim_matches": 7,
+      "signals_count": 10,
+      "steps": [
+        {
+          "step": "Discovering pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching current pages",
+          "status": "done"
+        },
+        {
+          "step": "Pulling 2019–2026 snapshots",
+          "status": "skipped",
+          "reason": "Wayback unreachable (read ECONNRESET)"
+        },
+        {
+          "step": "Checking claim language",
+          "status": "done"
+        },
+        {
+          "step": "Proposing candidate claims (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Classifying archived changes (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Checking published evidence",
+          "status": "done"
+        },
+        {
+          "step": "Checking ASA (UK) rulings",
+          "status": "done"
+        },
+        {
+          "step": "Checking JDP (France) decisions",
+          "status": "done"
+        },
+        {
+          "step": "Checking repair information",
+          "status": "done"
+        },
+        {
+          "step": "Writing the plain-English summary (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        }
+      ],
+      "steps_done": 7,
+      "steps_skipped": 4,
+      "duration_ms": 23558
+    },
+    {
+      "slug": "amazon",
+      "name": "Amazon",
+      "group": "flagged",
+      "status": "ran",
+      "resolution": "wikidata",
+      "brand": "Amazon",
+      "website": "https://www.amazon.com/",
+      "wikidata_id": "Q3884",
+      "score": 22,
+      "label": "low",
+      "confidence": 100,
+      "ai_share": 0,
+      "axes": [
+        {
+          "id": "claims",
+          "status": "scored",
+          "subscore": 2
+        },
+        {
+          "id": "evidence",
+          "status": "scored",
+          "subscore": 0
+        },
+        {
+          "id": "track",
+          "status": "scored",
+          "subscore": 38
+        },
+        {
+          "id": "repair",
+          "status": "scored",
+          "subscore": 50
+        }
+      ],
+      "pages": 6,
+      "words_scanned": 15095,
+      "claim_matches": 2,
+      "signals_count": 5,
+      "steps": [
+        {
+          "step": "Discovering pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching current pages",
+          "status": "done"
+        },
+        {
+          "step": "Pulling 2019–2026 snapshots",
+          "status": "skipped",
+          "reason": "Wayback unreachable (Connect Timeout Error (attempted address: web.archive.org:443, timeout: 10000ms))"
+        },
+        {
+          "step": "Checking claim language",
+          "status": "done"
+        },
+        {
+          "step": "Proposing candidate claims (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Classifying archived changes (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Checking published evidence",
+          "status": "done"
+        },
+        {
+          "step": "Checking ASA (UK) rulings",
+          "status": "done"
+        },
+        {
+          "step": "Checking JDP (France) decisions",
+          "status": "done"
+        },
+        {
+          "step": "Checking repair information",
+          "status": "done"
+        },
+        {
+          "step": "Writing the plain-English summary (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        }
+      ],
+      "steps_done": 7,
+      "steps_skipped": 4,
+      "duration_ms": 42641
+    },
+    {
+      "slug": "innocent",
+      "name": "innocent drinks",
+      "group": "flagged",
+      "status": "ran",
+      "resolution": "wikidata",
+      "brand": "Innocent Drinks",
+      "website": "https://www.innocentdrinks.co.uk/",
+      "wikidata_id": "Q1664118",
+      "score": 5,
+      "label": "low",
+      "confidence": 63,
+      "ai_share": 0,
+      "axes": [
+        {
+          "id": "claims",
+          "status": "scored",
+          "subscore": 14
+        },
+        {
+          "id": "evidence",
+          "status": "scored",
+          "subscore": 0
+        },
+        {
+          "id": "track",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "repair",
+          "status": "not_applicable",
+          "subscore": 0
+        }
+      ],
+      "pages": 7,
+      "words_scanned": 3892,
+      "claim_matches": 6,
+      "signals_count": 7,
+      "steps": [
+        {
+          "step": "Discovering pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching current pages",
+          "status": "done"
+        },
+        {
+          "step": "Pulling 2019–2026 snapshots",
+          "status": "skipped",
+          "reason": "Wayback unreachable (read ECONNRESET)"
+        },
+        {
+          "step": "Checking claim language",
+          "status": "done"
+        },
+        {
+          "step": "Proposing candidate claims (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Classifying archived changes (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Checking published evidence",
+          "status": "done"
+        },
+        {
+          "step": "Checking ASA (UK) rulings",
+          "status": "done"
+        },
+        {
+          "step": "Checking JDP (France) decisions",
+          "status": "done"
+        },
+        {
+          "step": "Checking repair information",
+          "status": "skipped",
+          "reason": "not applicable: the brand’s industry on Wikidata is “beverage industry”, whose products are consumed, not repaired"
+        },
+        {
+          "step": "Writing the plain-English summary (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        }
+      ],
+      "steps_done": 6,
+      "steps_skipped": 5,
+      "duration_ms": 25231
+    },
+    {
+      "slug": "jbs",
+      "name": "JBS",
+      "group": "flagged",
+      "status": "ran",
+      "resolution": "wikidata",
+      "brand": "JBS S.A.",
+      "website": "http://www.jbs.com.br",
+      "wikidata_id": "Q1676554",
+      "score": 15,
+      "label": "low",
+      "confidence": 70,
+      "ai_share": 0,
+      "axes": [
+        {
+          "id": "claims",
+          "status": "scored",
+          "subscore": 18
+        },
+        {
+          "id": "evidence",
+          "status": "scored",
+          "subscore": 0
+        },
+        {
+          "id": "track",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "repair",
+          "status": "scored",
+          "subscore": 50
+        }
+      ],
+      "pages": 12,
+      "words_scanned": 6011,
+      "claim_matches": 8,
+      "signals_count": 10,
+      "steps": [
+        {
+          "step": "Discovering pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching current pages",
+          "status": "done"
+        },
+        {
+          "step": "Pulling 2019–2026 snapshots",
+          "status": "skipped",
+          "reason": "Wayback unreachable (read ECONNRESET)"
+        },
+        {
+          "step": "Checking claim language",
+          "status": "done"
+        },
+        {
+          "step": "Proposing candidate claims (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Classifying archived changes (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Checking published evidence",
+          "status": "done"
+        },
+        {
+          "step": "Checking ASA (UK) rulings",
+          "status": "done"
+        },
+        {
+          "step": "Checking JDP (France) decisions",
+          "status": "done"
+        },
+        {
+          "step": "Checking repair information",
+          "status": "done"
+        },
+        {
+          "step": "Writing the plain-English summary (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        }
+      ],
+      "steps_done": 7,
+      "steps_skipped": 4,
+      "duration_ms": 28795
+    },
+    {
+      "slug": "unilever",
+      "name": "Unilever",
+      "group": "flagged",
+      "status": "failed",
+      "reason": "no page could be fetched (no page could be fetched from unilever.com)",
+      "resolution": "wikidata",
+      "brand": "Unilever",
+      "website": "https://unilever.com",
+      "wikidata_id": "Q157062",
+      "score": 26,
+      "label": "moderate",
+      "confidence": 30,
+      "ai_share": 0,
+      "axes": [
+        {
+          "id": "claims",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "evidence",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "track",
+          "status": "scored",
+          "subscore": 88
+        },
+        {
+          "id": "repair",
+          "status": "missing",
+          "subscore": 0
+        }
+      ],
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "signals_count": 2,
+      "steps": [
+        {
+          "step": "Discovering pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching current pages",
+          "status": "skipped",
+          "reason": "no page could be fetched from unilever.com"
+        },
+        {
+          "step": "Fetching https://unilever.com/",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://unilever.com/"
+        },
+        {
+          "step": "Fetching https://unilever.com/sustainability",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://unilever.com/sustainability"
+        },
+        {
+          "step": "Fetching https://unilever.com/impact",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://unilever.com/impact"
+        },
+        {
+          "step": "Fetching https://unilever.com/responsibility",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://unilever.com/responsibility"
+        },
+        {
+          "step": "Fetching https://unilever.com/our-footprint",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://unilever.com/our-footprint"
+        },
+        {
+          "step": "Fetching https://unilever.com/about",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://unilever.com/about"
+        },
+        {
+          "step": "Fetching https://unilever.com/environment",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://unilever.com/environment"
+        },
+        {
+          "step": "Fetching https://unilever.com/planet",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://unilever.com/planet"
+        },
+        {
+          "step": "Fetching https://unilever.com/repair",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://unilever.com/repair"
+        },
+        {
+          "step": "Fetching https://unilever.com/warranty",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://unilever.com/warranty"
+        },
+        {
+          "step": "Fetching https://unilever.com/support",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://unilever.com/support"
+        },
+        {
+          "step": "Pulling 2019–2026 snapshots",
+          "status": "skipped",
+          "reason": "no sustainability-type page to look up in the Wayback Machine"
+        },
+        {
+          "step": "Checking claim language",
+          "status": "skipped",
+          "reason": "no fetched page to scan"
+        },
+        {
+          "step": "Proposing candidate claims (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Classifying archived changes (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Checking published evidence",
+          "status": "skipped",
+          "reason": "no fetched page to scan"
+        },
+        {
+          "step": "Checking ASA (UK) rulings",
+          "status": "done"
+        },
+        {
+          "step": "Checking JDP (France) decisions",
+          "status": "done"
+        },
+        {
+          "step": "Checking repair information",
+          "status": "skipped",
+          "reason": "no fetched page to scan"
+        },
+        {
+          "step": "Writing the plain-English summary (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        }
+      ],
+      "steps_done": 3,
+      "steps_skipped": 19,
+      "duration_ms": 102
+    },
+    {
+      "slug": "asda",
+      "name": "Asda",
+      "group": "flagged",
+      "status": "failed",
+      "reason": "no page could be fetched (no page could be fetched from asda.com)",
+      "resolution": "wikidata",
+      "brand": "Asda",
+      "website": "https://www.asda.com",
+      "wikidata_id": "Q297410",
+      "score": 0,
+      "label": "low",
+      "confidence": 0,
+      "ai_share": 0,
+      "axes": [
+        {
+          "id": "claims",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "evidence",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "track",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "repair",
+          "status": "missing",
+          "subscore": 0
+        }
+      ],
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "signals_count": 0,
+      "steps": [
+        {
+          "step": "Discovering pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching current pages",
+          "status": "skipped",
+          "reason": "no page could be fetched from asda.com"
+        },
+        {
+          "step": "Fetching https://www.asda.com/",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://www.asda.com/"
+        },
+        {
+          "step": "Fetching https://www.asda.com/sustainability",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://www.asda.com/sustainability"
+        },
+        {
+          "step": "Fetching https://www.asda.com/impact",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://www.asda.com/impact"
+        },
+        {
+          "step": "Fetching https://www.asda.com/responsibility",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://www.asda.com/responsibility"
+        },
+        {
+          "step": "Fetching https://www.asda.com/our-footprint",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://www.asda.com/our-footprint"
+        },
+        {
+          "step": "Fetching https://www.asda.com/about",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://www.asda.com/about"
+        },
+        {
+          "step": "Fetching https://www.asda.com/environment",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://www.asda.com/environment"
+        },
+        {
+          "step": "Fetching https://www.asda.com/planet",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://www.asda.com/planet"
+        },
+        {
+          "step": "Fetching https://www.asda.com/repair",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://www.asda.com/repair"
+        },
+        {
+          "step": "Fetching https://www.asda.com/warranty",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://www.asda.com/warranty"
+        },
+        {
+          "step": "Fetching https://www.asda.com/support",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://www.asda.com/support"
+        },
+        {
+          "step": "Pulling 2019–2026 snapshots",
+          "status": "skipped",
+          "reason": "no sustainability-type page to look up in the Wayback Machine"
+        },
+        {
+          "step": "Checking claim language",
+          "status": "skipped",
+          "reason": "no fetched page to scan"
+        },
+        {
+          "step": "Proposing candidate claims (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Classifying archived changes (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Checking published evidence",
+          "status": "skipped",
+          "reason": "no fetched page to scan"
+        },
+        {
+          "step": "Checking ASA (UK) rulings",
+          "status": "done"
+        },
+        {
+          "step": "Checking JDP (France) decisions",
+          "status": "done"
+        },
+        {
+          "step": "Checking repair information",
+          "status": "skipped",
+          "reason": "no fetched page to scan"
+        },
+        {
+          "step": "Writing the plain-English summary (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        }
+      ],
+      "steps_done": 3,
+      "steps_skipped": 19,
+      "duration_ms": 71
+    },
+    {
+      "slug": "hellofresh",
+      "name": "HelloFresh",
+      "group": "flagged",
+      "status": "ran",
+      "resolution": "wikidata",
+      "brand": "HelloFresh",
+      "website": "https://www.hellofresh.com",
+      "wikidata_id": "Q23014836",
+      "score": 25,
+      "label": "moderate",
+      "confidence": 70,
+      "ai_share": 0,
+      "axes": [
+        {
+          "id": "claims",
+          "status": "scored",
+          "subscore": 58
+        },
+        {
+          "id": "evidence",
+          "status": "scored",
+          "subscore": 0
+        },
+        {
+          "id": "track",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "repair",
+          "status": "scored",
+          "subscore": 50
+        }
+      ],
+      "pages": 6,
+      "words_scanned": 2451,
+      "claim_matches": 11,
+      "signals_count": 11,
+      "steps": [
+        {
+          "step": "Discovering pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching current pages",
+          "status": "done"
+        },
+        {
+          "step": "Pulling 2019–2026 snapshots",
+          "status": "skipped",
+          "reason": "Wayback unreachable (Connect Timeout Error (attempted address: web.archive.org:443, timeout: 10000ms))"
+        },
+        {
+          "step": "Checking claim language",
+          "status": "done"
+        },
+        {
+          "step": "Proposing candidate claims (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Classifying archived changes (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Checking published evidence",
+          "status": "done"
+        },
+        {
+          "step": "Checking ASA (UK) rulings",
+          "status": "done"
+        },
+        {
+          "step": "Checking JDP (France) decisions",
+          "status": "done"
+        },
+        {
+          "step": "Checking repair information",
+          "status": "done"
+        },
+        {
+          "step": "Writing the plain-English summary (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        }
+      ],
+      "steps_done": 7,
+      "steps_skipped": 4,
+      "duration_ms": 30926
+    },
+    {
+      "slug": "nike",
+      "name": "Nike",
+      "group": "flagged",
+      "status": "ran",
+      "resolution": "wikidata",
+      "brand": "Nike",
+      "website": "https://www.nike.com/",
+      "wikidata_id": "Q483915",
+      "score": 18,
+      "label": "low",
+      "confidence": 70,
+      "ai_share": 0,
+      "axes": [
+        {
+          "id": "claims",
+          "status": "scored",
+          "subscore": 31
+        },
+        {
+          "id": "evidence",
+          "status": "scored",
+          "subscore": 40
+        },
+        {
+          "id": "track",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "repair",
+          "status": "scored",
+          "subscore": 0
+        }
+      ],
+      "pages": 5,
+      "words_scanned": 2918,
+      "claim_matches": 6,
+      "signals_count": 5,
+      "steps": [
+        {
+          "step": "Discovering pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching current pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching https://www.nike.com/help/a/responsible-disclosure",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.nike.com/help/a/responsible-disclosure (8 words)"
+        },
+        {
+          "step": "Fetching https://www.nike.com/help/a/recycle-shoes",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.nike.com/help/a/recycle-shoes (8 words)"
+        },
+        {
+          "step": "Fetching https://www.nike.com/help/a/shoe-warranty",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.nike.com/help/a/shoe-warranty (8 words)"
+        },
+        {
+          "step": "Fetching https://www.nike.com/about",
+          "status": "skipped",
+          "reason": "not an HTML page: https://www.nike.com/about (application/json)"
+        },
+        {
+          "step": "Pulling 2019–2026 snapshots",
+          "status": "skipped",
+          "reason": "Wayback unreachable (read ECONNRESET)"
+        },
+        {
+          "step": "Checking claim language",
+          "status": "done"
+        },
+        {
+          "step": "Proposing candidate claims (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Classifying archived changes (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Checking published evidence",
+          "status": "done"
+        },
+        {
+          "step": "Checking ASA (UK) rulings",
+          "status": "done"
+        },
+        {
+          "step": "Checking JDP (France) decisions",
+          "status": "done"
+        },
+        {
+          "step": "Checking repair information",
+          "status": "done"
+        },
+        {
+          "step": "Writing the plain-English summary (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        }
+      ],
+      "steps_done": 7,
+      "steps_skipped": 8,
+      "duration_ms": 27065
+    },
+    {
+      "slug": "puma",
+      "name": "Puma",
+      "group": "flagged",
+      "status": "ran",
+      "resolution": "wikidata",
+      "brand": "Puma",
+      "website": "https://eu.puma.com/de/en/home",
+      "wikidata_id": "Q157064",
+      "score": 20,
+      "label": "low",
+      "confidence": 45,
+      "ai_share": 0,
+      "axes": [
+        {
+          "id": "claims",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "evidence",
+          "status": "scored",
+          "subscore": 40
+        },
+        {
+          "id": "track",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "repair",
+          "status": "scored",
+          "subscore": 50
+        }
+      ],
+      "pages": 2,
+      "words_scanned": 186,
+      "claim_matches": 0,
+      "signals_count": 2,
+      "steps": [
+        {
+          "step": "Discovering pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching current pages",
+          "status": "done"
+        },
+        {
+          "step": "Pulling 2019–2026 snapshots",
+          "status": "skipped",
+          "reason": "Wayback unreachable (Connect Timeout Error (attempted address: web.archive.org:443, timeout: 10000ms))"
+        },
+        {
+          "step": "Checking claim language",
+          "status": "done"
+        },
+        {
+          "step": "Proposing candidate claims (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Classifying archived changes (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Checking published evidence",
+          "status": "done"
+        },
+        {
+          "step": "Checking ASA (UK) rulings",
+          "status": "done"
+        },
+        {
+          "step": "Checking JDP (France) decisions",
+          "status": "done"
+        },
+        {
+          "step": "Checking repair information",
+          "status": "done"
+        },
+        {
+          "step": "Writing the plain-English summary (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        }
+      ],
+      "steps_done": 7,
+      "steps_skipped": 4,
+      "duration_ms": 31321
+    },
+    {
+      "slug": "uniqlo",
+      "name": "Uniqlo",
+      "group": "flagged",
+      "status": "failed",
+      "reason": "no page could be fetched (robots.txt unavailable for https://www.uniqlo.com (Network error after 3 tries: Stream closed with error code NGHTTP2_INTERNAL_ERROR))",
+      "resolution": "wikidata",
+      "brand": "Uniqlo",
+      "website": "https://www.uniqlo.com/",
+      "wikidata_id": "Q26070",
+      "score": 23,
+      "label": "low",
+      "confidence": 30,
+      "ai_share": 0,
+      "axes": [
+        {
+          "id": "claims",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "evidence",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "track",
+          "status": "scored",
+          "subscore": 75
+        },
+        {
+          "id": "repair",
+          "status": "missing",
+          "subscore": 0
+        }
+      ],
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "signals_count": 1,
+      "steps": [
+        {
+          "step": "Discovering pages",
+          "status": "skipped",
+          "reason": "robots.txt unavailable for https://www.uniqlo.com (Network error after 3 tries: Stream closed with error code NGHTTP2_INTERNAL_ERROR)"
+        },
+        {
+          "step": "Fetching current pages",
+          "status": "skipped",
+          "reason": "no candidate pages were found"
+        },
+        {
+          "step": "Pulling 2019–2026 snapshots",
+          "status": "skipped",
+          "reason": "no sustainability-type page to look up in the Wayback Machine"
+        },
+        {
+          "step": "Checking claim language",
+          "status": "skipped",
+          "reason": "no fetched page to scan"
+        },
+        {
+          "step": "Proposing candidate claims (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Classifying archived changes (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Checking published evidence",
+          "status": "skipped",
+          "reason": "no fetched page to scan"
+        },
+        {
+          "step": "Checking ASA (UK) rulings",
+          "status": "done"
+        },
+        {
+          "step": "Checking JDP (France) decisions",
+          "status": "done"
+        },
+        {
+          "step": "Checking repair information",
+          "status": "skipped",
+          "reason": "no fetched page to scan"
+        },
+        {
+          "step": "Writing the plain-English summary (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        }
+      ],
+      "steps_done": 2,
+      "steps_skipped": 9,
+      "duration_ms": 3789
+    },
+    {
+      "slug": "shein",
+      "name": "Shein",
+      "group": "flagged",
+      "status": "ran",
+      "resolution": "wikidata",
+      "brand": "Shein",
+      "website": "https://shein.com/",
+      "wikidata_id": "Q107377209",
+      "score": 43,
+      "label": "moderate",
+      "confidence": 75,
+      "ai_share": 0,
+      "axes": [
+        {
+          "id": "claims",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "evidence",
+          "status": "scored",
+          "subscore": 40
+        },
+        {
+          "id": "track",
+          "status": "scored",
+          "subscore": 75
+        },
+        {
+          "id": "repair",
+          "status": "scored",
+          "subscore": 50
+        }
+      ],
+      "pages": 1,
+      "words_scanned": 66,
+      "claim_matches": 0,
+      "signals_count": 3,
+      "steps": [
+        {
+          "step": "Discovering pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching current pages",
+          "status": "done"
+        },
+        {
+          "step": "Pulling 2019–2026 snapshots",
+          "status": "skipped",
+          "reason": "no sustainability-type page to look up in the Wayback Machine"
+        },
+        {
+          "step": "Checking claim language",
+          "status": "done"
+        },
+        {
+          "step": "Proposing candidate claims (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Classifying archived changes (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Checking published evidence",
+          "status": "done"
+        },
+        {
+          "step": "Checking ASA (UK) rulings",
+          "status": "done"
+        },
+        {
+          "step": "Checking JDP (France) decisions",
+          "status": "done"
+        },
+        {
+          "step": "Checking repair information",
+          "status": "done"
+        },
+        {
+          "step": "Writing the plain-English summary (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        }
+      ],
+      "steps_done": 7,
+      "steps_skipped": 4,
+      "duration_ms": 412
+    },
+    {
+      "slug": "primark",
+      "name": "Primark",
+      "group": "flagged",
+      "status": "failed",
+      "reason": "no page could be fetched (no page could be fetched from primark.com)",
+      "resolution": "wikidata",
+      "brand": "Primark",
+      "website": "https://www.primark.com/en-gb",
+      "wikidata_id": "Q137023",
+      "score": 0,
+      "label": "low",
+      "confidence": 0,
+      "ai_share": 0,
+      "axes": [
+        {
+          "id": "claims",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "evidence",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "track",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "repair",
+          "status": "missing",
+          "subscore": 0
+        }
+      ],
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "signals_count": 0,
+      "steps": [
+        {
+          "step": "Discovering pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching current pages",
+          "status": "skipped",
+          "reason": "no page could be fetched from primark.com"
+        },
+        {
+          "step": "Fetching https://www.primark.com/en-gb",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.primark.com/en-gb (0 words)"
+        },
+        {
+          "step": "Fetching https://www.primark.com/sustainability",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.primark.com/sustainability (0 words)"
+        },
+        {
+          "step": "Fetching https://www.primark.com/impact",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.primark.com/impact (0 words)"
+        },
+        {
+          "step": "Fetching https://www.primark.com/responsibility",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.primark.com/responsibility (0 words)"
+        },
+        {
+          "step": "Fetching https://www.primark.com/our-footprint",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.primark.com/our-footprint (0 words)"
+        },
+        {
+          "step": "Fetching https://www.primark.com/about",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.primark.com/about (0 words)"
+        },
+        {
+          "step": "Fetching https://www.primark.com/environment",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.primark.com/environment (0 words)"
+        },
+        {
+          "step": "Fetching https://www.primark.com/planet",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.primark.com/planet (0 words)"
+        },
+        {
+          "step": "Fetching https://www.primark.com/repair",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.primark.com/repair (0 words)"
+        },
+        {
+          "step": "Fetching https://www.primark.com/warranty",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.primark.com/warranty (0 words)"
+        },
+        {
+          "step": "Fetching https://www.primark.com/support",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.primark.com/support (0 words)"
+        },
+        {
+          "step": "Pulling 2019–2026 snapshots",
+          "status": "skipped",
+          "reason": "no sustainability-type page to look up in the Wayback Machine"
+        },
+        {
+          "step": "Checking claim language",
+          "status": "skipped",
+          "reason": "no fetched page to scan"
+        },
+        {
+          "step": "Proposing candidate claims (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Classifying archived changes (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Checking published evidence",
+          "status": "skipped",
+          "reason": "no fetched page to scan"
+        },
+        {
+          "step": "Checking ASA (UK) rulings",
+          "status": "done"
+        },
+        {
+          "step": "Checking JDP (France) decisions",
+          "status": "done"
+        },
+        {
+          "step": "Checking repair information",
+          "status": "skipped",
+          "reason": "no fetched page to scan"
+        },
+        {
+          "step": "Writing the plain-English summary (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        }
+      ],
+      "steps_done": 3,
+      "steps_skipped": 19,
+      "duration_ms": 116
+    },
+    {
+      "slug": "boohoo",
+      "name": "boohoo",
+      "group": "flagged",
+      "status": "ran",
+      "resolution": "wikidata",
+      "brand": "Boohoo Group",
+      "website": "https://www.boohoo.com/",
+      "wikidata_id": "Q30688042",
+      "score": 20,
+      "label": "low",
+      "confidence": 45,
+      "ai_share": 0,
+      "axes": [
+        {
+          "id": "claims",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "evidence",
+          "status": "scored",
+          "subscore": 40
+        },
+        {
+          "id": "track",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "repair",
+          "status": "scored",
+          "subscore": 50
+        }
+      ],
+      "pages": 6,
+      "words_scanned": 5066,
+      "claim_matches": 0,
+      "signals_count": 2,
+      "steps": [
+        {
+          "step": "Discovering pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching current pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching https://www.boohoo.com/",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.boohoo.com/ (4 words)"
+        },
+        {
+          "step": "Fetching https://www.boohoo.com/sustainability",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.boohoo.com/sustainability (4 words)"
+        },
+        {
+          "step": "Pulling 2019–2026 snapshots",
+          "status": "skipped",
+          "reason": "Wayback unreachable (read ECONNRESET)"
+        },
+        {
+          "step": "Checking claim language",
+          "status": "done"
+        },
+        {
+          "step": "Proposing candidate claims (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Classifying archived changes (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Checking published evidence",
+          "status": "done"
+        },
+        {
+          "step": "Checking ASA (UK) rulings",
+          "status": "done"
+        },
+        {
+          "step": "Checking JDP (France) decisions",
+          "status": "done"
+        },
+        {
+          "step": "Checking repair information",
+          "status": "done"
+        },
+        {
+          "step": "Writing the plain-English summary (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        }
+      ],
+      "steps_done": 7,
+      "steps_skipped": 6,
+      "duration_ms": 68838
+    },
+    {
+      "slug": "h-and-m",
+      "name": "H&M",
+      "group": "flagged",
+      "status": "failed",
+      "reason": "no page could be fetched (no page could be fetched from www2.hm.com)",
+      "resolution": "wikidata",
+      "brand": "H&M",
+      "website": "https://www2.hm.com",
+      "wikidata_id": "Q188326",
+      "score": 0,
+      "label": "low",
+      "confidence": 0,
+      "ai_share": 0,
+      "axes": [
+        {
+          "id": "claims",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "evidence",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "track",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "repair",
+          "status": "missing",
+          "subscore": 0
+        }
+      ],
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "signals_count": 0,
+      "steps": [
+        {
+          "step": "Discovering pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching current pages",
+          "status": "skipped",
+          "reason": "no page could be fetched from www2.hm.com"
+        },
+        {
+          "step": "Fetching https://www2.hm.com/",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://www2.hm.com/"
+        },
+        {
+          "step": "Fetching https://www2.hm.com/sustainability",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://www2.hm.com/sustainability"
+        },
+        {
+          "step": "Fetching https://www2.hm.com/impact",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://www2.hm.com/impact"
+        },
+        {
+          "step": "Fetching https://www2.hm.com/responsibility",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://www2.hm.com/responsibility"
+        },
+        {
+          "step": "Fetching https://www2.hm.com/our-footprint",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://www2.hm.com/our-footprint"
+        },
+        {
+          "step": "Fetching https://www2.hm.com/about",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://www2.hm.com/about"
+        },
+        {
+          "step": "Fetching https://www2.hm.com/environment",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://www2.hm.com/environment"
+        },
+        {
+          "step": "Fetching https://www2.hm.com/planet",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://www2.hm.com/planet"
+        },
+        {
+          "step": "Fetching https://www2.hm.com/repair",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://www2.hm.com/repair"
+        },
+        {
+          "step": "Fetching https://www2.hm.com/warranty",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://www2.hm.com/warranty"
+        },
+        {
+          "step": "Fetching https://www2.hm.com/support",
+          "status": "skipped",
+          "reason": "HTTP 403 for https://www2.hm.com/support"
+        },
+        {
+          "step": "Pulling 2019–2026 snapshots",
+          "status": "skipped",
+          "reason": "no sustainability-type page to look up in the Wayback Machine"
+        },
+        {
+          "step": "Checking claim language",
+          "status": "skipped",
+          "reason": "no fetched page to scan"
+        },
+        {
+          "step": "Proposing candidate claims (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Classifying archived changes (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Checking published evidence",
+          "status": "skipped",
+          "reason": "no fetched page to scan"
+        },
+        {
+          "step": "Checking ASA (UK) rulings",
+          "status": "done"
+        },
+        {
+          "step": "Checking JDP (France) decisions",
+          "status": "done"
+        },
+        {
+          "step": "Checking repair information",
+          "status": "skipped",
+          "reason": "no fetched page to scan"
+        },
+        {
+          "step": "Writing the plain-English summary (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        }
+      ],
+      "steps_done": 3,
+      "steps_skipped": 19,
+      "duration_ms": 57
+    },
+    {
+      "slug": "asos",
+      "name": "ASOS",
+      "group": "flagged",
+      "status": "failed",
+      "reason": "no page could be fetched (robots.txt unavailable for https://www.asos.com (Network error after 3 tries: Stream closed with error code NGHTTP2_INTERNAL_ERROR))",
+      "resolution": "wikidata",
+      "brand": "ASOS",
+      "website": "https://www.asos.com",
+      "wikidata_id": "Q211951",
+      "score": 0,
+      "label": "low",
+      "confidence": 0,
+      "ai_share": 0,
+      "axes": [
+        {
+          "id": "claims",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "evidence",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "track",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "repair",
+          "status": "missing",
+          "subscore": 0
+        }
+      ],
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "signals_count": 0,
+      "steps": [
+        {
+          "step": "Discovering pages",
+          "status": "skipped",
+          "reason": "robots.txt unavailable for https://www.asos.com (Network error after 3 tries: Stream closed with error code NGHTTP2_INTERNAL_ERROR)"
+        },
+        {
+          "step": "Fetching current pages",
+          "status": "skipped",
+          "reason": "no candidate pages were found"
+        },
+        {
+          "step": "Pulling 2019–2026 snapshots",
+          "status": "skipped",
+          "reason": "no sustainability-type page to look up in the Wayback Machine"
+        },
+        {
+          "step": "Checking claim language",
+          "status": "skipped",
+          "reason": "no fetched page to scan"
+        },
+        {
+          "step": "Proposing candidate claims (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Classifying archived changes (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Checking published evidence",
+          "status": "skipped",
+          "reason": "no fetched page to scan"
+        },
+        {
+          "step": "Checking ASA (UK) rulings",
+          "status": "done"
+        },
+        {
+          "step": "Checking JDP (France) decisions",
+          "status": "done"
+        },
+        {
+          "step": "Checking repair information",
+          "status": "skipped",
+          "reason": "no fetched page to scan"
+        },
+        {
+          "step": "Writing the plain-English summary (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        }
+      ],
+      "steps_done": 2,
+      "steps_skipped": 9,
+      "duration_ms": 3794
+    },
+    {
+      "slug": "schneider-electric",
+      "name": "Schneider Electric",
+      "group": "well_rated",
+      "status": "ran",
+      "reason": "no Wikidata candidate with a website; URL fallback",
+      "resolution": "website",
+      "brand": "Schneider Electric",
+      "website": "https://www.se.com/",
+      "score": 25,
+      "label": "moderate",
+      "confidence": 70,
+      "ai_share": 0,
+      "axes": [
+        {
+          "id": "claims",
+          "status": "scored",
+          "subscore": 100
+        },
+        {
+          "id": "evidence",
+          "status": "scored",
+          "subscore": 0
+        },
+        {
+          "id": "track",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "repair",
+          "status": "scored",
+          "subscore": 0
+        }
+      ],
+      "pages": 12,
+      "words_scanned": 8154,
+      "claim_matches": 63,
+      "signals_count": 58,
+      "steps": [
+        {
+          "step": "Discovering pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching current pages",
+          "status": "done"
+        },
+        {
+          "step": "Pulling 2019–2026 snapshots",
+          "status": "skipped",
+          "reason": "Wayback unreachable (Connect Timeout Error (attempted address: web.archive.org:443, timeout: 10000ms))"
+        },
+        {
+          "step": "Checking claim language",
+          "status": "done"
+        },
+        {
+          "step": "Proposing candidate claims (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Classifying archived changes (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Checking published evidence",
+          "status": "done"
+        },
+        {
+          "step": "Checking ASA (UK) rulings",
+          "status": "done"
+        },
+        {
+          "step": "Checking JDP (France) decisions",
+          "status": "done"
+        },
+        {
+          "step": "Checking repair information",
+          "status": "done"
+        },
+        {
+          "step": "Writing the plain-English summary (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        }
+      ],
+      "steps_done": 7,
+      "steps_skipped": 4,
+      "duration_ms": 101371
+    },
+    {
+      "slug": "telia",
+      "name": "Telia Company",
+      "group": "well_rated",
+      "status": "failed",
+      "reason": "no page could be fetched (no page could be fetched from teliacompany.com)",
+      "resolution": "wikidata",
+      "brand": "Telia Company",
+      "website": "https://www.teliacompany.com/sv",
+      "wikidata_id": "Q862303",
+      "score": 0,
+      "label": "low",
+      "confidence": 0,
+      "ai_share": 0,
+      "axes": [
+        {
+          "id": "claims",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "evidence",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "track",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "repair",
+          "status": "missing",
+          "subscore": 0
+        }
+      ],
+      "pages": 0,
+      "words_scanned": 0,
+      "claim_matches": 0,
+      "signals_count": 0,
+      "steps": [
+        {
+          "step": "Discovering pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching current pages",
+          "status": "skipped",
+          "reason": "no page could be fetched from teliacompany.com"
+        },
+        {
+          "step": "Fetching https://www.teliacompany.com/sv",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.teliacompany.com/sv (0 words)"
+        },
+        {
+          "step": "Fetching https://www.teliacompany.com/en/sustainability",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.teliacompany.com/en/sustainability (0 words)"
+        },
+        {
+          "step": "Fetching https://www.teliacompany.com/sv/nyhetsartikel/telia-company-releases-sustainability-update-2016",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.teliacompany.com/sv/nyhetsartikel/telia-company-releases-sustainability-update-2016 (0 words)"
+        },
+        {
+          "step": "Fetching https://www.teliacompany.com/sv/nyhetsartikel/telia-company-presents-2020-sustainability-highlights",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.teliacompany.com/sv/nyhetsartikel/telia-company-presents-2020-sustainability-highlights (0 words)"
+        },
+        {
+          "step": "Fetching https://www.teliacompany.com/en/news-articles/slsd-sustainable-dev",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.teliacompany.com/en/news-articles/slsd-sustainable-dev (0 words)"
+        },
+        {
+          "step": "Fetching https://www.teliacompany.com/en/category/more-sustainability-topics",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.teliacompany.com/en/category/more-sustainability-topics (0 words)"
+        },
+        {
+          "step": "Fetching https://www.teliacompany.com/en/news-articles/ai-sustainability-center",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.teliacompany.com/en/news-articles/ai-sustainability-center (0 words)"
+        },
+        {
+          "step": "Fetching https://www.teliacompany.com/en/news-articles/nordic-ceos-sustainability",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.teliacompany.com/en/news-articles/nordic-ceos-sustainability (0 words)"
+        },
+        {
+          "step": "Fetching https://www.teliacompany.com/en/press-releases/teliasoneras-annual-sustainability-report-2014-2015-03-18-07-00-00",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.teliacompany.com/en/press-releases/teliasoneras-annual-sustainability-report-2014-2015-03-18-07-00-00 (0 words)"
+        },
+        {
+          "step": "Fetching https://www.teliacompany.com/en/news/telia-rated-in-worlds-top-1-for-sustainability-performance-2025-01-10-09-00-00",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.teliacompany.com/en/news/telia-rated-in-worlds-top-1-for-sustainability-performance-2025-01-10-09-00-00 (0 words)"
+        },
+        {
+          "step": "Fetching https://www.teliacompany.com/en/press-releases/telia-launches-new-goals-to-boost-sustainable-growth-2021-04-20-06-00-00",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.teliacompany.com/en/press-releases/telia-launches-new-goals-to-boost-sustainable-growth-2021-04-20-06-00-00 (0 words)"
+        },
+        {
+          "step": "Fetching https://www.teliacompany.com/en/news/telia-company-retains-platinum-sustainability-rating-from-ecovadis-2023-11-23-08-16-00",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.teliacompany.com/en/news/telia-company-retains-platinum-sustainability-rating-from-ecovadis-2023-11-23-08-16-00 (0 words)"
+        },
+        {
+          "step": "Fetching https://www.teliacompany.com/en/press-releases/teliasonera-main-partner-for-sustainable-seas-initiative-2012-05-22-07-00-00",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.teliacompany.com/en/press-releases/teliasonera-main-partner-for-sustainable-seas-initiative-2012-05-22-07-00-00 (0 words)"
+        },
+        {
+          "step": "Fetching https://www.teliacompany.com/en/about-the-company",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.teliacompany.com/en/about-the-company (0 words)"
+        },
+        {
+          "step": "Fetching https://www.teliacompany.com/sv/nyhetsartikel/new-research-the-environmental-case-for-connectivity",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.teliacompany.com/sv/nyhetsartikel/new-research-the-environmental-case-for-connectivity (0 words)"
+        },
+        {
+          "step": "Fetching https://www.teliacompany.com/sv/pressmeddelanden/teliasonera-corporate-responsibility-rapport-2009-03-31-15-06-40",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.teliacompany.com/sv/pressmeddelanden/teliasonera-corporate-responsibility-rapport-2009-03-31-15-06-40 (0 words)"
+        },
+        {
+          "step": "Fetching https://www.teliacompany.com/sv/pressmeddelanden/teliasonera-delar-ut-corporate-responsibility-pris-till-skola-i-litauen-2007-12-06-07-00-00",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.teliacompany.com/sv/pressmeddelanden/teliasonera-delar-ut-corporate-responsibility-pris-till-skola-i-litauen-2007-12-06-07-00-00 (0 words)"
+        },
+        {
+          "step": "Fetching https://www.teliacompany.com/en/articles/responsible-sourcing",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.teliacompany.com/en/articles/responsible-sourcing (0 words)"
+        },
+        {
+          "step": "Fetching https://www.teliacompany.com/en/articles/climate-transition-plan",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.teliacompany.com/en/articles/climate-transition-plan (0 words)"
+        },
+        {
+          "step": "Fetching https://www.teliacompany.com/en/category/climate-and-circularity",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.teliacompany.com/en/category/climate-and-circularity (0 words)"
+        },
+        {
+          "step": "Fetching https://www.teliacompany.com/en/articles/responsible-tax-practices",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.teliacompany.com/en/articles/responsible-tax-practices (0 words)"
+        },
+        {
+          "step": "Fetching https://www.teliacompany.com/en/news/telia-company-launches-climate-transition-plan-2025-03-20-07-30-00",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.teliacompany.com/en/news/telia-company-launches-climate-transition-plan-2025-03-20-07-30-00 (0 words)"
+        },
+        {
+          "step": "Fetching https://www.teliacompany.com/sv/pressmeddelanden/telias-bredbandssupport-bast-i-norden-2007-09-27-07-00-00",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.teliacompany.com/sv/pressmeddelanden/telias-bredbandssupport-bast-i-norden-2007-09-27-07-00-00 (0 words)"
+        },
+        {
+          "step": "Fetching https://www.teliacompany.com/en/about-the-company/corporate-governance/telia-code-of-conduct",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.teliacompany.com/en/about-the-company/corporate-governance/telia-code-of-conduct (0 words)"
+        },
+        {
+          "step": "Pulling 2019–2026 snapshots",
+          "status": "skipped",
+          "reason": "no sustainability-type page to look up in the Wayback Machine"
+        },
+        {
+          "step": "Checking claim language",
+          "status": "skipped",
+          "reason": "no fetched page to scan"
+        },
+        {
+          "step": "Proposing candidate claims (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Classifying archived changes (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Checking published evidence",
+          "status": "skipped",
+          "reason": "no fetched page to scan"
+        },
+        {
+          "step": "Checking ASA (UK) rulings",
+          "status": "done"
+        },
+        {
+          "step": "Checking JDP (France) decisions",
+          "status": "done"
+        },
+        {
+          "step": "Checking repair information",
+          "status": "skipped",
+          "reason": "no fetched page to scan"
+        },
+        {
+          "step": "Writing the plain-English summary (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        }
+      ],
+      "steps_done": 3,
+      "steps_skipped": 32,
+      "duration_ms": 73569
+    },
+    {
+      "slug": "signify",
+      "name": "Signify",
+      "group": "well_rated",
+      "status": "ran",
+      "reason": "Wikidata unavailable (HTTP 429 after 3 tries: https://www.wikidata.org/w/api.php?action=wbsearchentities&search=Signify&language=en&uselang=en&type=item&limit=7&format=json); URL fallback",
+      "resolution": "website",
+      "brand": "Signify",
+      "website": "https://www.signify.com/",
+      "score": 31,
+      "label": "moderate",
+      "confidence": 70,
+      "ai_share": 0,
+      "axes": [
+        {
+          "id": "claims",
+          "status": "scored",
+          "subscore": 45
+        },
+        {
+          "id": "evidence",
+          "status": "scored",
+          "subscore": 40
+        },
+        {
+          "id": "track",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "repair",
+          "status": "scored",
+          "subscore": 50
+        }
+      ],
+      "pages": 1,
+      "words_scanned": 415,
+      "claim_matches": 3,
+      "signals_count": 5,
+      "steps": [
+        {
+          "step": "Discovering pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching current pages",
+          "status": "done"
+        },
+        {
+          "step": "Pulling 2019–2026 snapshots",
+          "status": "skipped",
+          "reason": "no sustainability-type page to look up in the Wayback Machine"
+        },
+        {
+          "step": "Checking claim language",
+          "status": "done"
+        },
+        {
+          "step": "Proposing candidate claims (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Classifying archived changes (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Checking published evidence",
+          "status": "done"
+        },
+        {
+          "step": "Checking ASA (UK) rulings",
+          "status": "done"
+        },
+        {
+          "step": "Checking JDP (France) decisions",
+          "status": "done"
+        },
+        {
+          "step": "Checking repair information",
+          "status": "done"
+        },
+        {
+          "step": "Writing the plain-English summary (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        }
+      ],
+      "steps_done": 7,
+      "steps_skipped": 4,
+      "duration_ms": 27062
+    },
+    {
+      "slug": "essity",
+      "name": "Essity",
+      "group": "well_rated",
+      "status": "ran",
+      "resolution": "wikidata",
+      "brand": "Essity",
+      "website": "https://www.essity.com",
+      "wikidata_id": "Q30938280",
+      "score": 26,
+      "label": "moderate",
+      "confidence": 70,
+      "ai_share": 0,
+      "axes": [
+        {
+          "id": "claims",
+          "status": "scored",
+          "subscore": 63
+        },
+        {
+          "id": "evidence",
+          "status": "scored",
+          "subscore": 0
+        },
+        {
+          "id": "track",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "repair",
+          "status": "scored",
+          "subscore": 50
+        }
+      ],
+      "pages": 12,
+      "words_scanned": 4449,
+      "claim_matches": 21,
+      "signals_count": 23,
+      "steps": [
+        {
+          "step": "Discovering pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching current pages",
+          "status": "done"
+        },
+        {
+          "step": "Pulling 2019–2026 snapshots",
+          "status": "skipped",
+          "reason": "Wayback unreachable (Connect Timeout Error (attempted address: web.archive.org:443, timeout: 10000ms))"
+        },
+        {
+          "step": "Checking claim language",
+          "status": "done"
+        },
+        {
+          "step": "Proposing candidate claims (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Classifying archived changes (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Checking published evidence",
+          "status": "done"
+        },
+        {
+          "step": "Checking ASA (UK) rulings",
+          "status": "done"
+        },
+        {
+          "step": "Checking JDP (France) decisions",
+          "status": "done"
+        },
+        {
+          "step": "Checking repair information",
+          "status": "done"
+        },
+        {
+          "step": "Writing the plain-English summary (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        }
+      ],
+      "steps_done": 7,
+      "steps_skipped": 4,
+      "duration_ms": 59492
+    },
+    {
+      "slug": "siemens",
+      "name": "Siemens",
+      "group": "well_rated",
+      "status": "ran",
+      "reason": "no Wikidata candidate with a website; URL fallback",
+      "resolution": "website",
+      "brand": "Siemens",
+      "website": "https://www.siemens.com/",
+      "score": 25,
+      "label": "moderate",
+      "confidence": 70,
+      "ai_share": 0,
+      "axes": [
+        {
+          "id": "claims",
+          "status": "scored",
+          "subscore": 100
+        },
+        {
+          "id": "evidence",
+          "status": "scored",
+          "subscore": 0
+        },
+        {
+          "id": "track",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "repair",
+          "status": "scored",
+          "subscore": 0
+        }
+      ],
+      "pages": 12,
+      "words_scanned": 7152,
+      "claim_matches": 51,
+      "signals_count": 54,
+      "steps": [
+        {
+          "step": "Discovering pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching current pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching https://www.siemens.com/en-us/products/clevr-teamcenter-integrated-sustainability-compliance-solution/",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.siemens.com/en-us/products/clevr-teamcenter-integrated-sustainability-compliance-solution/ (4 words)"
+        },
+        {
+          "step": "Fetching https://www.siemens.com/en-us/products/siemens-industry-software-digitaltrains-impact-by-digitaltrains/",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.siemens.com/en-us/products/siemens-industry-software-digitaltrains-impact-by-digitaltrains/ (4 words)"
+        },
+        {
+          "step": "Fetching https://www.siemens.com/en-us/ecosystem/mclimate/",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.siemens.com/en-us/ecosystem/mclimate/ (1 words)"
+        },
+        {
+          "step": "Fetching https://www.siemens.com/en-us/ecosystem/north-star-advanced-recycling-technology-tsingtao/",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.siemens.com/en-us/ecosystem/north-star-advanced-recycling-technology-tsingtao/ (6 words)"
+        },
+        {
+          "step": "Pulling 2019–2026 snapshots",
+          "status": "skipped",
+          "reason": "Wayback unreachable (read ECONNRESET)"
+        },
+        {
+          "step": "Checking claim language",
+          "status": "done"
+        },
+        {
+          "step": "Proposing candidate claims (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Classifying archived changes (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Checking published evidence",
+          "status": "done"
+        },
+        {
+          "step": "Checking ASA (UK) rulings",
+          "status": "done"
+        },
+        {
+          "step": "Checking JDP (France) decisions",
+          "status": "done"
+        },
+        {
+          "step": "Checking repair information",
+          "status": "done"
+        },
+        {
+          "step": "Writing the plain-English summary (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        }
+      ],
+      "steps_done": 7,
+      "steps_skipped": 8,
+      "duration_ms": 56350
+    },
+    {
+      "slug": "novo-nordisk",
+      "name": "Novo Nordisk",
+      "group": "well_rated",
+      "status": "ran",
+      "resolution": "wikidata",
+      "brand": "Novo",
+      "website": "https://www.novonordisk.com",
+      "wikidata_id": "Q818846",
+      "score": 23,
+      "label": "low",
+      "confidence": 70,
+      "ai_share": 0,
+      "axes": [
+        {
+          "id": "claims",
+          "status": "scored",
+          "subscore": 51
+        },
+        {
+          "id": "evidence",
+          "status": "scored",
+          "subscore": 0
+        },
+        {
+          "id": "track",
+          "status": "missing",
+          "subscore": 0
+        },
+        {
+          "id": "repair",
+          "status": "scored",
+          "subscore": 50
+        }
+      ],
+      "pages": 12,
+      "words_scanned": 5658,
+      "claim_matches": 20,
+      "signals_count": 22,
+      "steps": [
+        {
+          "step": "Discovering pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching current pages",
+          "status": "done"
+        },
+        {
+          "step": "Fetching https://www.novonordisk.com/sustainable-business.html",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.novonordisk.com/sustainable-business.html (0 words)"
+        },
+        {
+          "step": "Fetching https://www.novonordisk.com/sustainable-business/esg-portal.html",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.novonordisk.com/sustainable-business/esg-portal.html (0 words)"
+        },
+        {
+          "step": "Fetching https://www.novonordisk.com/about.html",
+          "status": "skipped",
+          "reason": "too little visible text at https://www.novonordisk.com/about.html (0 words)"
+        },
+        {
+          "step": "Pulling 2019–2026 snapshots",
+          "status": "skipped",
+          "reason": "Wayback unreachable (read ECONNRESET)"
+        },
+        {
+          "step": "Checking claim language",
+          "status": "done"
+        },
+        {
+          "step": "Proposing candidate claims (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Classifying archived changes (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        },
+        {
+          "step": "Checking published evidence",
+          "status": "done"
+        },
+        {
+          "step": "Checking ASA (UK) rulings",
+          "status": "done"
+        },
+        {
+          "step": "Checking JDP (France) decisions",
+          "status": "done"
+        },
+        {
+          "step": "Checking repair information",
+          "status": "done"
+        },
+        {
+          "step": "Writing the plain-English summary (AI)",
+          "status": "skipped",
+          "reason": "LLM unavailable (no API key)"
+        }
+      ],
+      "steps_done": 7,
+      "steps_skipped": 7,
+      "duration_ms": 54426
+    }
+  ]
+}

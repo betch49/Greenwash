@@ -1,0 +1,10 @@
+{
+  "capturedAt": "2026-10-21T07:13:32.240Z",
+  "files": {
+    "https://www.totalenergies.com/robots.txt": "robots/www-totalenergies-com.txt",
+    "https://www.totalenergies.com/sitemap.xml": "sitemaps/www-totalenergies-com-sitemap-xml.xml",
+    "https://www.totalenergies.com/": "pages/www-totalenergies-com-home.html",
+    "https://www.totalenergies.com/sustainability": "pages/www-totalenergies-com-sustainability.html",
+    "https://www.totalenergies.com/about": "pages/www-totalenergies-com-about.html"
+  }
+}

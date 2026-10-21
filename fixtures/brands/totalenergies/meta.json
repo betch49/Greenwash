@@ -1,0 +1,21 @@
+{
+  "slug": "totalenergies",
+  "query": "TotalEnergies",
+  "sector": "energy",
+  "website": "https://www.totalenergies.com/",
+  "capture": "real",
+  "capturedAt": "2026-10-21T07:13:32.240Z",
+  "userAgent": "GreenwashRadar/0.1 (+https://github.com/; evidence-based greenwashing risk signals; respects robots.txt)",
+  "entity": {
+    "id": "Q154037",
+    "name": "TotalEnergies",
+    "description": "French multinational energy and petroleum company",
+    "website": "https://www.totalenergies.com/",
+    "websiteHost": "totalenergies.com",
+    "industry": "petroleum industry",
+    "country": "France",
+    "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/TotalEnergies_wordmark_(2021-present).svg",
+    "exactName": true,
+    "score": 6
+  }
+}

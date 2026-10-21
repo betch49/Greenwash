@@ -1,0 +1,910 @@
+{
+  "$comment": "Hand-written input of scripts/record-validation.ts (npm run record:validation): which pages to cite for which brand. The recorder fetches every URL, writes each 'why' from the fetched content, computes the group from the verified citations (SOURCES.md rules) and writes ground-truth.json. Evaluation only (ADR-025).",
+  "candidates": [
+    {
+      "slug": "oatly",
+      "name": "Oatly",
+      "wikidata_id": "Q10605824",
+      "website": "https://www.oatly.com/",
+      "fixture": "oatly",
+      "citations": [
+        {
+          "source": "asa",
+          "role": "flag",
+          "url": "https://www.asa.org.uk/rulings/oatly-uk-ltd-g21-1096286-oatly-uk-ltd.html",
+          "topic": "environmental claims (CO2e comparisons, climate footprint) in TV, press and social ads"
+        }
+      ]
+    },
+    {
+      "slug": "shell",
+      "name": "Shell",
+      "website": "https://www.shell.com/",
+      "citations": [
+        {
+          "source": "asa",
+          "role": "flag",
+          "url": "https://www.asa.org.uk/rulings/shell-uk-ltd-g22-1170842-shell-uk-ltd.html",
+          "topic": "ads presenting Shell's 'cleaner energy' and renewable offers while omitting its fossil-fuel business"
+        }
+      ]
+    },
+    {
+      "slug": "totalenergies",
+      "name": "TotalEnergies",
+      "wikidata_id": "Q154037",
+      "website": "https://www.totalenergies.com/",
+      "fixture": "totalenergies",
+      "citations": [
+        {
+          "source": "jdp",
+          "role": "flag",
+          "url": "https://www.jdp-pub.org/avis/totalenergies-internet/",
+          "topic": "LinkedIn ad on 'sustainable mobility solutions'"
+        },
+        {
+          "source": "jdp",
+          "role": "flag",
+          "url": "https://www.jdp-pub.org/avis/total-energies-internet/",
+          "topic": "tweet calling a Qatar LNG project 'low carbon'"
+        }
+      ]
+    },
+    {
+      "slug": "amazon",
+      "name": "Amazon",
+      "wikidata_id": "Q3884",
+      "website": "https://www.amazon.com/",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/amazon"
+        },
+        {
+          "source": "sbti",
+          "role": "flag",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "Amazon"
+        }
+      ]
+    },
+    {
+      "slug": "innocent",
+      "name": "innocent drinks",
+      "query": "innocent drinks",
+      "wikidata_id": "Q1664118",
+      "website": "https://www.innocentdrinks.co.uk/",
+      "fixture": "innocent",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/innocent"
+        },
+        {
+          "source": "sbti",
+          "role": "flag",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "innocent drinks"
+        }
+      ]
+    },
+    {
+      "slug": "jbs",
+      "name": "JBS",
+      "wikidata_id": "Q1676554",
+      "website": "http://www.jbs.com.br/",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/jbs"
+        },
+        {
+          "source": "sbti",
+          "role": "flag",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "JBS"
+        }
+      ]
+    },
+    {
+      "slug": "unilever",
+      "name": "Unilever",
+      "wikidata_id": "Q157062",
+      "website": "https://unilever.com/",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/unilever"
+        },
+        {
+          "source": "sbti",
+          "role": "flag",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "Unilever plc"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/unilever-com-0098"
+        }
+      ]
+    },
+    {
+      "slug": "asda",
+      "name": "Asda",
+      "wikidata_id": "Q297410",
+      "website": "https://www.asda.com/",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/asda"
+        },
+        {
+          "source": "sbti",
+          "role": "flag",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "Asda Group Limited"
+        }
+      ]
+    },
+    {
+      "slug": "hellofresh",
+      "name": "HelloFresh",
+      "website": "https://www.hellofresh.com/",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/hello-fresh"
+        },
+        {
+          "source": "sbti",
+          "role": "flag",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "HelloFresh SE"
+        }
+      ]
+    },
+    {
+      "slug": "nike",
+      "name": "Nike",
+      "website": "https://www.nike.com/",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/nike"
+        }
+      ]
+    },
+    {
+      "slug": "puma",
+      "name": "Puma",
+      "website": "https://about.puma.com/",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/puma"
+        }
+      ]
+    },
+    {
+      "slug": "uniqlo",
+      "name": "Uniqlo",
+      "website": "https://www.uniqlo.com/",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/uniqlo"
+        }
+      ]
+    },
+    {
+      "slug": "shein",
+      "name": "Shein",
+      "website": "https://www.shein.com/",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/shein"
+        }
+      ]
+    },
+    {
+      "slug": "primark",
+      "name": "Primark",
+      "website": "https://www.primark.com/",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/primark"
+        }
+      ]
+    },
+    {
+      "slug": "boohoo",
+      "name": "boohoo",
+      "website": "https://www.boohoo.com/",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/boohoo"
+        }
+      ]
+    },
+    {
+      "slug": "h-and-m",
+      "name": "H&M",
+      "website": "https://www.hm.com/",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/h-and-m"
+        },
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "H&M Group"
+        }
+      ]
+    },
+    {
+      "slug": "asos",
+      "name": "ASOS",
+      "website": "https://www.asos.com/",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/asos"
+        },
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "ASOS"
+        }
+      ]
+    },
+    {
+      "slug": "hp",
+      "name": "HP Inc.",
+      "website": "https://www.hp.com/",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/hp"
+        },
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "HP Inc."
+        }
+      ]
+    },
+    {
+      "slug": "burger-king",
+      "name": "Burger King",
+      "website": "https://www.bk.com/",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/burger-king"
+        }
+      ]
+    },
+    {
+      "slug": "lidl",
+      "name": "Lidl",
+      "website": "https://www.lidl.com/",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/lidl"
+        }
+      ]
+    },
+    {
+      "slug": "mango",
+      "name": "Mango",
+      "website": "https://www.mango.com/",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/mango"
+        }
+      ]
+    },
+    {
+      "slug": "coca-cola",
+      "name": "Coca-Cola",
+      "website": "https://www.coca-colacompany.com/",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/coca-cola"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/coca-cola-company-com-0513"
+        }
+      ]
+    },
+    {
+      "slug": "adidas",
+      "name": "Adidas",
+      "website": "https://www.adidas-group.com/",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/adidas"
+        },
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "Adidas AG"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/adidas-ag-com-0080"
+        }
+      ]
+    },
+    {
+      "slug": "ikea",
+      "name": "IKEA",
+      "website": "https://www.ikea.com/",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/ikea"
+        },
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "IKEA"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/ikea-com-2151"
+        }
+      ]
+    },
+    {
+      "slug": "nestle",
+      "name": "Nestlé",
+      "website": "https://www.nestle.com/",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/nestle"
+        },
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "Nestlé"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/nestle-com-0088"
+        }
+      ]
+    },
+    {
+      "slug": "danone",
+      "name": "Danone",
+      "website": "https://www.danone.com/",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/danone"
+        },
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "Danone"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/danone-com-0123"
+        }
+      ]
+    },
+    {
+      "slug": "pepsico",
+      "name": "PepsiCo",
+      "website": "https://www.pepsico.com/",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/pepsico"
+        },
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "PepsiCo, Inc."
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/pepsico-com-0117"
+        }
+      ]
+    },
+    {
+      "slug": "mcdonalds",
+      "name": "McDonald's",
+      "website": "https://www.mcdonalds.com/",
+      "citations": [
+        {
+          "source": "changing_markets",
+          "role": "flag",
+          "url": "https://greenwash.com/brands/mcdonalds"
+        },
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "McDonald's Corporation"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/mcdonalds-com-0577"
+        }
+      ]
+    },
+    {
+      "slug": "schneider-electric",
+      "name": "Schneider Electric",
+      "website": "https://www.se.com/",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "Schneider Electric"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/schneider-electric-com-0097"
+        }
+      ]
+    },
+    {
+      "slug": "iberdrola",
+      "name": "Iberdrola",
+      "website": "https://www.iberdrola.com/",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "Iberdrola SA"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/iberdrola-com-0129"
+        }
+      ]
+    },
+    {
+      "slug": "telia",
+      "name": "Telia Company",
+      "wikidata_id": "Q862303",
+      "website": "https://www.teliacompany.com/",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "Telia Company"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/telia-company-ab-com-0107"
+        }
+      ]
+    },
+    {
+      "slug": "bt-group",
+      "name": "BT Group",
+      "website": "https://www.bt.com/",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "BT Group"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/bt-group-com-0170"
+        }
+      ]
+    },
+    {
+      "slug": "salesforce",
+      "name": "Salesforce",
+      "website": "https://www.salesforce.com/",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "Salesforce.com, Inc."
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/salesforcecom-com-0298"
+        }
+      ]
+    },
+    {
+      "slug": "signify",
+      "name": "Signify",
+      "wikidata_id": "Q2336380",
+      "website": "https://www.signify.com/",
+      "fixture": "signify",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "Signify"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/signify-com-0140"
+        }
+      ]
+    },
+    {
+      "slug": "barry-callebaut",
+      "name": "Barry Callebaut",
+      "website": "https://www.barry-callebaut.com/",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "Barry Callebaut"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/barry-callebaut-com-0436"
+        }
+      ]
+    },
+    {
+      "slug": "asml",
+      "name": "ASML",
+      "website": "https://www.asml.com/",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "ASML Holdings"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/asml-holding-com-0257"
+        }
+      ]
+    },
+    {
+      "slug": "cisco",
+      "name": "Cisco",
+      "website": "https://www.cisco.com/",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "Cisco Systems, Inc."
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/cisco-systems-com-0505"
+        }
+      ]
+    },
+    {
+      "slug": "deutsche-telekom",
+      "name": "Deutsche Telekom",
+      "website": "https://www.telekom.com/",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "Deutsche Telekom AG"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/deutsche-telekom-ag-com-0125"
+        }
+      ]
+    },
+    {
+      "slug": "ericsson",
+      "name": "Ericsson",
+      "website": "https://www.ericsson.com/",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "Ericsson Group"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/ericsson-com-0157"
+        }
+      ]
+    },
+    {
+      "slug": "essity",
+      "name": "Essity",
+      "wikidata_id": "Q30938280",
+      "website": "https://www.essity.com/",
+      "fixture": "essity",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "Essity AB"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/essity-ab-com-0304"
+        }
+      ]
+    },
+    {
+      "slug": "kingfisher",
+      "name": "Kingfisher",
+      "website": "https://www.kingfisher.com/",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "Kingfisher plc"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/kingfisher-com-0114"
+        }
+      ]
+    },
+    {
+      "slug": "legrand",
+      "name": "Legrand",
+      "website": "https://www.legrandgroup.com/",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "Legrand"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/legrand-com-0135"
+        }
+      ]
+    },
+    {
+      "slug": "nokia",
+      "name": "Nokia",
+      "website": "https://www.nokia.com/",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "Nokia Group"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/nokia-com-0163"
+        }
+      ]
+    },
+    {
+      "slug": "novonesis",
+      "name": "Novonesis",
+      "website": "https://www.novonesis.com/",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "Novozymes A/S (part of the Novonesis group)"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/novozymes-com-0090"
+        }
+      ]
+    },
+    {
+      "slug": "orange",
+      "name": "Orange",
+      "website": "https://www.orange.com/",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "Orange"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/orange-com-0105"
+        }
+      ]
+    },
+    {
+      "slug": "siemens",
+      "name": "Siemens",
+      "website": "https://www.siemens.com/",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "Siemens AG"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/siemens-ag-com-0071"
+        }
+      ]
+    },
+    {
+      "slug": "swisscom",
+      "name": "Swisscom",
+      "website": "https://www.swisscom.ch/",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "Swisscom AG"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/swisscom-com-0145"
+        }
+      ]
+    },
+    {
+      "slug": "telenor",
+      "name": "Telenor",
+      "website": "https://www.telenor.com/",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "Telenor Group"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/telenor-com-0028"
+        }
+      ]
+    },
+    {
+      "slug": "vodafone",
+      "name": "Vodafone",
+      "website": "https://www.vodafone.com/",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "Vodafone Group Plc"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/vodafone-com-0109"
+        }
+      ]
+    },
+    {
+      "slug": "hpe",
+      "name": "Hewlett Packard Enterprise",
+      "website": "https://www.hpe.com/",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "Hewlett Packard Enterprise Company"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/hewlett-packard-enterprise-com-0039"
+        }
+      ]
+    },
+    {
+      "slug": "novo-nordisk",
+      "name": "Novo Nordisk",
+      "website": "https://www.novonordisk.com/",
+      "citations": [
+        {
+          "source": "sbti",
+          "role": "positive",
+          "url": "https://files.sciencebasedtargets.org/production/files/companies-excel.xlsx",
+          "match": "Novo Nordisk A/S"
+        },
+        {
+          "source": "netzerotracker",
+          "role": "positive",
+          "url": "https://zerotracker.net/companies/novo-nordisk-com-0138"
+        }
+      ]
+    }
+  ]
+}

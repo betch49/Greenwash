@@ -1,0 +1,21 @@
+{
+  "slug": "innocent",
+  "query": "innocent drinks",
+  "sector": "food",
+  "website": "https://www.innocentdrinks.co.uk/",
+  "capture": "real",
+  "capturedAt": "2026-10-21T07:13:12.524Z",
+  "userAgent": "GreenwashRadar/0.1 (+https://github.com/; evidence-based greenwashing risk signals; respects robots.txt)",
+  "entity": {
+    "id": "Q1664118",
+    "name": "Innocent Drinks",
+    "description": "British beverage company",
+    "website": "https://www.innocentdrinks.co.uk/",
+    "websiteHost": "innocentdrinks.co.uk",
+    "industry": "beverage industry",
+    "country": "United Kingdom",
+    "parent": "The Coca-Cola Company",
+    "exactName": true,
+    "score": 6
+  }
+}
