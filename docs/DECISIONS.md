@@ -317,3 +317,19 @@ Separately, PLAN Phase 7 criterion 7.6 asked for `ai_share > 0` "for at least th
 **Decision.** Accepted as the reading of "a brand" the plan intended. The brief's requirement (Section 1: a known brand re-served from cache in under a second; Section 3.4: a cached shareable link) is about the same brand, and a report that names another brand is not that brand's report. The stricter key costs at most one extra pipeline run when the same website is reached under a different identity, which is the honest outcome. `docs/LIMITATIONS.md` states the rule. The `x-gr-served-from: cache` route header is accepted as truthful rather than measured: both routes only ever read the stored `ReportV1`; the sub-second re-serve is measured in tests (8.5) and by the director (prod, ~30 ms).
 
 **Consequences.** No change to PLAN.md. "Re-run the analysis" remains the only way to force a new run for an identity with a fresh report. E2E helpers press "Re-run" when a search is re-served, which mirrors a user and keeps the tests independent of run order.
+
+## ADR-023 — Phase 9 rulings: unused `stepError` template, `signals` table, production cache timing, deferred key item, `npm audit`
+
+**Date:** 2026-10-21 (Phase 9 review)
+**Status:** accepted
+
+**Context.** The Phase 9 builder note raised five points the director had to rule on with no human available (brief Section 0.4): (a) `reasons.stepError` in `wording.ts` is defined but a step that throws shows `skipped: <error message>` instead; (b) the `signals` table is created but never read or written; (c) the live Fairphone run re-served from cache in 27–45 ms on `next start` but over 1 s on `next dev`; (d) no `ANTHROPIC_API_KEY` exists, so the real-brand-with-key DoD item cannot be run; (e) `npm audit --omit=dev` reports two findings in the `postcss` bundled by `next` 15.5, fixable only by `next` 16.
+
+**Decision.**
+1. (a) is not a defect. Brief Section 3.3 requires a failed step to be shown as "skipped: reason" and never hidden; the catch block does exactly that with the error's message as the reason. The unused template is recorded in LIMITATIONS (guarded by test 9.4) and in LATER as a cosmetic wiring.
+2. (b) keep the table, documented in `schema.ts` and LIMITATIONS. Removing a planned deliverable in the last phase buys nothing.
+3. (c) the "< 1 s from cache" requirement is judged on the production server (`next start`), the way the app is served; dev-mode compilation latency is not the app's cache path. Test 8.5 pins the path offline; the live measurement is in `docs/phases/9-real-run.json`.
+4. (d) "deferred: no API key", per brief Section 6 and 10. The live half was done without a key (Fairphone, 24 receipted signals, score 3, ai_share 0) and is reported as such, not as the DoD item being met.
+5. (e) accepted as a documented limitation: the app renders no user-supplied CSS, the vulnerable code runs in the build toolchain, and a `next` 16 migration is a breaking change outside v1 scope. Logged in LATER.
+
+**Consequences.** Phase 9 passes with 0 rework rounds. FINAL-REVIEW lists the deferred item and the command that completes it. Totals for the run: rework rounds 3 (Phases 2, 3, 4, one each), re-plans 0 of 2.
