@@ -33,7 +33,8 @@ export const ui = {
   analyseStart: "Start analysis",
   analyseNotStarted: "The analysis has not started yet.",
   analyseRunning: "Analysis in progress…",
-  analyseDone: "Analysis finished. The full report view arrives in a later build phase.",
+  analyseDone: "Analysis finished.",
+  openReport: "Open the full report",
   analyseFailed: "The analysis stopped because of an error. Steps that ran are listed below.",
   progressHeading: "Progress",
   pagesHeading: (n: number) => `Pages fetched (${n})`,
@@ -109,6 +110,9 @@ export const reasons = {
   llmNoCandidates: "no removed claim to classify",
 };
 
+/** Every possible-match line starts with this (ADR-019); the report page lists those lines apart, as not scored. */
+export const POSSIBLE_MATCH_PREFIX = "Possible match, not scored:";
+
 /** Entries for the report's "What we could not check" section. */
 export const couldNotCheck = {
   noSustainabilityPage: (host: string) => `No sustainability, impact or responsibility page could be fetched from ${host}.`,
@@ -141,7 +145,7 @@ export const couldNotCheck = {
   regulatorRulingSkipped: (url: string, reason: string) => `${url}: ruling page not read (${reason}).`,
   /** A ruling naming an entity whose name only contains the brand: shown, never scored (ADR-003). */
   regulatorPossible: (name: string, entity: string, url: string) =>
-    `Possible match, not scored: ${name} ruling naming “${entity}” (${url}); the ruled entity’s name is not the brand’s name, so we do not attribute it.`,
+    `${POSSIBLE_MATCH_PREFIX} ${name} ruling naming “${entity}” (${url}); the ruled entity’s name is not the brand’s name, so we do not attribute it.`,
   repairNotApplicable: (industry: string) =>
     `Repair and ownership: not applicable (Wikidata industry “${industry}”: products are consumed, not repaired); this axis is not scored.`,
   repairNoPages: "Repair information on the brand’s own pages: no page could be fetched, so none was checked.",
@@ -205,6 +209,47 @@ export const scoreWording = {
   axisNames: { claims: "Claim language", evidence: "Evidence & certifications", track: "Track record", repair: "Ownership & repair" } as const,
   axisStatus: { scored: "scored", missing: "no data (lowers confidence)", not_applicable: "not applicable (weight shared out)" } as const,
   methodologyLink: "How the score is computed",
+};
+
+/** The report page /report/[id] (PLAN Phase 8; brief Section 3.4). */
+export const reportWording = {
+  title: (brand: string) => `${brand}: greenwashing risk signals`,
+  heading: (brand: string) => `${brand}: greenwashing risk signals`,
+  generated: (date: string) => `Report generated ${date}`,
+  website: "Website",
+  wikidata: "Wikidata",
+  logoAlt: (brand: string) => `${brand} logo (Wikimedia Commons)`,
+  scoreOutOf: "out of 100",
+  headlineHeading: "Score",
+  axesHeading: "The four axes",
+  axisSubscore: (n: number) => `Sub-score ${n}/100`,
+  axisWeight: (configured: number, effective: number) =>
+    configured === effective ? `weight ${configured}%` : `weight ${configured}% (${effective}% after redistribution)`,
+  receiptsCount: (n: number) => `${n} receipt${n === 1 ? "" : "s"}`,
+  noReceipts: "No signal on this axis.",
+  source: "Source",
+  fetched: (date: string) => `fetched ${date}`,
+  archived: (date: string) => `archived copy of ${date}`,
+  entity: (name: string) => `entity named: ${name}`,
+  points: (n: number) => `${n} risk point${n === 1 ? "" : "s"}`,
+  protectivePoints: "0 points (protective: listed, counts as data)",
+  aiAssisted: "AI-assisted",
+  aiAssistedTitle: "An AI step proposed or classified this signal; the rule engine and the receipt decide it.",
+  possibleHeading: "Possible matches (not scored)",
+  possibleIntro: "Regulator rulings naming an entity whose name contains the brand’s name but is not the brand’s name. They are listed for you to check and are not part of any axis.",
+  skippedHeading: "Skipped steps",
+  skippedNone: "No step was skipped.",
+  llmCallsHeading: "AI calls in this report",
+  llmCallsNone: "No AI call was made.",
+  llmCall: (name: string, fixture: boolean, status: string) => `${name}: ${status}${fixture ? " (recorded answer)" : ""}`,
+  llmCallsNote: "AI answers never set a number in the score; at most half of the score may depend on AI-assisted signals.",
+  shareHeading: "Share and export",
+  shareLabel: "Link to this report",
+  download: "Download evidence (JSON)",
+  rerun: "Re-run the analysis",
+  rerunNote: (date: string) => `This report was generated ${date} and is served from the stored copy. Re-running fetches every source again.`,
+  newSearch: "Search for another brand",
+  notFound: "Report not found",
 };
 
 /** The /methodology page (numbers come from config/weights.json, the rest from docs/METHODOLOGY.md). */

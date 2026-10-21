@@ -48,3 +48,11 @@ Started in Phase 4; completed in Phase 9 (PLAN Phase 9 deliverable 2). Each entr
 - Temperature 0 is not sent to the default model, which rejects sampling parameters (`docs/CHALLENGES.md` C-5); two runs of the real model can differ, but only within what the validation lets through.
 - LLM answers are not cached in SQLite; a re-run with a key calls the API again (reports themselves are stored).
 - At most three pages per run are read by the claim proposer, at most 30,000 characters each (`config/llm.json`), and at most 20 removals are classified.
+
+## Report page and cache (Phase 8)
+
+- A stored report is re-served, without running anything, to a new search for the same brand identity within `GR_REPORT_TTL_HOURS` (default 168): the same website (spellings with and without a trailing slash count as one) **and** the same confirmed Wikidata entity, or, for a pasted website, the same typed name (case-insensitive). A report made under another name or entity is never served for a search. "Re-run the analysis" on the report always starts a new run.
+- `/report/[id]` and `/api/reports/<id>.json` always read the stored `ReportV1` from SQLite; the `x-gr-served-from: cache` header says exactly that (it is a static route header, not a per-request measurement).
+- The brand logo (Wikidata P154, loaded from Wikimedia Commons) is shown only online; offline/fixture mode never renders it, so the offline tests do not exercise it.
+- A "possible" regulator match (ADR-019) is listed under "What we could not check" → "Possible matches (not scored)". No fixture brand has one; the e2e test stores a copy of the fictional Northwind report with one such line.
+- The stand-in summary for the URL-fallback e2e input ("acme" + the Northwind website) is hand-authored like the other LLM fixtures (ADR-021) and must be re-recorded once an API key exists.

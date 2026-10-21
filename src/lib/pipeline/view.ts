@@ -16,11 +16,11 @@ export interface RunView {
   status: string;
   progress: ProgressEntry[];
   pages: { url: string; title: string; wordCount: number; fetchedAt: string }[];
-  /** Archived-claim timeline (Phase 4); the full report UI arrives in Phase 8. */
+  /** Archived-claim timeline (Phase 4); the full report is /report/[id] (Phase 8). */
   timeline: TimelineEntry[];
   /** "What we could not check" lines of a finished run. */
   could_not_check: string[];
-  /** Score summary of a finished run (Phase 6); the full report UI is Phase 8. */
+  /** Score summary of a finished run (Phase 6) and the id of its report page. */
   score?: ScoreSummary;
 }
 

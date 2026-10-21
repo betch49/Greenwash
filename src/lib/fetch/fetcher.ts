@@ -134,6 +134,15 @@ export class UndiciFetcher implements Fetcher {
   }
 }
 
+/** True for `<origin>/robots.txt`: the URLs whose last cached copy is served when a live fetch fails (ADR-012 amendment). */
+export const isRobotsUrl = (url: string): boolean => {
+  try {
+    return new URL(url).pathname === "/robots.txt";
+  } catch {
+    return false;
+  }
+};
+
 /** Serves repeated requests from SQLite; records the original `fetched_at`. */
 export class CachedFetcher implements Fetcher {
   constructor(
@@ -142,22 +151,36 @@ export class CachedFetcher implements Fetcher {
     /** Time to live in ms (Infinity = never refetch), or a per-URL policy. */
     private readonly ttlMs: number | ((url: string) => number) = Infinity,
     private readonly now: () => Date = () => new Date(),
+    /**
+     * URLs for which an expired cache entry is served when the live fetch fails
+     * (network error, 5xx, 429). Default: robots.txt only (ADR-012 amendment), so
+     * a temporarily unreachable robots.txt does not cost a whole origin; the entry
+     * keeps its original `fetched_at`.
+     */
+    private readonly staleOnError: (url: string) => boolean = isRobotsUrl,
   ) {}
 
   async get(url: string, opts?: FetchOptions): Promise<FetchResult> {
     const hit = this.cache.get(url);
     const ttl = typeof this.ttlMs === "function" ? this.ttlMs(url) : this.ttlMs;
-    if (hit && this.now().getTime() - Date.parse(hit.fetchedAt) <= ttl) {
-      return {
-        url,
-        status: hit.status,
-        body: hit.body,
-        contentType: hit.contentType,
-        fetchedAt: hit.fetchedAt,
-        source: "cache",
-      };
+    const fromCache = (h: NonNullable<typeof hit>): FetchResult => ({
+      url,
+      status: h.status,
+      body: h.body,
+      contentType: h.contentType,
+      fetchedAt: h.fetchedAt,
+      source: "cache",
+    });
+    if (hit && this.now().getTime() - Date.parse(hit.fetchedAt) <= ttl) return fromCache(hit);
+    const stale = hit && this.staleOnError(url) ? hit : undefined;
+    let res: FetchResult;
+    try {
+      res = await this.inner.get(url, opts);
+    } catch (err) {
+      if (stale) return fromCache(stale);
+      throw err;
     }
-    const res = await this.inner.get(url, opts);
+    if (stale && (res.status >= 500 || res.status === 429)) return fromCache(stale);
     // Only cache definitive answers; transient failures are retried next time.
     if (res.status < 500 && res.status !== 429) {
       this.cache.put({

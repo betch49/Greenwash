@@ -4,7 +4,7 @@ import type { TimelineEntry } from "@/lib/wayback/retraction";
 /**
  * Minimal archived-claim timeline (PLAN Phase 4 deliverable 7). One list per
  * page, one row per archived copy; every row links to its snapshot (the
- * receipt). The full report UI replaces this in Phase 8.
+ * receipt). Shared by /analyse and the report page (Phase 8).
  */
 export function Timeline({ entries }: { entries: TimelineEntry[] }) {
   const byPage = new Map<string, TimelineEntry[]>();

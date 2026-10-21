@@ -1,6 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
+import { cachedReportFor } from "@/lib/report/serve";
 import { getServices } from "@/lib/services";
 import { candidateById } from "@/lib/wikidata/disambiguate";
 import { displayHost, normaliseWebsite } from "@/lib/website";
@@ -14,6 +15,8 @@ export async function confirmCandidate(formData: FormData): Promise<void> {
   if (!candidate || !candidate.website) {
     redirect(`/confirm?q=${encodeURIComponent(q)}&mode=url`);
   }
+  const cached = cachedReportFor({ website: candidate.website, wikidataId: candidate.id });
+  if (cached) redirect(`/report/${cached}`);
   const run = runs.create({
     query: q,
     brand: candidate.name,
@@ -31,7 +34,10 @@ export async function startFromUrl(formData: FormData): Promise<void> {
   if (!website) {
     redirect(`/confirm?q=${encodeURIComponent(q)}&mode=url&error=url`);
   }
+  const brand = q || displayHost(website);
+  const cached = cachedReportFor({ website, brand });
+  if (cached) redirect(`/report/${cached}`);
   const { runs } = getServices();
-  const run = runs.create({ query: q, brand: q || displayHost(website), website });
+  const run = runs.create({ query: q, brand, website });
   redirect(`/analyse/${run.id}`);
 }

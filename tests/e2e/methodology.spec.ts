@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { expect, test } from "@playwright/test";
-import { search } from "./helpers";
+import { analyseBrand } from "./helpers";
 
 const weights = JSON.parse(readFileSync("config/weights.json", "utf8")) as {
   axes: Record<string, number>;
@@ -31,10 +31,7 @@ test("6.7 /methodology renders every axis of weights.json with its percentage, e
 });
 
 test("6 a finished run shows 'Score N, confidence M%', the AI share and the basis line (Oatly fixture)", async ({ page }) => {
-  await search(page, "oatly");
-  await page.waitForURL(/\/(analyse|confirm)/);
-  if (page.url().includes("/confirm")) await page.locator("[data-candidate]").first().getByRole("button", { name: "Confirm" }).click();
-  await page.waitForURL(/\/analyse\/[0-9a-f-]{36}$/);
+  await analyseBrand(page, "oatly");
   await expect(page.getByTestId("run-status")).toHaveAttribute("data-status", "done", { timeout: 30_000 });
   // Pinned in tests/unit/score/fixtures.test.ts (same fixtures, same pinned clock).
   await expect(page.getByTestId("score-line")).toHaveText("Score 35, confidence 100%");

@@ -1,13 +1,9 @@
 import { expect, test, type Page } from "@playwright/test";
-import { search } from "./helpers";
+import { analyseWebsite as analyse } from "./helpers";
 
 // Both brands are fictional, test-only fixtures on .example domains with hand-built Wayback histories (ADR-011).
 async function analyseWebsite(page: Page, website: string) {
-  await search(page, "acme");
-  await page.waitForURL(/\/confirm\?/);
-  await page.getByLabel("Brand website URL").fill(website);
-  await page.getByRole("button", { name: "Continue with this website" }).click();
-  await page.waitForURL(/\/analyse\/[0-9a-f-]{36}$/);
+  await analyse(page, website);
   await expect(page.getByTestId("run-status")).toHaveAttribute("data-status", "done", { timeout: 30_000 });
 }
 

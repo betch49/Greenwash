@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ui } from "@/lib/copy/wording";
+import { cachedReportFor } from "@/lib/report/serve";
 import { getServices } from "@/lib/services";
 import { disambiguate } from "@/lib/wikidata/disambiguate";
 import type { Candidate, RankResult } from "@/lib/wikidata/rank";
@@ -42,6 +43,9 @@ export default async function ConfirmPage({ searchParams }: { searchParams: Sear
 
   const c = result.confident;
   if (c && c.website && !rejected.includes(c.id)) {
+    // A fresh report for this website is re-served; nothing runs again (PLAN Phase 8 deliverable 2).
+    const cached = cachedReportFor({ website: c.website, wikidataId: c.id });
+    if (cached) redirect(`/report/${cached}`);
     const run = runs.create({ query: q, brand: c.name, website: c.website, wikidataId: c.id, entity: c });
     redirect(`/analyse/${run.id}`);
   }

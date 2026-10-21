@@ -40,6 +40,13 @@ const ROOT = "fixtures";
 const OUT = LLM_CONFIG.fixturesDir;
 const NOW = () => new Date("2026-10-20T12:00:00Z");
 const BRANDS = ["mammut", "fairphone", "oatly", "northwind", "quillmoor"];
+/**
+ * URL-fallback runs (no Wikidata entity: brand = the typed query), as the offline
+ * Playwright flow creates them: "acme" finds nothing, then the Northwind website
+ * is pasted (Phase 8 carry-forward, ADR-021). Only the summary input differs
+ * from the slug run (it carries the brand); extract and classify are the same files.
+ */
+const URL_FALLBACK = [{ query: "acme", website: "https://www.northwind-outdoor.example" }];
 const SOURCE = "hand-authored stand-in, not model output (no ANTHROPIC_API_KEY in the build environment); written by scripts/author-llm-fixtures.ts";
 
 /** Diff classifications for the fictional brands' removals (ADR-011 fixtures). */
@@ -121,6 +128,13 @@ async function main() {
       const llm = new AuthoringLLM();
       const out = await runPipeline(run, { runs, pages: new RunPagesRepo(db), outputs: new RunOutputsRepo(db), fetcher, llm, now: NOW });
       console.log(`${slug}: ${out.status}, ${llm.written.length} fixtures, score ${out.report?.score}, ai_share ${out.report?.ai_share.toFixed(3)}, summary ${out.report?.summary ? "ok" : "unavailable"}`);
+    }
+    for (const fb of URL_FALLBACK) {
+      const runs = new RunsRepo(db);
+      const run = runs.create({ query: fb.query, brand: fb.query, website: fb.website });
+      const llm = new AuthoringLLM();
+      const out = await runPipeline(run, { runs, pages: new RunPagesRepo(db), outputs: new RunOutputsRepo(db), fetcher, llm, now: NOW });
+      console.log(`url-fallback "${fb.query}" + ${fb.website}: ${out.status}, ${llm.written.length} fixtures, score ${out.report?.score}, summary ${out.report?.summary ? "ok" : "unavailable"}`);
     }
   } finally {
     db.$client.close();

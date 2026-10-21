@@ -147,4 +147,5 @@ CREATE TABLE IF NOT EXISTS signals (
 );
 CREATE INDEX IF NOT EXISTS signals_run_idx ON signals(run_id);
 CREATE INDEX IF NOT EXISTS reports_brand_idx ON reports(brand);
+CREATE INDEX IF NOT EXISTS reports_website_idx ON reports(website, created_at);
 `;

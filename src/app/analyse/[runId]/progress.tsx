@@ -5,7 +5,7 @@ import Link from "next/link";
 import { scoreWording, skippedReason, ui } from "@/lib/copy/wording";
 import type { RunView } from "@/lib/pipeline/view";
 import { startRun, startRunForm } from "./actions";
-import { Timeline } from "./timeline";
+import { Timeline } from "@/app/_components/timeline";
 
 const POLL_MS = 800;
 const finished = (s: string) => s === "done" || s === "failed";
@@ -48,6 +48,13 @@ export function Progress({ initial }: { initial: RunView }) {
       <p className="muted" role="status" aria-live="polite" data-testid="run-status" data-status={view.status}>
         {statusLine}
       </p>
+      {view.status === "done" && view.score && (
+        <p>
+          <Link className="button" href={`/report/${view.score.report_id}`} data-testid="open-report">
+            {ui.openReport}
+          </Link>
+        </p>
+      )}
       {view.status === "pending" && (
         <form action={startRunForm}>
           <input type="hidden" name="runId" value={view.id} />
